@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 <style>
     .main-swiper {
         overflow: visible !important; 
@@ -38,10 +40,17 @@
     .main-swiper .swiper-button-next {
         right: -70px; 
     }
+
+    [data-aos] {
+        pointer-events: none;
+    }
+    [data-aos].aos-animate {
+        pointer-events: auto;
+    }
 </style>
 
 <div class="p-16 overflow-hidden"> 
-    <div class="relative mx-auto max-w-7xl px-16 py-8">
+    <div class="relative mx-auto max-w-7xl px-16 py-8" data-aos="fade-up" data-aos-duration="1000">
         <div class="swiper main-swiper relative">
             <div class="swiper-wrapper">
                 @foreach (['1', '2', '3', '4', '5', '6'] as $index)
@@ -57,7 +66,7 @@
         </div>
     </div>
 
-    <section class="py-10 bg-gray-50">
+    <section class="py-10 bg-gray-50" data-aos="fade-right" data-aos-duration="800">
         <div class="container mx-auto px-4 max-w-4xl">
             <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-xl transition duration-300">
                 <div class="flex items-center justify-between">
@@ -90,7 +99,7 @@
     <section class="py-10 bg-gray-50 p-6">
         <div class="container mx-auto py-24">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
-                <div class="relative">
+                <div class="relative" data-aos="fade-right" data-aos-duration="1000">
                     <img
                         src="/images/2.jpg"
                         alt="Tentang Kami"
@@ -100,7 +109,7 @@
                         class="absolute -bottom-4 -right-4 w-36 h-36 bg-red-600 rounded-2xl -z-10"
                     ></div>
                 </div>
-                <div>
+                <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">
                         DPMPTSP Kota Padang
                     </h2>
@@ -119,30 +128,34 @@
 
     <section class="py-10 bg-gray-50 p-6">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Layanan Perizinan</h2>
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Layanan Perizinan</h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <a href="https://oss.go.id/" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" target="_blank">
+                <a href="https://oss.go.id/" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
+                   data-aos="fade-up" data-aos-delay="100">
                     <div class="icon-wrap">
                         <img class="w-56 h-50 object-cover mb-4 rounded-lg mx-auto" src="/images/osss.png" alt="OSS">
                     </div>
                     <h3 class="text-xl font-semibold mb-2">OSS</h3>
                     <p class="text-gray-600 text-justify">OSS (Online Single Submission) merupakan sistem informasi layanan perizinan berusaha yang diterbitkan oleh Lembaga OSS untuk kepada Pelaku Usaha melalui sistem elektronik yang terintegrasi.</p>
                 </a>
-                <a href="https://simbg.pu.go.id/" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" target="_blank">
+                <a href="https://simbg.pu.go.id/" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
+                   data-aos="fade-up" data-aos-delay="200">
                     <div class="icon-wrap">
                         <img class="w-50 h-50 object-cover mb-4 mt-6 rounded-lg mx-auto" src="/images/simbg.png" alt="SIMBG">
                     </div>
                     <h3 class="text-xl font-semibold mb-2">SIMBG</h3>
                     <p class="text-gray-600 text-justify">Sistem Informasi Manajemen Bangunan Gedung yang selanjutnya disingkat SIMBG adalah sistem elektronik berbasis web yang digunakan untuk melaksanakan proses penyelenggaraan PBG, SLF, SBKBG, RTB, dan Pendataan Bangunan Gedung disertai dengan informasi terkait penyelenggaraan bangunan gedung.</p>
                 </a>
-                <a href="http://ikm.web.dpmptsp.padang.go.id/" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" target="_blank">
+                <a href="http://ikm.web.dpmptsp.padang.go.id/" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
+                   data-aos="fade-up" data-aos-delay="100">
                     <div class="icon-wrap">
                         <img class="w-32 h-32 object-cover mb-4 rounded-lg mx-auto" src="/images/ikm.png" alt="IKM">
                     </div>
                     <h3 class="text-xl font-semibold mb-2">IKM</h3>
                     <p class="text-gray-600 text-justify">Indeks Kepuasan Masyarakat (IKM) adalah layanan yang dirancang untuk mengukur tingkat kepuasan masyarakat terhadap pelayanan yang diberikan oleh instansi pemerintah, guna meningkatkan kualitas layanan secara berkelanjutan.</p>
                 </a>
-                <a href="http://ikm.web.dpmptsp.padang.go.id/" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" target="_blank">
+                <a href="https://nonperizinan.web.dpmptsp.padang.go.id/sinopen" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
+                   data-aos="fade-up" data-aos-delay="200">
                     <div class="icon-wrap">
                         <img class="w-32 h-32 object-cover mb-4 rounded-lg mx-auto" src="/images/sinopen.png" alt="IKM">
                     </div>
@@ -153,12 +166,10 @@
         </div>
     </section>
 
-
-    <!-- Statistik Section -->
     <section class="py-10 bg-white">
         <div class="bg-gray-50 py-24">
             <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16" data-aos="fade-up">
                     <h2 class="text-4xl font-bold text-gray-800 mb-4">
                         Galeri
                     </h2>
@@ -167,9 +178,7 @@
                 <div
                     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                 >
-                    <div
-                        class="group relative overflow-hidden rounded-xl shadow-lg"
-                    >
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="100">
                         <img
                             src="/images/1.jpg"
                             alt="Gallery 1"
@@ -180,9 +189,7 @@
                         >
                         </div>
                     </div>
-                    <div
-                        class="group relative overflow-hidden rounded-xl shadow-lg"
-                    >
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="200">
                         <img
                             src="/images/2.jpg"
                             alt="Gallery 2"
@@ -193,9 +200,7 @@
                         >
                         </div>
                     </div>
-                    <div
-                        class="group relative overflow-hidden rounded-xl shadow-lg"
-                    >
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="300">
                         <img
                             src="/images/3.jpg"
                             alt="Gallery 3"
@@ -206,9 +211,7 @@
                         >
                         </div>
                     </div>
-                    <div
-                        class="group relative overflow-hidden rounded-xl shadow-lg"
-                    >
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="100">
                         <img
                             src="/images/4.jpg"
                             alt="Gallery 4"
@@ -219,9 +222,7 @@
                         >
                         </div>
                     </div>
-                    <div
-                        class="group relative overflow-hidden rounded-xl shadow-lg"
-                    >
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="200">
                         <img
                             src="/images/5.jpg"
                             alt="Gallery 5"
@@ -232,9 +233,7 @@
                         >
                         </div>
                     </div>
-                    <div
-                        class="group relative overflow-hidden rounded-xl shadow-lg"
-                    >
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="300">
                         <img
                             src="/images/6.jpg"
                             alt="Gallery 6"
@@ -253,9 +252,18 @@
 </div>
 @endsection
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         // Main Slider
+
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
         const mainSwiper = new Swiper('.main-swiper', {
             loop: true,
             autoHeight: true,
