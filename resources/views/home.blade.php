@@ -249,6 +249,81 @@
         </div>
     </section>
 
+    <section class="py-10 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Hubungi Kami</h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto mb-4"></div>
+                <p class="text-gray-600">Sampaikan pertanyaan Anda, kami siap membantu</p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8" data-aos="fade-up" data-aos-delay="100">
+                <form action="/submit-question" method="POST" class="space-y-6">
+                    @csrf
+                    <div>
+                        <label for="nama" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
+                        <input 
+                            type="text" 
+                            id="nama" 
+                            name="nama" 
+                            required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
+                            placeholder="Masukkan nama lengkap Anda"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
+                            placeholder="Masukkan alamat email Anda"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="topik" class="block text-sm font-medium text-gray-700 mb-2">Topik Pertanyaan</label>
+                        <select 
+                            id="topik" 
+                            name="topik" 
+                            required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200 bg-white"
+                        >
+                            <option value="" disabled selected hidden>Pilih topik pertanyaan</option>
+                            <option value="perizinan">Perizinan</option>
+                            <option value="mpp">MPP</option>
+                            <option value="pengaduan">Pengaduan</option>
+                            <option value="skm">SKM</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="pertanyaan" class="block text-sm font-medium text-gray-700 mb-2">Pertanyaan</label>
+                        <textarea 
+                            id="pertanyaan" 
+                            name="pertanyaan" 
+                            rows="4" 
+                            required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200 resize-none"
+                            placeholder="Tuliskan pertanyaan Anda di sini"
+                        ></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <button 
+                            type="submit" 
+                            class="w-full sm:w-auto px-6 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition duration-200"
+                        >
+                            Kirim Pertanyaan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 </div>
 @endsection
 
