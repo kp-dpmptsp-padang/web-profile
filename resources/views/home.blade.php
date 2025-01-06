@@ -54,7 +54,7 @@
         <div class="swiper main-swiper relative">
             <div class="swiper-wrapper">
                 @foreach (['1', '2', '3', '4', '5', '6'] as $index)
-                <div class="swiper-slide relative rounded-2xl" style="width: 70%"> <!-- Tambahkan width di sini -->
+                <div class="swiper-slide relative rounded-2xl" style="width: 70%"> 
                     <div class="aspect-[16/9] w-full">
                         <img src="/images/{{ $index }}.jpg" alt="Slide {{ $index }}" class="w-full h-full object-cover rounded-2xl">
                     </div>
@@ -120,7 +120,7 @@
                     <p class="text-gray-600 text-base leading-relaxed mb-6">
                         Dengan standar pelayanan yang transparan, mudah, dan akuntabel, DPMPTSP menjadi ujung tombak peningkatan kualitas pelayanan di bidang penanaman modal.
                     </p>
-                    <a href="/tentang" class="text-red-500 text-lg font-semibold hover:underline">Selengkapnya</a>
+                    <a href="{{ route('about') }}" class="text-red-500 text-lg font-semibold hover:underline">Selengkapnya</a>
                 </div>
             </div>
         </div>
@@ -130,7 +130,7 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Layanan Perizinan</h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <a href="https://oss.go.id/" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
+                <a href="https://oss.go.id/" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
                    data-aos="fade-up" data-aos-delay="100">
                     <div class="icon-wrap">
                         <img class="w-56 h-50 object-cover mb-4 rounded-lg mx-auto" src="/images/osss.png" alt="OSS">
@@ -138,7 +138,7 @@
                     <h3 class="text-xl font-semibold mb-2">OSS</h3>
                     <p class="text-gray-600 text-justify">OSS (Online Single Submission) merupakan sistem informasi layanan perizinan berusaha yang diterbitkan oleh Lembaga OSS untuk kepada Pelaku Usaha melalui sistem elektronik yang terintegrasi.</p>
                 </a>
-                <a href="https://simbg.pu.go.id/" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
+                <a href="https://simbg.pu.go.id/" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
                    data-aos="fade-up" data-aos-delay="200">
                     <div class="icon-wrap">
                         <img class="w-50 h-50 object-cover mb-4 mt-6 rounded-lg mx-auto" src="/images/simbg.png" alt="SIMBG">
@@ -146,7 +146,7 @@
                     <h3 class="text-xl font-semibold mb-2">SIMBG</h3>
                     <p class="text-gray-600 text-justify">Sistem Informasi Manajemen Bangunan Gedung yang selanjutnya disingkat SIMBG adalah sistem elektronik berbasis web yang digunakan untuk melaksanakan proses penyelenggaraan PBG, SLF, SBKBG, RTB, dan Pendataan Bangunan Gedung disertai dengan informasi terkait penyelenggaraan bangunan gedung.</p>
                 </a>
-                <a href="http://ikm.web.dpmptsp.padang.go.id/" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
+                <a href="http://ikm.web.dpmptsp.padang.go.id/" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
                    data-aos="fade-up" data-aos-delay="100">
                     <div class="icon-wrap">
                         <img class="w-32 h-32 object-cover mb-4 rounded-lg mx-auto" src="/images/ikm.png" alt="IKM">
@@ -154,7 +154,7 @@
                     <h3 class="text-xl font-semibold mb-2">IKM</h3>
                     <p class="text-gray-600 text-justify">Indeks Kepuasan Masyarakat (IKM) adalah layanan yang dirancang untuk mengukur tingkat kepuasan masyarakat terhadap pelayanan yang diberikan oleh instansi pemerintah, guna meningkatkan kualitas layanan secara berkelanjutan.</p>
                 </a>
-                <a href="https://nonperizinan.web.dpmptsp.padang.go.id/sinopen" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
+                <a href="https://nonperizinan.web.dpmptsp.padang.go.id/sinopen" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
                    data-aos="fade-up" data-aos-delay="200">
                     <div class="icon-wrap">
                         <img class="w-32 h-32 object-cover mb-4 rounded-lg mx-auto" src="/images/sinopen.png" alt="IKM">
@@ -245,82 +245,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-10 bg-white">
-        <div class="container mx-auto px-4 max-w-3xl">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Hubungi Kami</h2>
-                <div class="w-20 h-1 bg-red-600 mx-auto mb-4"></div>
-                <p class="text-gray-600">Sampaikan pertanyaan Anda, kami siap membantu</p>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-lg p-8" data-aos="fade-up" data-aos-delay="100">
-                <form action="/submit-question" method="POST" class="space-y-6">
-                    @csrf
-                    <div>
-                        <label for="nama" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
-                        <input 
-                            type="text" 
-                            id="nama" 
-                            name="nama" 
-                            required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
-                            placeholder="Masukkan nama lengkap Anda"
-                        >
-                    </div>
-
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            name="email" 
-                            required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
-                            placeholder="Masukkan alamat email Anda"
-                        >
-                    </div>
-
-                    <div>
-                        <label for="topik" class="block text-sm font-medium text-gray-700 mb-2">Topik Pertanyaan</label>
-                        <select 
-                            id="topik" 
-                            name="topik" 
-                            required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200 bg-white"
-                        >
-                            <option value="" disabled selected hidden>Pilih topik pertanyaan</option>
-                            <option value="perizinan">Perizinan</option>
-                            <option value="mpp">MPP</option>
-                            <option value="pengaduan">Pengaduan</option>
-                            <option value="skm">SKM</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="pertanyaan" class="block text-sm font-medium text-gray-700 mb-2">Pertanyaan</label>
-                        <textarea 
-                            id="pertanyaan" 
-                            name="pertanyaan" 
-                            rows="4" 
-                            required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200 resize-none"
-                            placeholder="Tuliskan pertanyaan Anda di sini"
-                        ></textarea>
-                    </div>
-
-                    <div class="text-center">
-                        <button 
-                            type="submit" 
-                            class="w-full sm:w-auto px-6 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition duration-200"
-                        >
-                            Kirim Pertanyaan
-                        </button>
-                    </div>
-                </form>
             </div>
         </div>
     </section>
