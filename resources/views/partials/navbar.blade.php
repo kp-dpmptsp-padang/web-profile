@@ -12,22 +12,22 @@
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0">
                 <li>
-                    <a href="/" class="block py-2 px-3 text-black" aria-current="page">Beranda</a>
+                    <a href="{{ route('home') }}" class="block py-2 px-3 text-black" aria-current="page">Beranda</a>
                 </li>
                 <li>
-                    <a href="/tentang" class="block py-2 px-3 text-black">Tentang</a>
+                    <a href="{{ route('about') }}" class="block py-2 px-3 text-black">Tentang</a>
                 </li>
                 <li>
-                    <a href="/layanan" class="block py-2 px-3 text-black">Layanan Kami</a>
+                    <a href="{{ route('layanan') }}" class="block py-2 px-3 text-black">Layanan Kami</a>
                 </li>
                 <li>
-                    <a href="/informasi" class="block py-2 px-3 text-black">Informasi</a>
+                    <a href="{{ route('informasi') }}" class="block py-2 px-3 text-black">Informasi</a>
                 </li>
                 <li>
-                    <a href="/dokumen" class="block py-2 px-3 text-black">Dokumen</a>
+                    <a href="{{ route('dokumen') }}" class="block py-2 px-3 text-black">Dokumen</a>
                 </li>
                 <li>
-                    <a href="/fasilitas" class="block py-2 px-3 text-black">Fasilitas</a>
+                    <a href="{{ route('fasilitas') }}" class="block py-2 px-3 text-black">Fasilitas</a>
                 </li>
             </ul>
         </div>
