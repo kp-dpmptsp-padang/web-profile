@@ -1,11 +1,20 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GuestController;
 
-Route::get('/', [GuestController::class, 'home'])->name('home');
-Route::get('/tentang', [GuestController::class, 'about'])->name('about');
-Route::get('/layanan', [GuestController::class, 'layanan'])->name('layanan');
-Route::get('/fasilitas', [GuestController::class, 'fasilitas'])->name('fasilitas');
-Route::get('/informasi', [GuestController::class, 'informasi'])->name('informasi');
-Route::get('/dokumen', [GuestController::class, 'dokumen'])->name('dokumen');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
