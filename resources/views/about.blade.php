@@ -23,7 +23,7 @@
                     </h2>
                     <div class="w-16 h-1 bg-red-600 mb-4"></div>
                     <p class="text-gray-600 text-base leading-relaxed mb-4 text-justify">
-                        Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Kota Padang berkomitmen untuk meningkatkan pelayanan publik yang prima melalui Pelayanan Terpadu Satu Pintu (PTSP). Masyarakat dapat menikmati layanan dengan kepastian persyaratan, biaya, dan waktu penyelesaian, guna mendukung pertumbuhan ekonomi dan investasi daerah.
+                        Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Kota Padang berkomitmen untuk meningkatkan pelayanan publik yang prima melalui Pelayanan Terpadu Satu Pintu (PTSP). Masyarakat dapat menikmati layanan dengan kepastian persyaratan, biaya, dan waktu penyelesaian, guna mendukung pertumbuhan ekonomi dan investasi daerah. 
                     </p>
                     <p class="text-gray-600 text-base leading-relaxed mb-6">
                         Dengan standar pelayanan yang transparan, mudah, dan akuntabel, DPMPTSP menjadi ujung tombak peningkatan kualitas pelayanan di bidang penanaman modal.
@@ -35,10 +35,214 @@
     <section class="py-10 bg-gray-50 p-6">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Profil DPMPTSP</h2>
-            
+            <div class="max-w-5xl mx-auto space-y-4">
+                <div class="border border-gray-200 rounded-lg transition-all duration-300">
+                    <button onclick="toggleAccordion('visi-misi')" class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors">
+                        <h3 class="text-lg font-semibold" id="text-visi-misi">Visi & Misi</h3>
+                        <svg id="icon-visi-misi" class="transform transition-transform duration-300 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div id="content-visi-misi" class="overflow-hidden transition-all duration-300 max-h-0 opacity-0">
+                        <div class="p-4 bg-white border-t">
+                            <div class="space-y-4">
+                                <div>
+                                    <h4 class="font-semibold mb-2">Visi Pelayanan</h4>
+                                    <p class="text-gray-600">Mewujudkan Pelayanan Perizinan dan Non Perizinan Secara Terpadu dan Terintegrasi yang Lebih Berkualitas dan Efektif</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Misi Pelayanan</h4>
+                                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                                        <li>Meningkatkan profesionalisme dan kompetensi penyelenggaraan pelayanan perizinan dan non perizinan</li>
+                                        <li>Meningkatkan kemudahan dan ketepatan pelaksanaan pelayanan perizinan dan non perizinan secara terpadu</li>
+                                        <li>Meningkatkan akuntabilitas kinerja pelayanan perizinan dan non perizinan</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="border border-gray-200 rounded-lg transition-all duration-300">
+                    <button onclick="toggleAccordion('struktur')" class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors">
+                        <h3 class="text-lg font-semibold" id="text-struktur">Struktur Organisasi</h3>
+                        <svg id="icon-struktur" class="transform transition-transform duration-300 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div id="content-struktur" class="overflow-hidden transition-all duration-300 max-h-0 opacity-0">
+                        <div class="p-4 bg-white border-t">
+                            <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                                <li>Kepala Dinas</li>
+                                <li>Sekretariat</li>
+                                <li>Bidang Penanaman Modal</li>
+                                <li>Bidang Pelayanan Perizinan</li>
+                                <li>Bidang Pengawasan dan Pengendalian</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="border border-gray-200 rounded-lg transition-all duration-300">
+                    <button onclick="toggleAccordion('sdm')" class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors">
+                        <h3 class="text-lg font-semibold" id="text-sdm">Peta Kompetensi SDM</h3>
+                        <svg id="icon-sdm" class="transform transition-transform duration-300 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div id="content-sdm" class="overflow-hidden transition-all duration-300 max-h-0 opacity-0">
+                        <div class="p-4 bg-white border-t">
+                            <div class="text-gray-600">
+                                <p>Peta kompetensi SDM DPMPTSP meliputi:</p>
+                                <ul class="list-disc pl-5 space-y-2 mt-2">
+                                    <li>Kompetensi Teknis Pelayanan Perizinan</li>
+                                    <li>Kompetensi Manajerial</li>
+                                    <li>Kompetensi Sosial Kultural</li>
+                                    <li>Kompetensi Teknis Bidang Investasi</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+    <section class="py-10 bg-gray-50 p-6">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Jam Pelayanan</h2>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                    <div class="flex items-center justify-center mb-4">
+                        <svg class="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Hari Operasional</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center p-2 bg-white rounded-lg">
+                            <span class="font-medium">Senin</span>
+                            <span class="text-green-600">Buka</span>
+                        </div>
+                        <div class="flex justify-between items-center p-2 bg-white rounded-lg">
+                            <span class="font-medium">Selasa</span>
+                            <span class="text-green-600">Buka</span>
+                        </div>
+                        <div class="flex justify-between items-center p-2 bg-white rounded-lg">
+                            <span class="font-medium">Rabu</span>
+                            <span class="text-green-600">Buka</span>
+                        </div>
+                        <div class="flex justify-between items-center p-2 bg-white rounded-lg">
+                            <span class="font-medium">Kamis</span>
+                            <span class="text-green-600">Buka</span>
+                        </div>
+                        <div class="flex justify-between items-center p-2 bg-white rounded-lg">
+                            <span class="font-medium">Jumat</span>
+                            <span class="text-green-600">Buka</span>
+                        </div>
+                        <div class="flex justify-between items-center p-2 bg-white rounded-lg">
+                            <span class="font-medium">Sabtu</span>
+                            <span class="text-red-600">Tutup</span>
+                        </div>
+                        <div class="flex justify-between items-center p-2 bg-white rounded-lg">
+                            <span class="font-medium">Minggu</span>
+                            <span class="text-red-600">Tutup</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                    <div class="flex items-center justify-center mb-4">
+                        <svg class="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-6">Waktu Pelayanan</h3>
+                    <div class="flex flex-col items-center space-y-6">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-red-600 mb-2" id="currentTime">08:00</div>
+                            <p class="text-gray-600">Jam Buka</p>
+                        </div>
+                        <div class="h-16 flex items-center">
+                            <div class="w-1 h-full bg-red-600 rounded-full"></div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-red-600 mb-2">15:00</div>
+                            <p class="text-gray-600">Jam Tutup</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <section class="bg-gray-50 py-10 px-6">
+        <div class="container mx-auto">
+            <div class="max-w-5xl mx-auto">
+                <div class="relative p-4 bg-white rounded-lg shadow-lg">
+                    <div class="absolute inset-0 border-2 border-red-600/20 rounded-lg m-4"></div>
+                    <div class="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-red-600"></div>
+                    <div class="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-red-600"></div>
+                    <div class="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-red-600"></div>
+                    <div class="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-red-600"></div>
+                    <img 
+                        src="/images/1.jpg"
+                        alt="Foto Bersama DPMPTSP" 
+                        class="w-full h-[500px] object-cover rounded-lg shadow-inner"
+                    />
+                </div>
+            </div>
+        </div>
+     </section>
+    
+    <script>
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            const text = document.getElementById(`text-${id}`);
+            
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                content.classList.remove('opacity-100');
+                content.classList.add('opacity-0');
+                icon.classList.remove('rotate-180');
+                icon.classList.remove('text-red-500');
+                text.classList.remove('text-red-500'); 
+                text.classList.add('bg-white');
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                content.classList.remove('opacity-0');
+                content.classList.add('opacity-100');
+                icon.classList.add('rotate-180');
+                icon.classList.add('text-red-500');
+                text.classList.remove('bg-white'); 
+                text.classList.add('text-red-500'); 
+            }
 
+            const allContents = document.querySelectorAll('[id^="content-"]');
+            const allIcons = document.querySelectorAll('[id^="icon-"]');
+            const allTexts = document.querySelectorAll('[id^="text-"]');
+            
+            allContents.forEach((item) => {
+                if (item.id !== `content-${id}` && item.style.maxHeight) {
+                    item.style.maxHeight = null;
+                    item.classList.remove('opacity-100');
+                    item.classList.add('opacity-0');
+                }
+            });
+
+            allIcons.forEach((item) => {
+                if (item.id !== `icon-${id}`) {
+                    item.classList.remove('rotate-180');
+                }
+            });
+
+            allTexts.forEach((item) => {
+                if (item.id !== `text-${id}`) {
+                    item.classList.remove('text-red-500');
+                    item.classList.add('bg-white');
+                }
+            });
+        }
+    </script>
 </div>
   
 
