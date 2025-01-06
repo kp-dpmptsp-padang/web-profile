@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,5 +17,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/', [GuestController::class, 'home'])->name('home');
+Route::get('/tentang', [GuestController::class, 'about'])->name('about');
+Route::get('/layanan', [GuestController::class, 'layanan'])->name('layanan');
+Route::get('/fasilitas', [GuestController::class, 'fasilitas'])->name('fasilitas');
+Route::get('/informasi', [GuestController::class, 'informasi'])->name('informasi');
+Route::get('/dokumen', [GuestController::class, 'dokumen'])->name('dokumen');
 
 require __DIR__.'/auth.php';
