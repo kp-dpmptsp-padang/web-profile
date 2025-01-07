@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('document_videos', function (Blueprint $table) {
+        Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_admin')->constrained('users');
             $table->string('judul');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('document_videos');
+        Schema::dropIfExists('videos');
     }
 };
