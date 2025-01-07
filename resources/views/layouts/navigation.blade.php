@@ -40,7 +40,7 @@
             <img
               src="/images/dpmptsp.png"
               class="mr-3 h-8"
-              alt="Flowbite Logo"
+              alt="DPMPTSP Logo"
             />
           </a>
         </div>
