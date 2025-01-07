@@ -1,6 +1,94 @@
 @extends('layouts.main')
 
 @section('content')
+<style>
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .animate-fade-in tr {
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .animate-fade-in tr:nth-child(1) { animation-delay: 0.1s; }
+    .animate-fade-in tr:nth-child(2) { animation-delay: 0.2s; }
+    .animate-fade-in tr:nth-child(3) { animation-delay: 0.3s; }
+
+    .transition-all {
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+    }
+
+    td {
+        position: relative;
+        overflow: hidden;
+    }
+
+    td::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: rgb(220, 38, 38);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+    }
+
+    tr:hover td::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .animate-on-scroll {
+        opacity: 0;
+    }
+
+    .fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .fade-in-right {
+        animation: fadeInRight 0.8s ease-out forwards;
+    }
+</style>
 <div class="overflow-hidden pt-16">
     <div class="heading bg-cover bg-center py-20 flex items-center justify-center" style="background-image: url('/images/1.jpg');">
         <h1 class="text-5xl text-white uppercase font-bold">Tentang Kami</h1>
@@ -9,7 +97,7 @@
     <section class="bg-gray-50 px-6">
         <div class="container mx-auto py-24">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
-                <div class="relative">
+                <div class="relative animate-on-scroll" data-animation="fade-in-right">
                     <img
                         src="/images/2.jpg"
                         alt="Tentang Kami"
@@ -17,7 +105,7 @@
                     />
                     <div class="absolute -bottom-4 -right-4 w-36 h-36 bg-red-600 rounded-2xl -z-10"></div>
                 </div>
-                <div>
+                <div class="animate-on-scroll" data-animation="fade-in-up">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">
                         DPMPTSP Kota Padang
                     </h2>
@@ -34,8 +122,8 @@
     </section>
     <section class="py-10 bg-gray-50 p-6">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Profil DPMPTSP</h2>
-            <div class="max-w-5xl mx-auto space-y-4">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll" data-animation="fade-in-up">Profil DPMPTSP</h2>
+            <div class="max-w-5xl mx-auto space-y-4 animate-on-scroll" data-animation="fade-in-up">
                 <div class="border border-gray-200 rounded-lg transition-all duration-300">
                     <button onclick="toggleAccordion('visi-misi')" class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors">
                         <h3 class="text-lg font-semibold" id="text-visi-misi">Visi & Misi</h3>
@@ -72,34 +160,372 @@
                     </button>
                     <div id="content-struktur" class="overflow-hidden transition-all duration-300 max-h-0 opacity-0">
                         <div class="p-4 bg-white border-t">
-                            <ul class="list-disc pl-5 space-y-2 text-gray-600">
-                                <li>Kepala Dinas</li>
-                                <li>Sekretariat</li>
-                                <li>Bidang Penanaman Modal</li>
-                                <li>Bidang Pelayanan Perizinan</li>
-                                <li>Bidang Pengawasan dan Pengendalian</li>
-                            </ul>
+                            <div class="max-w-5xl mx-auto">
+                                <div class="relative p-4 bg-white rounded-lg shadow-lg">
+                                    <div class="absolute inset-0 border-2 border-red-600/20 rounded-lg m-4"></div>
+                                    <div class="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-red-600"></div>
+                                    <div class="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-red-600"></div>
+                                    <div class="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-red-600"></div>
+                                    <div class="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-red-600"></div>
+                                    <img 
+                                        src="/images/struktur.png"
+                                        alt="Foto Bersama DPMPTSP" 
+                                        class="w-full h-[500px] object-cover rounded-lg shadow-inner"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
     
                 <div class="border border-gray-200 rounded-lg transition-all duration-300">
                     <button onclick="toggleAccordion('sdm')" class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors">
-                        <h3 class="text-lg font-semibold" id="text-sdm">Peta Kompetensi SDM</h3>
+                        <h3 class="text-lg font-semibold" id="text-sdm">Daftar Pegawai DPMPTSP</h3>
                         <svg id="icon-sdm" class="transform transition-transform duration-300 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
                     <div id="content-sdm" class="overflow-hidden transition-all duration-300 max-h-0 opacity-0">
                         <div class="p-4 bg-white border-t">
-                            <div class="text-gray-600">
-                                <p>Peta kompetensi SDM DPMPTSP meliputi:</p>
-                                <ul class="list-disc pl-5 space-y-2 mt-2">
-                                    <li>Kompetensi Teknis Pelayanan Perizinan</li>
-                                    <li>Kompetensi Manajerial</li>
-                                    <li>Kompetensi Sosial Kultural</li>
-                                    <li>Kompetensi Teknis Bidang Investasi</li>
-                                </ul>
+                            <div class="w-full px-4 py-8">
+                                <div class="w-full overflow-x-auto">
+                                    <table class="min-w-full bg-white border border-gray-300">
+                                        <thead>
+                                            <tr class="bg-red-200">
+                                                <th class="py-3 px-6 text-left font-semibold border-b">No</th>
+                                                <th class="py-3 px-6 text-left font-semibold border-b">Nama</th>
+                                                <th class="py-3 px-6 text-left font-semibold border-b">NIP</th>
+                                                <th class="py-3 px-6 text-left font-semibold border-b">Jabatan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-gray-600 lowercase capitalize animate-fade-in">
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">1</td>
+                                                <td class="py-2 px-6 border-b">Swesti Fanloni, S.STP, M.Si</td>
+                                                <td class="py-2 px-6 border-b">197910181998102001</td>
+                                                <td class="py-2 px-6 border-b">Kepala Dinas DPMPTSP Kota Padang</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">2</td>
+                                                <td class="py-2 px-6 border-b">Atos, SE</td>
+                                                <td class="py-2 px-6 border-b">197304222003121001</td>
+                                                <td class="py-2 px-6 border-b">Sekretaris</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">3</td>
+                                                <td class="py-2 px-6 border-b">Elfi Herawati, S.Kom, ME</td>
+                                                <td class="py-2 px-6 border-b">107103051999032004</td>
+                                                <td class="py-2 px-6 border-b">Penata Perizinan Ahli Madya</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">4</td>
+                                                <td class="py-2 px-6 border-b">SYUHADI, S.Kom, M.Kom</td>
+                                                <td class="py-2 px-6 border-b">197203211997011003</td>
+                                                <td class="py-2 px-6 border-b">Penata Perizinan Ahli Madya</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">5</td>
+                                                <td class="py-2 px-6 border-b">Spero Meilyora</td>
+                                                <td class="py-2 px-6 border-b">197005291991011002</td>
+                                                <td class="py-2 px-6 border-b">Analis Kebijakan Ahli Madya</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">6</td>
+                                                <td class="py-2 px-6 border-b">Sapta Wardhana</td>
+                                                <td class="py-2 px-6 border-b">196609261994011001</td>
+                                                <td class="py-2 px-6 border-b">Analis Kebijakan Ahli Madya</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">7</td>
+                                                <td class="py-2 px-6 border-b">Wahyu Isandi Rahmatullah, S.STP., M.A.P., C.Med</td>
+                                                <td class="py-2 px-6 border-b">199112252015071001</td>
+                                                <td class="py-2 px-6 border-b">Kasubag Umum</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">8</td>
+                                                <td class="py-2 px-6 border-b">Said Sanrise, SH., MIDS., M.Eng</td>
+                                                <td class="py-2 px-6 border-b">196908292000031001</td>
+                                                <td class="py-2 px-6 border-b">Fungsional Perencana Ahli Muda</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">9</td>
+                                                <td class="py-2 px-6 border-b">Siti Aminah</td>
+                                                <td class="py-2 px-6 border-b">199001022015022002</td>
+                                                <td class="py-2 px-6 border-b">Staff</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">10</td>
+                                                <td class="py-2 px-6 border-b">Sri Hastuti</td>
+                                                <td class="py-2 px-6 border-b">197705052006042024</td>
+                                                <td class="py-2 px-6 border-b">Penata Perizinan Ahli Muda</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">11</td>
+                                                <td class="py-2 px-6 border-b">RIKO MARVELLA</td>
+                                                <td class="py-2 px-6 border-b">198706192010011003</td>
+                                                <td class="py-2 px-6 border-b">Penata Perizinan Ahli Muda</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">12</td>
+                                                <td class="py-2 px-6 border-b">Siti Dyan Harlinda Rias</td>
+                                                <td class="py-2 px-6 border-b">197006011994032005</td>
+                                                <td class="py-2 px-6 border-b">Analis Kebijakan Ahli Muda</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">13</td>
+                                                <td class="py-2 px-6 border-b">Wirdawati. SE</td>
+                                                <td class="py-2 px-6 border-b">196704151991032003</td>
+                                                <td class="py-2 px-6 border-b">Fungsional Ahli Muda</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">14</td>
+                                                <td class="py-2 px-6 border-b">Rezkia Fauzi,SE.MM</td>
+                                                <td class="py-2 px-6 border-b">197101012007011028</td>
+                                                <td class="py-2 px-6 border-b">Analis Kebijakan Ahli Muda</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">15</td>
+                                                <td class="py-2 px-6 border-b">Arwil Kartini, S.Pt</td>
+                                                <td class="py-2 px-6 border-b">197604212007012008</td>
+                                                <td class="py-2 px-6 border-b">Analis Kebijakan Ahli Muda</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">16</td>
+                                                <td class="py-2 px-6 border-b">Riri Rezki Yunanda, S.Kom</td>
+                                                <td class="py-2 px-6 border-b">199101212015022002</td>
+                                                <td class="py-2 px-6 border-b">Penyusun Rencana Kegiatan dan Anggaran</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">17</td>
+                                                <td class="py-2 px-6 border-b">PRIMAROSI, SE, MM</td>
+                                                <td class="py-2 px-6 border-b">198201122010012022</td>
+                                                <td class="py-2 px-6 border-b">PENGELOLA KEPEGAWAIAN</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">18</td>
+                                                <td class="py-2 px-6 border-b">DIAN FERA YULFITA</td>
+                                                <td class="py-2 px-6 border-b">197707112003122002</td>
+                                                <td class="py-2 px-6 border-b">Penyusun program anggaran dan pelaporan</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">19</td>
+                                                <td class="py-2 px-6 border-b">Siti Aminah</td>
+                                                <td class="py-2 px-6 border-b">199001022015022002</td>
+                                                <td class="py-2 px-6 border-b">Staff</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">20</td>
+                                                <td class="py-2 px-6 border-b">Emilizola</td>
+                                                <td class="py-2 px-6 border-b">197706172011012002</td>
+                                                <td class="py-2 px-6 border-b">Pengurus barang</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">21</td>
+                                                <td class="py-2 px-6 border-b">Mulizon</td>
+                                                <td class="py-2 px-6 border-b">197301102006041013</td>
+                                                <td class="py-2 px-6 border-b">Staf fungsional</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">22</td>
+                                                <td class="py-2 px-6 border-b">Muhammad Irsyad Avicenna</td>
+                                                <td class="py-2 px-6 border-b">199412242019021001</td>
+                                                <td class="py-2 px-6 border-b">Pranata Komputer Terampil</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">23</td>
+                                                <td class="py-2 px-6 border-b">Ratna Junita</td>
+                                                <td class="py-2 px-6 border-b">197211061993032003</td>
+                                                <td class="py-2 px-6 border-b">Pengelola gaji</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">24</td>
+                                                <td class="py-2 px-6 border-b">Lusi Yulia Fitri</td>
+                                                <td class="py-2 px-6 border-b">198107282024212010</td>
+                                                <td class="py-2 px-6 border-b">Arsiparis Terampil</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">25</td>
+                                                <td class="py-2 px-6 border-b">RINI MULYANI</td>
+                                                <td class="py-2 px-6 border-b">198504062014042001</td>
+                                                <td class="py-2 px-6 border-b">Staf</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">26</td>
+                                                <td class="py-2 px-6 border-b">Ibrahim</td>
+                                                <td class="py-2 px-6 border-b">197107032008011002</td>
+                                                <td class="py-2 px-6 border-b">Pengadministrasi Umum</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">27</td>
+                                                <td class="py-2 px-6 border-b">Afrida yenti</td>
+                                                <td class="py-2 px-6 border-b">197206071994032004</td>
+                                                <td class="py-2 px-6 border-b">fungsional umum</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">28</td>
+                                                <td class="py-2 px-6 border-b">Dwi Kristin Syahrial</td>
+                                                <td class="py-2 px-6 border-b">198311282007012002</td>
+                                                <td class="py-2 px-6 border-b">fungsional umum</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">29</td>
+                                                <td class="py-2 px-6 border-b">Seputra</td>
+                                                <td class="py-2 px-6 border-b">1979090220021004</td>
+                                                <td class="py-2 px-6 border-b">Fungsional Umum</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">30</td>
+                                                <td class="py-2 px-6 border-b">Nur Muhammad Haikal</td>
+                                                <td class="py-2 px-6 border-b">199307232022031002</td>
+                                                <td class="py-2 px-6 border-b">Analis Dokumen Perizinan</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">31</td>
+                                                <td class="py-2 px-6 border-b">Ismi Mulyani, A.Md</td>
+                                                <td class="py-2 px-6 border-b">199605012022032005</td>
+                                                <td class="py-2 px-6 border-b">Pranata Komputer</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">32</td>
+                                                <td class="py-2 px-6 border-b">Hj.LENDRA YUSTRI, SE</td>
+                                                <td class="py-2 px-6 border-b">196801271990032010</td>
+                                                <td class="py-2 px-6 border-b">Fungsional Umum</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">33</td>
+                                                <td class="py-2 px-6 border-b">AMPRIADI</td>
+                                                <td class="py-2 px-6 border-b">196706111989031005</td>
+                                                <td class="py-2 px-6 border-b">Fungsional umum</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">34</td>
+                                                <td class="py-2 px-6 border-b">M. ALMEPAL WANDA, S.KOM, M.KOM</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">TENAGA AHLI SISTEM INFORMASI</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">35</td>
+                                                <td class="py-2 px-6 border-b">Fiyardi</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Front Office</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">36</td>
+                                                <td class="py-2 px-6 border-b">Ferby Kurniawan Putra, S.M</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Front Office</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">37</td>
+                                                <td class="py-2 px-6 border-b">Prasaja Arliando Syafri</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Pendamping Teknologi Informasi</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">38</td>
+                                                <td class="py-2 px-6 border-b">Atika Sulti</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Front office</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">39</td>
+                                                <td class="py-2 px-6 border-b">Yusrika, S.Si</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Front Office</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">40</td>
+                                                <td class="py-2 px-6 border-b">CYNTHIA FITRI MONITA</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">FO</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">41</td>
+                                                <td class="py-2 px-6 border-b">SYIFA MAUDINA</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Front office</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">42</td>
+                                                <td class="py-2 px-6 border-b">Sharlla Malica Fateha</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Front office</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">43</td>
+                                                <td class="py-2 px-6 border-b">Atikah Maitri, S. Si</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Helpdesk OSS</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">44</td>
+                                                <td class="py-2 px-6 border-b">Muhammad Ikhsan Khalid</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Front office</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">45</td>
+                                                <td class="py-2 px-6 border-b">Yulmi Suari</td>
+                                                <td class="py-2 px-6 border-b">199607082022031004</td>
+                                                <td class="py-2 px-6 border-b">Analis Investasi dan Permodalan Usaha</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">46</td>
+                                                <td class="py-2 px-6 border-b">Henry Chandra</td>
+                                                <td class="py-2 px-6 border-b">197406302006041003</td>
+                                                <td class="py-2 px-6 border-b">Fungsional Umum</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">47</td>
+                                                <td class="py-2 px-6 border-b">Susi Suzanna</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Staf</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">48</td>
+                                                <td class="py-2 px-6 border-b">Esi hariati</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Staf</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">49</td>
+                                                <td class="py-2 px-6 border-b">Erfinis Rivai, SE</td>
+                                                <td class="py-2 px-6 border-b">197308012009012003</td>
+                                                <td class="py-2 px-6 border-b">Fungsional Umum</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">50</td>
+                                                <td class="py-2 px-6 border-b">Reni Zamri, S.Sos</td>
+                                                <td class="py-2 px-6 border-b">197110311992032006</td>
+                                                <td class="py-2 px-6 border-b">Fungsional Umum</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">51</td>
+                                                <td class="py-2 px-6 border-b">Rinaldi Listianto</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Cleaning Service</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">52</td>
+                                                <td class="py-2 px-6 border-b">Randi Hermaputra</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Cleaning Service</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">53</td>
+                                                <td class="py-2 px-6 border-b">Dedia Rosman</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Security</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-50 transition-all duration-300 ease-in-out hover:shadow-md">
+                                                <td class="py-2 px-6 border-b">54</td>
+                                                <td class="py-2 px-6 border-b">Arif Feriandana</td>
+                                                <td class="py-2 px-6 border-b">-</td>
+                                                <td class="py-2 px-6 border-b">Security</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -109,9 +535,9 @@
     </section>
     <section class="py-10 bg-gray-50 p-6">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Jam Pelayanan</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll" data-animation="fade-in-up">Jam Pelayanan</h2>
             <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div class="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl animate-on-scroll" data-animation="fade-in-right">
                     <div class="flex items-center justify-center mb-4">
                         <svg class="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
@@ -150,7 +576,7 @@
                     </div>
                 </div>
     
-                <div class="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div class="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl animate-on-scroll" data-animation="fade-in-up">
                     <div class="flex items-center justify-center mb-4">
                         <svg class="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -199,22 +625,25 @@
             const icon = document.getElementById(`icon-${id}`);
             const text = document.getElementById(`text-${id}`);
             
+            content.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            icon.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            
             if (content.style.maxHeight) {
                 content.style.maxHeight = null;
+                content.style.transform = 'translateY(-10px)';
                 content.classList.remove('opacity-100');
                 content.classList.add('opacity-0');
-                icon.classList.remove('rotate-180');
+                icon.style.transform = 'rotate(0deg)';
                 icon.classList.remove('text-red-500');
-                text.classList.remove('text-red-500'); 
-                text.classList.add('bg-white');
+                text.classList.remove('text-red-500');
             } else {
                 content.style.maxHeight = content.scrollHeight + "px";
+                content.style.transform = 'translateY(0)';
                 content.classList.remove('opacity-0');
                 content.classList.add('opacity-100');
-                icon.classList.add('rotate-180');
+                icon.style.transform = 'rotate(180deg)';
                 icon.classList.add('text-red-500');
-                text.classList.remove('bg-white'); 
-                text.classList.add('text-red-500'); 
+                text.classList.add('text-red-500');
             }
 
             const allContents = document.querySelectorAll('[id^="content-"]');
@@ -224,6 +653,7 @@
             allContents.forEach((item) => {
                 if (item.id !== `content-${id}` && item.style.maxHeight) {
                     item.style.maxHeight = null;
+                    item.style.transform = 'translateY(-10px)';
                     item.classList.remove('opacity-100');
                     item.classList.add('opacity-0');
                 }
@@ -231,17 +661,37 @@
 
             allIcons.forEach((item) => {
                 if (item.id !== `icon-${id}`) {
-                    item.classList.remove('rotate-180');
+                    item.style.transform = 'rotate(0deg)';
+                    item.classList.remove('text-red-500');
                 }
             });
 
             allTexts.forEach((item) => {
                 if (item.id !== `text-${id}`) {
                     item.classList.remove('text-red-500');
-                    item.classList.add('bg-white');
                 }
             });
         }
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(entry.target.dataset.animation);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(el => observer.observe(el));
+        });
     </script>
 </div>
   

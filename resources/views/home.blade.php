@@ -3,6 +3,7 @@
 @section('content')
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" />
 <style>
     .main-swiper {
         overflow: visible !important; 
@@ -41,6 +42,29 @@
         right: -70px; 
     }
 
+    .custom-carousel {
+        cursor: grab;
+        user-select: none;
+    }
+    .custom-carousel:active {
+        cursor: grabbing;
+    }
+    .carousel-track {
+        will-change: transform;
+    }
+    .relative.overflow-hidden {
+    overflow: hidden;
+    position: relative;
+    }
+    #carouselTrack {
+        display: flex;
+        gap: 1.5rem; 
+        transition: transform 0.5s ease-out;
+        will-change: transform;
+    }
+    .flex-none {
+        flex: 0 0 auto;
+    }
     [data-aos] {
         pointer-events: none;
     }
@@ -56,7 +80,7 @@
                 @foreach (['1', '2', '3', '4', '5', '6'] as $index)
                 <div class="swiper-slide relative rounded-2xl" style="width: 70%"> 
                     <div class="aspect-[16/9] w-full">
-                        <img src="/images/{{ $index }}.jpg" alt="Slide {{ $index }}" class="w-full h-full object-cover rounded-2xl">
+                        <img src="/images/swiper/{{ $index }}.jpg" alt="Slide {{ $index }}" class="w-full h-full object-cover rounded-2xl">
                     </div>
                 </div> 
                 @endforeach
@@ -85,10 +109,49 @@
                     <div class="w-full md:w-4/12 flex justify-end pr-4">
                         <div class="relative group">
                             <img 
-                                src="/images/zi_5.png" 
+                                src="/images/zi/zi_5.png" 
                                 alt="Logo Zona Integritas" 
                                 class="w-full max-w-[100px] transition-transform duration-300 group-hover:scale-105"
                             >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-10 bg-gray-50" data-aos="fade-right" data-aos-duration="800">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="relative overflow-hidden">
+                <div class="flex gap-6 transition-transform duration-500 ease-in-out" id="carouselTrack">
+                    <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
+                        <div class="bg-white rounded-lg shadow-sm p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                            <img src="/images/zi/akhlak.png" alt="Akhlak" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
+                        <div class="bg-white rounded-lg shadow-sm p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                            <img src="/images/zi/evp.png" alt="EVP" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
+                        <div class="bg-white rounded-lg shadow-sm p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                            <img src="/images/zi/zi_5.png" alt="ZI 2" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
+                        <div class="bg-white rounded-lg shadow-sm p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                            <img src="/images/zi/zi_4.png" alt="ZI 4" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
+                        <div class="bg-white rounded-lg shadow-sm p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                            <img src="/images/zi/zi_6.png" alt="ZI 5" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
+                        <div class="bg-white rounded-lg shadow-sm p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                            <img src="/images/zi/zi_2.png" alt="ZI 6" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
                         </div>
                     </div>
                 </div>
@@ -101,7 +164,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
                 <div class="relative" data-aos="fade-right" data-aos-duration="1000">
                     <img
-                        src="/images/2.jpg"
+                        src="/images/swiper/2.jpg"
                         alt="Tentang Kami"
                         class="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
                     />
@@ -180,7 +243,7 @@
                 >
                     <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="100">
                         <img
-                            src="/images/1.jpg"
+                            src="/images/swiper/1.jpg"
                             alt="Gallery 1"
                             class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
                         />
@@ -191,7 +254,7 @@
                     </div>
                     <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="200">
                         <img
-                            src="/images/2.jpg"
+                            src="/images/swiper/2.jpg"
                             alt="Gallery 2"
                             class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
                         />
@@ -202,7 +265,7 @@
                     </div>
                     <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="300">
                         <img
-                            src="/images/3.jpg"
+                            src="/images/swiper/3.jpg"
                             alt="Gallery 3"
                             class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
                         />
@@ -213,7 +276,7 @@
                     </div>
                     <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="100">
                         <img
-                            src="/images/4.jpg"
+                            src="/images/swiper/4.jpg"
                             alt="Gallery 4"
                             class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
                         />
@@ -224,7 +287,7 @@
                     </div>
                     <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="200">
                         <img
-                            src="/images/5.jpg"
+                            src="/images/swiper/5.jpg"
                             alt="Gallery 5"
                             class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
                         />
@@ -235,7 +298,7 @@
                     </div>
                     <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="300">
                         <img
-                            src="/images/6.jpg"
+                            src="/images/swiper/6.jpg"
                             alt="Gallery 6"
                             class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
                         />
@@ -252,11 +315,10 @@
 @endsection
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Main Slider
-
         AOS.init({
             duration: 1000,
             once: true,
@@ -266,7 +328,7 @@
         const mainSwiper = new Swiper('.main-swiper', {
             loop: true,
             autoHeight: true,
-            slidesPerView: 'auto', // Ubah ke 'auto'
+            slidesPerView: 'auto', 
             centeredSlides: true,
             spaceBetween: 30,
             autoplay: {
@@ -277,7 +339,6 @@
                 nextEl: '.main-swiper .swiper-button-next',
                 prevEl: '.main-swiper .swiper-button-prev',
             },
-            // Tambahkan breakpoints untuk responsif
             breakpoints: {
                 640: {
                     slidesPerView: 1.5
@@ -285,4 +346,104 @@
             }
         });
     });
-    </script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const track = document.getElementById('carouselTrack');
+        const slides = track.children;
+        const totalSlides = slides.length;
+        let currentIndex = 0;
+        let isTransitioning = false;
+
+        // Clone first and last slides for smooth infinite loop
+        const firstClone = slides[0].cloneNode(true);
+        const lastClone = slides[totalSlides - 1].cloneNode(true);
+        track.appendChild(firstClone);
+        track.insertBefore(lastClone, slides[0]);
+
+        // Set initial position
+        currentIndex = 1;
+        updateSlidePosition(false);
+
+        function updateSlidePosition(withTransition = true) {
+            if (withTransition) {
+                track.style.transition = 'transform 0.5s ease-out';
+            } else {
+                track.style.transition = 'none';
+            }
+            const slideWidth = slides[0].offsetWidth + 24; // Including gap
+            const offset = -currentIndex * slideWidth;
+            track.style.transform = `translateX(${offset}px)`;
+        }
+
+        function moveToSlide(index) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentIndex = index;
+            updateSlidePosition();
+            
+            // Check if we need to jump to the actual slides after transition
+            setTimeout(() => {
+                if (currentIndex === 0) { // If we're at the cloned last slide
+                    currentIndex = totalSlides;
+                    updateSlidePosition(false);
+                } else if (currentIndex === totalSlides + 1) { // If we're at the cloned first slide
+                    currentIndex = 1;
+                    updateSlidePosition(false);
+                }
+                isTransitioning = false;
+            }, 500);
+        }
+
+        function nextSlide() {
+            moveToSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            moveToSlide(currentIndex - 1);
+        }
+
+        // Auto slide
+        const slideInterval = setInterval(nextSlide, 4000);
+
+        // Touch events
+        let startX;
+        let endX;
+
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            clearInterval(slideInterval); // Stop auto sliding on touch
+        });
+
+        track.addEventListener('touchmove', (e) => {
+            if (!startX) return;
+            
+            endX = e.touches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 5) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        track.addEventListener('touchend', () => {
+            if (!startX || !endX) return;
+            
+            const diff = startX - endX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+            
+            startX = null;
+            endX = null;
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            updateSlidePosition(false);
+        });
+    });
+</script>

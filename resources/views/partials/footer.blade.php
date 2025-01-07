@@ -81,7 +81,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h2 class="mb-4 text-sm font-semibold uppercase text-red-600">Kontak</h2>
+                    <h2 class="mb-4 text-sm font-semibold uppercase text-red-600">LOKASI</h2>
                     <ul class="text-gray-600 font-medium">
                         <li class="mb-3">
                             <a href="https://maps.app.goo.gl/YyQdGocwwccfSqQX9" target="_blank" class="hover:text-red-500 transition-colors duration-200 flex items-center gap-2 group">
@@ -105,10 +105,10 @@
                 © {{ date('Y') }} DPMPTSP Kota Padang. All Rights Reserved.
             </span>
             <div class="flex mt-4 sm:mt-0 space-x-5">
-                <a href="https://instagram.com/dpmptsp.padang" target="_blank" class="text-pink-400 hover:text-pink-500 transform hover:scale-110 transition-all duration-200">
+                <a href="https://instagram.com/dpmptsppadang" target="_blank" class="text-pink-400 hover:text-pink-500 transform hover:scale-110 transition-all duration-200">
                     <i class="fab fa-instagram text-xl"></i>
                 </a>
-                <a href="https://wa.me/6285156456710" target="_blank" class="text-green-400 hover:text-green-500 transform hover:scale-110 transition-all duration-200">
+                <a href="https://wa.me/6281374078088" target="_blank" class="text-green-400 hover:text-green-500 transform hover:scale-110 transition-all duration-200">
                     <i class="fab fa-whatsapp text-xl"></i>
                 </a>
                 <a href="mailto:dpmptsp@padang.go.id" class="text-orange-400 hover:text-orange-500 transform hover:scale-110 transition-all duration-200">
