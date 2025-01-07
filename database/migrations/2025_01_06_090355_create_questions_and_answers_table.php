@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('pertanyaan');
             $table->foreignId('id_penjawab')->constrained('users');
             $table->text('jawaban');
+            $table->enum('status', ['belum-terjawab', 'terjawab'])->default('belum-terjawab');
             $table->timestamps();
         });
     }
