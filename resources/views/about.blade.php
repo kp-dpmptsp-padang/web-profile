@@ -90,7 +90,7 @@
     }
 </style>
 <div class="overflow-hidden pt-16">
-    <div class="heading bg-cover bg-center py-20 flex items-center justify-center" style="background-image: url('/images/1.jpg');">
+    <div class="heading bg-cover bg-center py-20 flex items-center justify-center" style="background-image: url('/images/swiper/1.jpg');">
         <h1 class="text-5xl text-white uppercase font-bold">Tentang Kami</h1>
     </div>
 
@@ -99,7 +99,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
                 <div class="relative animate-on-scroll" data-animation="fade-in-right">
                     <img
-                        src="/images/2.jpg"
+                        src="/images/swiper/2.jpg"
                         alt="Tentang Kami"
                         class="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
                     />
@@ -610,7 +610,7 @@
                     <div class="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-red-600"></div>
                     <div class="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-red-600"></div>
                     <img 
-                        src="/images/1.jpg"
+                        src="/images/swiper/1.jpg"
                         alt="Foto Bersama DPMPTSP" 
                         class="w-full h-[500px] object-cover rounded-lg shadow-inner"
                     />
