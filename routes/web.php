@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\BeritaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -9,7 +10,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -24,5 +25,7 @@ Route::get('/layanan', [GuestController::class, 'layanan'])->name('layanan');
 Route::get('/fasilitas', [GuestController::class, 'fasilitas'])->name('fasilitas');
 Route::get('/informasi', [GuestController::class, 'informasi'])->name('informasi');
 Route::get('/dokumen', [GuestController::class, 'dokumen'])->name('dokumen');
+
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
 
 require __DIR__.'/auth.php';
