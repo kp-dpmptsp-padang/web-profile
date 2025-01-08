@@ -90,7 +90,7 @@
     }
 </style>
 <div class="overflow-hidden pt-16">
-    <div class="heading bg-cover bg-center py-20 flex items-center justify-center" style="background-image: url('/images/swiper/1.jpg');">
+    <div class="heading bg-cover bg-center py-32 flex items-center justify-center" style="background-image: url('/images/swiper/1.jpg');">
         <h1 class="text-5xl text-white uppercase font-bold">Tentang Kami</h1>
     </div>
 
@@ -99,7 +99,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
                 <div class="relative animate-on-scroll" data-animation="fade-in-right">
                     <img
-                        src="/images/swiper/2.jpg"
+                        src="/images/background-dpmptsp.jpg"
                         alt="Tentang Kami"
                         class="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
                     />

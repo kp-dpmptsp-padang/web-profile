@@ -33,4 +33,9 @@ class GuestController extends Controller
     {
         return view('dokumen');
     }
+
+    public function detailInfo()
+    {
+        return view('detailinfo');
+    }
 }
