@@ -5,6 +5,35 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" />
 <style>
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    @keyframes fadeInScale {
+        0% { 
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        100% { 
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .floating-shape {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .fade-in-scale {
+        animation: fadeInScale 0.8s ease-out forwards;
+    }
+
+    .dot-pattern {
+        background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
     .main-swiper {
         overflow: visible !important; 
         padding: 50px 0;
@@ -73,7 +102,13 @@
     }
 </style>
 
-<div class="p-16 overflow-hidden"> 
+<div class="p-16 overflow-hidden relative">
+    <div class="fixed inset-0 pointer-events-none">
+        <div class="absolute top-0 left-0 w-full h-full dot-pattern opacity-30"></div>
+        <div class="absolute top-20 left-20 w-32 h-32 bg-red-100 rounded-full floating-shape opacity-20" style="animation-delay: 0s;"></div>
+        <div class="absolute top-40 right-40 w-24 h-24 bg-gray-200 rounded-full floating-shape opacity-30" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-red-50 rounded-full floating-shape opacity-25" style="animation-delay: 2s;"></div>
+    </div> 
     <div class="relative mx-auto max-w-7xl px-16 py-8" data-aos="fade-up" data-aos-duration="1000">
         <div class="swiper main-swiper relative">
             <div class="swiper-wrapper">
@@ -159,12 +194,12 @@
         </div>
     </section>
     
-    <section class="py-10 bg-gray-50 p-6">
+    <section class="bg-gray-50/80 px-6 relative backdrop-blur-sm">
         <div class="container mx-auto py-24">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
                 <div class="relative" data-aos="fade-right" data-aos-duration="1000">
                     <img
-                        src="/images/swiper/2.jpg"
+                        src="/images/background-dpmptsp.jpg"
                         alt="Tentang Kami"
                         class="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
                     />
