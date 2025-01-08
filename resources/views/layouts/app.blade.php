@@ -12,10 +12,11 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-50">
             @include('layouts.navigation')
             @include('layouts.sidebar')
             <main class="p-4 md:ml-64 h-auto pt-20">
@@ -31,6 +32,17 @@
                 </header>
             @endisset -->
         </div>
-        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @stack('scripts')   
+        <script>
+            // Initialize Flowbite modals
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialize all modals
+                const modals = document.querySelectorAll('[data-modal-toggle]');
+                modals.forEach(function(modal) {
+                    new Modal(modal);
+                });
+            });
+        </script>
     </body>
 </html>
