@@ -12,28 +12,49 @@
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0">
                 <li>
-                    <a href="{{ route('home') }}" class="block py-2 px-3 text-black" aria-current="page">Beranda</a>
+                    <a href="{{ route('home') }}" 
+                       class="block py-2 px-3 @if(request()->routeIs('home')) text-red-600 @else text-black @endif">
+                        Beranda
+                    </a>
                 </li>
                 <li>
-                    <a href="{{ route('about') }}" class="block py-2 px-3 text-black">Tentang</a>
+                    <a href="{{ route('about') }}" 
+                       class="block py-2 px-3 @if(request()->routeIs('about')) text-red-600 @else text-black @endif">
+                        Tentang
+                    </a>
                 </li>
                 <li>
-                    <a href="{{ route('layanan') }}" class="block py-2 px-3 text-black">Layanan Kami</a>
+                    <a href="{{ route('layanan') }}" 
+                       class="block py-2 px-3 @if(request()->routeIs('layanan')) text-red-600 @else text-black @endif">
+                        Layanan Kami
+                    </a>
                 </li>
                 <li class="relative group">
-                    <button class="flex items-center py-2 px-3 text-black">
+                    <button class="flex items-center py-2 px-3 @if(request()->routeIs('informasi')) text-red-600 @else text-black @endif">
                         Informasi
                     </button>
                     <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg py-2 rounded-lg">
-                        <a href="{{ route('informasi') }}" class="block px-4 py-2 text-black hover:bg-gray-100">Informasi</a>
-                        <a href="{{ route('informasi') }}" class="block px-4 py-2 text-black hover:bg-gray-100">Berita</a>
+                        <a href="{{ route('informasi') }}" 
+                           class="block px-4 py-2 @if(request()->routeIs('informasi')) text-red-600 @else text-black @endif hover:bg-gray-100">
+                            Informasi
+                        </a>
+                        <a href="{{ route('informasi') }}" 
+                           class="block px-4 py-2 @if(request()->routeIs('informasi')) text-red-600 @else text-black @endif hover:bg-gray-100">
+                            Berita
+                        </a>
                     </div>
                 </li>
                 <li>
-                    <a href="{{ route('dokumen') }}" class="block py-2 px-3 text-black">Dokumen</a>
+                    <a href="{{ route('dokumen') }}" 
+                       class="block py-2 px-3 @if(request()->routeIs('dokumen')) text-red-600 @else text-black @endif">
+                        Dokumen
+                    </a>
                 </li>
                 <li>
-                    <a href="{{ route('fasilitas') }}" class="block py-2 px-3 text-black">Fasilitas</a>
+                    <a href="{{ route('fasilitas') }}" 
+                       class="block py-2 px-3 @if(request()->routeIs('fasilitas')) text-red-600 @else text-black @endif">
+                        Fasilitas
+                    </a>
                 </li>
             </ul>
         </div>
