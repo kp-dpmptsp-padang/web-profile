@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nama');
             $table->text('deskripsi');
             $table->string('url');
-            $table->foreignId('id_logo')->constrained('pictures');
             $table->timestamps();
         });
     }

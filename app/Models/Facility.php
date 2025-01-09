@@ -11,12 +11,11 @@ class Facility extends Model
 
     protected $fillable = [
         'nama',
-        'id_gambar',
         'deskripsi',
     ];
 
-    public function gambar()
+    public function pictures()
     {
-        return $this->belongsTo(Picture::class, 'id_gambar');
+        return $this->morphMany(Picture::class, 'imageable');
     }
 }

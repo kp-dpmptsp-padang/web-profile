@@ -11,13 +11,12 @@ class Slider extends Model
 
     protected $fillable = [
         'nama',
-        'id_gambar',
         'link',
         'urutan',
     ];
 
-    public function gambar()
+    public function pictures()
     {
-        return $this->belongsTo(Picture::class, 'id_gambar');
+        return $this->morphMany(Picture::class, 'imageable');
     }
 }

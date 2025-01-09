@@ -13,7 +13,6 @@ class Post extends Model
         'id_penulis',
         'judul',
         'konten',
-        'id_gambar',
         'jenis',
         'slug',
     ];
@@ -23,13 +22,13 @@ class Post extends Model
         return $this->belongsTo(User::class, 'id_penulis');
     }
 
-    public function gambar()
-    {
-        return $this->belongsTo(Picture::class, 'id_gambar');
-    }
-
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'posts_tags', 'id_post', 'id_tag');
+    }
+
+    public function pictures()
+    {
+        return $this->morphMany(Picture::class, 'imageable');
     }
 }

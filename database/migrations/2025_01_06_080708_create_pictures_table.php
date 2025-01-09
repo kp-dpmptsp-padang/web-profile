@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('pictures', function (Blueprint $table) {
             $table->id();
-            $table->string('caption');
+            $table->string('caption')->nullable()->default(null);
             $table->string('nama_file');
             $table->string('mine_type');
-            $table->string('alt_text');
-            $table->decimal('urutan');
+            $table->string('alt_text')->nullable()->default(null);
+            $table->decimal('urutan')->nullable()->default(null);
+            $table->morphs('imageable'); 
             $table->timestamps();
         });
     }
