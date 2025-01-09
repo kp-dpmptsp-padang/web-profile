@@ -15,5 +15,12 @@ class Picture extends Model
         'mine_type',
         'alt_text',
         'urutan',
+        'imageable_id',
+        'imageable_type',
     ];
+
+    public function imageable()
+    {
+        return $this->morphTo();
+    }
 }

@@ -11,7 +11,9 @@
             </li>
 
             <li>
-                <button type="button" class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-posts" data-collapse-toggle="dropdown-posts">
+                <button type="button" class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" 
+                        aria-controls="dropdown-posts" 
+                        data-collapse-toggle="dropdown-posts">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-2"/>
                     </svg>
@@ -20,12 +22,24 @@
                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
                     </svg>
                 </button>
-                <ul id="dropdown-posts" class="hidden py-2 space-y-2">
+                <ul id="dropdown-posts" class="{{ Request::is('admin/posts*') || Request::is('admin/tags*') ? '' : 'hidden' }} py-2 space-y-2">
                     <li>
-                        <a href="{{ route('berita.index') }}" class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Berita</a>
+                        <a href="{{ route('posts.index', ['type' => 'berita']) }}" 
+                        class="flex items-center p-2 pl-11 w-full text-base font-medium rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700 {{ request()->query('type') === 'berita' ? 'bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white' : 'text-gray-900 dark:text-white' }}">
+                            Berita
+                        </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Informasi</a>
+                        <a href="{{ route('posts.index', ['type' => 'informasi']) }}" 
+                        class="flex items-center p-2 pl-11 w-full text-base font-medium rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700 {{ request()->query('type') === 'informasi' ? 'bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white' : 'text-gray-900 dark:text-white' }}">
+                            Informasi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('tags.index') }}" 
+                        class="flex items-center p-2 pl-11 w-full text-base font-medium rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700 {{ Request::is('admin/tags*') ? 'bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white' : 'text-gray-900 dark:text-white' }}">
+                            Tag
+                        </a>
                     </li>
                 </ul>
             </li>
@@ -103,3 +117,137 @@
         </ul>
     </div>
 </aside>
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to save dropdown state to localStorage
+    function saveDropdownState(dropdownId, isOpen) {
+        localStorage.setItem(dropdownId + '_state', isOpen);
+    }
+
+    // Function to get dropdown state from localStorage
+    function getDropdownState(dropdownId) {
+        return localStorage.getItem(dropdownId + '_state') === 'true';
+    }
+
+    // Function to check if current URL matches the section
+    function isCurrentSection(sectionType) {
+        const currentPath = window.location.pathname;
+        const currentType = new URLSearchParams(window.location.search).get('type');
+        
+        return currentPath.includes('/admin/' + sectionType) || 
+               (sectionType === 'posts' && (currentType === 'berita' || currentType === 'informasi' || currentPath.includes('/admin/tags')));
+    }
+
+    // Initialize all dropdowns
+    const dropdowns = document.querySelectorAll('[data-collapse-toggle]');
+    
+    dropdowns.forEach(dropdown => {
+        const targetId = dropdown.getAttribute('data-collapse-toggle');
+        const targetElement = document.getElementById(targetId);
+        
+        // Check if this section is currently active
+        const sectionType = targetId.replace('dropdown-', '');
+        const isSectionActive = isCurrentSection(sectionType);
+        
+        // Get saved state or use section active state as default
+        const savedState = localStorage.getItem(targetId + '_state');
+        const shouldBeOpen = savedState !== null ? savedState === 'true' : isSectionActive;
+        
+        // Apply initial state
+        if (shouldBeOpen) {
+            targetElement.classList.remove('hidden');
+            saveDropdownState(targetId, true);
+        } else {
+            targetElement.classList.add('hidden');
+            saveDropdownState(targetId, false);
+        }
+        
+        // Add click event
+        dropdown.addEventListener('click', () => {
+            const isOpen = !targetElement.classList.contains('hidden');
+            targetElement.classList.toggle('hidden');
+            saveDropdownState(targetId, !isOpen);
+        });
+    });
+    
+    // Handle active state for menu items
+    const currentPath = window.location.pathname;
+    const currentType = new URLSearchParams(window.location.search).get('type');
+    
+    document.querySelectorAll('a').forEach(link => {
+        // Skip links without href
+        if (!link.href) return;
+        
+        const linkUrl = new URL(link.href);
+        const linkPath = linkUrl.pathname;
+        const linkType = new URLSearchParams(linkUrl.search).get('type');
+        
+        if (linkPath === currentPath && linkType === currentType) {
+            link.classList.add('bg-gray-100', 'dark:bg-gray-700');
+            
+            // Find and open parent dropdown
+            const parentDropdown = link.closest('ul[id^="dropdown-"]');
+            if (parentDropdown) {
+                parentDropdown.classList.remove('hidden');
+                saveDropdownState(parentDropdown.id, true);
+            }
+        }
+    });
+});
+    // Fungsi untuk menyimpan state dropdown ke localStorage
+    function saveDropdownState(dropdownId, isOpen) {
+        localStorage.setItem(dropdownId + '_state', isOpen);
+    }
+
+    // Fungsi untuk mendapatkan state dropdown dari localStorage
+    function getDropdownState(dropdownId) {
+        return localStorage.getItem(dropdownId + '_state') === 'true';
+    }
+
+    // Inisialisasi semua dropdown
+    const dropdowns = document.querySelectorAll('[data-collapse-toggle]');
+    
+    dropdowns.forEach(dropdown => {
+        const targetId = dropdown.getAttribute('data-collapse-toggle');
+        const targetElement = document.getElementById(targetId);
+        
+        // Set initial state dari localStorage atau dari class 'hidden'
+        const isCurrentlyOpen = !targetElement.classList.contains('hidden');
+        saveDropdownState(targetId, isCurrentlyOpen);
+        
+        // Add click event
+        dropdown.addEventListener('click', () => {
+            const isOpen = !targetElement.classList.contains('hidden');
+            targetElement.classList.toggle('hidden');
+            saveDropdownState(targetId, !isOpen);
+        });
+        
+        // Restore state saat halaman dimuat
+        if (getDropdownState(targetId)) {
+            targetElement.classList.remove('hidden');
+        }
+    });
+    
+    // Tambahkan class aktif untuk menu yang sedang dibuka
+    const currentPath = window.location.pathname;
+    const currentType = new URLSearchParams(window.location.search).get('type');
+    
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        const linkPath = new URL(link.href).pathname;
+        const linkType = new URLSearchParams(new URL(link.href).search).get('type');
+        
+        if (linkPath === currentPath && linkType === currentType) {
+            link.classList.add('bg-gray-100', 'dark:bg-gray-700');
+            
+            // Buka parent dropdown jika ada
+            const parentDropdown = link.closest('ul[id^="dropdown-"]');
+            if (parentDropdown) {
+                parentDropdown.classList.remove('hidden');
+                saveDropdownState(parentDropdown.id, true);
+            }
+        }
+    });
+});
+</script>
+@endpush

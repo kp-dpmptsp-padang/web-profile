@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->foreignId('id_gambar')->constrained('pictures');
             $table->string('deskripsi');
             $table->timestamps();
         });

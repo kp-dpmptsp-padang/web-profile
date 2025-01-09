@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('id_penulis')->constrained('users');
             $table->string('judul');
             $table->text('konten');
-            $table->foreignId('id_gambar')->constrained('pictures');
             $table->enum('jenis', ['berita', 'informasi']);
             $table->string('slug');
             $table->timestamps();

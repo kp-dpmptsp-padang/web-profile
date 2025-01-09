@@ -13,11 +13,10 @@ class Inovation extends Model
         'nama',
         'deskripsi',
         'url',
-        'id_logo',
     ];
 
-    public function logo()
+    public function pictures()
     {
-        return $this->belongsTo(Picture::class, 'id_logo');
+        return $this->morphMany(Picture::class, 'imageable');
     }
 }

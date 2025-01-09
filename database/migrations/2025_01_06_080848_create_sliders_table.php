@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
             $table->string('nama'); 
-            $table->foreignId('id_gambar')->constrained('pictures');
             $table->string('link');
             $table->decimal('urutan');
             $table->timestamps();
