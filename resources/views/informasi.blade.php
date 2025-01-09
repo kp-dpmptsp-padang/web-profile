@@ -32,41 +32,84 @@
         background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
         background-size: 20px 20px;
     }
+    .slide-in-bottom {
+        animation: slideInBottom 0.6s ease-out;
+    }
+    
+    @keyframes slideInBottom {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hover-float {
+        transition: transform 0.3s ease;
+    }
+    
+    .hover-float:hover {
+        transform: translateY(-5px);
+    }
 </style>
 <div class="overflow-hidden pt-16 relative">
-    <div class="fixed inset-0 pointer-events-none">
-        <div class="absolute top-0 left-0 w-full h-full dot-pattern opacity-30"></div>
-        <div class="absolute top-20 left-20 w-32 h-32 bg-red-100 rounded-full floating-shape opacity-20"></div>
-        <div class="absolute top-40 right-40 w-24 h-24 bg-gray-200 rounded-full floating-shape opacity-30"></div>
-        <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-red-50 rounded-full floating-shape opacity-25"></div>
-    </div>
-
     <div class="heading bg-cover bg-center py-32 flex items-center justify-center relative">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/swiper/5.jpg')"></div>
-        <h1 class="text-5xl text-white uppercase font-bold relative z-10">Informasi</h1>
+        <div class="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-1000" 
+             style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/swiper/5.jpg')">
+        </div>
+        <h1 class="text-6xl text-white uppercase font-bold relative z-10 tracking-wider fade-in-scale">
+            Informasi
+            <div class="h-1 w-24 bg-red-500 mx-auto mt-4 rounded-full"></div>
+        </h1>
     </div>
 
-    <section class="bg-gray-50/80 px-6 relative backdrop-blur-sm">
+    <section class="bg-gray-50/80 px-10 relative backdrop-blur-sm">
         <div class="container mx-auto py-12">
-            <div class="max-w-2xl mx-auto mb-12">
-                <form method="GET" action="{{ url()->current() }}" class="p-6 bg-white rounded-xl shadow-lg fade-in-scale">
+            <div class="max-w-4xl mx-auto mb-12 slide-in-bottom">
+                <form method="GET" action="{{ url()->current() }}" 
+                      class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div class="flex flex-col sm:flex-row gap-4">
                         <div class="flex-1">
-                            <div class="relative">
+                            <div class="relative group">
                                 <input type="text" name="search" value="{{ request('search') }}"
-                                    placeholder="Cari informasi..."
-                                    class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200">
+                                    placeholder="Cari disini..."
+                                    class="w-full h-12 pl-12 pr-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200 group-hover:border-red-300">
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-red-500 transition-colors duration-200" 
+                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
                                 </div>
                             </div>
                         </div>
+                        <div class="flex-1">
+                            <div class="relative">
+                                <select name="filter" 
+                                        class="w-full h-12 pl-4 pr-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200 bg-gray-50 text-gray-900 hover:border-red-300 appearance-none">
+                                    <option value="">Semua Tag</option>
+                                    <option value="">2025</option>
+                                    <option value="">Dinas</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
                         <button type="submit"
-                            class="h-12 px-8 text-white bg-red-500 hover:bg-red-600 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                            Cari
+                            class="h-12 px-8 text-white bg-red-500 hover:bg-red-600 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                            <span class="flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                                Cari
+                            </span>
                         </button>
                     </div>
                 </form>

@@ -20,8 +20,14 @@
                 <li>
                     <a href="{{ route('layanan') }}" class="block py-2 px-3 text-black">Layanan Kami</a>
                 </li>
-                <li>
-                    <a href="{{ route('informasi') }}" class="block py-2 px-3 text-black">Informasi</a>
+                <li class="relative group">
+                    <button class="flex items-center py-2 px-3 text-black">
+                        Informasi
+                    </button>
+                    <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg py-2 rounded-lg">
+                        <a href="{{ route('informasi') }}" class="block px-4 py-2 text-black hover:bg-gray-100">Informasi</a>
+                        <a href="{{ route('informasi') }}" class="block px-4 py-2 text-black hover:bg-gray-100">Berita</a>
+                    </div>
                 </li>
                 <li>
                     <a href="{{ route('dokumen') }}" class="block py-2 px-3 text-black">Dokumen</a>
