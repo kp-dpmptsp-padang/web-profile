@@ -90,8 +90,14 @@
     }
 </style>
 <div class="overflow-hidden pt-16">
-    <div class="heading bg-cover bg-center py-32 flex items-center justify-center" style="background-image: url('/images/swiper/1.jpg');">
-        <h1 class="text-5xl text-white uppercase font-bold">Tentang Kami</h1>
+    <div class="heading bg-cover bg-center py-32 flex items-center justify-center relative">
+        <div class="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-1000" 
+             style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/swiper/5.jpg')">
+        </div>
+        <h1 class="text-6xl text-white uppercase font-bold relative z-10 tracking-wider fade-in-scale">
+            Tentang kami
+            <div class="h-1 w-24 bg-red-500 mx-auto mt-4 rounded-full"></div>
+        </h1>
     </div>
 
     <section class="bg-gray-50 px-6">

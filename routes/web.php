@@ -52,6 +52,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/layanan', [GuestController::class, 'layanan'])->name('layanan');
     Route::get('/fasilitas', [GuestController::class, 'fasilitas'])->name('fasilitas');
     Route::get('/informasi', [GuestController::class, 'informasi'])->name('informasi');
+    Route::get('/detail-info', [GuestController::class, 'detailInfo'])->name('detail-info');
     Route::get('/dokumen', [GuestController::class, 'dokumen'])->name('dokumen');
 });
 
