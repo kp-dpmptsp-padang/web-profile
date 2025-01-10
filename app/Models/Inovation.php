@@ -13,6 +13,7 @@ class Inovation extends Model
         'nama',
         'deskripsi',
         'url',
+        'is_published',
     ];
 
     public function pictures()

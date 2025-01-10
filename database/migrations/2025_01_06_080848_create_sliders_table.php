@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
             $table->string('nama'); 
-            $table->string('link');
-            $table->decimal('urutan');
+            $table->string('link')->nullable();
+            $table->integer('order')->default(0);
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }

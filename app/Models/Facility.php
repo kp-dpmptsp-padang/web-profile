@@ -12,6 +12,7 @@ class Facility extends Model
     protected $fillable = [
         'nama',
         'deskripsi',
+        'urutan',
     ];
 
     public function pictures()
