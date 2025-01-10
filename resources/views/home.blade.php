@@ -2,7 +2,6 @@
 
 @section('content')
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" />
 <style>
     @keyframes float {
@@ -94,22 +93,16 @@
     .flex-none {
         flex: 0 0 auto;
     }
-    [data-aos] {
-        pointer-events: none;
-    }
-    [data-aos].aos-animate {
-        pointer-events: auto;
-    }
 </style>
 
-<div class="p-16 overflow-hidden relative">
+<div class="px-24 pt-16 overflow-hidden relative">
     <div class="fixed inset-0 pointer-events-none">
         <div class="absolute top-0 left-0 w-full h-full dot-pattern opacity-30"></div>
         <div class="absolute top-20 left-20 w-32 h-32 bg-red-100 rounded-full floating-shape opacity-20" style="animation-delay: 0s;"></div>
         <div class="absolute top-40 right-40 w-24 h-24 bg-gray-200 rounded-full floating-shape opacity-30" style="animation-delay: 1s;"></div>
         <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-red-50 rounded-full floating-shape opacity-25" style="animation-delay: 2s;"></div>
     </div> 
-    <div class="relative mx-auto max-w-7xl px-16 py-8" data-aos="fade-up" data-aos-duration="1000">
+    <div class="relative mx-auto max-w-7xl px-16 py-8">
         <div class="swiper main-swiper relative">
             <div class="swiper-wrapper">
                 @foreach (['1', '2', '3', '4', '5', '6'] as $index)
@@ -125,7 +118,7 @@
         </div>
     </div>
 
-    <section class="py-10 bg-gray-50" data-aos="fade-right" data-aos-duration="800">
+    <section class="py-8 bg-gray-50">
         <div class="container mx-auto px-4 max-w-4xl">
             <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-xl transition duration-300">
                 <div class="flex items-center justify-between">
@@ -155,7 +148,7 @@
         </div>
     </section>
 
-    <section class="py-10 bg-gray-50" data-aos="fade-right" data-aos-duration="800">
+    <section class="py-10 bg-gray-50">
         <div class="container mx-auto px-4 max-w-4xl">
             <div class="relative overflow-hidden">
                 <div class="flex gap-6 transition-transform duration-500 ease-in-out" id="carouselTrack">
@@ -197,7 +190,7 @@
     <section class="bg-gray-50/80 px-6 relative backdrop-blur-sm">
         <div class="container mx-auto py-24">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
-                <div class="relative" data-aos="fade-right" data-aos-duration="1000">
+                <div class="relative">
                     <img
                         src="/images/background-dpmptsp.jpg"
                         alt="Tentang Kami"
@@ -207,7 +200,7 @@
                         class="absolute -bottom-4 -right-4 w-36 h-36 bg-red-600 rounded-2xl -z-10"
                     ></div>
                 </div>
-                <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div data-aos="fade-left">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">
                         DPMPTSP Kota Padang
                     </h2>
@@ -226,34 +219,31 @@
 
     <section class="py-10 bg-gray-50 p-6">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Layanan Perizinan</h2>
+            <h2 class="text-3xl font-bold text-center mb-12">Layanan Perizinan</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <a href="https://oss.go.id/" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
-                   data-aos="fade-up" data-aos-delay="100">
+                   >
                     <div class="icon-wrap">
                         <img class="w-56 h-50 object-cover mb-4 rounded-lg mx-auto" src="/images/osss.png" alt="OSS">
                     </div>
                     <h3 class="text-xl font-semibold mb-2">OSS</h3>
                     <p class="text-gray-600 text-justify">OSS (Online Single Submission) merupakan sistem informasi layanan perizinan berusaha yang diterbitkan oleh Lembaga OSS untuk kepada Pelaku Usaha melalui sistem elektronik yang terintegrasi.</p>
                 </a>
-                <a href="https://simbg.pu.go.id/" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
-                   data-aos="fade-up" data-aos-delay="200">
+                <a href="https://simbg.pu.go.id/" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300">
                     <div class="icon-wrap">
                         <img class="w-50 h-50 object-cover mb-4 mt-6 rounded-lg mx-auto" src="/images/simbg.png" alt="SIMBG">
                     </div>
                     <h3 class="text-xl font-semibold mb-2">SIMBG</h3>
                     <p class="text-gray-600 text-justify">Sistem Informasi Manajemen Bangunan Gedung yang selanjutnya disingkat SIMBG adalah sistem elektronik berbasis web yang digunakan untuk melaksanakan proses penyelenggaraan PBG, SLF, SBKBG, RTB, dan Pendataan Bangunan Gedung disertai dengan informasi terkait penyelenggaraan bangunan gedung.</p>
                 </a>
-                <a href="http://ikm.web.dpmptsp.padang.go.id/" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
-                   data-aos="fade-up" data-aos-delay="100">
+                <a href="http://ikm.web.dpmptsp.padang.go.id/" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300">
                     <div class="icon-wrap">
                         <img class="w-32 h-32 object-cover mb-4 rounded-lg mx-auto" src="/images/ikm.png" alt="IKM">
                     </div>
                     <h3 class="text-xl font-semibold mb-2">IKM</h3>
                     <p class="text-gray-600 text-justify">Indeks Kepuasan Masyarakat (IKM) adalah layanan yang dirancang untuk mengukur tingkat kepuasan masyarakat terhadap pelayanan yang diberikan oleh instansi pemerintah, guna meningkatkan kualitas layanan secara berkelanjutan.</p>
                 </a>
-                <a href="https://nonperizinan.web.dpmptsp.padang.go.id/sinopen" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
-                   data-aos="fade-up" data-aos-delay="200">
+                <a href="https://nonperizinan.web.dpmptsp.padang.go.id/sinopen" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300">
                     <div class="icon-wrap">
                         <img class="w-32 h-32 object-cover mb-4 rounded-lg mx-auto" src="/images/sinopen.png" alt="IKM">
                     </div>
@@ -267,7 +257,7 @@
     <section class="py-10 bg-white">
         <div class="bg-gray-50 py-24">
             <div class="container mx-auto px-4">
-                <div class="text-center mb-16" data-aos="fade-up">
+                <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold text-gray-800 mb-4">
                         Galeri
                     </h2>
@@ -276,7 +266,7 @@
                 <div
                     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                 >
-                    <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg">
                         <img
                             src="/images/swiper/1.jpg"
                             alt="Gallery 1"
@@ -287,7 +277,7 @@
                         >
                         </div>
                     </div>
-                    <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg">
                         <img
                             src="/images/swiper/2.jpg"
                             alt="Gallery 2"
@@ -298,7 +288,7 @@
                         >
                         </div>
                     </div>
-                    <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg">
                         <img
                             src="/images/swiper/3.jpg"
                             alt="Gallery 3"
@@ -309,7 +299,7 @@
                         >
                         </div>
                     </div>
-                    <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg">
                         <img
                             src="/images/swiper/4.jpg"
                             alt="Gallery 4"
@@ -320,7 +310,7 @@
                         >
                         </div>
                     </div>
-                    <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg">
                         <img
                             src="/images/swiper/5.jpg"
                             alt="Gallery 5"
@@ -331,7 +321,7 @@
                         >
                         </div>
                     </div>
-                    <div class="group relative overflow-hidden rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg">
                         <img
                             src="/images/swiper/6.jpg"
                             alt="Gallery 6"
@@ -348,18 +338,10 @@
     </section>
 </div>
 @endsection
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-
         const mainSwiper = new Swiper('.main-swiper', {
             loop: true,
             autoHeight: true,
@@ -389,13 +371,11 @@
         let currentIndex = 0;
         let isTransitioning = false;
 
-        // Clone first and last slides for smooth infinite loop
         const firstClone = slides[0].cloneNode(true);
         const lastClone = slides[totalSlides - 1].cloneNode(true);
         track.appendChild(firstClone);
         track.insertBefore(lastClone, slides[0]);
 
-        // Set initial position
         currentIndex = 1;
         updateSlidePosition(false);
 
@@ -405,7 +385,7 @@
             } else {
                 track.style.transition = 'none';
             }
-            const slideWidth = slides[0].offsetWidth + 24; // Including gap
+            const slideWidth = slides[0].offsetWidth + 24; 
             const offset = -currentIndex * slideWidth;
             track.style.transform = `translateX(${offset}px)`;
         }
@@ -416,12 +396,11 @@
             currentIndex = index;
             updateSlidePosition();
             
-            // Check if we need to jump to the actual slides after transition
             setTimeout(() => {
-                if (currentIndex === 0) { // If we're at the cloned last slide
+                if (currentIndex === 0) { 
                     currentIndex = totalSlides;
                     updateSlidePosition(false);
-                } else if (currentIndex === totalSlides + 1) { // If we're at the cloned first slide
+                } else if (currentIndex === totalSlides + 1) { 
                     currentIndex = 1;
                     updateSlidePosition(false);
                 }
@@ -436,17 +415,14 @@
         function prevSlide() {
             moveToSlide(currentIndex - 1);
         }
-
-        // Auto slide
         const slideInterval = setInterval(nextSlide, 4000);
 
-        // Touch events
         let startX;
         let endX;
 
         track.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
-            clearInterval(slideInterval); // Stop auto sliding on touch
+            clearInterval(slideInterval); 
         });
 
         track.addEventListener('touchmove', (e) => {
@@ -476,7 +452,6 @@
             endX = null;
         });
 
-        // Handle window resize
         window.addEventListener('resize', () => {
             updateSlidePosition(false);
         });

@@ -61,7 +61,7 @@
              style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/swiper/5.jpg')">
         </div>
         <h1 class="text-6xl text-white uppercase font-bold relative z-10 tracking-wider fade-in-scale">
-            Informasi
+            berita
             <div class="h-1 w-24 bg-red-500 mx-auto mt-4 rounded-full"></div>
         </h1>
     </div>
@@ -147,7 +147,7 @@
                                     </span>
                                 @endforeach
                             </div>
-                            <a href="{{ route('detail-info', ['slug' => $post->slug]) }}"
+                            <a href="{{ route('detail-berita', ['slug' => $post->slug]) }}"
                                 class="inline-block w-full bg-red-600 text-white px-6 py-3 rounded-lg text-center
                                        transition-all duration-300 hover:bg-red-700 hover:shadow-xl hover:-translate-y-1
                                        relative overflow-hidden group">
