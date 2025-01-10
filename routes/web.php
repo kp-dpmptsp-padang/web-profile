@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\GalleryController;
@@ -106,8 +107,14 @@ Route::middleware('guest')->group(function () {
     Route::get('/layanan', [GuestController::class, 'layanan'])->name('layanan');
     Route::get('/fasilitas', [GuestController::class, 'fasilitas'])->name('fasilitas');
     Route::get('/informasi', [GuestController::class, 'informasi'])->name('informasi');
-    Route::get('/detail-info', [GuestController::class, 'detailInfo'])->name('detail-info');
+    Route::get('/informasi/detail/{slug}', [GuestController::class, 'detailInfo'])->name('detail-info');
+    Route::get('/berita/detail/{slug}', [GuestController::class, 'detailInfo'])->name('detail-berita');
+    Route::get('/berita', [GuestController::class, 'berita'])->name('berita');
     Route::get('/dokumen', [GuestController::class, 'dokumen'])->name('dokumen');
+
+    Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
+    Route::post('/survey', [SurveyController::class, 'storeSurvey'])->name('survey.store');
+    Route::get('/survey-thanks', [SurveyController::class, 'thanks'])->name('survey.thanks');
 });
 
 require __DIR__.'/auth.php';

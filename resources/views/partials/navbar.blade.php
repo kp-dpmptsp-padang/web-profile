@@ -30,16 +30,16 @@
                     </a>
                 </li>
                 <li class="relative group">
-                    <button class="flex items-center py-2 px-3 @if(request()->routeIs('informasi')) text-red-600 @else text-black @endif">
-                        Informasi
+                    <button class="flex items-center py-2 px-3 @if(request()->routeIs('informasi') || request()->routeIs('berita') || request()->routeIs('detail-info') || request()->routeIs('detail-berita')) text-red-600 @else text-black @endif">
+                        Postingan
                     </button>
                     <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg py-2 rounded-lg">
                         <a href="{{ route('informasi') }}" 
-                           class="block px-4 py-2 @if(request()->routeIs('informasi')) text-red-600 @else text-black @endif hover:bg-gray-100">
+                           class="block px-4 py-2 @if(request()->routeIs('informasi') || request()->routeIs('detail-info')) text-red-600 @else text-black @endif hover:bg-gray-100">
                             Informasi
                         </a>
-                        <a href="{{ route('informasi') }}" 
-                           class="block px-4 py-2 @if(request()->routeIs('informasi')) text-red-600 @else text-black @endif hover:bg-gray-100">
+                        <a href="{{ route('berita') }}" 
+                           class="block px-4 py-2 @if(request()->routeIs('berita') || request()->routeIs('detail-berita')) text-red-600 @else text-black @endif hover:bg-gray-100">
                             Berita
                         </a>
                     </div>
