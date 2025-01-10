@@ -12,7 +12,8 @@ class Slider extends Model
     protected $fillable = [
         'nama',
         'link',
-        'urutan',
+        'order',
+        'is_active',
     ];
 
     public function pictures()
