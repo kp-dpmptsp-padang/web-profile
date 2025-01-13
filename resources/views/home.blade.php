@@ -1,5 +1,5 @@
 @extends('layouts.main')
-
+@section('title', 'Beranda | DPMPTSP Kota Padang')
 @section('content')
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" />
@@ -105,12 +105,35 @@
     <div class="relative mx-auto max-w-7xl px-16 py-8">
         <div class="swiper main-swiper relative">
             <div class="swiper-wrapper">
-                @foreach (['1', '2', '3', '4', '5', '6'] as $index)
-                <div class="swiper-slide relative rounded-2xl" style="width: 70%"> 
+                @php
+                    $slides = [];
+                    foreach ($sliders as $item) {
+                        foreach ($item->pictures as $index => $picture) {
+                            $slides[] = $picture;
+                        }
+                    }
+
+                    if (count($slides) <= 3 && count($slides) > 1) {
+                        $slides = array_merge($slides, $slides);
+                    }
+                @endphp
+
+                @foreach ($slides as $index => $picture)
+                <div class="swiper-slide relative rounded-2xl" style="width: 70%">
                     <div class="aspect-[16/9] w-full">
-                        <img src="/images/swiper/{{ $index }}.jpg" alt="Slide {{ $index }}" class="w-full h-full object-cover rounded-2xl">
+                        @if ($picture->imageable && $picture->imageable->link)
+                            <a href="{{ $picture->imageable->link }}" target="_blank">
+                                <img src="{{ asset('storage/' . $picture->nama_file) }}" 
+                                    alt="Slide {{ $index }}" 
+                                    class="w-full h-full object-cover rounded-2xl cursor-pointer">
+                            </a>
+                        @else  
+                            <img src="{{ asset('storage/' . $picture->nama_file) }}" 
+                                alt="Slide {{ $index }}" 
+                                class="w-full h-full object-cover rounded-2xl">
+                        @endif
                     </div>
-                </div> 
+                </div>
                 @endforeach
             </div>
             <div class="swiper-button-prev"></div>
@@ -266,10 +289,11 @@
                 <div
                     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                 >
+                @foreach ($gallery as $picture)
                     <div class="group relative overflow-hidden rounded-xl shadow-lg">
                         <img
-                            src="/images/swiper/1.jpg"
-                            alt="Gallery 1"
+                            src="{{ asset('storage/' . $picture->nama_file) }}"
+                            alt="{{ $picture->caption ?? 'Gallery Image' }}"
                             class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
                         />
                         <div
@@ -277,61 +301,7 @@
                         >
                         </div>
                     </div>
-                    <div class="group relative overflow-hidden rounded-xl shadow-lg">
-                        <img
-                            src="/images/swiper/2.jpg"
-                            alt="Gallery 2"
-                            class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                        >
-                        </div>
-                    </div>
-                    <div class="group relative overflow-hidden rounded-xl shadow-lg">
-                        <img
-                            src="/images/swiper/3.jpg"
-                            alt="Gallery 3"
-                            class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                        >
-                        </div>
-                    </div>
-                    <div class="group relative overflow-hidden rounded-xl shadow-lg">
-                        <img
-                            src="/images/swiper/4.jpg"
-                            alt="Gallery 4"
-                            class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                        >
-                        </div>
-                    </div>
-                    <div class="group relative overflow-hidden rounded-xl shadow-lg">
-                        <img
-                            src="/images/swiper/5.jpg"
-                            alt="Gallery 5"
-                            class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                        >
-                        </div>
-                    </div>
-                    <div class="group relative overflow-hidden rounded-xl shadow-lg">
-                        <img
-                            src="/images/swiper/6.jpg"
-                            alt="Gallery 6"
-                            class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                        >
-                        </div>
-                    </div>
+                @endforeach
                 </div>
             </div>
         </div>
@@ -345,7 +315,7 @@
         const mainSwiper = new Swiper('.main-swiper', {
             loop: true,
             autoHeight: true,
-            slidesPerView: 'auto', 
+            slidesPerView: 1.5, 
             centeredSlides: true,
             spaceBetween: 30,
             autoplay: {

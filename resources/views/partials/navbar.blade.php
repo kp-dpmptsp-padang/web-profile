@@ -42,6 +42,10 @@
                            class="block px-4 py-2 @if(request()->routeIs('berita') || request()->routeIs('detail-berita')) text-red-600 @else text-black @endif hover:bg-gray-100">
                             Berita
                         </a>
+                        <a href="{{ route('faq') }}" 
+                           class="block px-4 py-2 @if(request()->routeIs('faq')) text-red-600 @else text-black @endif hover:bg-gray-100">
+                            FAQ
+                        </a>
                     </div>
                 </li>
                 <li>

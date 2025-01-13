@@ -30,6 +30,7 @@
         background-size: 20px 20px;
     }
 </style>
+@section('title', 'Layanan | DPMPTSP Kota Padang')
 
 @section('content')
 <div class="overflow-hidden pt-16 relative">

@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title', 'Dokumen | DPMPTSP Kota Padang')
 
 @section('content')
 <style>

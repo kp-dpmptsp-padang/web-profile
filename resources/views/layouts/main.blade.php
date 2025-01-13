@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>DPMPTSP Kota Padang</title>
+    <title>@yield('title', config('app.name', 'Laravel'))</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="https://web.dpmptsp.padang.go.id/assets/Logo_Padang.svg">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -25,7 +25,8 @@
     
     <!-- Content -->
     <main>
-        @yield('content')
+        @yield('content')   
+        @stack('scripts')
     </main>
     
     <!-- Footer -->
