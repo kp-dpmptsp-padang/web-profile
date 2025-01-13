@@ -44,14 +44,14 @@ Website resmi dan sistem Survey Kepuasan Masyarakat (SKM) untuk Dinas Penanaman 
 - **Backend:** Laravel 11
 - **Frontend:** Tailwind CSS
 - **Template Engine:** Blade
-- **Database:** MySQL/MariaDB
+- **Database:** MySQL
 
 ### Prasyarat Sistem
 ```bash
 PHP >= 8.2
 Composer
 Node.js & NPM
-MySQL/MariaDB
+MySQL
 ```
 
 ## 📖 Dokumentasi
