@@ -1,78 +1,91 @@
-# DPMPTSP Kota Padang - Website Profile & SKM
+<div align="center">
 
-<p align="center">
-<img src="https://github.com/user-attachments/assets/1acf9b47-f773-44bd-9c95-d0b3b5d426ef" alt="DPMPTSP Kota Padang Logo">
-</p>
+<img src="https://github.com/user-attachments/assets/1acf9b47-f773-44bd-9c95-d0b3b5d426ef" width="180" alt="DPMPTSP Kota Padang Logo">
 
-## About The Project
+# DPMPTSP Kota Padang
+### Website Profile & Sistem Survey Kepuasan Masyarakat
 
-This project is the official website and Survey Kepuasan Masyarakat (SKM) system for Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu (DPMPTSP) Kota Padang. It combines a dynamic content management system for the organization's profile with an integrated public satisfaction survey system.
+[![Laravel](https://img.shields.io/badge/Laravel-11-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-0.5.2-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com)
+[![PHP](https://img.shields.io/badge/PHP-≥8.2-777BB4?style=flat-square&logo=php)](https://php.net)
 
-### Built With
+</div>
 
-* [Laravel 11](https://laravel.com) - The PHP Framework for Web Artisans
-* [Tailwind CSS](https://tailwindcss.com) - A utility-first CSS framework
-* [Blade](https://laravel.com/docs/11.x/blade) - Laravel's powerful templating engine
+## 📋 Tentang Proyek
 
-## Key Features
+Website resmi dan sistem Survey Kepuasan Masyarakat (SKM) untuk Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu (DPMPTSP) Kota Padang. Proyek ini menggabungkan sistem manajemen konten yang dinamis dengan sistem survey kepuasan masyarakat yang terintegrasi.
 
-* **Dynamic Content Management System**
-  * News and announcements management
-  * Service information updates
-  * Document and regulation repository
-  * Organization structure management
-  * Image gallery handling
+## ⭐ Fitur Utama
 
-* **Survey Kepuasan Masyarakat (SKM)**
-  * User-friendly survey interface
-  * Real-time data collection
-  * Comprehensive analytics dashboard
-  * Automated report generation
-  * Response tracking system
+### 📱 Sistem Manajemen Konten
+- Pengelolaan berita dan pengumuman
+- Pembaruan informasi layanan
+- Repositori dokumen dan regulasi
+- Manajemen struktur organisasi
+- Pengelolaan galeri gambar
 
-* **Admin Dashboard**
-  * Secure authentication system
-  * Role-based access control
-  * Content moderation tools
-  * Survey management interface
-  * Analytics and reporting tools
+### 📊 Survey Kepuasan Masyarakat (SKM)
+- Antarmuka survey yang ramah pengguna
+- Pengumpulan data secara real-time
+- Dashboard analitik komprehensif
+- Pembuatan laporan otomatis
+- Sistem pelacakan respons
 
-### Prerequisites
+### 🔐 Dashboard Admin
+- Sistem autentikasi yang aman
+- Kontrol akses berbasis peran
+- Alat moderasi konten
+- Antarmuka manajemen survey
+- Alat analitik dan pelaporan
 
-* PHP >= 8.2
-* Composer
-* Node.js & NPM
-* MySQL/MariaDB
+## 🛠️ Teknologi
 
-## Usage
+### Framework & Library
+- **Backend:** Laravel 11
+- **Frontend:** Tailwind CSS
+- **Template Engine:** Blade
+- **Database:** MySQL/MariaDB
 
-Detailed documentation about system usage can be found in the `/docs` directory, including:
+### Prasyarat Sistem
+```bash
+PHP >= 8.2
+Composer
+Node.js & NPM
+MySQL/MariaDB
+```
 
-* Admin Dashboard Guide
-* Content Management Instructions
-* Survey System Documentation
-* API Documentation (if applicable)
+## 📖 Dokumentasi
 
-## Developers
+Dokumentasi lengkap dapat ditemukan di direktori `/docs`:
 
-* **Mustafa Fathur Rahman** - Developer
-* **Khalied Nauly Maturino** - Developer
-  
-## License
+- 📘 Panduan Dashboard Admin
+- 📗 Instruksi Manajemen Konten
+- 📙 Dokumentasi Sistem Survey
+- 📕 Dokumentasi API
 
-This project is proprietary software developed for DPMPTSP Kota Padang. All rights reserved.
+## 👨‍💻 Tim Pengembang
 
-## Contact
+### Developer
+- **Mustafa Fathur Rahman**
+- **Khalied Nauly Maturino**
 
-* **DPMPTSP Kota Padang**
-  * Website: [https://dpmptsp.padang.go.id](https://dpmptsp.padang.go.id)
-  * Email: [dpmptsp@padang.go.id](mailto:dpmptsp@padang.go.id)
+## 📞 Kontak
 
-## Acknowledgments
+### DPMPTSP Kota Padang
+🌐 [dpmptsp.padang.go.id](https://dpmptsp.padang.go.id)  
+📧 [dpmptsp@padang.go.id](mailto:dpmptsp@padang.go.id)
 
-* DPMPTSP Kota Padang Leadership and Staff
-* Development Team
-* All contributors and stakeholders
+## 🙏 Penghargaan
+
+Terima kasih kepada:
+- Pimpinan dan Staf DPMPTSP Kota Padang
+- Tim Pengembang
+- Semua kontributor dan pemangku kepentingan
 
 ---
-© 2025 DPMPTSP Kota Padang. All Rights Reserved.
+
+<div align="center">
+
+**© 2025 DPMPTSP Kota Padang. All Rights Reserved.**
+
+</div>
