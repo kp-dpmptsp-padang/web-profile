@@ -1,5 +1,5 @@
 @extends('layouts.main')
-
+@section('title', 'Tentang | DPMPTSP Kota Padang')
 @section('content')
 <style>
     @keyframes fadeIn {

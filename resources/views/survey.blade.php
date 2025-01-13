@@ -1,7 +1,28 @@
 @extends('layouts.main')
+@section('title', 'Survey | DPMPTSP Kota Padang')
+<style>
+    .step {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+    position: relative; 
+    }
+
+    .step.hidden {
+        display: none;
+    }
+    
+    .step.fade-enter {
+        opacity: 0;
+    }
+    
+    .step.fade-enter-active {
+        opacity: 1;
+        transition: opacity 0.3s ease-out;
+    }
+</style>
 @section('content')
 <div class="pt-24 min-h-screen bg-gradient-to-br from-gray-50 to-red-50 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-    <!-- Background Decorative Elements -->
     <div class="absolute inset-0 z-0">
         <div class="absolute top-0 -left-8 w-80 h-80 bg-red-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
         <div class="absolute top-10 -right-6 w-80 h-80 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
@@ -10,7 +31,6 @@
 
     <div class="relative z-10">
         <div class="max-w-2xl mx-auto">
-            <!-- Progress Steps -->
             <div class="mb-8">
                 <div class="flex justify-between mb-2">
                     <span class="text-sm step-text step-1 text-red-600 font-medium">Data Diri</span>
@@ -22,12 +42,10 @@
                 </div>
             </div>
 
-            <!-- Form Container -->
             <div class="bg-white shadow-lg rounded-xl p-8">
                 <form id="surveyForm" method="POST" action="{{ route('survey.store') }}" class="space-y-6">
                     @csrf
                     
-                    <!-- Step 1: Data Diri -->
                     <div class="step step-1">
                         <h3 class="text-lg font-semibold text-gray-900 border-b pb-2 mb-4">Data Diri</h3>
                         <div class="space-y-4">
@@ -54,11 +72,9 @@
                         </div>
                     </div>
 
-                    <!-- Step 2: Survey Questions -->
-                    <div class="step step-2 hidden opacity-0">
+                    <div class="step step-2 hidden">
                         <h3 class="text-lg font-semibold text-gray-900 border-b pb-2 mb-4">Survey Kepuasan Layanan</h3>
                         <div class="space-y-8">
-                            <!-- Question 1 -->
                             <div class="space-y-4">
                                 <p class="text-gray-700 font-medium">1. Bagaimana pelaksanaan SOP di DPMPTSP?</p>
                                 <div class="grid grid-cols-2 gap-4">
@@ -81,7 +97,6 @@
                                 </div>
                             </div>
 
-                            <!-- Question 2 -->
                             <div class="space-y-4">
                                 <p class="text-gray-700 font-medium">2. Bagaimana kecepatan pelayanan di DPMPTSP?</p>
                                 <div class="grid grid-cols-2 gap-4">
@@ -106,18 +121,15 @@
                         </div>
                     </div>
 
-                    <!-- Step 3: Kritik & Saran -->
-                    <div class="step step-3 hidden opacity-0">
+                    <div class="step step-3 hidden">
                         <h3 class="text-lg font-semibold text-gray-900 border-b pb-2 mb-4">Kritik/Saran</h3>
                         <div class="space-y-4">
                             <div class="form-group">
-                                <label for="kritik" class="block text-sm font-medium text-gray-700 mb-1">Kritik/Saran</label>
                                 <textarea id="kritik" name="kritik" rows="3" class="form-textarea w-full rounded-lg border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50" placeholder="Masukkan kritik/saran Anda"></textarea>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Navigation Buttons -->
                     <div class="flex justify-between pt-6">
                         <button type="button" id="prevBtn" class="hidden px-6 py-2 border border-red-300 text-red-600 rounded-lg hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                             Sebelumnya
@@ -145,31 +157,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitBtn = document.getElementById('submitBtn');
     const progressBar = document.querySelector('.progress-bar');
 
-    // Handle next button click
     nextBtn.addEventListener('click', function() {
         if (validateStep(currentStep)) {
-            if (currentStep < totalSteps) {
-                switchStep(currentStep, currentStep + 1);
-                currentStep++;
-                progressBar.style.width = `${(currentStep/totalSteps) * 100}%`;
-                updateButtons();
-                updateStepText();
-            }
-        }
-    });
-
-    // Handle previous button click
-    prevBtn.addEventListener('click', function() {
-        if (currentStep > 1) {
-            switchStep(currentStep, currentStep - 1);
-            currentStep--;
+            switchStep(currentStep, currentStep + 1);
+            currentStep++;
             progressBar.style.width = `${(currentStep/totalSteps) * 100}%`;
             updateButtons();
             updateStepText();
         }
     });
 
-    // Radio button click handler for better UX
+
+    prevBtn.addEventListener('click', function() {
+        console.log('Current step before validation:', currentStep);
+        if (currentStep > 1) {
+            console.log('Switching from step', currentStep, 'to step', currentStep - 1);
+            switchStep(currentStep, currentStep - 1);
+            currentStep--;
+            progressBar.style.width = `${(currentStep/totalSteps) * 100}%`;
+            updateButtons();
+            updateStepText();
+            console.log('Current step after switch:', currentStep);
+        }
+    });
+
     document.querySelectorAll('input[type="radio"]').forEach(radio => {
         radio.addEventListener('change', function() {
             const container = this.closest('.grid');
@@ -180,7 +191,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Handle form submission
+    document.querySelectorAll('.step').forEach(step => {
+        step.addEventListener('transitionend', function(e) {
+            if (e.propertyName === 'opacity' && this.style.opacity === '0') {
+                this.classList.add('hidden');
+            }
+        });
+    });
+
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
         
@@ -233,24 +251,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function validateStep(step) {
+        console.log('Validating step:', step);
         const currentStepElement = document.querySelector(`.step-${step}`);
+        if (!currentStepElement) {
+            console.log('Step element not found:', step);
+            return false;
+        }   
+        
         const requiredFields = currentStepElement.querySelectorAll('[required]');
         let isValid = true;
 
-        // Reset previous error messages
         currentStepElement.querySelectorAll('.error-message').forEach(el => el.remove());
+        
         currentStepElement.querySelectorAll('.border-red-500').forEach(el => {
             el.classList.remove('border-red-500');
         });
-        
+
         switch(step) {
-            case 1: // Data Diri
+            case 1:
                 requiredFields.forEach(field => {
                     if (!field.value.trim()) {
                         isValid = false;
                         showError(field, 'Field ini wajib diisi');
                     }
-                    // Phone number validation
                     if (field.id === 'noHp' && !validatePhone(field.value)) {
                         isValid = false;
                         showError(field, 'Format nomor HP tidak valid');
@@ -258,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 break;
 
-            case 2: // Survey Questions
+            case 2: 
                 const questions = ['sop_rating', 'speed_rating'];
                 questions.forEach(questionName => {
                     const answered = document.querySelector(`input[name="${questionName}"]:checked`);
@@ -270,10 +293,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 break;
 
-            case 3: // Kritik & Saran
+            case 3: 
                 const kritik = document.getElementById('kritik');
                 if (!kritik.value.trim()) {
-                    // Make it optional, just show a gentle reminder
                     showError(kritik, 'Mohon berikan kritik/saran Anda untuk membantu kami meningkatkan layanan', 'text-yellow-500');
                 }
                 break;
@@ -283,18 +305,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showError(element, message, colorClass = 'text-red-500') {
-        // Remove existing error message if any
         const existingError = element.parentElement.querySelector('.error-message');
         if (existingError) {
             existingError.remove();
         }
 
-        // Add error class to element
         if (colorClass === 'text-red-500') {
             element.classList.add('border-red-500');
         }
         
-        // Create and append error message
         const errorDiv = document.createElement('div');
         errorDiv.className = `error-message ${colorClass} text-sm mt-1`;
         errorDiv.textContent = message;
@@ -302,12 +321,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function validatePhone(phone) {
-        // Indonesian phone number format validation
         const phoneRegex = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
         return phoneRegex.test(phone.replace(/[-\s]/g, ''));
     }
 
-    // Remove error indication on input change
     document.querySelectorAll('input, textarea, select').forEach(element => {
         element.addEventListener('input', function() {
             this.classList.remove('border-red-500');
@@ -318,23 +335,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Function to handle step transitions with animation
     function switchStep(from, to) {
         const fromStep = document.querySelector(`.step-${from}`);
         const toStep = document.querySelector(`.step-${to}`);
-
-        // Add transition classes
-        fromStep.classList.add('opacity-0');
+        
+        fromStep.style.opacity = '0';
         
         setTimeout(() => {
             fromStep.classList.add('hidden');
             toStep.classList.remove('hidden');
-            
-            // Force a reflow before removing opacity-0
-            void toStep.offsetWidth;
-            
-            toStep.classList.remove('opacity-0');
+            toStep.style.opacity = '0';
+            toStep.offsetHeight; // Force reflow
+            setTimeout(() => {
+            toStep.style.opacity = '1';
+            }, 10);
         }, 300);
     }
+
 });
 </script>

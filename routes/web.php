@@ -111,6 +111,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/berita/detail/{slug}', [GuestController::class, 'detailInfo'])->name('detail-berita');
     Route::get('/berita', [GuestController::class, 'berita'])->name('berita');
     Route::get('/dokumen', [GuestController::class, 'dokumen'])->name('dokumen');
+    Route::get('/pertanyaan', [GuestController::class, 'faq'])->name('faq');
 
     Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
     Route::post('/survey', [SurveyController::class, 'storeSurvey'])->name('survey.store');

@@ -2,15 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Picture;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Slider;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
 {
     public function home()
     {
-        return view('home');
+        $gallery = Picture::where('imageable_type', 'gallery')->latest()->take(6)->get();
+
+        $sliders = Slider::with(['pictures' => function($query) {
+            $query->orderBy('urutan', 'asc');
+        }])->where('is_active', 1)->get();
+        return view('home', compact('sliders', 'gallery'));
     }
 
     public function about()
@@ -48,8 +56,10 @@ class GuestController extends Controller
 
         $posts = $query->latest()->paginate(9);
 
+        $videos = Video::latest()->get();
+
         $tags = Tag::has('posts')->get();
-        return view('informasi', compact('posts', 'tags'));
+        return view('informasi', compact('posts', 'tags', 'videos'));
     }
 
     public function detailInfo($slug)
@@ -85,13 +95,19 @@ class GuestController extends Controller
         }
 
         $posts = $query->latest()->paginate(9);
+        $videos = Video::latest()->get();
 
         $tags = Tag::has('posts')->get();
-        return view('berita', compact('posts', 'tags'));
+        return view('berita', compact('posts', 'tags', 'videos'));
     }
 
     public function dokumen()
     {
         return view('dokumen');
+    }
+
+    public function faq()
+    {
+        return view('faq');
     }
 }

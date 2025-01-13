@@ -34,7 +34,7 @@ class GalleryController extends Controller
                 'nama_file' => $path,
                 'caption' => $request->caption,
                 'imageable_type' => 'gallery',
-                'imageable_id' => 0, // You can use a dummy ID or a specific ID if needed
+                'imageable_id' => 0, 
                 'mine_type' => $mimeType,
             ]);
 

@@ -1,5 +1,5 @@
 @extends('layouts.main')
-
+@section('title', 'Detail Informasi | DPMPTSP Kota Padang')
 @section('content')
 <div class="overflow-hidden pt-4 p-24">
     <section class="bg-white pt-32 pb-12">
