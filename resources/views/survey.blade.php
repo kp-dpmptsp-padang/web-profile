@@ -2,14 +2,11 @@
 @section('title', 'Survey | DPMPTSP Kota Padang')
 <style>
     .step {
-    display: block;
-    opacity: 1;
-    transition: opacity 0.3s ease-out;
-    position: relative; 
+        display: block !important;
     }
 
     .step.hidden {
-        display: none;
+        display: none !important;
     }
     
     .step.fade-enter {
@@ -42,25 +39,58 @@
                 </div>
             </div>
 
-            <div class="bg-white shadow-lg rounded-xl p-8">
+            <div class="bg-white shadow-lg rounded-xl px-8 py-2 pb-8">
                 <form id="surveyForm" method="POST" action="{{ route('survey.store') }}" class="space-y-6">
                     @csrf
                     
                     <div class="step step-1">
                         <h3 class="text-lg font-semibold text-gray-900 border-b pb-2 mb-4">Data Diri</h3>
+                        <p class="text-sm text-gray-600 mb-4 text-center">Kolom dengan tanda <span class="text-red-500">*</span> wajib diisi</p>
                         <div class="space-y-4">
                             <div class="form-group">
-                                <label for="noHp" class="block text-sm font-medium text-gray-700 mb-1">No. HP</label>
-                                <input type="tel" id="noHp" name="noHp" class="form-input w-full h-10 rounded-lg border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50" required>
+                                <label for="noHp" class="block text-sm font-medium text-gray-700 mb-1">No. HP<span class="text-red-500">*</span></label>
+                                <input type="tel" id="noHp" name="noHp" class="form-input w-full h-10 rounded-lg border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50">
                             </div>
                             <div class="form-group">
                                 <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                                <input type="text" id="name" name="name" class="form-input w-full h-10 rounded-lg border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50" required>
+                                <input type="text" id="name" name="name" class="form-input w-full h-10 rounded-lg border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50">
                             </div>
                             <div class="form-group">
-                                <label for="job" class="block text-sm font-medium text-gray-700 mb-1">Pekerjaan</label>
-                                <select id="job" name="job" class="form-select w-full h-10 rounded-lg border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50 bg-white" required>
-                                    <option value="" disabled selected>Pilih Pekerjaan</option>
+                                <label for="alamat" class="block text-sm font-medium text-gray-700 mb-1">Alamat</label>
+                                <input type="text" id="alamat" name="alamat" class="form-input w-full h-10 rounded-lg border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50">
+                            </div>
+                            <div class="form-group">
+                                <label for="usia" class="block text-sm font-medium text-gray-700 mb-1">Usia<span class="text-red-500">*</span></label>
+                                <input type="text" inputmode="numeric" id="usia" name="usia" class="form-input w-full h-10 rounded-lg border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50">
+                            </div>
+                            <div class="form-group">
+                                <label for="jk" class="block text-sm font-medium text-gray-700 mb-1">Jenis Kelamin<span class="text-red-500">*</span></label>
+                                <select id="jk" name="jk" class="form-select w-full h-10 rounded-lg border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50 bg-white">
+                                    <option value="" disabled selected hidden>Pilih Jenis Kelamin</option>
+                                    <option value="L">Laki-Laki</option>
+                                    <option value="P">Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pendidikan" class="block text-sm font-medium text-gray-700 mb-1">Pendidikan<span class="text-red-500">*</span></label>
+                                <select id="pendidikan" name="pendidikan" class="form-select w-full h-10 rounded-lg border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50 bg-white">
+                                    <option value="" disabled selected hidden>Pilih Pendidikan</option>
+                                    <option value="SD/MI">SD/MI</option>
+                                    <option value="SMP/MTs">SMP/MTs</option>
+                                    <option value="SMA/SMK/MA">SMA/SMK/MA</option>
+                                    <option value="D1">D1</option>
+                                    <option value="D2">D2</option>
+                                    <option value="D3">D3</option>
+                                    <option value="D4">D4</option>
+                                    <option value="S1">S1</option>
+                                    <option value="S2">S2</option>
+                                    <option value="S3">S3</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="job" class="block text-sm font-medium text-gray-700 mb-1">Pekerjaan<span class="text-red-500">*</span></label>
+                                <select id="job" name="job" class="form-select w-full h-10 rounded-lg border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50 bg-white">
+                                    <option value="" disabled selected hidden>Pilih Pekerjaan</option>
                                     <option value="PNS">PNS</option>
                                     <option value="TNI/POLRI">TNI/POLRI</option>
                                     <option value="Swasta">Swasta</option>
@@ -69,55 +99,43 @@
                                     <option value="Lainnya">Lainnya</option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="layanan" class="block text-sm font-medium text-gray-700 mb-1">Jenis Layanan yang Diterima<span class="text-red-500">*</span></label>
+                                <select id="layanan" name="layanan" class="form-select w-full h-10 rounded-lg border border-red-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50 bg-white">
+                                    <option value="" disabled selected hidden>Pilih Layanan</option>
+                                    <option value="NIB">NIB</option>
+                                    <option value="NIB + Sertifikat Standar">NIB + Sertifikat Standar</option>
+                                    <option value="Izin + Sertifikat Standar">Izin + Sertifikat Standar</option>
+                                    <option value="Laporan Kegiatan Penanam Modal">Lapopran Kegiatan Penanam Modal</option>
+                                    <option value="Pengambilan Hasil">Pengambilan Hasil</option>
+                                    <option value="Izin Lainnya">Izin Lainnya</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
                     <div class="step step-2 hidden">
                         <h3 class="text-lg font-semibold text-gray-900 border-b pb-2 mb-4">Survey Kepuasan Layanan</h3>
                         <div class="space-y-8">
-                            <div class="space-y-4">
-                                <p class="text-gray-700 font-medium">1. Bagaimana pelaksanaan SOP di DPMPTSP?</p>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <label class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer hover:bg-red-50 transition-colors radio-container">
-                                        <input type="radio" name="sop_rating" value="4" class="absolute inset-0 opacity-0 cursor-pointer" required>
-                                        <span class="text-sm text-gray-700">Sangat Baik</span>
-                                    </label>
-                                    <label class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer hover:bg-red-50 transition-colors radio-container">
-                                        <input type="radio" name="sop_rating" value="3" class="absolute inset-0 opacity-0 cursor-pointer" required>
-                                        <span class="text-sm text-gray-700">Baik</span>
-                                    </label>
-                                    <label class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer hover:bg-red-50 transition-colors radio-container">
-                                        <input type="radio" name="sop_rating" value="2" class="absolute inset-0 opacity-0 cursor-pointer" required>
-                                        <span class="text-sm text-gray-700">Kurang Baik</span>
-                                    </label>
-                                    <label class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer hover:bg-red-50 transition-colors radio-container">
-                                        <input type="radio" name="sop_rating" value="1" class="absolute inset-0 opacity-0 cursor-pointer" required>
-                                        <span class="text-sm text-gray-700">Tidak Baik</span>
-                                    </label>
+                            @foreach ($questions as $question)
+                                <div class="space-y-4">
+                                    <p class="text-gray-700 font-medium">{{ $loop->iteration }}. {{ $question->question_text }}</p>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        @foreach ($question->options as $option)
+                                            <label class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer hover:bg-red-50 transition-colors radio-container">
+                                                <input 
+                                                    type="radio" 
+                                                    name="{{ $question->id }}_rating" 
+                                                    id="option_{{ $option->id }}"
+                                                    value="{{ $option->option_value }}" 
+                                                    class="absolute inset-0 opacity-0 cursor-pointer"
+                                                >
+                                                <span class="text-sm text-gray-700">{{ $option->option_text }}</span>
+                                            </label>
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="space-y-4">
-                                <p class="text-gray-700 font-medium">2. Bagaimana kecepatan pelayanan di DPMPTSP?</p>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <label class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer hover:bg-red-50 transition-colors radio-container">
-                                        <input type="radio" name="speed_rating" value="4" class="absolute inset-0 opacity-0 cursor-pointer" required>
-                                        <span class="text-sm text-gray-700">Sangat Baik</span>
-                                    </label>
-                                    <label class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer hover:bg-red-50 transition-colors radio-container">
-                                        <input type="radio" name="speed_rating" value="3" class="absolute inset-0 opacity-0 cursor-pointer" required>
-                                        <span class="text-sm text-gray-700">Baik</span>
-                                    </label>
-                                    <label class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer hover:bg-red-50 transition-colors radio-container">
-                                        <input type="radio" name="speed_rating" value="2" class="absolute inset-0 opacity-0 cursor-pointer" required>
-                                        <span class="text-sm text-gray-700">Kurang Baik</span>
-                                    </label>
-                                    <label class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer hover:bg-red-50 transition-colors radio-container">
-                                        <input type="radio" name="speed_rating" value="1" class="absolute inset-0 opacity-0 cursor-pointer" required>
-                                        <span class="text-sm text-gray-700">Tidak Baik</span>
-                                    </label>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
 
@@ -146,7 +164,7 @@
         </div>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     let currentStep = 1;
@@ -167,17 +185,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-
     prevBtn.addEventListener('click', function() {
-        console.log('Current step before validation:', currentStep);
         if (currentStep > 1) {
-            console.log('Switching from step', currentStep, 'to step', currentStep - 1);
             switchStep(currentStep, currentStep - 1);
             currentStep--;
             progressBar.style.width = `${(currentStep/totalSteps) * 100}%`;
             updateButtons();
             updateStepText();
-            console.log('Current step after switch:', currentStep);
         }
     });
 
@@ -210,18 +224,42 @@ document.addEventListener('DOMContentLoaded', function() {
                     method: 'POST',
                     body: formData,
                     headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        'Accept': 'application/json'
                     }
                 });
 
+                const data = await response.json();
+
                 if (response.ok) {
-                    alert('Terima kasih atas feedback Anda!');
-                    window.location.href = '{{ route("survey.thanks") }}';
+                    await Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: data.message || 'Terima kasih atas feedback Anda!',
+                        confirmButtonColor: '#dc2626',
+                        confirmButtonText: 'OK'
+                    });
+                    window.location.href = '{{ route("survey") }}';
+                } else if (response.status === 422) {
+                    const errorMessages = Object.values(data.errors).flat();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Validasi Gagal',
+                        html: errorMessages.join('<br>'),
+                        confirmButtonColor: '#dc2626',
+                        confirmButtonText: 'OK'
+                    });
                 } else {
-                    throw new Error('Something went wrong');
+                    throw new Error(data.message || 'Something went wrong');
                 }
             } catch (error) {
-                alert('Terjadi kesalahan. Silakan coba lagi.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.message || 'Terjadi kesalahan. Silakan coba lagi.',
+                    confirmButtonColor: '#dc2626',
+                    confirmButtonText: 'OK'
+                });
                 console.error('Error:', error);
             }
         }
@@ -251,106 +289,122 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function validateStep(step) {
-        console.log('Validating step:', step);
         const currentStepElement = document.querySelector(`.step-${step}`);
-        if (!currentStepElement) {
-            console.log('Step element not found:', step);
-            return false;
-        }   
+        if (!currentStepElement) return false;
         
         const requiredFields = currentStepElement.querySelectorAll('[required]');
         let isValid = true;
-
-        currentStepElement.querySelectorAll('.error-message').forEach(el => el.remove());
-        
-        currentStepElement.querySelectorAll('.border-red-500').forEach(el => {
-            el.classList.remove('border-red-500');
-        });
+        let errorMessages = [];
 
         switch(step) {
             case 1:
                 requiredFields.forEach(field => {
                     if (!field.value.trim()) {
                         isValid = false;
-                        showError(field, 'Field ini wajib diisi');
+                        errorMessages.push(`${field.previousElementSibling.textContent.replace('*', '')} wajib diisi`);
+                        field.classList.add('border-red-500');
+                        return;
                     }
-                    if (field.id === 'noHp' && !validatePhone(field.value)) {
-                        isValid = false;
-                        showError(field, 'Format nomor HP tidak valid');
+
+                    switch(field.id) {
+                        case 'noHp':
+                            if (!validatePhone(field.value)) {
+                                isValid = false;
+                                errorMessages.push('Format nomor HP tidak valid');
+                                field.classList.add('border-red-500');
+                            }
+                            break;
+                        case 'usia':
+                            const age = parseInt(field.value);
+                            if (isNaN(age) || age < 1 || age > 120) {
+                                isValid = false;
+                                errorMessages.push('Usia harus antara 1-120 tahun');
+                                field.classList.add('border-red-500');
+                            }
+                            break;
+                        case 'pendidikan':
+                            const validEducation = ['SD/MI','SMP/MTs','SMA/SMK/MA','D1','D2','D3','D4','S1','S2','S3'];
+                            if (!validEducation.includes(field.value)) {
+                                isValid = false;
+                                errorMessages.push('Pendidikan tidak valid');
+                                field.classList.add('border-red-500');
+                            }
+                            break;
+                        case 'job':
+                            const validJobs = ['PNS','TNI/POLRI','Swasta','Wiraswasta','Pelajar','Lainnya'];
+                            if (!validJobs.includes(field.value)) {
+                                isValid = false;
+                                errorMessages.push('Pekerjaan tidak valid');
+                                field.classList.add('border-red-500');
+                            }
+                            break;
                     }
                 });
                 break;
 
-            case 2: 
-                const questions = ['sop_rating', 'speed_rating'];
-                questions.forEach(questionName => {
-                    const answered = document.querySelector(`input[name="${questionName}"]:checked`);
-                    if (!answered) {
-                        isValid = false;
-                        const questionGroup = document.querySelector(`input[name="${questionName}"]`).closest('.space-y-4');
-                        showError(questionGroup, 'Mohon pilih salah satu jawaban');
+            case 2:
+                const questionGroups = currentStepElement.querySelectorAll('.space-y-4');
+                let unansweredCount = 0;
+                
+                questionGroups.forEach((group) => {
+                    const radios = group.querySelectorAll('input[type="radio"]');
+                    if (radios.length > 0) {
+                        const name = radios[0].name;
+                        const answered = document.querySelector(`input[name="${name}"]:checked`);
+                        if (!answered) {
+                            unansweredCount++;
+                            isValid = false;
+                        }
                     }
                 });
-                break;
 
-            case 3: 
-                const kritik = document.getElementById('kritik');
-                if (!kritik.value.trim()) {
-                    showError(kritik, 'Mohon berikan kritik/saran Anda untuk membantu kami meningkatkan layanan', 'text-yellow-500');
+                if (unansweredCount > 0) {
+                    if (unansweredCount === questionGroups.length) {
+                        errorMessages.push('Mohon isi semua pertanyaan survey yang tersedia');
+                    } else {
+                        errorMessages.push(`Masih ada ${unansweredCount} pertanyaan yang belum dijawab`);
+                    }
                 }
                 break;
+        }
+
+        if (!isValid && errorMessages.length > 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Validasi Gagal',
+                html: errorMessages.join('<br>'),
+                confirmButtonColor: '#dc2626',
+                confirmButtonText: 'OK'
+            });
         }
 
         return isValid;
     }
 
-    function showError(element, message, colorClass = 'text-red-500') {
-        const existingError = element.parentElement.querySelector('.error-message');
-        if (existingError) {
-            existingError.remove();
-        }
-
-        if (colorClass === 'text-red-500') {
-            element.classList.add('border-red-500');
-        }
-        
-        const errorDiv = document.createElement('div');
-        errorDiv.className = `error-message ${colorClass} text-sm mt-1`;
-        errorDiv.textContent = message;
-        element.parentElement.appendChild(errorDiv);
-    }
-
     function validatePhone(phone) {
-        const phoneRegex = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
+        const phoneRegex = /^[0-9+]{10,14}$/;
         return phoneRegex.test(phone.replace(/[-\s]/g, ''));
     }
 
     document.querySelectorAll('input, textarea, select').forEach(element => {
         element.addEventListener('input', function() {
             this.classList.remove('border-red-500');
-            const errorMessage = this.parentElement.querySelector('.error-message');
-            if (errorMessage) {
-                errorMessage.remove();
-            }
         });
     });
 
     function switchStep(from, to) {
-        const fromStep = document.querySelector(`.step-${from}`);
-        const toStep = document.querySelector(`.step-${to}`);
+        const fromStep = document.querySelector(`.step.step-${from}`);
+        const toStep = document.querySelector(`.step.step-${to}`);
         
         fromStep.style.opacity = '0';
         
         setTimeout(() => {
             fromStep.classList.add('hidden');
-            toStep.classList.remove('hidden');
+            toStep.classList.remove('hidden');            
             toStep.style.opacity = '0';
-            toStep.offsetHeight; // Force reflow
-            setTimeout(() => {
+            toStep.offsetHeight; 
             toStep.style.opacity = '1';
-            }, 10);
         }, 300);
     }
-
 });
 </script>

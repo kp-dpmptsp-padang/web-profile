@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\Slider;
 use App\Models\Video;
+use App\Models\SurveyQuestion;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
@@ -18,7 +19,32 @@ class GuestController extends Controller
         $sliders = Slider::with(['pictures' => function($query) {
             $query->orderBy('urutan', 'asc');
         }])->where('is_active', 1)->get();
-        return view('home', compact('sliders', 'gallery'));
+
+        $surveyResults = SurveyQuestion::with(['options', 'answers'])
+            ->where('is_active', 1)
+            ->get()
+            ->map(function($question) {
+                $totalScore = 0;
+                $totalResponses = 0;
+                
+                foreach($question->answers as $answer) {
+                    $option = $answer->option;
+                    if ($option) {
+                        $totalScore += $option->option_value;
+                        $totalResponses++;
+                    }
+                }
+                
+                $averageScore = $totalResponses > 0 ? round(($totalScore / $totalResponses), 2) : 0;
+                
+                return [
+                    'question' => $question->question_text,
+                    'score' => $averageScore,
+                    'total_responses' => $totalResponses
+                ];
+            });
+
+        return view('home', compact('sliders', 'gallery', 'surveyResults'));
     }
 
     public function about()

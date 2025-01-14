@@ -101,7 +101,6 @@ Route::middleware('auth')->group(function () {
 
 });
 
-// Guest
 Route::middleware('guest')->group(function () {
     Route::get('/', [GuestController::class, 'home'])->name('home');
     Route::get('/tentang', [GuestController::class, 'about'])->name('about');
@@ -115,8 +114,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/pertanyaan', [GuestController::class, 'faq'])->name('faq');
 
     Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
-    Route::post('/survey', [SurveyController::class, 'storeSurvey'])->name('survey.store');
-    Route::get('/survey-thanks', [SurveyController::class, 'thanks'])->name('survey.thanks');
+    Route::post('/survey', [SurveyController::class, 'store'])->name('survey.store');
 });
 
 require __DIR__.'/auth.php';

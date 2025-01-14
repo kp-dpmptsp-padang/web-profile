@@ -278,6 +278,16 @@
     </section>
 
     <section class="py-10 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-8">Hasil Survey</h2>
+            
+            <div class="bg-white rounded-lg shadow p-6">
+                <canvas id="surveyChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-10 bg-white">
         <div class="bg-gray-50 py-24">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
@@ -309,9 +319,48 @@
 </div>
 @endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        const surveyData = @json($surveyResults);
+    
+        new Chart(document.getElementById('surveyChart'), {
+            type: 'bar',
+            data: {
+                labels: surveyData.map(item => item.question),
+                datasets: [{
+                    label: 'Nilai Rata-rata',
+                    data: surveyData.map(item => item.score),
+                    backgroundColor: '#3B82F6',
+                    borderColor: '#2563EB',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',  
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 4, 
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+        
         const mainSwiper = new Swiper('.main-swiper', {
             loop: true,
             autoHeight: true,
