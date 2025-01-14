@@ -1,23 +1,19 @@
 @extends('layouts.app')
 
 @section('app')
-<section class="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-8 min-h-screen">
+<section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
         <!-- Header and Add Button Section -->
-        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
             <div class="mb-4 md:mb-0">
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
-                    Manajemen Galeri
-                </h2>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                    Kelola koleksi gambar galeri Anda dengan mudah
-                </p>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Manajemen Galeri</h2>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Kelola koleksi gambar galeri Anda dengan mudah</p>
             </div>
             <button type="button" 
                     data-modal-target="createGalleryModal" 
                     data-modal-toggle="createGalleryModal" 
-                    class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-white bg-red-600 rounded-lg transition-colors duration-200 ease-in-out hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                <svg class="w-5 h-5 mr-2 transition-transform duration-200 ease-in-out group-hover:scale-110" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    class="inline-flex items-center px-5 py-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
                 </svg>
                 Tambah Gambar Baru
@@ -26,7 +22,7 @@
 
         <!-- Gallery Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            @foreach($pictures as $picture)
+            @forelse($pictures as $picture)
             <div class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 ease-in-out overflow-hidden">
                 <div class="aspect-w-16 aspect-h-12 overflow-hidden">
                     <img src="{{ asset('storage/' . $picture->nama_file) }}" 
@@ -49,19 +45,20 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+            <div class="col-span-full bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <div class="px-6 py-8 text-center text-gray-500 dark:text-gray-400">
+                    <div class="flex flex-col items-center justify-center">
+                        <svg class="w-12 h-12 mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <p class="text-lg font-medium">Tidak ada gambar untuk galeri</p>
+                        <p class="mt-1 text-sm">Klik tombol "Tambah Gambar Baru" untuk menambah gambar baru ke galeri</p>
+                    </div>
+                </div>
+            </div>
+            @endforelse
         </div>
-
-        <!-- Empty State -->
-        @if($pictures->isEmpty())
-        <div class="text-center py-12">
-            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-gray-200">Belum ada gambar</h3>
-            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Mulai dengan menambahkan gambar baru ke galeri Anda</p>
-        </div>
-        @endif
     </div>
 </section>
 

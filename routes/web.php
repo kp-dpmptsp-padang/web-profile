@@ -79,6 +79,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/inovasi', [InovationController::class, 'store'])->name('inovation.store');
     Route::put('/admin/inovasi/{id}', [InovationController::class,'update'])->name('inovation.update');
     Route::delete('/admin/inovasi/{id}', [InovationController::class, 'destroy'])->name('inovation.destroy');
+    Route::patch('/admin/inovasi/{id}/status', [InovationController::class, 'toggleStatus'])->name('inovation.toggleStatus');
 
     // QnA's
     Route::get('/admin/pertanyaan', [QnAController::class, 'index'])->name('qna.index');
