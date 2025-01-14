@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->text('deskripsi');
             $table->string('url');
-        $table->boolean('is_published')->default(false);
+            $table->boolean('is_published')->default(false);
             $table->timestamps();
         });
     }
