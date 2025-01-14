@@ -1,65 +1,49 @@
 @extends('layouts.app')
 
 @section('app')
-<section class="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-8 min-h-screen">
+<section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-        <!-- Header and Add Button Section sama seperti sebelumnya -->
-        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
+        <!-- Header and Add Button Section -->
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
             <div class="mb-4 md:mb-0">
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
-                    Manajemen Video
-                </h2>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                    Kelola koleksi video galeri Anda dengan mudah
-                </p>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Manajemen Video</h2>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Kelola koleksi video galeri Anda dengan mudah</p>
             </div>
             <button type="button" 
                     data-modal-target="createVideoModal" 
                     data-modal-toggle="createVideoModal" 
-                    class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-white bg-red-600 rounded-lg transition-colors duration-200 ease-in-out hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
+                    class="inline-flex items-center px-5 py-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
                 </svg>
                 Tambah Video Baru
             </button>
         </div>
 
-        <!-- Video Grid dengan thumbnail yang diperbaiki -->
+        <!-- Video Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            @foreach($videos as $video)
+            @forelse($videos as $video)
             <div class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 ease-in-out overflow-hidden">
-                <div class="relative">
-                    <a href="{{ $video->url }}" target="_blank" class="block relative overflow-hidden">
-                        <!-- Container untuk thumbnail dengan rasio 16:9 yang presisi -->
-                        <div class="relative pb-[56.25%] bg-gray-100 dark:bg-gray-700">
-                            <!-- Overlay gradient untuk membuat thumbnail lebih menarik -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            
-                            <!-- Thumbnail video dengan object-fit: cover -->
-                            <img 
-                                src="https://img.youtube.com/vi/{{ getYouTubeVideoId($video->url) }}/maxresdefault.jpg" 
-                                onerror="this.src='https://img.youtube.com/vi/{{ getYouTubeVideoId($video->url) }}/hqdefault.jpg'"
-                                alt="{{ $video->judul }}"
-                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            >
-                            
-                            <!-- Play button overlay -->
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                                    <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
+                <a href="{{ $video->url }}" target="_blank" class="block relative">
+                    <!-- Using padding-top hack for maintaining aspect ratio -->
+                    <div class="w-full relative pt-[56.25%]">
+                        <img src="https://img.youtube.com/vi/{{ getYouTubeVideoId($video->url) }}/maxresdefault.jpg" 
+                             onerror="this.src='https://img.youtube.com/vi/{{ getYouTubeVideoId($video->url) }}/hqdefault.jpg'"
+                             alt="{{ $video->judul }}" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center text-white opacity-90 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-300">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
                             </div>
                         </div>
-                    </a>
-                </div>
-                
+                    </div>
+                </a>
                 <div class="p-4">
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white line-clamp-1">
-                        {{ $video->judul }}
-                    </h3>
-                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-4">
+                    <h3 class="text-base font-semibold text-gray-900 dark:text-white line-clamp-1">{{ $video->judul }}</h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-300 line-clamp-2 mb-4">
                         {{ $video->deskripsi }}
                     </p>
                     <div class="flex justify-between items-center gap-2">
@@ -67,35 +51,39 @@
                                 data-modal-toggle="editVideoModal-{{ $video->id }}">
                             Ubah
                         </button>
-                        <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-red-700 focus:ring-2 focus:ring-red-300 dark:focus:ring-red-800"
+                        <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-red-900 focus:ring-2 focus:ring-red-300 dark:focus:ring-red-400"
                                 data-modal-toggle="deleteVideoModal-{{ $video->id }}">
                             Hapus
                         </button>
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+            <div class="col-span-full bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <div class="px-6 py-8 text-center text-gray-500 dark:text-gray-400">
+                    <div class="flex flex-col items-center justify-center">
+                        <svg class="w-12 h-12 mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                        <p class="text-lg font-medium">Tidak ada video</p>
+                        <p class="mt-1 text-sm">Klik tombol "Tambah Video Baru" untuk menambah video baru ke daftar video</p>
+                    </div>
+                </div>
+            </div>
+            @endforelse
         </div>
-
-        <!-- Empty state sama seperti sebelumnya -->
-        @if($videos->isEmpty())
-        <div class="text-center py-12">
-            <!-- ... kode empty state ... -->
-        </div>
-        @endif
     </div>
 </section>
 
 @include('admin.videos.modals.create')
 @include('admin.videos.modals.edit')
 @include('admin.videos.modals.delete')
-
 @endsection
 
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Kode JavaScript yang sudah ada
+    // Initialize modals
     const modals = document.querySelectorAll('[data-modal-toggle]');
     modals.forEach(modal => {
         modal.addEventListener('click', function() {
@@ -107,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Function untuk mendapatkan YouTube video ID
+// Function to extract YouTube video ID from URL
 function getYouTubeVideoId(url) {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|shorts\/)([^#\&\?]*).*/;
     const match = url.match(regExp);
