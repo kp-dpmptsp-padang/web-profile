@@ -7,8 +7,11 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\Slider;
 use App\Models\Video;
+use App\Models\QuestionAndAnswer;
+use App\Models\Facility;
 use App\Models\SurveyQuestion;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class GuestController extends Controller
 {
@@ -21,30 +24,45 @@ class GuestController extends Controller
         }])->where('is_active', 1)->get();
 
         $surveyResults = SurveyQuestion::with(['options', 'answers'])
-            ->where('is_active', 1)
-            ->get()
-            ->map(function($question) {
-                $totalScore = 0;
-                $totalResponses = 0;
-                
-                foreach($question->answers as $answer) {
-                    $option = $answer->option;
-                    if ($option) {
-                        $totalScore += $option->option_value;
-                        $totalResponses++;
-                    }
+        ->where('is_active', 1)
+        ->get()
+        ->map(function($question) {
+            $totalScore = 0;
+            $totalResponses = 0;
+            
+            foreach($question->answers as $answer) {
+                $option = $answer->option;
+                if ($option) {
+                    $totalScore += $option->option_value;
+                    $totalResponses++;
                 }
-                
-                $averageScore = $totalResponses > 0 ? round(($totalScore / $totalResponses), 2) : 0;
-                
-                return [
-                    'question' => $question->question_text,
-                    'score' => $averageScore,
-                    'total_responses' => $totalResponses
-                ];
-            });
+            }
+            
+            $averageScore = $totalResponses > 0 ? round(($totalScore / $totalResponses), 2) : 0;
+            
+            return [
+                'question' => $question->alias,
+                'score' => $averageScore,
+                'total_responses' => $totalResponses
+            ];
+        });
 
-        return view('home', compact('sliders', 'gallery', 'surveyResults'));
+        $overallScore = $surveyResults->avg('score');
+        $overallPercentage = round(($overallScore / 4) * 100, 1);
+        $keteranganScore = '';
+        if ($overallPercentage >= 80) {
+            $keteranganScore = 'Sangat Baik';
+        } elseif ($overallPercentage >= 70) {
+            $keteranganScore = 'Baik';
+        } elseif ($overallPercentage >= 60) {
+            $keteranganScore = 'Cukup';
+        } elseif ($overallPercentage >= 50) {
+            $keteranganScore = 'Kurang';
+        } else {
+            $keteranganScore = 'Sangat Kurang';
+        }
+
+        return view('home', compact('sliders', 'gallery', 'surveyResults', 'overallPercentage', 'overallScore', 'keteranganScore'));
     }
 
     public function about()
@@ -59,7 +77,8 @@ class GuestController extends Controller
 
     public function fasilitas()
     {
-        return view('fasilitas');
+        $facilities = Facility::with('pictures')->get();
+        return view('fasilitas', compact('facilities'));
     }
 
     public function informasi(Request $request)
@@ -135,5 +154,44 @@ class GuestController extends Controller
     public function faq()
     {
         return view('faq');
+    }
+
+    public function storeQuestion(Request $request)
+    {
+        try {
+            $data = $request->validate([
+                'nama_penanya' => 'required|string|max:255',
+                'email_penanya' => 'required|email|max:255',
+                'pertanyaan' => 'required|string|max:1000',
+            ], [
+                'nama_penanya.required' => 'Nama penanya wajib diisi.',
+                'nama_penanya.string' => 'Nama penanya harus berupa teks.',
+                'nama_penanya.max' => 'Nama penanya tidak boleh lebih dari 255 karakter.',
+                'email_penanya.required' => 'Email penanya wajib diisi.',
+                'email_penanya.email' => 'Email penanya harus berupa email yang valid.',
+                'email_penanya.max' => 'Email penanya tidak boleh lebih dari 255 karakter.',
+                'pertanyaan.required' => 'Pertanyaan wajib diisi.',
+                'pertanyaan.string' => 'Pertanyaan harus berupa teks.',
+                'pertanyaan.max' => 'Pertanyaan tidak boleh lebih dari 1000 karakter.',
+            ]);
+
+            QuestionAndAnswer::create($data);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Pertanyaan berhasil dikirim',
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+                'errors' => $e->errors(),
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Terjadi kesalahan. Silakan coba lagi. ',
+            ], 500);
+        }
     }
 }

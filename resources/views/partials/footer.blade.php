@@ -56,26 +56,22 @@
                     <ul class="text-gray-600 font-medium">
                         <li class="mb-2">
                             <a href="https://oss.go.id/" target="_blank" class="hover:text-red-500 transition-colors duration-200 flex items-center gap-2 group">
-                                <i class="fas fa-globe text-purple-400 group-hover:text-purple-500 transform group-hover:scale-110 transition-all duration-200"></i>
-                                OSS
+                                <i class="fas fa-globe text-purple-400 group-hover:text-purple-500 transform group-hover:scale-110 transition-all duration-200"></i>OSS
                             </a>
                         </li>
                         <li class="mb-2">
                             <a href="https://nonperizinan.web.dpmptsp.padang.go.id/sinopen" target="_blank" class="hover:text-red-500 transition-colors duration-200 flex items-center gap-2 group">
-                                <i class="fas fa-file-signature text-indigo-400 group-hover:text-indigo-500 transform group-hover:scale-110 transition-all duration-200"></i>
-                                SINOPEN
+                                <i class="fas fa-file-signature text-indigo-400 group-hover:text-indigo-500 transform group-hover:scale-110 transition-all duration-200"></i>SINOPEN
                             </a>
                         </li>
                         <li class="mb-2">
                             <a href="https://simbg.pu.go.id/" target="_blank" class="hover:text-red-500 transition-colors duration-200 flex items-center gap-2 group">
-                                <i class="fas fa-building text-red-400 group-hover:text-red-500 transform group-hover:scale-110 transition-all duration-200"></i>
-                                SIMBG
+                                <i class="fas fa-building text-red-400 group-hover:text-red-500 transform group-hover:scale-110 transition-all duration-200"></i>SIMBG
                             </a>
                         </li>
                         <li>
-                            <a href="http://ikm.web.dpmptsp.padang.go.id/" target="_blank" class="hover:text-red-500 transition-colors duration-200 flex items-center gap-2 group">
-                                <i class="fas fa-chart-bar text-cyan-400 group-hover:text-cyan-500 transform group-hover:scale-110 transition-all duration-200"></i>
-                                IKM
+                            <a href="{{ route('home-survey') }}" class="hover:text-red-500 transition-colors duration-200 flex items-center gap-2 group">
+                                <i class="fas fa-chart-bar text-cyan-400 group-hover:text-cyan-500 transform group-hover:scale-110 transition-all duration-200"></i>IKM
                             </a>
                         </li>
                     </ul>

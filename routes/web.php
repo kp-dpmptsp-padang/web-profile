@@ -119,9 +119,12 @@ Route::middleware('guest')->group(function () {
     Route::get('/berita', [GuestController::class, 'berita'])->name('berita');
     Route::get('/dokumen', [GuestController::class, 'dokumen'])->name('dokumen');
     Route::get('/pertanyaan', [GuestController::class, 'faq'])->name('faq');
+    Route::post('/question', [GuestController::class, 'storeQuestion'])->name('questions.store');
 
+    Route::get('/home-survey', [SurveyController::class, 'home'])->name('home-survey');
     Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
     Route::post('/survey', [SurveyController::class, 'store'])->name('survey.store');
+
 });
 
 require __DIR__.'/auth.php';

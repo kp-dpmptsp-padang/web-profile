@@ -150,7 +150,7 @@
                             Wujudkan <span class="font-bold text-red-600">ZONA INTEGRITAS</span>
                         </h6>
                         <h3 class="text-3xl text-gray-700">
-                            Pada <span class="font-bold text-blue-600">DPMPTSP Kota Padang</span>
+                            Pada <span class="font-bold text-red-600">DPMPTSP Kota Padang</span>
                         </h3>
                         <p class="text-base lg:text-lg text-gray-600">
                             Menuju <span class="font-bold italic text-green-600">Wilayah Bebas Korupsi (WBK)</span> & 
@@ -279,16 +279,81 @@
 
     <section class="py-10 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold text-center mb-8">Hasil Survey</h2>
-            
-            <div class="bg-white rounded-lg shadow p-6">
-                <canvas id="surveyChart"></canvas>
+            <h2 class="text-3xl font-bold text-center mb-12">Indeks Kepuasan Masyarakat</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="bg-red-50 rounded-lg p-8 mb-8">
+                        <div class="flex items-center justify-between"> 
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-red-600 mb-1">{{ $overallPercentage }}</div> 
+                                <div class="text-base text-gray-600">
+                                    {{ number_format($overallScore, 2) }}/4.00
+                                </div>
+                            </div>
+                            
+                            <div class="text-right">
+                                <div class="text-sm text-gray-500 italic">Tingkat Kepuasan</div>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ $keteranganScore }}</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6"> 
+                            <div class="w-full bg-gray-200 rounded-full h-4"> 
+                                <div
+                                    class="bg-red-600 h-4 rounded-full transition-all duration-500 ease-out"
+                                    style="width: {{ $overallPercentage }}%"
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+     
+                    @foreach($surveyResults as $item)
+                        <div class="space-y-2 hover:bg-red-50 p-4 rounded-lg transition-all duration-300"> 
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium text-gray-700">
+                                    {{ $item['question'] }}
+                                </span>
+                                <span class="text-sm font-medium text-red-600 bg-red-100 px-3 py-1 rounded-full"> 
+                                    {{ round(($item['score'] / 4) * 100, 1) }}
+                                </span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div
+                                    class="bg-red-600 h-2.5 rounded-full transition-all duration-500 ease-out"
+                                    style="width: {{ ($item['score'] / 4) * 100 }}%"
+                                ></div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+     
+                <div class="hidden md:block bg-gradient-to-br from-red-50 to-white rounded-lg shadow-lg"> 
+                    <div class="h-full min-h-[300px] w-full flex items-center justify-center text-gray-400">
+                        <span>Space for Image/Design</span>
+                    </div>
+                </div>
+            </div>
+     
+            <div class="text-center mt-12"> 
+                <a href="{{ route('home-survey') }}"
+                   class="inline-flex items-center justify-center px-10 py-4 text-lg font-semibold text-white bg-red-600
+                          rounded-lg shadow-lg transition-all duration-300 hover:bg-red-700 hover:shadow-xl
+                          hover:-translate-y-1 relative overflow-hidden group">
+                    <span class="relative z-10 flex items-center">
+                        Ayo Isi Survei
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </span>
+                    <div class="absolute inset-0 w-0 bg-red-700 transition-all duration-300 ease-out group-hover:w-full"></div>
+                </a>
+                <p class="text-gray-600 mt-4 text-sm">Bantu kami meningkatkan layanan dengan mengisi survei</p>
             </div>
         </div>
-    </section>
+     </section>
 
     <section class="py-10 bg-white">
-        <div class="bg-gray-50 py-24">
+        <div class="bg-gray-50 py-12">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold text-gray-800 mb-4">

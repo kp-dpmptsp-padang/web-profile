@@ -13,6 +13,7 @@ return new class extends Migration
             $table->id();
             $table->text('question_text');
             $table->string('question_type')->default('rating'); 
+            $table->string('alias')->nullable();
             $table->integer('order')->default(0); 
             $table->boolean('is_active')->default(true);
             $table->timestamps();

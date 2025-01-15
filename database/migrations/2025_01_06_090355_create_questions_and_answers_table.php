@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('nama_penanya');
             $table->string('email_penanya');
             $table->string('pertanyaan');
-            $table->foreignId('id_penjawab')->constrained('users');
-            $table->text('jawaban');
+            $table->foreignId('id_penjawab')->nullable()->constrained('users');
+            $table->text('jawaban')->nullable();
             $table->enum('status', ['belum-terjawab', 'terjawab'])->default('belum-terjawab');
             $table->timestamps();
         });

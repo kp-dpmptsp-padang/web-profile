@@ -10,6 +10,7 @@ class SurveyQuestion extends Model
     protected $fillable = [
         'question_text',
         'question_type',
+        'alias',
         'order',
         'is_active'
     ];
