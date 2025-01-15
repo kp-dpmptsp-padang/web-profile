@@ -97,15 +97,21 @@
                     <span class="ml-3">Inovasi</span>
                 </a>
             </li>
+            @php
+                $belumTerjawabCount = \App\Models\QuestionAndAnswer::where('status', 'belum-terjawab')->count();
+            @endphp
+
             <li>
                 <a href="{{ route('qna.index') }}" 
-                   class="flex items-center p-2 text-base font-medium rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 group
-                   {{ request()->routeIs('qna.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
+                class="flex items-center p-2 text-base font-medium rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 group
+                {{ request()->routeIs('qna.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
                     <svg class="flex-shrink-0 w-6 h-6 transition duration-75 {{ request()->routeIs('qna.*') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
                     </svg>
                     <span class="flex-1 ml-3 whitespace-nowrap">Pertanyaan</span>
-                    <span class="inline-flex justify-center items-center w-5 h-5 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800">4</span>
+                    @if($belumTerjawabCount > 0)
+                    <span class="inline-flex justify-center items-center w-5 h-5 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800">{{ $belumTerjawabCount }}</span>
+                    @endif
                 </a>
             </li>
         </ul>
@@ -151,13 +157,23 @@
                     <span class="ml-3">Fasilitas</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('employee.index') }}" 
+                class="flex items-center p-2 text-base font-medium rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 group
+                {{ request()->routeIs('employee.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
+                    <svg class="flex-shrink-0 w-6 h-6 transition duration-75 {{ request()->routeIs('employee.*') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 7a2 2 0 012-2h12a2 2 0 012 2M4 7v10a2 2 0 002 2h12a2 2 0 002-2V7M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2" />
+                    </svg>  
+                    <span class="ml-3">Pegawai</span>
+                </a>
+            </li>
             @can('view-users')
             <li>
                 <a href="{{ route('users.index') }}" 
-                   class="flex items-center p-2 text-base font-medium rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 group
-                   {{ request()->routeIs('users.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
-                    <svg class="flex-shrink-0 w-6 h-6 transition duration-75 {{ request()->routeIs('users.*') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4zm0 12c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
+                class="flex items-center p-2 text-base font-medium rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 group
+                {{ request()->routeIs('users.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
+                    <svg class="flex-shrink-0 w-6 h-6 transition duration-75 {{ request()->routeIs('users.*') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>  
                     <span class="ml-3">Pengguna</span>
                 </a>

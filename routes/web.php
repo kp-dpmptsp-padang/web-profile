@@ -14,6 +14,7 @@ use App\Http\Controllers\QnAController;
 use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 // Authenticated
@@ -84,7 +85,6 @@ Route::middleware('auth')->group(function () {
 
     // QnA's
     Route::get('/admin/pertanyaan', [QnAController::class, 'index'])->name('qna.index');
-    Route::post('/admin/pertanyaan', [QnAController::class, 'store'])->name('qna.store');
     Route::put('/admin/pertanyaan/{id}', [QnAController::class,'update'])->name('qna.update');
     Route::delete('/admin/pertanyaan/{id}', [QnAController::class, 'destroy'])->name('qna.destroy');
 
@@ -100,11 +100,17 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin/dokumen/{id}', [DocumentController::class,'update'])->name('document.update');
     Route::delete('/admin/dokumen/{id}', [DocumentController::class, 'destroy'])->name('document.destroy');
 
-    // Facility
+    // Facilities
     Route::get('/admin/fasilitas', [FacilityController::class, 'index'])->name('facility.index');
     Route::post('/admin/fasilitas', [FacilityController::class, 'store'])->name('facility.store');
     Route::put('/admin/fasilitas/{id}', [FacilityController::class,'update'])->name('facility.update');
     Route::delete('/admin/fasilitas/{id}', [FacilityController::class, 'destroy'])->name('facility.destroy');
+
+    // Employees
+    Route::get('/admin/pegawai', [EmployeeController::class, 'index'])->name('employee.index');
+    Route::post('/admin/pegawai', [EmployeeController::class, 'store'])->name('employee.store');
+    Route::put('/admin/pegawai/{id}', [EmployeeController::class,'update'])->name('employee.update');
+    Route::delete('/admin/pegawai/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
 
 });
 
