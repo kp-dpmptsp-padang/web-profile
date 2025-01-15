@@ -56,7 +56,7 @@
     <section class="bg-gray-50/80 px-52 relative backdrop-blur-sm">
         <div class="container mx-auto py-12">
             <div class="max-w-4xl mx-auto mb-12 slide-in-bottom">
-                <form method="GET" action="{{ url()->current() }}" 
+                <form method="GET" action="{{ route('dokumen') }}" 
                       class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div class="flex flex-col sm:flex-row gap-4">
                         <div class="flex-1">
@@ -78,16 +78,29 @@
                                 <select name="filter" 
                                         class="w-full h-12 pl-4 pr-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200 bg-gray-50 text-gray-900 hover:border-red-300 appearance-none">
                                     <option value="">Semua Dokumen</option>
-                                    <optgroup label="Jenis Dokumen">
-                                        <option value="dummy">Dummy</option>
-                                        <option value="dummy">Dummy</option>
-                                        <option value="dummy">Dummy</option>
-                                    </optgroup>
-                                    <optgroup label="Tahun">
-                                        <option value="tahun">2025</option>
-                                        <option value="tahun">2024</option>
-                                        <option value="tahun">2023</option>
-                                    </optgroup>
+                                    @foreach($documentTypes as $type)
+                                        <option value="{{ $type->id }}" {{ request('filter') == $type->id ? 'selected' : '' }}>
+                                            {{ $type->jenis_dokumen }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="relative">
+                                <select name="tahun" 
+                                        class="w-full h-12 pl-4 pr-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200 bg-gray-50 text-gray-900 hover:border-red-300 appearance-none">
+                                    <option value="">Semua Tahun</option>
+                                    @foreach($years as $year)
+                                        <option value="{{ $year }}" {{ request('tahun') == $year ? 'selected' : '' }}>
+                                            {{ $year }}
+                                        </option>
+                                    @endforeach
                                 </select>
                                 <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
                                     <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,58 +135,35 @@
                                     Nama Dokumen
                                 </th>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Jenis
+                                </th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Tahun
+                                </th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                     Aksi
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            @php
-                                $dummyData = [
-                                    [
-                                        'id' => 1,
-                                        'nama' => 'Dokumen Pedoman Kerja 2024.pdf',
-                                        'url' => '/documents/pedoman-kerja-2024.pdf',
-                                        'icon' => 'pdf'
-                                    ],
-                                    [
-                                        'id' => 2,
-                                        'nama' => 'Struktur Organisasi.jpg',
-                                        'url' => '/documents/struktur-organisasi.jpg',
-                                        'icon' => 'image'
-                                    ],
-                                    [
-                                        'id' => 3,
-                                        'nama' => 'Laporan Tahunan 2023.pdf',
-                                        'url' => '/documents/laporan-2023.pdf',
-                                        'icon' => 'pdf'
-                                    ],
-                                    [
-                                        'id' => 4,
-                                        'nama' => 'SOP Pelayanan.pdf',
-                                        'url' => '/documents/sop-pelayanan.pdf',
-                                        'icon' => 'pdf'
-                                    ],
-                                    [
-                                        'id' => 5,
-                                        'nama' => 'Dokumentasi Kegiatan 2024.jpg',
-                                        'url' => '/documents/dokumentasi-2024.jpg',
-                                        'icon' => 'image'
-                                    ],
-                                ];
-                            @endphp
-
-                            @foreach($dummyData as $item)
+                            @forelse($documents as $index => $document)
                                 <tr class="hover:bg-red-50/30 transition-colors duration-150">
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full font-medium">
-                                            {{ $item['id'] }}
+                                            {{ $documents->firstItem() + $index }}
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-900">
-                                            {{ $item['nama'] }}
+                                        {{ $document->nama }}
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">
+                                        {{ $document->jenis->jenis_dokumen }}
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">
+                                        {{ $document->tahun }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                        <a href="{{ $item['url'] }}" 
+                                        <a href="{{ asset('storage/' . $document->nama_file) }}" 
                                            target="_blank"
                                            class="inline-flex items-center px-4 py-2 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-300 hover-float">
                                             <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -186,9 +176,18 @@
                                         </a>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="px-6 py-4 text-center text-gray-500">
+                                        Tidak ada dokumen yang ditemukan
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
+                </div>
+                <div class="px-6 py-4 border-t border-gray-200">
+                    {{ $documents->withQueryString()->links() }}
                 </div>
             </div>
         </div>

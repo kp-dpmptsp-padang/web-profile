@@ -3,7 +3,6 @@
 @section('app')
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-        <!-- Header dan Tombol Tambah -->
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
             <div class="mb-4 md:mb-0">
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Manajemen Inovasi</h2>
@@ -20,7 +19,6 @@
             </button>
         </div>
 
-        <!-- Tabs Container -->
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
             <div class="border-b border-gray-200 dark:border-gray-700">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
@@ -55,9 +53,7 @@
                 </ul>
             </div>
 
-            <!-- Tab Contents -->
             <div id="tabContents">
-                <!-- Publik Innovations Tab -->
                 <div class="block p-4" id="publik" role="tabpanel" aria-labelledby="publik-tab">
                     <div class="relative overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -122,9 +118,11 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="px-6 py-4 border-t border-gray-200">
+                        {{ $publishedInovations->withQueryString()->links() }}
+                    </div>
                 </div>
 
-                <!-- Tidak Publik Innovations Tab -->
                 <div class="hidden p-4" id="tidak-publik" role="tabpanel" aria-labelledby="tidak-publik-tab">
                     <div class="relative overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -189,6 +187,9 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="px-6 py-4 border-t border-gray-200">
+                        {{ $unpublishedInovations->withQueryString()->links() }}
+                    </div>
                 </div>
             </div>
         </div>
@@ -203,36 +204,30 @@
 
 @push('scripts')
 <script>
-    // Tab Functionality
     const tabButtons = document.querySelectorAll('[role="tab"]');
     const tabPanels = document.querySelectorAll('[role="tabpanel"]');
 
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Deactivate all tabs
             tabButtons.forEach(btn => {
                 btn.setAttribute('aria-selected', 'false');
                 btn.classList.remove('text-red-600', 'border-red-600', 'dark:text-red-500', 'dark:border-red-500');
                 btn.classList.add('border-transparent');
             });
 
-            // Hide all panels
             tabPanels.forEach(panel => {
                 panel.classList.add('hidden');
             });
 
-            // Activate clicked tab
             button.setAttribute('aria-selected', 'true');
             button.classList.remove('border-transparent');
             button.classList.add('text-red-600', 'border-red-600', 'dark:text-red-500', 'dark:border-red-500');
 
-            // Show corresponding panel
             const panelId = button.getAttribute('aria-controls');
             document.getElementById(panelId).classList.remove('hidden');
         });
     });
 
-    // Ubah Status Inovasi
     function toggleInovationStatus(inovationId, status) {
         Swal.fire({
             title: 'Apakah Anda yakin?',
@@ -279,9 +274,7 @@
         });
     }
 
-    // Initialize tabs on page load
     document.addEventListener('DOMContentLoaded', () => {
-        // Show first tab by default
         const defaultTab = document.querySelector('[role="tab"][aria-selected="true"]');
         if (defaultTab) {
             defaultTab.click();

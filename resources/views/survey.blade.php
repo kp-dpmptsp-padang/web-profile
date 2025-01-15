@@ -112,11 +112,6 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="absolute bottom-4 left-4">
-                            <button type="button" class="bg-red-500 text-white py-2 px-4 rounded-lg shadow hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50">
-                                Kembali
-                            </button>
-                        </div>
                     </div>
 
                     <div class="step step-2 hidden">
@@ -154,6 +149,9 @@
                     </div>
 
                     <div class="flex justify-between pt-6">
+                        <a href="{{ route('home-survey') }}" id="homeBtn" class="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            Kembali
+                        </a>
                         <button type="button" id="prevBtn" class="hidden px-6 py-2 border border-red-300 text-red-600 rounded-lg hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                             Sebelumnya
                         </button>
@@ -177,6 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('surveyForm');
     const nextBtn = document.getElementById('nextBtn');
     const prevBtn = document.getElementById('prevBtn');
+    const homeBtn = document.getElementById('homeBtn');
     const submitBtn = document.getElementById('submitBtn');
     const progressBar = document.querySelector('.progress-bar');
 
@@ -272,6 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateButtons() {
         prevBtn.classList.toggle('hidden', currentStep === 1);
+        homeBtn.classList.toggle('hidden', currentStep !== 1);
         if (currentStep === totalSteps) {
             nextBtn.classList.add('hidden');
             submitBtn.classList.remove('hidden');

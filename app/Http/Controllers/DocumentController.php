@@ -26,7 +26,7 @@ class DocumentController extends Controller
             $query->where('tahun', $request->year);
         }
 
-        $documents = $query->get();
+        $documents = $query->latest()->paginate(10);
         $documentTypes = DocumentType::all();
 
         return view('admin.documents.index', compact('documents', 'documentTypes'));
@@ -41,7 +41,7 @@ class DocumentController extends Controller
         ]);
 
         $file = $request->file('file');
-        $filePath = $file->store('documents');
+        $filePath = $file->store('documents', 'public');
 
         Document::create([
             'nama' => $request->nama_dokumen,

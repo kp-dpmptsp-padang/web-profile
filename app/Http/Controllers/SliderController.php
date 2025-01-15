@@ -26,7 +26,6 @@ class SliderController extends Controller
         ]);
     
         if ($request->is_active) {
-            // Shift orders if the order is already taken
             $existingOrder = Slider::where('is_active', true)->where('order', $request->order)->exists();
             if ($existingOrder) {
                 Slider::where('is_active', true)
@@ -34,7 +33,6 @@ class SliderController extends Controller
                     ->increment('order');
             }
         } else {
-            // Set order to -1 for inactive sliders
             $request->merge(['order' => -1]);
         }
     
@@ -76,14 +74,12 @@ class SliderController extends Controller
         ]);
     
         if ($request->hasFile('image')) {
-            // Delete old image
             $oldPicture = $slider->pictures()->first();
             if ($oldPicture && Storage::disk('public')->exists($oldPicture->nama_file)) {
                 Storage::disk('public')->delete($oldPicture->nama_file);
                 $oldPicture->delete();
             }
     
-            // Store new image
             $path = $request->file('image')->store('sliders', 'public');
             $slider->pictures()->create([
                 'nama_file' => $path,
@@ -100,14 +96,11 @@ class SliderController extends Controller
         $isActive = $request->is_active;
 
         if ($isActive) {
-            // Activate slider: set order to the last order of active sliders + 1
             $lastOrder = Slider::where('is_active', true)->max('order');
             $slider->update(['is_active' => true, 'order' => $lastOrder + 1]);
         } else {
-            // Deactivate slider: set order to a negative value
             $slider->update(['is_active' => false, 'order' => -1]);
 
-            // Reassign orders for remaining active sliders
             $activeSliders = Slider::where('is_active', true)->orderBy('order')->get();
             foreach ($activeSliders as $index => $activeSlider) {
                 $activeSlider->update(['order' => $index + 1]);
@@ -145,7 +138,6 @@ class SliderController extends Controller
     {
         $slider = Slider::findOrFail($id);
     
-        // Delete image
         $picture = $slider->pictures()->first();
         if ($picture && Storage::disk('public')->exists($picture->nama_file)) {
             Storage::disk('public')->delete($picture->nama_file);
@@ -154,7 +146,6 @@ class SliderController extends Controller
     
         $slider->delete();
     
-        // Reassign orders for remaining active sliders
         $activeSliders = Slider::where('is_active', true)->orderBy('order')->get();
         foreach ($activeSliders as $index => $activeSlider) {
             $activeSlider->update(['order' => $index + 1]);

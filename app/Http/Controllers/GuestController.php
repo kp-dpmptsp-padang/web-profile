@@ -10,6 +10,9 @@ use App\Models\Video;
 use App\Models\QuestionAndAnswer;
 use App\Models\Facility;
 use App\Models\SurveyQuestion;
+use App\Models\Document;
+use App\Models\DocumentType;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -67,7 +70,8 @@ class GuestController extends Controller
 
     public function about()
     {
-        return view('about');
+        $employees = Employee::all();
+        return view('about', compact('employees'));
     }
 
     public function layanan()
@@ -101,10 +105,8 @@ class GuestController extends Controller
 
         $posts = $query->latest()->paginate(9);
 
-        $videos = Video::latest()->get();
-
         $tags = Tag::has('posts')->get();
-        return view('informasi', compact('posts', 'tags', 'videos'));
+        return view('informasi', compact('posts', 'tags'));
     }
 
     public function detailInfo($slug)
@@ -140,15 +142,35 @@ class GuestController extends Controller
         }
 
         $posts = $query->latest()->paginate(9);
-        $videos = Video::latest()->get();
 
         $tags = Tag::has('posts')->get();
-        return view('berita', compact('posts', 'tags', 'videos'));
+        return view('berita', compact('posts', 'tags'));
     }
 
-    public function dokumen()
+    public function dokumen(Request $request)
     {
-        return view('dokumen');
+        $query = Document::with(['admin', 'jenis']);
+        
+        if ($request->has('search') && $request->search != '') {
+            $query->where('nama', 'like', '%' . $request->search . '%');
+        }
+        
+        if ($request->has('filter') && $request->filter != '') {
+            $query->where('id_jenis', $request->filter);
+        }
+        
+        if ($request->has('tahun') && $request->tahun != '') {
+            $query->where('tahun', $request->tahun);
+        }
+
+        $documents = $query->latest()->paginate(10);
+        $documentTypes = DocumentType::all();
+        $years = Document::select('tahun')
+                        ->distinct()
+                        ->orderBy('tahun', 'desc')
+                        ->pluck('tahun');
+
+        return view('dokumen', compact('documents', 'documentTypes', 'years'));
     }
 
     public function faq()
@@ -164,12 +186,12 @@ class GuestController extends Controller
                 'email_penanya' => 'required|email|max:255',
                 'pertanyaan' => 'required|string|max:1000',
             ], [
-                'nama_penanya.required' => 'Nama penanya wajib diisi.',
-                'nama_penanya.string' => 'Nama penanya harus berupa teks.',
-                'nama_penanya.max' => 'Nama penanya tidak boleh lebih dari 255 karakter.',
-                'email_penanya.required' => 'Email penanya wajib diisi.',
-                'email_penanya.email' => 'Email penanya harus berupa email yang valid.',
-                'email_penanya.max' => 'Email penanya tidak boleh lebih dari 255 karakter.',
+                'nama_penanya.required' => 'Nama wajib diisi.',
+                'nama_penanya.string' => 'Nama harus berupa teks.',
+                'nama_penanya.max' => 'Nama tidak boleh lebih dari 255 karakter.',
+                'email_penanya.required' => 'Email wajib diisi.',
+                'email_penanya.email' => 'Email harus berupa email yang valid.',
+                'email_penanya.max' => 'Email tidak boleh lebih dari 255 karakter.',
                 'pertanyaan.required' => 'Pertanyaan wajib diisi.',
                 'pertanyaan.string' => 'Pertanyaan harus berupa teks.',
                 'pertanyaan.max' => 'Pertanyaan tidak boleh lebih dari 1000 karakter.',
@@ -193,5 +215,22 @@ class GuestController extends Controller
                 'message' => 'Terjadi kesalahan. Silakan coba lagi. ',
             ], 500);
         }
+    }
+
+    public function video(Request $request)
+    {
+        $query = Video::latest();
+        
+        if ($request->has('search')) {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('judul', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('deskripsi', 'like', '%' . $searchTerm . '%');
+            });
+        }
+        
+        $videos = $query->latest()->paginate(9);
+        
+        return view('video', compact('videos'));
     }
 }

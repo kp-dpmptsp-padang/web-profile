@@ -327,9 +327,13 @@
                     @endforeach
                 </div>
      
-                <div class="hidden md:block bg-gradient-to-br from-red-50 to-white rounded-lg shadow-lg"> 
-                    <div class="h-full min-h-[300px] w-full flex items-center justify-center text-gray-400">
-                        <span>Space for Image/Design</span>
+                <div class="hidden md:block bg-gradient-to-br from-red-50 to-white rounded-lg shadow-lg">
+                    <div class="h-full min-h-[300px] w-full flex items-center justify-center">
+                        <img 
+                            src="{{ asset('images/skm2.png') }}" 
+                            alt="Deskripsi gambar"
+                            class="object-cover rounded-lg w-full h-full"
+                        />
                     </div>
                 </div>
             </div>

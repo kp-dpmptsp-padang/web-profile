@@ -3,7 +3,6 @@
 @section('app')
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-        <!-- Header and Add Button Section -->
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
             <div class="mb-4 md:mb-0">
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Manajemen Fasilitas</h2>
@@ -19,7 +18,6 @@
                 Tambah Fasilitas
             </button>
         </div>
-        <!-- Table Section -->
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
             <div class="overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -35,7 +33,7 @@
                     <tbody>
                         @forelse($facilities as $index => $facility)
                         <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $index + 1 }}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $facilities->firstItem() + $index }}</td>
                             <td class="px-6 py-4">{{ $facility->nama }}</td>
                             <td class="px-6 py-4">{{ $facility->deskripsi }}</td>
                             <td class="px-6 py-4">
@@ -79,6 +77,9 @@
                         @endforelse
                     </tbody>
                 </table>
+            </div>
+            <div class="px-6 py-4 border-t border-gray-200">
+                {{ $facilities->withQueryString()->links() }}
             </div>
         </div>
     </div>

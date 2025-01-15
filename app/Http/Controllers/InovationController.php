@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Log;
 class InovationController extends Controller
 {
     public function index() {
-        $publishedInovations = Inovation::with('pictures')->where('is_published', true)->get();
-        $unpublishedInovations = Inovation::with('pictures')->where('is_published', false)->get();
+        $publishedInovations = Inovation::with('pictures')->where('is_published', true)->latest()->paginate(10);
+        $unpublishedInovations = Inovation::with('pictures')->where('is_published', false)->latest()->paginate(10);
         return view('admin.inovations.index', compact('publishedInovations', 'unpublishedInovations'));
     }
 

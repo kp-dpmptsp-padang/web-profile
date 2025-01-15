@@ -11,7 +11,7 @@ class GalleryController extends Controller
 {
     public function index()
     {
-        $pictures = Picture::where('imageable_type', 'gallery')->get();
+        $pictures = Picture::where('imageable_type', 'gallery')->latest()->paginate(8);
         return view('admin.galleries.index', compact('pictures'));
     }
 
