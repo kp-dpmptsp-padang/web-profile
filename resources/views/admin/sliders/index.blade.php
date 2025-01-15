@@ -3,7 +3,6 @@
 @section('app')
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-        <!-- Header dan Tombol Tambah -->
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
             <div class="mb-4 md:mb-0">
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Manajemen Slider</h2>
@@ -20,7 +19,6 @@
             </button>
         </div>
 
-        <!-- Tabs Container -->
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
             <div class="border-b border-gray-200 dark:border-gray-700">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
@@ -55,9 +53,7 @@
                 </ul>
             </div>
 
-            <!-- Tab Contents -->
             <div id="tabContents">
-                <!-- Active Sliders Tab -->
                 <div class="block p-4" id="active" role="tabpanel" aria-labelledby="active-tab">
                     <div class="relative overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -136,7 +132,6 @@
                     </div>
                 </div>
 
-                <!-- Inactive Sliders Tab -->
                 <div class="hidden p-4" id="inactive" role="tabpanel" aria-labelledby="inactive-tab">
                     <div class="relative overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -213,126 +208,117 @@
 
 @push('scripts')
 <script>
-    // Tab Functionality
-const tabButtons = document.querySelectorAll('[role="tab"]');
-const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+    const tabButtons = document.querySelectorAll('[role="tab"]');
+    const tabPanels = document.querySelectorAll('[role="tabpanel"]');
 
-tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Deactivate all tabs
-        tabButtons.forEach(btn => {
-            btn.setAttribute('aria-selected', 'false');
-            btn.classList.remove('text-red-600', 'border-red-600', 'dark:text-red-500', 'dark:border-red-500');
-            btn.classList.add('border-transparent');
-        });
-
-        // Hide all panels
-        tabPanels.forEach(panel => {
-            panel.classList.add('hidden');
-        });
-
-        // Activate clicked tab
-        button.setAttribute('aria-selected', 'true');
-        button.classList.remove('border-transparent');
-        button.classList.add('text-red-600', 'border-red-600', 'dark:text-red-500', 'dark:border-red-500');
-
-        // Show corresponding panel
-        const panelId = button.getAttribute('aria-controls');
-        document.getElementById(panelId).classList.remove('hidden');
-    });
-});
-
-// Ubah Status Slider
-function toggleSliderStatus(sliderId, status) {
-    Swal.fire({
-        title: 'Apakah Anda yakin?',
-        text: `Anda akan ${status ? 'mengaktifkan' : 'menonaktifkan'} slider ini.`,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya, lakukan!',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            fetch(`/admin/slider/${sliderId}/status`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                },
-                body: JSON.stringify({ is_active: status })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    Swal.fire({
-                        title: 'Berhasil',
-                        text: `Slider berhasil ${status ? 'diaktifkan' : 'dinonaktifkan'}`,
-                        icon: 'success'
-                    }).then(() => {
-                        window.location.reload();
-                    });
-                } else {
-                    throw new Error(data.message || 'Terjadi kesalahan');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire({
-                    title: 'Kesalahan',
-                    text: `Gagal ${status ? 'mengaktifkan' : 'menonaktifkan'} slider`,
-                    icon: 'error'
-                });
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tabButtons.forEach(btn => {
+                btn.setAttribute('aria-selected', 'false');
+                btn.classList.remove('text-red-600', 'border-red-600', 'dark:text-red-500', 'dark:border-red-500');
+                btn.classList.add('border-transparent');
             });
-        }
-    });
-}
 
-// Ubah Urutan Slider
-function changeOrder(sliderId, direction) {
-    fetch(`/admin/slider/${sliderId}/order`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-        },
-        body: JSON.stringify({ direction: direction })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            Swal.fire({
-                title: 'Berhasil',
-                text: 'Urutan slider berhasil diperbarui',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 1500
-            }).then(() => {
-                window.location.reload();
+            tabPanels.forEach(panel => {
+                panel.classList.add('hidden');
             });
-        } else {
-            throw new Error(data.message || 'Terjadi kesalahan');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
+
+            button.setAttribute('aria-selected', 'true');
+            button.classList.remove('border-transparent');
+            button.classList.add('text-red-600', 'border-red-600', 'dark:text-red-500', 'dark:border-red-500');
+
+            const panelId = button.getAttribute('aria-controls');
+            document.getElementById(panelId).classList.remove('hidden');
+        });
+    });
+
+    function toggleSliderStatus(sliderId, status) {
         Swal.fire({
-            title: 'Kesalahan',
-            text: 'Gagal memperbarui urutan slider',
-            icon: 'error'
+            title: 'Apakah Anda yakin?',
+            text: `Anda akan ${status ? 'mengaktifkan' : 'menonaktifkan'} slider ini.`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, lakukan!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/admin/slider/${sliderId}/status`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    },
+                    body: JSON.stringify({ is_active: status })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            title: 'Berhasil',
+                            text: `Slider berhasil ${status ? 'diaktifkan' : 'dinonaktifkan'}`,
+                            icon: 'success'
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    } else {
+                        throw new Error(data.message || 'Terjadi kesalahan');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        title: 'Kesalahan',
+                        text: `Gagal ${status ? 'mengaktifkan' : 'menonaktifkan'} slider`,
+                        icon: 'error'
+                    });
+                });
+            }
         });
-    });
-}
-
-// Initialize tabs on page load
-document.addEventListener('DOMContentLoaded', () => {
-    // Show first tab by default
-    const defaultTab = document.querySelector('[role="tab"][aria-selected="true"]');
-    if (defaultTab) {
-        defaultTab.click();
     }
-});
+
+    function changeOrder(sliderId, direction) {
+        fetch(`/admin/slider/${sliderId}/order`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            },
+            body: JSON.stringify({ direction: direction })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                Swal.fire({
+                    title: 'Berhasil',
+                    text: 'Urutan slider berhasil diperbarui',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    window.location.reload();
+                });
+            } else {
+                throw new Error(data.message || 'Terjadi kesalahan');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                title: 'Kesalahan',
+                text: 'Gagal memperbarui urutan slider',
+                icon: 'error'
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const defaultTab = document.querySelector('[role="tab"][aria-selected="true"]');
+        if (defaultTab) {
+            defaultTab.click();
+        }
+    });
 </script>
 @endpush
 @endsection

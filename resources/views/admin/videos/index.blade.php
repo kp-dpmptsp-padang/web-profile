@@ -3,7 +3,6 @@
 @section('app')
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-        <!-- Header and Add Button Section -->
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
             <div class="mb-4 md:mb-0">
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Manajemen Video</h2>
@@ -20,12 +19,10 @@
             </button>
         </div>
 
-        <!-- Video Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @forelse($videos as $video)
             <div class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 ease-in-out overflow-hidden">
                 <a href="{{ $video->url }}" target="_blank" class="block relative">
-                    <!-- Using padding-top hack for maintaining aspect ratio -->
                     <div class="w-full relative pt-[56.25%]">
                         <img src="https://img.youtube.com/vi/{{ getYouTubeVideoId($video->url) }}/maxresdefault.jpg" 
                              onerror="this.src='https://img.youtube.com/vi/{{ getYouTubeVideoId($video->url) }}/hqdefault.jpg'"
@@ -72,6 +69,9 @@
             </div>
             @endforelse
         </div>
+        <div class="px-6 py-4 border-t border-gray-200">
+            {{ $videos->withQueryString()->links() }}
+        </div>
     </div>
 </section>
 
@@ -83,7 +83,6 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize modals
     const modals = document.querySelectorAll('[data-modal-toggle]');
     modals.forEach(modal => {
         modal.addEventListener('click', function() {
@@ -95,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Function to extract YouTube video ID from URL
 function getYouTubeVideoId(url) {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|shorts\/)([^#\&\?]*).*/;
     const match = url.match(regExp);

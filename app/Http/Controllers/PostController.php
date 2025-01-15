@@ -14,7 +14,7 @@ class PostController extends Controller
    public function index(Request $request)
    {
        $type = $request->query('type', 'berita');
-       $posts = Post::where('jenis', $type)->get();
+       $posts = Post::where('jenis', $type)->latest()->paginate(10);
        $tags = Tag::all();
 
        return view('admin.posts.index', compact('posts', 'tags', 'type'));

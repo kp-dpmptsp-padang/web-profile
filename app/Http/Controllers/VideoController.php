@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class VideoController extends Controller
 {
     public function index() {
-        $videos = Video::all();
+        $videos = Video::latest()->paginate(8);
         return view('admin.videos.index', compact('videos'));
     }
 

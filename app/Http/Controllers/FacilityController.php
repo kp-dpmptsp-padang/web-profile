@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class FacilityController extends Controller
 {
     public function index() {
-        $facilities = Facility::with('pictures')->get();
+        $facilities = Facility::with('pictures')->latest()->paginate(10);
         return view('admin.facilities.index', compact('facilities'));
     }
 

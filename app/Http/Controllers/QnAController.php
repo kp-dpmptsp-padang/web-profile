@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Mail;
 class QnAController extends Controller
 {
     public function index() {
-        $belumTerjawab = QuestionAndAnswer::where('status', 'belum-terjawab')->get();
-        $terjawab = QuestionAndAnswer::where('status', 'terjawab')->get();
+        $belumTerjawab = QuestionAndAnswer::where('status', 'belum-terjawab')->latest()->paginate(10);
+        $terjawab = QuestionAndAnswer::where('status', 'terjawab')->latest()->paginate(10);
 
         return view('admin.qnas.index', compact('belumTerjawab', 'terjawab'));
     }

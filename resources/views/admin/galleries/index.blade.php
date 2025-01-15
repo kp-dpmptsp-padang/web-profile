@@ -3,7 +3,6 @@
 @section('app')
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-        <!-- Header and Add Button Section -->
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
             <div class="mb-4 md:mb-0">
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Manajemen Galeri</h2>
@@ -20,7 +19,6 @@
             </button>
         </div>
 
-        <!-- Gallery Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @forelse($pictures as $picture)
             <div class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 ease-in-out overflow-hidden">
@@ -59,6 +57,9 @@
             </div>
             @endforelse
         </div>
+        <div class="px-6 py-4 border-t border-gray-200">
+            {{ $pictures->withQueryString()->links() }}
+        </div>
     </div>
 </section>
 
@@ -71,7 +72,6 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize modals
     const modals = document.querySelectorAll('[data-modal-toggle]');
     modals.forEach(modal => {
         modal.addEventListener('click', function() {
@@ -82,12 +82,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Handle image preview for create and edit forms
     document.querySelectorAll('input[type="file"]').forEach(input => {
         input.addEventListener('change', function(event) {
             const file = event.target.files[0];
             const previewContainer = document.getElementById(`new-image-preview-${input.id.split('-')[1]}`);
-            previewContainer.innerHTML = ''; // Clear the preview container
+            previewContainer.innerHTML = ''; 
 
             if (file) {
                 const reader = new FileReader();
@@ -95,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const img = document.createElement('img');
                     img.src = e.target.result;
                     img.className = 'object-cover rounded-lg w-full h-full';
-                    previewContainer.innerHTML = ''; // Clear the preview container again to ensure no duplicates
+                    previewContainer.innerHTML = ''; 
                     previewContainer.appendChild(img);
                 };
                 reader.readAsDataURL(file);

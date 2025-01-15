@@ -3,7 +3,6 @@
 @section('app')
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-        <!-- Header Section -->
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
             <div>
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Manajemen Dokumen</h2>
@@ -11,11 +10,9 @@
             </div>
         </div>
 
-        <!-- Search and Filter Section -->
         <div class="mb-6">
             <form id="searchDocumentForm" action="{{ route('document.index') }}" method="GET">
                 <div class="flex flex-col md:flex-row gap-3">
-                    <!-- Search Bar -->
                     <div class="w-full md:w-2/5 lg:w-1/3">
                         <input 
                             type="text" 
@@ -27,7 +24,6 @@
                         >
                     </div>
                     
-                    <!-- Document Type Dropdown -->
                     <div class="w-full md:w-1/5 lg:w-1/6">
                         <select 
                             name="document_type" 
@@ -41,7 +37,6 @@
                         </select>
                     </div>
                     
-                    <!-- Year Dropdown -->
                     <div class="w-full md:w-1/5 lg:w-1/6">
                         <select 
                             name="year" 
@@ -55,7 +50,6 @@
                         </select>
                     </div>
                     
-                    <!-- Search Button -->
                     <div class="w-full md:w-1/5 lg:w-1/6">
                         <button 
                             type="submit" 
@@ -65,7 +59,6 @@
                         </button>
                     </div>
 
-                    <!-- Add Button -->
                     <div class="w-full md:w-1/5 lg:w-1/6 md:ml-auto">
                         <button 
                             type="button" 
@@ -83,7 +76,6 @@
             </form>
         </div>
 
-        <!-- Table Section -->
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
             <div class="overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -99,7 +91,7 @@
                     <tbody>
                         @forelse($documents as $index => $document)
                         <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $index + 1 }}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $documents->firstItem() + $index }}</td>
                             <td class="px-6 py-4">{{ $document->nama }}</td>
                             <td class="px-6 py-4">{{ $document->jenis->jenis_dokumen }}</td>
                             <td class="px-6 py-4">{{ $document->tahun }}</td>
@@ -135,6 +127,9 @@
                         @endforelse
                     </tbody>
                 </table>
+            </div>
+            <div class="px-6 py-4 border-t border-gray-200">
+                {{ $documents->withQueryString()->links() }}
             </div>
         </div>
     </div>

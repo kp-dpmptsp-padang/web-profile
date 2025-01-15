@@ -10,7 +10,7 @@ class DocumentTypeController extends Controller
 {
     public function index()
     {
-        $documentTypes = DocumentType::with('documents')->get();
+        $documentTypes = DocumentType::with('documents')->latest()->paginate(10);
         return view('admin.documents.types.index', compact('documentTypes'));
     }
 

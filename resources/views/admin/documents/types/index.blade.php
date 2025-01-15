@@ -37,7 +37,7 @@
                         <tbody>
                             @forelse($documentTypes as $index => $documentType)
                                 <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ $index + 1 }}</td>
+                                    <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ $documentTypes->firstItem() + $index }}</td>
                                     <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ $documentType->jenis_dokumen }}</td>
                                     <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ $documentType->created_at->format('d M Y') }}</td>
                                     <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ $documentType->documents->count() }}</td>
@@ -74,6 +74,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                </div>
+                <div class="px-6 py-4 border-t border-gray-200">
+                    {{ $documentTypes->withQueryString()->links() }}
                 </div>
             </div>
         </div>
