@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li class="relative group">
-                    <button class="flex items-center py-2 px-3 @if(request()->routeIs('informasi') || request()->routeIs('berita') || request()->routeIs('detail-info') || request()->routeIs('detail-berita')) text-red-600 @else text-black @endif">
+                    <button class="flex items-center py-2 px-3 @if(request()->routeIs('informasi') || request()->routeIs('berita') || request()->routeIs('detail-info') || request()->routeIs('detail-berita') || request()->routeIs('faq')) text-red-600 @else text-black @endif">
                         Postingan
                     </button>
                     <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg py-2 rounded-lg">

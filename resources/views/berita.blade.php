@@ -57,7 +57,7 @@
     }
 </style>
 <div class="overflow-hidden pt-16 relative">
-    <div class="heading bg-cover bg-center py-32 flex items-center justify-center relative">
+    <div class="heading bg-cover bg-center py-24 flex items-center justify-center relative">
         <div class="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-1000" 
              style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/swiper/5.jpg')">
         </div>
@@ -248,7 +248,6 @@
         const videoFrame = document.getElementById('videoFrame');
         const videoTitle = document.getElementById('videoTitle');
         
-        // Extract video ID and create embed URL
         let videoId = '';
         if (url.includes('youtube.com')) {
             const urlParams = new URLSearchParams(new URL(url).search);
@@ -276,14 +275,12 @@
         document.body.style.overflow = 'auto';
     }
 
-    // Close modal when clicking outside
     document.getElementById('videoModal').addEventListener('click', function(e) {
         if (e.target === this) {
             closeVideoModal();
         }
     });
 
-    // Close modal with escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !document.getElementById('videoModal').classList.contains('hidden')) {
             closeVideoModal();

@@ -12,6 +12,78 @@ use Illuminate\Validation\ValidationException;
 
 class SurveyController extends Controller
 {
+    public function home()
+    {  
+        $demografiUmur = SurveyResponse::select(
+            DB::raw("CASE
+                WHEN umur BETWEEN 18 AND 25 THEN '18-25'
+                WHEN umur BETWEEN 26 AND 35 THEN '26-35'
+                WHEN umur BETWEEN 36 AND 45 THEN '36-45'
+                WHEN umur BETWEEN 46 AND 55 THEN '46-55'
+                ELSE '55+'
+            END as kelompok_umur"),
+            DB::raw('count(*) as total')
+        )
+        ->groupBy('kelompok_umur')
+        ->get();
+
+        $layananData = SurveyResponse::select('layanan', DB::raw('count(*) as total'))
+            ->groupBy('layanan')
+            ->get();
+
+        $pendidikanData = SurveyResponse::select('pendidikan', DB::raw('count(*) as total'))
+            ->groupBy('pendidikan')
+            ->get();
+
+        $surveyResults = SurveyQuestion::with(['options', 'answers'])
+            ->where('is_active', 1)
+            ->get()
+            ->map(function($question) {
+                $totalScore = 0;
+                $totalResponses = 0;
+                
+                foreach($question->answers as $answer) {
+                    $option = $answer->option;
+                    if ($option) {
+                        $totalScore += $option->option_value;
+                        $totalResponses++;
+                    }
+                }
+                
+                $averageScore = $totalResponses > 0 ? round(($totalScore / $totalResponses), 2) : 0;
+                
+                return [
+                    'question' => $question->alias,
+                    'score' => $averageScore,
+                    'total_responses' => $totalResponses
+                ];
+            });
+    
+            $overallScore = $surveyResults->avg('score');
+            $overallPercentage = round(($overallScore / 4) * 100, 1);
+            $keteranganScore = '';
+            if ($overallPercentage >= 80) {
+                $keteranganScore = 'Sangat Baik';
+            } elseif ($overallPercentage >= 70) {
+                $keteranganScore = 'Baik';
+            } elseif ($overallPercentage >= 60) {
+                $keteranganScore = 'Cukup';
+            } elseif ($overallPercentage >= 50) {
+                $keteranganScore = 'Kurang';
+            } else {
+                $keteranganScore = 'Sangat Kurang';
+            }    
+
+        return view('survey-home', compact(
+            'demografiUmur',
+            'layananData',
+            'pendidikanData',
+            'overallScore',
+            'overallPercentage',
+            'keteranganScore'
+        ));
+    }
+
     public function index()
     {
         $questions = SurveyQuestion::where('is_active', true)

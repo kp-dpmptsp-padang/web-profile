@@ -112,6 +112,11 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="absolute bottom-4 left-4">
+                            <button type="button" class="bg-red-500 text-white py-2 px-4 rounded-lg shadow hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50">
+                                Kembali
+                            </button>
+                        </div>
                     </div>
 
                     <div class="step step-2 hidden">
