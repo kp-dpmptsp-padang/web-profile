@@ -110,15 +110,36 @@
             </li>
         </ul>
         <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
-            <li>
-                <a href="{{ route('document.index') }}" 
-                   class="flex items-center p-2 text-base font-medium rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 group
-                   {{ request()->routeIs('document.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
-                    <svg class="flex-shrink-0 w-6 h-6 transition duration-75 {{ request()->routeIs('document.*') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <li>
+                <button type="button" 
+                        class="flex items-center p-2 w-full text-base font-medium rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700
+                        {{ request()->routeIs('document.*') || request()->routeIs('documentType.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}"
+                        aria-controls="dropdown-documents" 
+                        data-collapse-toggle="dropdown-documents">
+                    <svg class="flex-shrink-0 w-6 h-6 transition duration-75 {{ request()->routeIs('document.*') || request()->routeIs('documentType.*') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                     </svg>
-                    <span class="ml-3">Dokumen</span>
-                </a>
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap">Dokumen</span>
+                    <svg class="w-6 h-6 transition-transform duration-200 {{ request()->routeIs('document.*') || request()->routeIs('documentType.*') ? 'rotate-180' : '' }}" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+                <ul id="dropdown-documents" class="{{ request()->routeIs('document.*') || request()->routeIs('documentType.*') ? 'block' : 'hidden' }} py-2 space-y-2">
+                    <li>
+                        <a href="{{ route('document.index') }}" 
+                           class="flex items-center p-2 pl-11 w-full text-base font-medium rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700 
+                           {{ request()->routeIs('document.index') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
+                            Daftar Dokumen
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('documentType.index') }}" 
+                           class="flex items-center p-2 pl-11 w-full text-base font-medium rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700 
+                           {{ request()->routeIs('documentType.index') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
+                            Jenis Dokumen
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="{{ route('facility.index') }}" 

@@ -11,6 +11,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\InovationController;
 use App\Http\Controllers\QnAController;
+use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FacilityController;
 use Illuminate\Support\Facades\Route;
@@ -86,6 +87,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/pertanyaan', [QnAController::class, 'store'])->name('qna.store');
     Route::put('/admin/pertanyaan/{id}', [QnAController::class,'update'])->name('qna.update');
     Route::delete('/admin/pertanyaan/{id}', [QnAController::class, 'destroy'])->name('qna.destroy');
+
+    // Document Types
+    Route::get('/admin/jenis-dokumen', [DocumentTypeController::class, 'index'])->name('documentType.index');
+    Route::post('/admin/jenis-dokumen', [DocumentTypeController::class, 'store'])->name('documentType.store');
+    Route::put('/admin/jenis-dokumen/{id}', [DocumentTypeController::class, 'update'])->name('documentType.update');
+    Route::delete('/admin/jenis-dokumen/{id}', [DocumentTypeController::class, 'destroy'])->name('documentType.destroy');
 
     // Documents
     Route::get('/admin/dokumen', [DocumentController::class, 'index'])->name('document.index');
