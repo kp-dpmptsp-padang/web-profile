@@ -94,7 +94,7 @@
                     </div>
                     @empty
                     <div class="col-span-3 text-center py-12">
-                        <p class="text-gray-500 text-lg">Tidak ada berita yang tersedia saat ini.</p>
+                        <p class="text-gray-500 text-lg">Tidak ada fasilitas yang tersedia saat ini.</p>
                     </div>
                 @endforelse
             </div>

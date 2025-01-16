@@ -31,7 +31,6 @@ Route::middleware(['auth', 'role:super-admin'])->group(function () {
     Route::get('/super-admin/daftar-admin', [UserController::class, 'index'])->name('users.index');
     Route::post('/super-admin/admin', [UserController::class, 'store'])->name('users.store');
     Route::put('/super-admin/admin/{id}', [UserController::class, 'update'])->name('users.update');
-    Route::patch('/super-admin/admin/{id}', [UserController::class, 'update'])->name('users.update');
     Route::delete('/super-admin/admin/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 });
 
@@ -48,7 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/posts', [PostController::class, 'store'])->name('posts.store');
     Route::get('/admin/posts/{id}', [PostController::class, 'show'])->name('posts.show');
     Route::put('/admin/posts/{id}', [PostController::class, 'update'])->name('posts.update');
-    Route::patch('/admin/posts/{id}', [PostController::class, 'update'])->name('posts.update');
     Route::delete('/admin/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
     // Tags

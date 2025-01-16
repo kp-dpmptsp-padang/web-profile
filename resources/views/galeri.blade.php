@@ -100,23 +100,22 @@
     </section>
 </div>
 
-<div id="imageModal" class="fixed inset-0 z-50 hidden">
+<div id="imageModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
     <div class="absolute inset-0 bg-black/75 backdrop-blur-sm" id="modalBackground"></div>
-    <div class="relative min-h-screen flex items-center justify-center p-10">
-        <div class="bg-white rounded-2xl w-full max-w-4xl shadow-2xl transform transition-all scale-95 opacity-0" id="modalContent">
+    <div class="relative min-h-screen flex items-start justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-4xl shadow-2xl transform transition-all scale-95 opacity-0 my-8" id="modalContent">
+            <button onclick="closeModal()" 
+                    class="absolute -right-4 -top-4 z-10 bg-white rounded-full p-2 text-gray-500 hover:text-red-600 transform hover:rotate-90 transition-all duration-300 shadow-lg">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
             <div class="relative">
-                <img id="modalImage" src="" alt="" class="w-full rounded-t-2xl">
+                <img id="modalImage" src="" alt="" class="w-full rounded-t-2xl max-h-[80vh] object-contain">
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-8">
                     <p id="modalCaption" class="text-white text-xl font-medium text-center"></p>
                 </div>
-            </div>
-            <div class="p-4 flex justify-end">
-                <button onclick="closeModal()" 
-                        class="text-gray-500 hover:text-red-600 transform hover:rotate-90 transition-all duration-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
             </div>
         </div>
     </div>

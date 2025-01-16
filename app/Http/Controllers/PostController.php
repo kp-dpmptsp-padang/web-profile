@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
@@ -20,46 +21,58 @@ class PostController extends Controller
        return view('admin.posts.index', compact('posts', 'tags', 'type'));
    }
 
-   public function store(Request $request)
-   {
-       $request->validate([
-           'judul' => 'required|string|max:255',
-           'konten' => 'required|string',
-           'tags' => 'array',
-           'tags.*' => 'exists:tags,id',
-           'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-       ]);
-   
-       // Ambil type dari input form, bukan dari query parameter
-       $type = $request->input('type', 'berita');
-   
-       $post = Post::create([
-           'id_penulis' => Auth::id(),
-           'judul' => $request->judul,
-           'konten' => $request->konten,
-           'jenis' => $type, // Gunakan type yang diambil dari form
-           'slug' => Str::slug($request->judul),
-       ]);
-   
-       // Handle tags
-       if ($request->has('tags')) {
-           $post->tags()->sync($request->tags);
-       }
-   
-       // Handle images
-       if ($request->hasFile('images')) {
-           foreach ($request->file('images') as $image) {
-               $path = $image->store('images', 'public');
-               $post->pictures()->create([
-                   'nama_file' => $path,
-                   'mine_type' => $image->getClientMimeType(),
-               ]);
-           }
-       }
-   
-       return redirect()->route('posts.index', ['type' => $type])
-               ->with('success', 'Post created successfully.');
-   }
+public function store(Request $request)
+{
+     $request->validate([
+          'judul' => 'required|string|max:255',
+          'konten' => 'required|string',
+          'tags' => 'array',
+          'tags.*' => 'exists:tags,id',
+          'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+     ]);
+
+     // Ambil type dari input form, bukan dari query parameter
+     $type = $request->input('type', 'berita');
+
+     try {
+          $post = Post::create([
+                'id_penulis' => Auth::id(),
+                'judul' => $request->judul,
+                'konten' => $request->konten,
+                'jenis' => $type, // Gunakan type yang diambil dari form
+                'slug' => Str::slug($request->judul),
+          ]);
+
+          // Handle tags
+          if ($request->has('tags')) {
+                $post->tags()->sync($request->tags);
+          }
+
+          // Handle images
+          if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $image) {
+                    Log::info('File type: ' . $image->getMimeType());
+                    Log::info('File extension: ' . $image->getClientOriginalExtension());
+                     try {
+                          $path = $image->store('images', 'public');
+                          $post->pictures()->create([
+                                'nama_file' => $path,
+                                'mine_type' => $image->getClientMimeType(),
+                          ]);
+                     } catch (\Exception $e) {
+                          return redirect()->route('posts.index', ['type' => $type])
+                                ->with('error', 'Gagal mengunggah gambar: ' . $e->getMessage());
+                     }
+                }
+          }
+
+          return redirect()->route('posts.index', ['type' => $type])
+                ->with('success', 'Post created successfully.');
+     } catch (\Exception $e) {
+          return redirect()->route('posts.index', ['type' => $type])
+                ->with('error', 'Gagal membuat post: ' . $e->getMessage());
+     }
+}
 
    public function update(Request $request, $id)
    {

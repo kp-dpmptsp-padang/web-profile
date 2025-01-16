@@ -140,30 +140,33 @@
         </div>
     </div>
 
-    <section class="py-8 bg-gray-50">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-xl transition duration-300">
-                <div class="flex items-center justify-between">
-                    <div class="w-full md:w-8/12">
-                        <h6 class="text-2xl font-semibold text-gray-800">
-                            Wujudkan <span class="font-bold text-red-600">ZONA INTEGRITAS</span>
-                        </h6>
-                        <h3 class="text-3xl text-gray-700">
-                            Pada <span class="font-bold text-red-600">DPMPTSP Kota Padang</span>
-                        </h3>
-                        <p class="text-base lg:text-lg text-gray-600">
-                            Menuju <span class="font-bold italic text-green-600">Wilayah Bebas Korupsi (WBK)</span> & 
-                            <span class="font-bold italic text-green-600">Wilayah Birokrasi Bersih Melayani (WBBM)</span>
-                        </p>
+    <section class="bg-gray-50/80 px-6 relative backdrop-blur-sm">        
+        <div class="container mx-auto py-24 relative">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
+                <div class="relative animate-on-scroll group fade-in-scale" data-animation="fade-in-right">
+                    <img
+                        src="{{ asset('images/serti4.jpg') }}"
+                        alt="Piagam WBK"
+                        class="rounded-2xl shadow-2xl w-full h-[400px] object-cover transition-all duration-500 group-hover:scale-105 group-hover:shadow-red-200"
+                    />
+                    <div class="absolute -bottom-4 -left-4 w-36 h-36 bg-red-600 rounded-2xl -z-10 transition-all duration-300 group-hover:-bottom-6 group-hover:-left-6 group-hover:rotate-6"></div>
+                    <div class="absolute -left-8 top-1/2 flex gap-2">
+                        <div class="w-2 h-2 bg-red-400 rounded-full"></div>
+                        <div class="w-2 h-2 bg-red-400 rounded-full"></div>
+                        <div class="w-2 h-2 bg-red-400 rounded-full"></div>
                     </div>
-                    <div class="w-full md:w-4/12 flex justify-end pr-4">
-                        <div class="relative group">
-                            <img 
-                                src="/images/zi/zi_5.png" 
-                                alt="Logo Zona Integritas" 
-                                class="w-full max-w-[100px] transition-transform duration-300 group-hover:scale-105"
-                            >
-                        </div>
+                </div>
+                <div class="relative animate-on-scroll group fade-in-scale" data-animation="fade-in-left">
+                    <img
+                        src="{{ asset('images/serti3.jpg') }}"
+                        alt="Penghargaan Ombudsman"
+                        class="rounded-2xl shadow-2xl w-full h-[400px] object-cover transition-all duration-500 group-hover:scale-105 group-hover:shadow-red-200"
+                    />
+                    <div class="absolute -bottom-4 -right-4 w-36 h-36 bg-red-600 rounded-2xl -z-10 transition-all duration-300 group-hover:-bottom-6 group-hover:-right-6 group-hover:rotate-6"></div>
+                    <div class="absolute -right-8 top-1/2 flex flex-col gap-2">
+                        <div class="w-12 h-1 bg-red-400"></div>
+                        <div class="w-8 h-1 bg-red-300"></div>
+                        <div class="w-4 h-1 bg-red-200"></div>
                     </div>
                 </div>
             </div>
@@ -258,12 +261,12 @@
                     <h3 class="text-xl font-semibold mb-2">SIMBG</h3>
                     <p class="text-gray-600 text-justify">Sistem Informasi Manajemen Bangunan Gedung yang selanjutnya disingkat SIMBG adalah sistem elektronik berbasis web yang digunakan untuk melaksanakan proses penyelenggaraan PBG, SLF, SBKBG, RTB, dan Pendataan Bangunan Gedung disertai dengan informasi terkait penyelenggaraan bangunan gedung.</p>
                 </a>
-                <a href="http://ikm.web.dpmptsp.padang.go.id/" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300">
+                <a href="{{ route('home-survey') }}" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300">
                     <div class="icon-wrap">
                         <img class="w-32 h-32 object-cover mb-4 rounded-lg mx-auto" src="/images/ikm.png" alt="IKM">
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">IKM</h3>
-                    <p class="text-gray-600 text-justify">Indeks Kepuasan Masyarakat (IKM) adalah layanan yang dirancang untuk mengukur tingkat kepuasan masyarakat terhadap pelayanan yang diberikan oleh instansi pemerintah, guna meningkatkan kualitas layanan secara berkelanjutan.</p>
+                    <h3 class="text-xl font-semibold mb-2">SKM</h3>
+                    <p class="text-gray-600 text-justify">Survei Kepuasan Masyarakat (SKM) adalah layanan yang dirancang untuk mengukur tingkat kepuasan masyarakat terhadap pelayanan yang diberikan oleh instansi pemerintah, guna meningkatkan kualitas layanan secara berkelanjutan.</p>
                 </a>
                 <a href="https://nonperizinan.web.dpmptsp.padang.go.id/sinopen" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300">
                     <div class="icon-wrap">
