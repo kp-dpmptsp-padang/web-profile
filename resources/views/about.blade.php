@@ -325,7 +325,7 @@
                     <div class="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-red-600"></div>
                     <div class="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-red-600"></div>
                     <img 
-                        src="/images/swiper/1.jpg"
+                        src="/images/fotbar.jpg"
                         alt="Foto Bersama DPMPTSP" 
                         class="w-full h-[500px] object-cover rounded-lg shadow-inner"
                     />

@@ -4,7 +4,7 @@
             <li>
                 <a href="{{ route('admin.dashboard') }}" 
                    class="flex items-center p-2 text-base font-medium rounded-lg group hover:bg-gray-100 dark:hover:bg-gray-700 
-                   {{ request()->routeIs('dashboard') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
+                   {{ request()->routeIs('admin.dashboard') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
                     <svg class="w-6 h-6 transition duration-75 {{ request()->routeIs('admin.dashboard') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
                     </svg>
