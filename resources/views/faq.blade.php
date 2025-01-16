@@ -138,29 +138,83 @@ $faqs = [
 @section('title', 'FAQ | DPMPTSP Kota Padang')
 @section('content')
 
-<div class="relative min-h-screen bg-gradient-to-br from-red-50 via-white to-red-50">
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0 bg-repeat opacity-10" 
-         style="background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 16 16\' width=\'16\' height=\'16\'><path fill=\'%23000\' fill-opacity=\'.1\' d=\'M8 0h8v8H8zM0 8h8v8H0z\'/></svg>')"
-        ></div>
+<style>
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    @keyframes fadeInScale {
+        0% { 
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        100% { 
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes slideInBottom {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .floating-shape {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .fade-in-scale {
+        animation: fadeInScale 0.8s ease-out forwards;
+    }
+
+    .slide-in-bottom {
+        animation: slideInBottom 0.6s ease-out;
+    }
+
+    .dot-pattern {
+        background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
+</style>
+
+<div class="overflow-hidden pt-16 relative">
+    <!-- Hero Section dengan Background -->
+    <div class="heading bg-cover bg-center py-24 flex items-center justify-center relative">
+        <div class="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-1000" 
+             style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/swiper/4.jpg')">
+        </div>
+        <h1 class="text-6xl text-white uppercase font-bold relative z-10 tracking-wider fade-in-scale">
+            FAQ
+            <div class="h-1 w-24 bg-red-500 mx-auto mt-4 rounded-full"></div>
+        </h1>
     </div>
 
-    <div class="relative py-24 pt-32 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h1 class="text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+    <section class="bg-gray-50/80 px-4 sm:px-6 lg:px-8 relative backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto py-12">
+            <div class="text-center mb-16 slide-in-bottom">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
                     Pertanyaan yang Sering Diajukan
-                </h1>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                     Temukan jawaban untuk pertanyaan umum seputar DPMPTSP dan MPP Kota Padang
                 </p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-    <div class="space-y-6">
-                    @foreach($faqs as $faq)
+                <!-- FAQ List -->
+                <div class="space-y-6 slide-in-bottom" style="animation-delay: 0.2s;">
+                    @foreach($faqs as $index => $faq)
                     <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
-                         x-data="{ open: false }">
+                         x-data="{ open: false }"
+                         style="animation-delay: {{ $index * 0.1 }}s">
                         <button class="w-full px-6 py-4 text-left flex justify-between items-center gap-4"
                                 @click="open = !open">
                             <span class="text-lg font-semibold text-gray-800">{{ $faq['question'] }}</span>
@@ -183,7 +237,8 @@ $faqs = [
                     @endforeach
                 </div>
 
-                <div class="lg:sticky lg:top-8">
+                <!-- Contact Form -->
+                <div class="lg:sticky lg:top-8 slide-in-bottom" style="animation-delay: 0.4s;">
                     <div class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
                         <div class="mb-8">
                             <h2 class="text-2xl font-bold text-gray-900 mb-3">Ada Pertanyaan Lain?</h2>
@@ -198,8 +253,7 @@ $faqs = [
                                        id="nama_penanya" 
                                        name="nama_penanya" 
                                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-100 focus:border-red-400 transition-all duration-300"
-                                       placeholder="Masukkan nama lengkap Anda"
-                                       >
+                                       placeholder="Masukkan nama lengkap Anda">
                             </div>
 
                             <div>
@@ -208,8 +262,7 @@ $faqs = [
                                        id="email_penanya" 
                                        name="email_penanya" 
                                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-100 focus:border-red-400 transition-all duration-300"
-                                       placeholder="contoh@email.com"
-                                       >
+                                       placeholder="contoh@email.com">
                             </div>
 
                             <div>
@@ -218,8 +271,7 @@ $faqs = [
                                           name="pertanyaan" 
                                           rows="4" 
                                           class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-100 focus:border-red-400 transition-all duration-300"
-                                          placeholder="Tulis pertanyaan Anda di sini..."
-                                          ></textarea>
+                                          placeholder="Tulis pertanyaan Anda di sini..."></textarea>
                             </div>
 
                             <button type="submit" 
@@ -231,7 +283,7 @@ $faqs = [
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>
 
 @push('scripts')

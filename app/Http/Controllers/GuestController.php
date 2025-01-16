@@ -28,6 +28,7 @@ class GuestController extends Controller
         }])->where('is_active', 1)->get();
 
         $innovations = Inovation::where('is_published', 1)->get();
+        $latestNews = Post::where('jenis', 'berita')->latest()->take(3)->get();
 
         $surveyResults = SurveyQuestion::with(['options', 'answers'])
         ->where('is_active', 1)
@@ -68,7 +69,7 @@ class GuestController extends Controller
             $keteranganScore = 'Sangat Kurang';
         }
 
-        return view('home', compact('sliders', 'gallery', 'surveyResults', 'overallPercentage', 'overallScore', 'keteranganScore', 'innovations'));
+        return view('home', compact('sliders', 'gallery', 'latestNews', 'surveyResults', 'overallPercentage', 'overallScore', 'keteranganScore', 'innovations'));
     }
 
     public function about()

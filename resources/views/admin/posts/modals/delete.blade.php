@@ -33,7 +33,6 @@
                             Tindakan ini tidak dapat dibatalkan. Postingan yang dihapus tidak dapat dikembalikan.
                         </div>
                     </div>
-
                     <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-700">
                         <div class="mb-4">
                             <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Judul Postingan</label>

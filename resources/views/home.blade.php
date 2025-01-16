@@ -35,11 +35,17 @@
     }
     .main-swiper {
         overflow: visible !important; 
-        padding: 50px 0;
-        margin: 0 70px; 
+        padding: 20px 0;
+        margin: 0 20px; 
+    }
+    @media (min-width: 768px) {
+        .main-swiper {
+            padding: 50px 0;
+            margin: 0 70px;
+        }
     }
     .main-swiper .swiper-slide {
-        width: auto;
+        width: 100%;
         height: auto;
         transform: scale(0.85);
         opacity: 0.5;
@@ -93,15 +99,47 @@
     .flex-none {
         flex: 0 0 auto;
     }
+    .news-card {
+        transition: all 0.3s ease;
+        backface-visibility: hidden;
+    }
+    
+    .news-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .news-card .image-wrapper {
+        overflow: hidden;
+    }
+    
+    .news-card .image-wrapper img {
+        transition: transform 0.5s ease;
+    }
+    
+    .news-card:hover .image-wrapper img {
+        transform: scale(1.1);
+    }
+    
+    .news-date {
+        background: rgba(239, 68, 68, 0.9);
+        backdrop-filter: blur(4px);
+    }
+
+    .truncate-3-lines {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 </style>
 
-<div class="px-24 pt-16 overflow-hidden relative">
+<div class="px-4 md:px-24 pt-8 md:pt-16 overflow-hidden relative">
     <div class="fixed inset-0 pointer-events-none">
         <div class="absolute top-20 left-20 w-32 h-32 bg-red-100 rounded-full floating-shape opacity-20" style="animation-delay: 0s;"></div>
         <div class="absolute top-40 right-40 w-24 h-24 bg-gray-200 rounded-full floating-shape opacity-30" style="animation-delay: 1s;"></div>
         <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-red-50 rounded-full floating-shape opacity-25" style="animation-delay: 2s;"></div>
     </div> 
-    <div class="relative mx-auto max-w-7xl px-16 py-8">
+    <div class="relative mx-auto max-w-7xl px-4 md:px-16 py-4 md:py-8">
         <div class="swiper main-swiper relative">
             <div class="swiper-wrapper">
                 @php
@@ -140,14 +178,14 @@
         </div>
     </div>
 
-    <section class="bg-gray-50/80 px-6 relative backdrop-blur-sm">        
-        <div class="container mx-auto py-24 relative">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
+    <section class="bg-gray-50/80 px-4 md:px-6 relative backdrop-blur-sm">        
+        <div class="container mx-auto py-12 md:py-24 relative">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 <div class="relative animate-on-scroll group fade-in-scale" data-animation="fade-in-right">
                     <img
                         src="{{ asset('images/serti4.jpg') }}"
                         alt="Piagam WBK"
-                        class="rounded-2xl shadow-2xl w-full h-[400px] object-cover transition-all duration-500 group-hover:scale-105 group-hover:shadow-red-200"
+                        class="rounded-2xl shadow-2xl w-full h-[300px] md:h-[400px] object-cover transition-all duration-500 group-hover:scale-105 group-hover:shadow-red-200"
                     />
                     <div class="absolute -bottom-4 -left-4 w-36 h-36 bg-red-600 rounded-2xl -z-10 transition-all duration-300 group-hover:-bottom-6 group-hover:-left-6 group-hover:rotate-6"></div>
                     <div class="absolute -left-8 top-1/2 flex gap-2">
@@ -160,7 +198,7 @@
                     <img
                         src="{{ asset('images/serti3.jpg') }}"
                         alt="Penghargaan Ombudsman"
-                        class="rounded-2xl shadow-2xl w-full h-[400px] object-cover transition-all duration-500 group-hover:scale-105 group-hover:shadow-red-200"
+                        class="rounded-2xl shadow-2xl w-full h-[300px] md:h-[400px] object-cover transition-all duration-500 group-hover:scale-105 group-hover:shadow-red-200"
                     />
                     <div class="absolute -bottom-4 -right-4 w-36 h-36 bg-red-600 rounded-2xl -z-10 transition-all duration-300 group-hover:-bottom-6 group-hover:-right-6 group-hover:rotate-6"></div>
                     <div class="absolute -right-8 top-1/2 flex flex-col gap-2">
@@ -242,38 +280,37 @@
         </div>
     </section>
 
-    <section class="py-10 bg-gray-50 p-6 my-32">
-        <div class="container mx-auto px-24">
-            <h2 class="text-3xl font-bold text-center mb-12">Layanan Perizinan</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <a href="https://oss.go.id/" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
-                   >
-                    <div class="icon-wrap">
-                        <img class="w-56 h-50 object-cover mb-4 rounded-lg mx-auto" src="/images/osss.png" alt="OSS">
+    <section class="py-8 bg-gray-50 p-4 md:p-6 my-12 md:my-24">
+        <div class="container mx-auto px-4 md:px-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">Layanan Perizinan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <a href="https://oss.go.id/" target="_blank" class="bg-white p-4 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <div class="icon-wrap h-32 md:h-40 flex items-center justify-center mb-3">
+                        <img class="max-w-[120px] md:max-w-[160px] h-auto object-contain" src="/images/osss.png" alt="OSS">
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">OSS</h3>
-                    <p class="text-gray-600 text-justify">OSS (Online Single Submission) merupakan sistem informasi layanan perizinan berusaha yang diterbitkan oleh Lembaga OSS untuk kepada Pelaku Usaha melalui sistem elektronik yang terintegrasi.</p>
+                    <h3 class="text-base md:text-lg font-semibold mb-2">OSS</h3>
+                    <p class="text-gray-600 text-sm text-justify flex-grow">OSS (Online Single Submission) merupakan sistem informasi layanan perizinan berusaha yang diterbitkan oleh Lembaga OSS untuk kepada Pelaku Usaha melalui sistem elektronik yang terintegrasi.</p>
                 </a>
-                <a href="https://simbg.pu.go.id/" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300">
-                    <div class="icon-wrap">
-                        <img class="w-50 h-50 object-cover mb-4 mt-6 rounded-lg mx-auto" src="/images/simbg.png" alt="SIMBG">
+                <a href="https://simbg.pu.go.id/" target="_blank" class="bg-white p-4 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <div class="icon-wrap h-32 md:h-40 flex items-center justify-center mb-3">
+                        <img class="max-w-[120px] md:max-w-[160px] h-auto object-contain" src="/images/simbg.png" alt="SIMBG">
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">SIMBG</h3>
-                    <p class="text-gray-600 text-justify">Sistem Informasi Manajemen Bangunan Gedung yang selanjutnya disingkat SIMBG adalah sistem elektronik berbasis web yang digunakan untuk melaksanakan proses penyelenggaraan PBG, SLF, SBKBG, RTB, dan Pendataan Bangunan Gedung disertai dengan informasi terkait penyelenggaraan bangunan gedung.</p>
+                    <h3 class="text-base md:text-lg font-semibold mb-2">SIMBG</h3>
+                    <p class="text-gray-600 text-sm text-justify flex-grow">Sistem Informasi Manajemen Bangunan Gedung yang selanjutnya disingkat SIMBG adalah sistem elektronik berbasis web yang digunakan untuk melaksanakan proses penyelenggaraan PBG, SLF, SBKBG, RTB, dan Pendataan Bangunan Gedung disertai dengan informasi terkait penyelenggaraan bangunan gedung.</p>
                 </a>
-                <a href="{{ route('home-survey') }}" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300">
-                    <div class="icon-wrap">
-                        <img class="w-32 h-32 object-cover mb-4 rounded-lg mx-auto" src="/images/ikm.png" alt="IKM">
+                <a href="{{ route('home-survey') }}" target="_blank" class="bg-white p-4 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <div class="icon-wrap h-32 md:h-40 flex items-center justify-center mb-3">
+                        <img class="max-w-[120px] md:max-w-[160px] h-auto object-contain" src="/images/ikm.png" alt="IKM">
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">SKM</h3>
-                    <p class="text-gray-600 text-justify">Survei Kepuasan Masyarakat (SKM) adalah layanan yang dirancang untuk mengukur tingkat kepuasan masyarakat terhadap pelayanan yang diberikan oleh instansi pemerintah, guna meningkatkan kualitas layanan secara berkelanjutan.</p>
+                    <h3 class="text-base md:text-lg font-semibold mb-2">SKM</h3>
+                    <p class="text-gray-600 text-sm text-justify flex-grow">Survei Kepuasan Masyarakat (SKM) adalah layanan yang dirancang untuk mengukur tingkat kepuasan masyarakat terhadap pelayanan yang diberikan oleh instansi pemerintah, guna meningkatkan kualitas layanan secara berkelanjutan.</p>
                 </a>
-                <a href="https://nonperizinan.web.dpmptsp.padang.go.id/sinopen" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300">
-                    <div class="icon-wrap">
-                        <img class="w-32 h-32 object-cover mb-4 rounded-lg mx-auto" src="/images/sinopen.png" alt="IKM">
+                <a href="https://nonperizinan.web.dpmptsp.padang.go.id/sinopen" target="_blank" class="bg-white p-4 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <div class="icon-wrap h-32 md:h-40 flex items-center justify-center mb-3">
+                        <img class="max-w-[120px] md:max-w-[160px] h-auto object-contain" src="/images/sinopen.png" alt="IKM">
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">SINOPEN</h3>
-                    <p class="text-gray-600 text-justify">Sistem Informasi Non Perizinan dan Perizinan Non OSS, dengan aplikasi SINOPEN yang dapat diakses oleh seluruh pemohon dan petugas di Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu dengan mudah tidak terbatas ruang dan waktu bisa di akses kapan pun dan dimana saja.</p>
+                    <h3 class="text-base md:text-lg font-semibold mb-2">SINOPEN</h3>
+                    <p class="text-gray-600 text-sm text-justify flex-grow">Sistem Informasi Non Perizinan dan Perizinan Non OSS, dengan aplikasi SINOPEN yang dapat diakses oleh seluruh pemohon dan petugas di Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu dengan mudah tidak terbatas ruang dan waktu bisa di akses kapan pun dan dimana saja.</p>
                 </a>
             </div>
         </div>
@@ -387,31 +424,81 @@
         </div>
     </section>
 
-    <section class="py-16 bg-white">
-        <div class="bg-gray-50 py-12">
+    <section class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-24">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Berita Terkini
+                </h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+            </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
+                @foreach($latestNews as $news)
+                    <a href="{{ route('detail-berita', $news->slug) }}" class="news-card bg-white rounded-xl shadow-sm overflow-hidden group">
+                        <div class="image-wrapper relative h-48">
+                            <img 
+                                src="{{ asset('storage/' . $news->pictures->first()->nama_file) }}"
+                                alt="{{ $news->judul }}"
+                                class="w-full h-full object-cover"
+                            />
+                            <div class="news-date absolute top-4 right-4 px-3 py-1 rounded-full text-white text-sm">
+                                {{ $news->created_at->format('d M Y') }}
+                            </div>
+                        </div>
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-3 group-hover:text-red-600 transition-colors duration-300">
+                                {{ $news->judul }}
+                            </h3>
+                            <p class="text-gray-600 text-sm truncate-3-lines mb-4">
+                                {{ $news->konten }}
+                            </p>
+                            <div class="flex items-center text-red-600 text-sm font-medium">
+                                Baca selengkapnya
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+    
+            <div class="text-center">
+                <a href="{{ route('berita') }}" 
+                   class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-red-600 border border-transparent rounded-lg shadow-sm hover:bg-red-700 transition-colors duration-300">
+                    Baca Berita Lainnya
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-8 md:py-12 bg-white">
+        <div class="bg-gray-50 py-6 md:py-8">
             <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                <div class="text-center mb-6 md:mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                         Galeri
                     </h2>
                     <div class="w-20 h-1 bg-red-600 mx-auto"></div>
                 </div>
-                <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
-                @foreach ($gallery as $picture)
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    @foreach ($gallery as $picture)
                     <div class="group relative overflow-hidden rounded-xl shadow-lg">
-                        <img
-                            src="{{ asset('storage/' . $picture->nama_file) }}"
-                            alt="{{ $picture->caption ?? 'Gallery Image' }}"
-                            class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                        >
+                        <div class="aspect-[4/3] w-full">
+                            <img
+                                src="{{ asset('storage/' . $picture->nama_file) }}"
+                                alt="{{ $picture->caption ?? 'Gallery Image' }}"
+                                class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500"
+                            />
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         </div>
                     </div>
-                @endforeach
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -108,12 +108,18 @@
                         <div class="relative cursor-pointer" onclick="openVideoModal('{{ $video->url }}', '{{ $video->judul }}')">
                             @php
                                 $videoId = '';
-                                if (strpos($video->url, 'youtube.com') !== false) {
+                                $thumbnailUrl = '';
+
+                                if (strpos($video->url, 'youtube.com/shorts') !== false) {
+                                    $videoId = explode('/shorts/', $video->url)[1];
+                                    $videoId = explode('?', $videoId)[0]; 
+                                } elseif (strpos($video->url, 'youtube.com') !== false) {
                                     parse_str(parse_url($video->url, PHP_URL_QUERY), $params);
                                     $videoId = $params['v'] ?? '';
                                 } elseif (strpos($video->url, 'youtu.be') !== false) {
                                     $videoId = substr(parse_url($video->url, PHP_URL_PATH), 1);
                                 }
+
                                 $thumbnailUrl = "https://img.youtube.com/vi/{$videoId}/maxresdefault.jpg";
                             @endphp
                             <img src="{{ $thumbnailUrl }}"
@@ -201,21 +207,29 @@
 
 @push('scripts')
 <script>
+    function getYouTubeVideoId(url) {
+        let videoId = '';
+        
+        if (url.includes('youtube.com/shorts')) {
+            videoId = url.split('/shorts/')[1].split('?')[0];
+        } else if (url.includes('youtube.com')) {
+            const urlParams = new URLSearchParams(new URL(url).search);
+            videoId = urlParams.get('v');
+        } else if (url.includes('youtu.be')) {
+            videoId = url.split('/').pop().split('?')[0];
+        }
+        
+        return videoId;
+    }
+
     function openVideoModal(url, title) {
         const modal = document.getElementById('videoModal');
         const videoFrame = document.getElementById('videoFrame');
         const videoTitle = document.getElementById('videoTitle');
-
-        let videoId = '';
-        if (url.includes('youtube.com')) {
-            const urlParams = new URLSearchParams(new URL(url).search);
-            videoId = urlParams.get('v');
-        } else if (url.includes('youtu.be')) {
-            videoId = url.split('/').pop();
-        }
-
+        
+        const videoId = getYouTubeVideoId(url);
         const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-
+        
         videoFrame.src = embedUrl;
         videoTitle.textContent = title;
         modal.classList.remove('hidden');

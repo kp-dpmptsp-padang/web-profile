@@ -28,10 +28,10 @@ public function store(Request $request)
           'konten' => 'required|string',
           'tags' => 'array',
           'tags.*' => 'exists:tags,id',
+          'link' => 'nullable|url',
           'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
      ]);
 
-     // Ambil type dari input form, bukan dari query parameter
      $type = $request->input('type', 'berita');
 
      try {
@@ -39,16 +39,15 @@ public function store(Request $request)
                 'id_penulis' => Auth::id(),
                 'judul' => $request->judul,
                 'konten' => $request->konten,
-                'jenis' => $type, // Gunakan type yang diambil dari form
+                'jenis' => $type,
                 'slug' => Str::slug($request->judul),
+                'link' => $request->link,
           ]);
 
-          // Handle tags
           if ($request->has('tags')) {
                 $post->tags()->sync($request->tags);
           }
 
-          // Handle images
           if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $image) {
                     Log::info('File type: ' . $image->getMimeType());
@@ -84,47 +83,42 @@ public function store(Request $request)
                'konten' => 'required|string',
                'tags' => 'array',
                'tags.*' => 'exists:tags,id',
+                'link' => 'nullable|url',
                'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
            ]);
 
-           // Gunakan jenis yang sudah ada di post
            $post->update([
                'judul' => $request->judul,
                'konten' => $request->konten,
                'slug' => Str::slug($request->judul),
-               'jenis' => $post->jenis
+               'jenis' => $post->jenis,
+               'link' => $request->link,
            ]);
 
-           // Handle tags
            if ($request->has('tags')) {
                $post->tags()->sync($request->tags);
            } else {
                $post->tags()->detach();
            }
 
-           // Handle deleted images
            if ($request->has('deleted_images')) {
                foreach ($request->deleted_images as $imageId) {
                    $picture = $post->pictures()->find($imageId);
                    if ($picture) {
-                       // Hapus file fisik
                        if (Storage::disk('public')->exists($picture->nama_file)) {
                            Storage::disk('public')->delete($picture->nama_file);
                        }
                        
-                       // Hapus thumbnail jika ada
                        $thumbnailPath = 'thumbnails/' . basename($picture->nama_file);
                        if (Storage::disk('public')->exists($thumbnailPath)) {
                            Storage::disk('public')->delete($thumbnailPath);
                        }
                        
-                       // Hapus record dari database
                        $picture->delete();
                    }
                }
            }
 
-           // Handle new images
            if ($request->hasFile('images')) {
                foreach ($request->file('images') as $image) {
                    $path = $image->store('images', 'public');
@@ -150,24 +144,19 @@ public function store(Request $request)
            $post = Post::findOrFail($id);
            $type = $post->jenis;
 
-           // Delete associated pictures
            foreach ($post->pictures as $picture) {
-               // Hapus file fisik
                if (Storage::disk('public')->exists($picture->nama_file)) {
                    Storage::disk('public')->delete($picture->nama_file);
                }
                
-               // Hapus thumbnail jika ada
                $thumbnailPath = 'thumbnails/' . basename($picture->nama_file);
                if (Storage::disk('public')->exists($thumbnailPath)) {
                    Storage::disk('public')->delete($thumbnailPath);
                }
                
-               // Hapus record dari database
                $picture->delete();
            }
 
-           // Delete the post
            $post->delete();
 
            return redirect()->route('posts.index', ['type' => $type])
