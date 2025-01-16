@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Fasilitas | DPMPTSP Kota Padang')
+@section('title', 'Galeri | DPMPTSP Kota Padang')
 
 @section('content')
 <style>
@@ -55,7 +55,7 @@
              style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/swiper/4.jpg')">
         </div>
         <h1 class="text-6xl text-white uppercase font-bold relative z-10 tracking-wider fade-in-scale">
-            Fasilitas Kami
+            Galeri
             <div class="h-1 w-24 bg-red-500 mx-auto mt-4 rounded-full"></div>
         </h1>
     </div>
@@ -63,44 +63,43 @@
     <section class="bg-gray-50/80 px-10 relative backdrop-blur-sm">
         <div class="container mx-auto py-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-24">
-                @forelse($facilities as $facility)
+                @forelse($pictures as $picture)
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group fade-in-scale">
                         <div class="relative">
-                            @if($facility->pictures->isNotEmpty())
-                                <div 
-                                    class="cursor-pointer"
-                                    onclick="showImage('{{ asset('storage/' . $facility->pictures->first()->nama_file) }}', '{{ $facility->nama }}')"
+                            <div 
+                                class="cursor-pointer"
+                                onclick="showImage('{{ asset('storage/' . $picture->nama_file) }}', '{{ $picture->caption }}')"
+                            >
+                                <img 
+                                    src="{{ asset('storage/' . $picture->nama_file) }}"
+                                    alt="{{ $picture->alt_text }}"
+                                    class="w-full h-48 object-cover transition-all duration-500 group-hover:scale-105"
                                 >
-                                    <img 
-                                        src="{{ asset('storage/' . $facility->pictures->first()->nama_file) }}"
-                                        alt="{{ $facility->pictures->first()->alt_text }}"
-                                        class="w-full h-48 object-cover transition-all duration-500 group-hover:scale-105"
-                                    >
-                                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                        <span class="text-white text-lg font-medium">Lihat Detail</span>
-                                    </div>
+                                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="text-white text-lg font-medium">Lihat Detail</span>
                                 </div>
-                            @endif
+                            </div>
                             <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-red-600 rounded-xl -z-10 transition-all duration-300 group-hover:-bottom-6 group-hover:-right-6 group-hover:rotate-6"></div>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2 group-hover:text-red-600 transition-colors duration-300">
-                                {{ $facility->nama }}
-                            </h3>
                             <p class="text-gray-600 mb-4">
-                                {{ $facility->deskripsi }}
+                                {{ $picture->caption }}
                             </p>
                         </div>
                     </div>
-                    @empty
+                @empty
                     <div class="col-span-3 text-center py-12">
-                        <p class="text-gray-500 text-lg">Tidak ada berita yang tersedia saat ini.</p>
+                        <p class="text-gray-500 text-lg">Tidak ada foto yang tersedia saat ini.</p>
                     </div>
                 @endforelse
+            </div>
+            <div class="mt-8">
+                {{ $pictures->links() }}
             </div>
         </div>
     </section>
 </div>
+
 <div id="imageModal" class="fixed inset-0 z-50 hidden">
     <div class="absolute inset-0 bg-black/75 backdrop-blur-sm" id="modalBackground"></div>
     <div class="relative min-h-screen flex items-center justify-center p-10">
