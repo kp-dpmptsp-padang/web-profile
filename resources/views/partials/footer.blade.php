@@ -48,6 +48,14 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('about') }}" class="text-gray-600 hover:text-red-500 transition-colors flex items-center gap-2 group">
+                                <span class="bg-red-50 p-1.5 rounded group-hover:bg-red-100 transition-colors">
+                                    <i class="fas fa-info-circle text-orange-500 text-sm"></i>
+                                </span>
+                                <span>Tentang</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('layanan') }}" class="text-gray-600 hover:text-violet-500 transition-colors flex items-center gap-2 group">
                                 <span class="bg-violet-50 p-1.5 rounded group-hover:bg-violet-100 transition-colors">
                                     <i class="fas fa-handshake text-violet-500 text-sm"></i>
@@ -145,6 +153,14 @@
                                     <i class="fas fa-play text-purple-500 text-sm"></i>
                                 </span>
                                 <span>Video</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('faq') }}" class="text-gray-600 hover:text-purple-500 transition-colors flex items-center gap-2 group">
+                                <span class="bg-purple-50 p-1.5 rounded group-hover:bg-purple-100 transition-colors">
+                                    <i class="fas fa-question-circle text-red-500 text-sm"></i>
+                                </span>
+                                <span>FAQ</span>
                             </a>
                         </li>
                     </ul>

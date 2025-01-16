@@ -11,7 +11,7 @@ class UserController extends Controller
     // Display a listing of the resource.
     public function index()
     {
-        $users = User::where('role', 'admin')->get();
+        $users = User::where('role', 'admin')->latest()->paginate(10);
         return view('super-admin.users.index', compact('users'));
     }
 
