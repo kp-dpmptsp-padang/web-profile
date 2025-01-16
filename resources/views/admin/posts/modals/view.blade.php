@@ -3,7 +3,6 @@
     <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity" data-modal-hide="viewPostModal-{{ $post->id }}"></div>
     <div class="relative p-4 w-full max-w-5xl mx-auto my-auto">
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-800 max-h-[90vh] overflow-y-auto">
-            <!-- Modal header - Fixed position -->
             <div class="sticky top-0 z-10 bg-white dark:bg-gray-800 px-6 py-4 border-b dark:border-gray-600">
                 <div class="flex justify-between items-center">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white flex items-center">
@@ -21,11 +20,8 @@
                 </div>
             </div>
 
-            <!-- Modal body -->
             <div class="p-6 space-y-6">
-                <!-- Main Content -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Left Column - Images -->
                     <div class="md:col-span-1">
                         @if($post->pictures && $post->pictures->count() > 0)
                             <div class="space-y-4">
@@ -47,10 +43,7 @@
                             </div>
                         @endif
                     </div>
-
-                    <!-- Right Column - Details -->
                     <div class="md:col-span-2 space-y-6">
-                        <!-- Header Info -->
                         <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 flex justify-between items-start">
                             <div>
                                 <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{{ $post->judul }}</h4>
@@ -70,8 +63,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Content -->
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Konten</label>
                             <div class="bg-gray-50 border border-gray-300 rounded-lg p-4 dark:bg-gray-700 dark:border-gray-600">
@@ -79,7 +70,19 @@
                             </div>
                         </div>
 
-                        <!-- Tags -->
+                        @if($post->link)
+                        <div>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link Sumber</label>
+                            <div class="bg-gray-50 border border-gray-300 rounded-lg overflow-hidden dark:bg-gray-700 dark:border-gray-600">
+                                <a href="{{ $post->link }}" 
+                                target="_blank" 
+                                class="block p-4 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-300">
+                                    <p class="text-red-600 dark:text-red-400">{{ $post->link }}</p>
+                                </a>
+                            </div>
+                        </div>
+                        @endif
+
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tags</label>
                             <div class="flex flex-wrap gap-2">
@@ -92,8 +95,6 @@
                                 @endforelse
                             </div>
                         </div>
-
-                        <!-- Additional Info -->
                         <div class="grid grid-cols-2 gap-4 pt-4 border-t dark:border-gray-600">
                             <div>
                                 <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Created At</label>
@@ -108,7 +109,6 @@
                 </div>
             </div>
 
-            <!-- Modal footer -->
             <div class="sticky bottom-0 bg-white dark:bg-gray-800 px-6 py-4 border-t border-gray-200 dark:border-gray-600">
                 <div class="flex justify-end">
                     <button type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600" data-modal-toggle="viewPostModal-{{ $post->id }}">

@@ -40,6 +40,11 @@
                         <textarea name="konten" id="konten" rows="6" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500" placeholder="Tulis konten postingan..." required></textarea>
                     </div>
 
+                    <div>
+                        <label for="link" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link Sumber</label>
+                        <input type="text" name="link" id="link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500" placeholder="Masukkan link sumber jika ada..." required>
+                    </div>
+
                     <!-- Tags -->
                     <div>
                         <div class="flex justify-between items-center mb-2">

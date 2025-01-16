@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('konten');
             $table->enum('jenis', ['berita', 'informasi']);
             $table->string('slug');
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

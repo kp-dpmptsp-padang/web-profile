@@ -36,7 +36,27 @@
                         <p class="text-gray-600 leading-relaxed mb-4 text-justify">
                             {{ $post->konten }}
                         </p>
+                    
+                        @if($post->link)
+                            <div class="flex justify-end mb-4">
+                                <a href="{{ $post->link }}" 
+                                   target="_blank" 
+                                   class="inline-flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors duration-300 group">
+                                    <span class="font-semibold">Baca Selengkapnya Disini</span>
+                                    <svg class="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1" 
+                                         fill="none" 
+                                         stroke="currentColor" 
+                                         viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" 
+                                              stroke-linejoin="round" 
+                                              stroke-width="2" 
+                                              d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        @endif
                     </div>
+                    
                     <div class="flex flex-wrap gap-2 mt-4">
                         @foreach ($post->tags as $tag)
                             <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full">{{ $tag->tag }}</span>

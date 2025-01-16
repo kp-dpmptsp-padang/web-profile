@@ -15,6 +15,7 @@ class Post extends Model
         'konten',
         'jenis',
         'slug',
+        'link',
     ];
 
     public function penulis()

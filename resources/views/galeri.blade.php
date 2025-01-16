@@ -66,14 +66,13 @@
                 @forelse($pictures as $picture)
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group fade-in-scale">
                         <div class="relative">
-                            <div 
-                                class="cursor-pointer"
+                            <div class="cursor-pointer aspect-[4/3] overflow-hidden"
                                 onclick="showImage('{{ asset('storage/' . $picture->nama_file) }}', '{{ $picture->caption }}')"
                             >
                                 <img 
                                     src="{{ asset('storage/' . $picture->nama_file) }}"
                                     alt="{{ $picture->alt_text }}"
-                                    class="w-full h-48 object-cover transition-all duration-500 group-hover:scale-105"
+                                    class="w-full h-full object-contain transition-all duration-500 group-hover:scale-105"
                                 >
                                 <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                     <span class="text-white text-lg font-medium">Lihat Detail</span>
