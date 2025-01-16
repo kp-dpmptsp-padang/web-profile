@@ -13,6 +13,7 @@ use App\Models\SurveyQuestion;
 use App\Models\Document;
 use App\Models\DocumentType;
 use App\Models\Employee;
+use App\Models\Inovation;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -25,6 +26,8 @@ class GuestController extends Controller
         $sliders = Slider::with(['pictures' => function($query) {
             $query->orderBy('urutan', 'asc');
         }])->where('is_active', 1)->get();
+
+        $innovations = Inovation::where('is_published', 1)->get();
 
         $surveyResults = SurveyQuestion::with(['options', 'answers'])
         ->where('is_active', 1)
@@ -65,7 +68,7 @@ class GuestController extends Controller
             $keteranganScore = 'Sangat Kurang';
         }
 
-        return view('home', compact('sliders', 'gallery', 'surveyResults', 'overallPercentage', 'overallScore', 'keteranganScore'));
+        return view('home', compact('sliders', 'gallery', 'surveyResults', 'overallPercentage', 'overallScore', 'keteranganScore', 'innovations'));
     }
 
     public function about()
@@ -232,5 +235,11 @@ class GuestController extends Controller
         $videos = $query->latest()->paginate(9);
         
         return view('video', compact('videos'));
+    }
+
+    public function galeri()
+    {
+        $pictures = Picture::where('imageable_type', 'gallery')->latest()->paginate(9);
+        return view('galeri', compact('pictures'));
     }
 }

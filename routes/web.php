@@ -125,6 +125,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/berita/detail/{slug}', [GuestController::class, 'detailInfo'])->name('detail-berita');
     Route::get('/berita', [GuestController::class, 'berita'])->name('berita');
     Route::get('/dokumen', [GuestController::class, 'dokumen'])->name('dokumen');
+    Route::get('/galeri', [GuestController::class, 'galeri'])->name('galeri');
     Route::get('/pertanyaan', [GuestController::class, 'faq'])->name('faq');
     Route::post('/question', [GuestController::class, 'storeQuestion'])->name('questions.store');
 

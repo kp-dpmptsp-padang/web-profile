@@ -97,7 +97,6 @@
 
 <div class="px-24 pt-16 overflow-hidden relative">
     <div class="fixed inset-0 pointer-events-none">
-        <div class="absolute top-0 left-0 w-full h-full dot-pattern opacity-30"></div>
         <div class="absolute top-20 left-20 w-32 h-32 bg-red-100 rounded-full floating-shape opacity-20" style="animation-delay: 0s;"></div>
         <div class="absolute top-40 right-40 w-24 h-24 bg-gray-200 rounded-full floating-shape opacity-30" style="animation-delay: 1s;"></div>
         <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-red-50 rounded-full floating-shape opacity-25" style="animation-delay: 2s;"></div>
@@ -240,8 +239,8 @@
         </div>
     </section>
 
-    <section class="py-10 bg-gray-50 p-6">
-        <div class="container mx-auto px-4">
+    <section class="py-10 bg-gray-50 p-6 my-32">
+        <div class="container mx-auto px-24">
             <h2 class="text-3xl font-bold text-center mb-12">Layanan Perizinan</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <a href="https://oss.go.id/" target="_blank" class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300" 
@@ -277,7 +276,34 @@
         </div>
     </section>
 
-    <section class="py-10 bg-white">
+    <section class="py-10 bg-gray-50 p-6 my-32">
+        <div class="container mx-auto px-24">
+            <h2 class="text-3xl font-bold text-center mb-12">Inovasi Pelayanan</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                @forelse($innovations as $innovation)
+                    <a href="{{ $innovation->url }}" target="_blank" 
+                       class="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition duration-300 flex items-center gap-4">
+                        <figure class="avatar" style="border-radius: 0px; width: 64px;">
+                            @if($innovation->pictures->isNotEmpty())
+                                <img src="{{ asset('storage/' . $innovation->pictures->first()->nama_file) }}" 
+                                     alt="{{ $innovation->nama }}" class="w-full h-full object-contain">
+                            @endif
+                        </figure>
+                        <div class="testimonial-info">
+                            <h5 data-asw-orgfontsize="18" style="font-size: 18px; margin-bottom: 4px;">{{ $innovation->nama }}</h5>
+                            <h6 class="font-weight-normal text-red-600" data-asw-orgfontsize="16" style="font-size: 16px;">{{ $innovation->deskripsi }}</h6>
+                        </div>
+                    </a>
+                @empty
+                    <div class="col-span-2 text-center py-8">
+                        <p class="text-gray-500">Tidak ada inovasi yang tersedia</p>
+                    </div>
+                @endforelse
+            </div>
+        </div>
+    </section>
+
+    <section class="py-10 bg-white my-32">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Indeks Kepuasan Masyarakat</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -300,8 +326,9 @@
                         <div class="mt-6"> 
                             <div class="w-full bg-gray-200 rounded-full h-4"> 
                                 <div
-                                    class="bg-red-600 h-4 rounded-full transition-all duration-500 ease-out"
-                                    style="width: {{ $overallPercentage }}%"
+                                    class="bg-red-600 h-4 rounded-full transition-all duration-500 ease-out progress-bar"
+                                    data-width="{{ $overallPercentage }}%"
+                                    style="width: 0"
                                 ></div>
                             </div>
                         </div>
@@ -319,8 +346,9 @@
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2.5">
                                 <div
-                                    class="bg-red-600 h-2.5 rounded-full transition-all duration-500 ease-out"
-                                    style="width: {{ ($item['score'] / 4) * 100 }}%"
+                                    class="bg-red-600 h-2.5 rounded-full transition-all duration-500 ease-out progress-bar"
+                                    data-width="{{ ($item['score'] / 4) * 100 }}%"
+                                    style="width: 0"
                                 ></div>
                             </div>
                         </div>
@@ -330,7 +358,7 @@
                 <div class="hidden md:block bg-gradient-to-br from-red-50 to-white rounded-lg shadow-lg">
                     <div class="h-full min-h-[300px] w-full flex items-center justify-center">
                         <img 
-                            src="{{ asset('images/skm2.png') }}" 
+                            src="{{ asset('images/skm3.png') }}" 
                             alt="Deskripsi gambar"
                             class="object-cover rounded-lg w-full h-full"
                         />
@@ -354,9 +382,9 @@
                 <p class="text-gray-600 mt-4 text-sm">Bantu kami meningkatkan layanan dengan mengisi survei</p>
             </div>
         </div>
-     </section>
+    </section>
 
-    <section class="py-10 bg-white">
+    <section class="py-16 bg-white">
         <div class="bg-gray-50 py-12">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
@@ -391,6 +419,24 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        const progressBars = document.querySelectorAll('.progress-bar');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target;
+                    progressBar.style.width = progressBar.getAttribute('data-width');
+                    observer.unobserve(progressBar);
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        progressBars.forEach(progressBar => {
+            observer.observe(progressBar);
+        });
+
         const surveyData = @json($surveyResults);
     
         new Chart(document.getElementById('surveyChart'), {
