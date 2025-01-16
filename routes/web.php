@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
@@ -18,9 +19,10 @@ use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 // Authenticated
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+});
+
 
 // Super Admin
 Route::middleware(['auth', 'role:super-admin'])->group(function () {
