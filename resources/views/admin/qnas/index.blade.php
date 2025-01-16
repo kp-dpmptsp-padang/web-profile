@@ -3,6 +3,7 @@
 @section('app')
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+        <!-- Header Section -->
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
             <div class="mb-4 md:mb-0">
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Manajemen Pertanyaan</h2>
@@ -10,6 +11,7 @@
             </div>
         </div>
 
+        <!-- Tabs Container -->
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
             <div class="border-b border-gray-200 dark:border-gray-700">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
@@ -44,7 +46,9 @@
                 </ul>
             </div>
 
+            <!-- Tab Contents -->
             <div id="tabContents">
+                <!-- Belum Terjawab Tab -->
                 <div class="block p-4" id="belum-terjawab" role="tabpanel" aria-labelledby="belum-terjawab-tab">
                     <div class="relative overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -100,6 +104,7 @@
                     </div>
                 </div>
 
+                <!-- Terjawab Tab -->
                 <div class="hidden p-4" id="terjawab" role="tabpanel" aria-labelledby="terjawab-tab">
                     <div class="relative overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -123,10 +128,10 @@
                                     <td class="px-6 py-4">{{ $question->jawaban }}</td>
                                     <td class="px-6 py-4 text-center">
                                         <button type="button" 
-                                                data-modal-target="editAnswerModal-{{ $question->id }}" 
-                                                data-modal-toggle="editAnswerModal-{{ $question->id }}" 
+                                                data-modal-target="detailQuestionModal-{{ $question->id }}" 
+                                                data-modal-toggle="detailQuestionModal-{{ $question->id }}" 
                                                 class="font-medium text-yellow-600 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300">
-                                            Ubah Jawaban
+                                            Detail
                                         </button>
                                     </td>
                                 </tr>
@@ -156,7 +161,7 @@
 </section>
 
 @include('admin.qnas.modals.answer', ['questions' => $belumTerjawab])
-@include('admin.qnas.modals.edit', ['questions' => $terjawab])
+@include('admin.qnas.modals.detail', ['questions' => $terjawab])
 @include('admin.qnas.modals.ignore', ['questions' => $belumTerjawab])
 
 @push('scripts')
