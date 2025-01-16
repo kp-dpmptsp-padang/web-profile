@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\QuestionAndAnswer;
+use App\Mail\AnsweredQuestionMail;
 use Illuminate\Support\Facades\Mail;
 
 class QnAController extends Controller
@@ -20,6 +21,9 @@ class QnAController extends Controller
         $question->jawaban = $request->input('jawaban');
         $question->status = 'terjawab';
         $question->save();
+
+        // Send email to the guest
+        Mail::to($question->email_penanya)->send(new AnsweredQuestionMail($question));
 
         return redirect()->route('qna.index')->with('success', 'Pertanyaan berhasil dijawab.');
     }
