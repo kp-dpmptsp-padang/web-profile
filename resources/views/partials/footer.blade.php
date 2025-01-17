@@ -16,7 +16,7 @@
                         <span class="bg-red-50 p-2 rounded-lg group-hover:bg-red-100 transition-colors">
                             <i class="fas fa-location-dot text-red-500"></i>
                         </span>
-                        <span>Jalan Sudirman No. 1, Padang</span>
+                        <span>Jalan Jenderal Sudirman No. 1, Padang</span>
                     </a>
                     <a href="tel:0751890719" 
                        class="flex items-center gap-3 text-gray-600 hover:text-emerald-500 transition-colors group">

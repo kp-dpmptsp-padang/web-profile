@@ -13,6 +13,7 @@ use App\Models\Video;
 use App\Models\Inovation;
 use App\Models\Facility;
 use App\Models\Employee;
+use App\Models\SurveyResponse;
 
 class AdminController extends Controller
 {
@@ -29,7 +30,12 @@ class AdminController extends Controller
         $totalDocuments = Document::count();
         $totalFacilities = Facility::count();
         $totalEmployees = Employee::count();
+        $suggestions = SurveyResponse::whereNotNull('saran')
+        ->where('saran', '!=', '')
+        ->latest()
+        ->select('saran', 'created_at')
+        ->get();
 
-        return view('admin.dashboard', compact('totalBerita', 'totalInformasi', 'totalSliders', 'totalGalleries', 'totalVideos', 'totalUnansweredQuestions', 'totalAnsweredQuestions', 'totalInovations', 'totalDocuments', 'totalFacilities', 'totalEmployees'));
+        return view('admin.dashboard', compact('totalBerita', 'totalInformasi', 'totalSliders', 'totalGalleries', 'totalVideos', 'totalUnansweredQuestions', 'totalAnsweredQuestions', 'totalInovations', 'totalDocuments', 'totalFacilities', 'totalEmployees', 'suggestions'));
     }
 }

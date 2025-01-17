@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Halaman Tidak Ditemukan | DPMPTSP</title>
+    <link rel="icon" href="https://web.dpmptsp.padang.go.id/assets/Logo_Padang.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @keyframes float {
@@ -50,15 +51,14 @@
             </p>
             
             <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="/" 
+                <a href="javascript:history.back()" 
                    class="inline-block bg-red-600 text-white px-8 py-4 rounded-lg shadow-lg font-semibold 
                           transition-all duration-300 hover:bg-red-700 hover:shadow-xl hover:-translate-y-1
                           relative overflow-hidden group">
-                    <span class="relative z-10">Kembali ke Beranda</span>
+                    <span class="relative z-10">Kembali</span>
                     <div class="absolute inset-0 w-0 bg-red-700 transition-all duration-300 ease-out group-hover:w-full"></div>
                 </a>
-                
-                <a href="/contact" 
+                <a href="https://wa.me/6281374078088" target="_blank"
                    class="inline-block bg-white text-red-600 px-8 py-4 rounded-lg shadow-lg font-semibold 
                           border-2 border-red-600 transition-all duration-300 hover:bg-red-50 
                           hover:shadow-xl hover:-translate-y-1">

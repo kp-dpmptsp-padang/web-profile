@@ -186,5 +186,39 @@
             </div>
         </div>
     </div>
+        <!-- Suggestions Section -->
+    <div class="mt-8">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Saran Masuk</h3>
+                    <span class="p-2 bg-cyan-100 rounded-lg">
+                        <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                        </svg>
+                    </span>
+                </div>
+
+                <div class="overflow-y-auto max-h-96 pr-2 space-y-3">
+                    @forelse($suggestions as $suggestion)
+                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 transition-all hover:bg-gray-100 dark:hover:bg-gray-600">
+                            <div class="flex flex-col">
+                                <p class="text-sm text-gray-700 dark:text-gray-300">
+                                    {{ $suggestion->saran }}
+                                </p>
+                                <span class="text-xs text-gray-400 dark:text-gray-500 mt-2 self-end">
+                                    {{ $suggestion->created_at->format('d M Y, H:i') }}
+                                </span>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="text-center py-4">
+                            <p class="text-gray-500 dark:text-gray-400">Belum ada saran yang diberikan</p>
+                        </div>
+                    @endforelse
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 @endsection

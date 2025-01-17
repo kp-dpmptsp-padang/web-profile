@@ -55,7 +55,7 @@
              style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/swiper/4.jpg')">
         </div>
         <h1 class="text-6xl text-white uppercase font-bold relative z-10 tracking-wider fade-in-scale">
-            Fasilitas Kami
+            Fasilitas
             <div class="h-1 w-24 bg-red-500 mx-auto mt-4 rounded-full"></div>
         </h1>
     </div>
