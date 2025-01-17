@@ -139,7 +139,7 @@
                                 {{ $post->judul }}
                             </h3>
                             <p class="text-gray-600 mb-4 line-clamp-2">
-                                {!! Str::limit(strip_tags($post->konten), 150) !!}
+                                {{ $post->konten }}
                             </p>
                             <div class="mb-4 flex flex-wrap gap-2">
                                 @foreach($post->tags as $tag)

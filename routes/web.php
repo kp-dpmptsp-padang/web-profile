@@ -18,12 +18,6 @@ use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
-// Authenticated
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-});
-
-
 // Super Admin
 Route::middleware(['auth', 'role:super-admin'])->group(function () {
     
@@ -36,7 +30,7 @@ Route::middleware(['auth', 'role:super-admin'])->group(function () {
 
 // Admin
 Route::middleware('auth')->group(function () {
-
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     // Profiles
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -20,6 +20,8 @@ class SurveyResponseSeeder extends Seeder
                 'pekerjaan' => 'Pelajar',
                 'layanan' => 'NIB',
                 'saran' => 'Pelayanan sudah baik, namun waktu tunggu masih bisa dipercepat',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'noHp' => '082345678901',
@@ -31,6 +33,8 @@ class SurveyResponseSeeder extends Seeder
                 'pekerjaan' => 'Swasta',
                 'layanan' => 'NIB + Sertifikat Standar',
                 'saran' => 'Mohon ditambah loket pelayanan',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'noHp' => '083456789012',
@@ -42,6 +46,8 @@ class SurveyResponseSeeder extends Seeder
                 'pekerjaan' => 'PNS',
                 'layanan' => 'Izin + Sertifikat Standar',
                 'saran' => 'Semua sudah sangat baik',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'noHp' => '084567890123',
@@ -53,6 +59,8 @@ class SurveyResponseSeeder extends Seeder
                 'pekerjaan' => 'PNS',
                 'layanan' => 'Laporan Kegiatan Penanam Modal',
                 'saran' => 'Tingkatkan kecepatan pelayanan',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'noHp' => '085678901234',
@@ -64,6 +72,8 @@ class SurveyResponseSeeder extends Seeder
                 'pekerjaan' => 'TNI/POLRI',
                 'layanan' => 'Pengambilan Hasil',
                 'saran' => 'Ruang tunggu perlu diperluas',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'noHp' => '086789012345',
@@ -75,6 +85,8 @@ class SurveyResponseSeeder extends Seeder
                 'pekerjaan' => 'PNS',
                 'layanan' => 'Izin Lainnya',
                 'saran' => 'Pelayanan sudah memuaskan',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'noHp' => '087890123456',
@@ -86,6 +98,8 @@ class SurveyResponseSeeder extends Seeder
                 'pekerjaan' => 'PNS',
                 'layanan' => 'Izin + Sertifikat Standar',
                 'saran' => 'Sistem antrian perlu diperbaiki',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'noHp' => '088901234567',
@@ -97,6 +111,8 @@ class SurveyResponseSeeder extends Seeder
                 'pekerjaan' => 'Lainnya',
                 'layanan' => 'Laporan Kegiatan Penanam Modal',
                 'saran' => 'Pertahankan kualitas pelayanan',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'noHp' => '089012345678',
@@ -108,6 +124,8 @@ class SurveyResponseSeeder extends Seeder
                 'pekerjaan' => 'Swasta',
                 'layanan' => 'NIB + Sertifikat Standar',
                 'saran' => 'Waktu pelayanan sudah cukup baik',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'noHp' => '089123456789',
@@ -119,6 +137,8 @@ class SurveyResponseSeeder extends Seeder
                 'pekerjaan' => 'Wiraswasta',
                 'layanan' => 'NIB',
                 'saran' => 'Tingkatkan keramahan petugas',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ];
 
