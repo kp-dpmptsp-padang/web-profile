@@ -67,7 +67,7 @@
         </h1>
     </div>
 
-    <section class="bg-gray-50/80 px-10 relative backdrop-blur-sm">
+    <section class="bg-white/80 px-10 relative backdrop-blur-sm">
         <div class="container mx-auto py-12">
             <div class="max-w-4xl mx-auto mb-12 slide-in-bottom">
                 <form method="GET" action="{{ url()->current() }}" 
