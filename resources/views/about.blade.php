@@ -252,7 +252,7 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll" data-animation="fade-in-up">Jam Pelayanan</h2>
             <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl animate-on-scroll" data-animation="fade-in-right">
+                <div class="bg-gray-50 rounded-xl p-6 shadow transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl animate-on-scroll" data-animation="fade-in-right">
                     <div class="flex items-center justify-center mb-4">
                         <svg class="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
@@ -291,7 +291,7 @@
                     </div>
                 </div>
     
-                <div class="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl animate-on-scroll" data-animation="fade-in-up">
+                <div class="bg-gray-50 rounded-xl p-6 shadow transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl animate-on-scroll" data-animation="fade-in-up">
                     <div class="flex items-center justify-center mb-4">
                         <svg class="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -318,7 +318,7 @@
     <section class="py-10 px-6">
         <div class="container mx-auto">
             <div class="max-w-5xl mx-auto">
-                <div class="relative p-4 bg-white rounded-lg shadow-lg">
+                <div class="relative p-4 bg-white rounded-lg shadow-xl">
                     <div class="absolute inset-0 border-2 border-red-600/20 rounded-lg m-4"></div>
                     <div class="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-red-600"></div>
                     <div class="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-red-600"></div>
