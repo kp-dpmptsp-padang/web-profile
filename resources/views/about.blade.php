@@ -115,7 +115,7 @@
         </h1>
     </div>
 
-    <section class="bg-gray-50 px-6">
+    <section class="px-6">
         <div class="container mx-auto py-24">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
                 <div class="relative animate-on-scroll" data-animation="fade-in-right">
@@ -141,7 +141,7 @@
             </div>
         </div>
     </section>
-    <section class="py-10 bg-gray-50 p-6">
+    <section class="py-10 p-6">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll" data-animation="fade-in-up">Profil DPMPTSP</h2>
             <div class="max-w-5xl mx-auto space-y-4 animate-on-scroll" data-animation="fade-in-up">
@@ -248,7 +248,7 @@
             </div>
         </div>
     </section>
-    <section class="py-10 bg-gray-50 p-6">
+    <section class="py-10 p-6">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll" data-animation="fade-in-up">Jam Pelayanan</h2>
             <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -315,7 +315,7 @@
             </div>
         </div>
     </section>  
-    <section class="bg-gray-50 py-10 px-6">
+    <section class="py-10 px-6">
         <div class="container mx-auto">
             <div class="max-w-5xl mx-auto">
                 <div class="relative p-4 bg-white rounded-lg shadow-lg">

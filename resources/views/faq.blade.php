@@ -186,7 +186,6 @@ $faqs = [
 </style>
 
 <div class="overflow-hidden pt-16 relative">
-    <!-- Hero Section dengan Background -->
     <div class="heading bg-cover bg-center py-24 flex items-center justify-center relative">
         <div class="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-1000" 
              style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/swiper/4.jpg')">
@@ -197,7 +196,7 @@ $faqs = [
         </h1>
     </div>
 
-    <section class="bg-gray-50/80 px-4 sm:px-6 lg:px-8 relative backdrop-blur-sm">
+    <section class="bg-white/80 px-4 sm:px-6 lg:px-8 relative backdrop-blur-sm">
         <div class="max-w-7xl mx-auto py-12">
             <div class="text-center mb-16 slide-in-bottom">
                 <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">

@@ -178,7 +178,7 @@
         </div>
     </div>
 
-    <section class="bg-gray-50/80 px-4 md:px-6 relative backdrop-blur-sm">        
+    <section class="px-4 md:px-6 relative backdrop-blur-sm">        
         <div class="container mx-auto py-12 md:py-24 relative">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 <div class="relative animate-on-scroll group fade-in-scale" data-animation="fade-in-right">
@@ -211,37 +211,37 @@
         </div>
     </section>
 
-    <section class="py-10 bg-gray-50">
+    <section class="py-10">
         <div class="container mx-auto px-4 max-w-4xl">
             <div class="relative overflow-hidden">
                 <div class="flex gap-6 transition-transform duration-500 ease-in-out" id="carouselTrack">
                     <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
-                        <div class="bg-white rounded-lg shadow-sm p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                        <div class="bg-white rounded-lg shadow p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                             <img src="/images/zi/akhlak.png" alt="Akhlak" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
                         </div>
                     </div>
                     <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
-                        <div class="bg-white rounded-lg shadow-sm p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                        <div class="bg-white rounded-lg shadow p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                             <img src="/images/zi/evp.png" alt="EVP" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
                         </div>
                     </div>
                     <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
-                        <div class="bg-white rounded-lg shadow-sm p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                        <div class="bg-white rounded-lg shadow p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                             <img src="/images/zi/zi_5.png" alt="ZI 2" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
                         </div>
                     </div>
                     <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
-                        <div class="bg-white rounded-lg shadow-sm p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                        <div class="bg-white rounded-lg shadow p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                             <img src="/images/zi/zi_4.png" alt="ZI 4" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
                         </div>
                     </div>
                     <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
-                        <div class="bg-white rounded-lg shadow-sm p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                        <div class="bg-white rounded-lg shadow p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                             <img src="/images/zi/zi_6.png" alt="ZI 5" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
                         </div>
                     </div>
                     <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
-                        <div class="bg-white rounded-lg shadow-sm p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                        <div class="bg-white rounded-lg shadow p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                             <img src="/images/zi/zi_2.png" alt="ZI 6" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
                         </div>
                     </div>
@@ -250,7 +250,7 @@
         </div>
     </section>
     
-    <section class="bg-gray-50/80 px-6 relative backdrop-blur-sm">
+    <section class="px-6 relative backdrop-blur-sm">
         <div class="container mx-auto py-24">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
                 <div class="relative">
@@ -280,32 +280,32 @@
         </div>
     </section>
 
-    <section class="py-8 bg-gray-50 p-4 md:p-6 my-12 md:my-24">
+    <section class="py-8 p-4 md:p-6 my-12 md:my-24">
         <div class="container mx-auto px-4 md:px-16">
             <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">Layanan Perizinan</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                <a href="https://oss.go.id/" target="_blank" class="bg-white p-4 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300 flex flex-col h-full">
+                <a href="https://oss.go.id/" target="_blank" class="bg-white p-4 rounded-lg text-center shadow hover:shadow-xl transition duration-300 flex flex-col h-full">
                     <div class="icon-wrap h-32 md:h-40 flex items-center justify-center mb-3">
                         <img class="max-w-[120px] md:max-w-[160px] h-auto object-contain" src="/images/osss.png" alt="OSS">
                     </div>
                     <h3 class="text-base md:text-lg font-semibold mb-2">OSS</h3>
                     <p class="text-gray-600 text-sm text-justify flex-grow">OSS (Online Single Submission) merupakan sistem informasi layanan perizinan berusaha yang diterbitkan oleh Lembaga OSS untuk kepada Pelaku Usaha melalui sistem elektronik yang terintegrasi.</p>
                 </a>
-                <a href="https://simbg.pu.go.id/" target="_blank" class="bg-white p-4 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300 flex flex-col h-full">
+                <a href="https://simbg.pu.go.id/" target="_blank" class="bg-white p-4 rounded-lg text-center shadow hover:shadow-xl transition duration-300 flex flex-col h-full">
                     <div class="icon-wrap h-32 md:h-40 flex items-center justify-center mb-3">
                         <img class="max-w-[120px] md:max-w-[160px] h-auto object-contain" src="/images/simbg.png" alt="SIMBG">
                     </div>
                     <h3 class="text-base md:text-lg font-semibold mb-2">SIMBG</h3>
                     <p class="text-gray-600 text-sm text-justify flex-grow">Sistem Informasi Manajemen Bangunan Gedung yang selanjutnya disingkat SIMBG adalah sistem elektronik berbasis web yang digunakan untuk melaksanakan proses penyelenggaraan PBG, SLF, SBKBG, RTB, dan Pendataan Bangunan Gedung disertai dengan informasi terkait penyelenggaraan bangunan gedung.</p>
                 </a>
-                <a href="{{ route('home-survey') }}" target="_blank" class="bg-white p-4 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300 flex flex-col h-full">
+                <a href="{{ route('home-survey') }}" target="_blank" class="bg-white p-4 rounded-lg text-center shadow hover:shadow-xl transition duration-300 flex flex-col h-full">
                     <div class="icon-wrap h-32 md:h-40 flex items-center justify-center mb-3">
                         <img class="max-w-[120px] md:max-w-[160px] h-auto object-contain" src="/images/ikm.png" alt="IKM">
                     </div>
                     <h3 class="text-base md:text-lg font-semibold mb-2">SKM</h3>
                     <p class="text-gray-600 text-sm text-justify flex-grow">Survei Kepuasan Masyarakat (SKM) adalah layanan yang dirancang untuk mengukur tingkat kepuasan masyarakat terhadap pelayanan yang diberikan oleh instansi pemerintah, guna meningkatkan kualitas layanan secara berkelanjutan.</p>
                 </a>
-                <a href="https://nonperizinan.web.dpmptsp.padang.go.id/sinopen" target="_blank" class="bg-white p-4 rounded-lg text-center shadow-sm hover:shadow-xl transition duration-300 flex flex-col h-full">
+                <a href="https://nonperizinan.web.dpmptsp.padang.go.id/sinopen" target="_blank" class="bg-white p-4 rounded-lg text-center shadow hover:shadow-xl transition duration-300 flex flex-col h-full">
                     <div class="icon-wrap h-32 md:h-40 flex items-center justify-center mb-3">
                         <img class="max-w-[120px] md:max-w-[160px] h-auto object-contain" src="/images/sinopen.png" alt="IKM">
                     </div>
@@ -316,13 +316,13 @@
         </div>
     </section>
 
-    <section class="py-10 bg-gray-50 p-6 my-32">
+    <section class="py-10 p-6 my-32">
         <div class="container mx-auto px-24">
             <h2 class="text-3xl font-bold text-center mb-12">Inovasi Pelayanan</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 @forelse($innovations as $innovation)
                     <a href="{{ $innovation->url }}" target="_blank" 
-                       class="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition duration-300 flex items-center gap-4">
+                       class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition duration-300 flex items-center gap-4">
                         <figure class="avatar" style="border-radius: 0px; width: 64px;">
                             @if($innovation->pictures->isNotEmpty())
                                 <img src="{{ asset('storage/' . $innovation->pictures->first()->nama_file) }}" 
@@ -424,7 +424,7 @@
         </div>
     </section>
 
-    <section class="py-12 md:py-16 bg-gray-50">
+    <section class="py-12 md:py-16">
         <div class="container mx-auto px-4 md:px-24">
             <div class="text-center mb-8 md:mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
@@ -435,7 +435,7 @@
     
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
                 @foreach($latestNews as $news)
-                    <a href="{{ route('detail-berita', $news->slug) }}" class="news-card bg-white rounded-xl shadow-sm overflow-hidden group">
+                    <a href="{{ route('detail-berita', $news->slug) }}" class="news-card bg-white rounded-xl shadow-lg overflow-hidden group">
                         <div class="image-wrapper relative h-48">
                             <img 
                                 src="{{ asset('storage/' . $news->pictures->first()->nama_file) }}"

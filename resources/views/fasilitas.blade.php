@@ -60,7 +60,7 @@
         </h1>
     </div>
 
-    <section class="bg-gray-50/80 px-10 relative backdrop-blur-sm">
+    <section class="bg-white/80 px-10 relative backdrop-blur-sm">
         <div class="container mx-auto py-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-24">
                 @forelse($facilities as $facility)

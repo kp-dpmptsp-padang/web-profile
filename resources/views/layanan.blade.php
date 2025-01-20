@@ -41,7 +41,7 @@
         <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-red-50 rounded-full floating-shape opacity-25" style="animation-delay: 2s;"></div>
     </div>
 
-    <section class="bg-gray-50/80 px-6 relative backdrop-blur-sm">
+    <section class="bg-white/90 px-6 relative backdrop-blur-sm">
         <div class="absolute top-0 left-0 w-32 h-32 bg-red-100 opacity-40 transform -translate-x-16 -translate-y-16 rotate-45"></div>
         <div class="absolute top-0 right-0 w-24 h-24 bg-gray-200 opacity-30 transform translate-x-12 -translate-y-12 rotate-12"></div>
         
@@ -122,7 +122,7 @@
         </div>
     </section>
 
-    <section class="bg-gray-50/80 px-6 relative backdrop-blur-sm">
+    <section class="bg-white/90 px-6 relative backdrop-blur-sm">
         <div class="absolute top-0 right-0 w-72 h-72 bg-red-100 rounded-full opacity-20 transform translate-x-1/2 -translate-y-1/2"></div>
         <div class="container mx-auto py-24 relative">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">

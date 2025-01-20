@@ -53,7 +53,7 @@
         </h1>
     </div>
 
-    <section class="bg-gray-50/80 px-52 relative backdrop-blur-sm">
+    <section class="bg-white/80 px-24 relative backdrop-blur-sm">
         <div class="container mx-auto py-12">
             <div class="max-w-4xl mx-auto mb-12 slide-in-bottom">
                 <form method="GET" action="{{ route('dokumen') }}" 
@@ -122,50 +122,56 @@
                     </div>
                 </form>
             </div>
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden slide-in-bottom" 
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden slide-in-bottom transition-all duration-300 hover:shadow-xl" 
                  style="animation-delay: 0.2s;">
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <thead>
+                            <tr class="bg-gradient-to-r from-red-50 to-red-100">
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                     No
                                 </th>
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                     Nama Dokumen
                                 </th>
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                     Jenis
                                 </th>
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                     Tahun
                                 </th>
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                     Aksi
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
+                        <tbody class="bg-white divide-y divide-gray-100">
                             @forelse($documents as $index => $document)
-                                <tr class="hover:bg-red-50/30 transition-colors duration-150">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full font-medium">
+                                <tr class="hover:bg-red-50/30 transition-all duration-200 group">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full font-medium text-sm group-hover:bg-red-100 group-hover:text-red-700 transition-colors duration-200">
                                             {{ $documents->firstItem() + $index }}
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-900">
-                                        {{ $document->nama }}
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900 font-medium group-hover:text-red-600 transition-colors duration-200">
+                                            {{ $document->nama }}
+                                        </div>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-900">
-                                        {{ $document->jenis->jenis_dokumen }}
+                                    <td class="px-6 py-4">
+                                        <span class="px-3 py-1 text-sm text-gray-600 bg-gray-100 rounded-lg group-hover:bg-red-100 group-hover:text-red-600 transition-colors duration-200">
+                                            {{ $document->jenis->jenis_dokumen }}
+                                        </span>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-900">
-                                        {{ $document->tahun }}
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm text-gray-600 group-hover:text-red-600 transition-colors duration-200">
+                                            {{ $document->tahun }}
+                                        </span>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <td class="px-6 py-4 whitespace-nowrap">
                                         <a href="{{ asset('storage/' . $document->nama_file) }}" 
                                            target="_blank"
-                                           class="inline-flex items-center px-4 py-2 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-300 hover-float">
+                                           class="inline-flex items-center px-4 py-2 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-300 hover:-translate-y-1">
                                             <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
                                                       d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -178,15 +184,22 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="px-6 py-4 text-center text-gray-500">
-                                        Tidak ada dokumen yang ditemukan
+                                    <td colspan="5" class="px-6 py-8 text-center text-gray-500">
+                                        <div class="flex flex-col items-center justify-center space-y-3">
+                                            <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                            </svg>
+                                            <p class="text-lg font-medium">Tidak ada dokumen yang ditemukan</p>
+                                            <p class="text-sm text-gray-400">Coba ubah filter pencarian Anda</p>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
                 </div>
-                <div class="px-6 py-4 border-t border-gray-200">
+                <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
                     {{ $documents->withQueryString()->links() }}
                 </div>
             </div>
