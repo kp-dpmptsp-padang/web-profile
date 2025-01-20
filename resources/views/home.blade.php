@@ -180,12 +180,12 @@
 
     <section class="px-4 md:px-6 relative backdrop-blur-sm">        
         <div class="container mx-auto py-12 md:py-24 relative">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12">
                 <div class="relative animate-on-scroll group fade-in-scale" data-animation="fade-in-right">
                     <img
-                        src="{{ asset('images/serti4.jpg') }}"
+                        src="{{ asset('images/serti7-3.jpg') }}"
                         alt="Piagam WBK"
-                        class="rounded-2xl shadow-2xl w-full h-[300px] md:h-[400px] object-cover transition-all duration-500 group-hover:scale-105 group-hover:shadow-red-200"
+                        class="p-4 rounded-2xl shadow-2xl w-full h-[250px] md:h-[300px] object-contain bg-white transition-all duration-500 group-hover:scale-105 group-hover:shadow-red-200"
                     />
                     <div class="absolute -bottom-4 -left-4 w-36 h-36 bg-red-600 rounded-2xl -z-10 transition-all duration-300 group-hover:-bottom-6 group-hover:-left-6 group-hover:rotate-6"></div>
                     <div class="absolute -left-8 top-1/2 flex gap-2">
@@ -194,17 +194,34 @@
                         <div class="w-2 h-2 bg-red-400 rounded-full"></div>
                     </div>
                 </div>
+    
                 <div class="relative animate-on-scroll group fade-in-scale" data-animation="fade-in-left">
                     <img
-                        src="{{ asset('images/serti3.jpg') }}"
+                        src="{{ asset('images/serti6-3.jpg') }}"
                         alt="Penghargaan Ombudsman"
-                        class="rounded-2xl shadow-2xl w-full h-[300px] md:h-[400px] object-cover transition-all duration-500 group-hover:scale-105 group-hover:shadow-red-200"
+                        class="p-4 rounded-2xl shadow-2xl w-full h-[250px] md:h-[300px] object-contain bg-white transition-all duration-500 group-hover:scale-105 group-hover:shadow-red-200"
                     />
                     <div class="absolute -bottom-4 -right-4 w-36 h-36 bg-red-600 rounded-2xl -z-10 transition-all duration-300 group-hover:-bottom-6 group-hover:-right-6 group-hover:rotate-6"></div>
                     <div class="absolute -right-8 top-1/2 flex flex-col gap-2">
                         <div class="w-12 h-1 bg-red-400"></div>
                         <div class="w-8 h-1 bg-red-300"></div>
                         <div class="w-4 h-1 bg-red-200"></div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="md:w-1/2 mx-auto">
+                <div class="relative animate-on-scroll group fade-in-scale" data-animation="fade-in-up">
+                    <img
+                        src="{{ asset('images/serti5.png') }}"
+                        alt="Certificate Sangat Baik"
+                        class="p-4 rounded-2xl shadow-2xl w-full h-[250px] md:h-[300px] object-contain bg-white transition-all duration-500 group-hover:scale-105 group-hover:shadow-red-200"
+                    />
+                    <div class="absolute -bottom-4 w-36 h-36 bg-red-600 rounded-2xl -z-10 transition-all duration-300 group-hover:-bottom-6 group-hover:rotate-3 left-1/2 -translate-x-1/2"></div>
+                    <div class="absolute inset-x-0 -top-8 flex justify-center gap-4">
+                        <div class="w-16 h-1 bg-red-400"></div>
+                        <div class="w-16 h-1 bg-red-300"></div>
+                        <div class="w-16 h-1 bg-red-200"></div>
                     </div>
                 </div>
             </div>
