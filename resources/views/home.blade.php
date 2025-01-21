@@ -545,6 +545,15 @@
                     </div>
                     @endforeach
                 </div>
+                <div class="text-center mt-12">
+                    <a href="{{ route('galeri') }}" 
+                       class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-red-600 border border-transparent rounded-lg shadow-sm hover:bg-red-700 transition-colors duration-300">
+                        Lihat Galeri Kami
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </section>

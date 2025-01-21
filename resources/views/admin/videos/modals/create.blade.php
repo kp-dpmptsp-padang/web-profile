@@ -21,8 +21,8 @@
                         <input type="text" name="judul" id="judul" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500" required>
                     </div>
                     <div class="sm:col-span-2">
-                        <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi (maksimal 150 karakter)</label>
-                        <textarea name="deskripsi" id="deskripsi" maxlength="150" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"></textarea>
+                        <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi (maksimal 200 karakter)</label>
+                        <textarea name="deskripsi" id="deskripsi" maxlength="200" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"></textarea>
                     </div>
                     <div class="sm:col-span-2">
                         <label for="url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">URL</label>
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(form);
 
         const deskripsi = formData.get('deskripsi');
-        if (deskripsi.length > 150) {
+        if (deskripsi.length > 200) {
             Swal.fire({
                 title: 'Kesalahan',
                 text: 'Deskripsi tidak boleh lebih dari 150 karakter.',
