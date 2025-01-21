@@ -153,7 +153,8 @@ class GuestController extends Controller
 
     public function dokumen(Request $request)
     {
-        $query = Document::with(['admin', 'jenis']);
+        $query = Document::with(['admin', 'jenis'])
+                         ->excludeEmployeeAndStandarPelayananDocuments();
         
         if ($request->has('search') && $request->search != '') {
             $query->where('nama', 'like', '%' . $request->search . '%');

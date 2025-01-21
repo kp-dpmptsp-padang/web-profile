@@ -23,11 +23,20 @@
                         Tentang
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('layanan') }}" 
-                       class="block py-2 px-3 @if(request()->routeIs('layanan')) text-red-600 @else text-black @endif">
-                        Layanan Kami
-                    </a>
+                <li class="relative group">
+                    <button class="flex items-center py-2 px-3 @if(request()->routeIs('layanan') || request()->routeIs('standar-pelayanan')) text-red-600 @else text-black @endif">
+                        Pelayanan
+                    </button>
+                    <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg py-2 rounded-lg">
+                        <a href="{{ route('layanan') }}" 
+                           class="block px-4 py-2 @if(request()->routeIs('layanan')) text-red-600 @else text-black @endif hover:bg-gray-100">
+                            Layanan Kami
+                        </a>
+                        <a href="{{ route('standar-pelayanan') }}" 
+                           class="block px-4 py-2 @if(request()->routeIs('standar-pelayanan')) text-red-600 @else text-black @endif hover:bg-gray-100">
+                            Standar Pelayanan
+                        </a>
+                    </div>
                 </li>
                 <li class="relative group">
                     <button class="flex items-center py-2 px-3 @if(request()->routeIs('informasi') || request()->routeIs('berita') || request()->routeIs('detail-info') || request()->routeIs('detail-berita') || request()->routeIs('faq') || request()->routeIs('video') || request()->routeIs('galeri')) text-red-600 @else text-black @endif">

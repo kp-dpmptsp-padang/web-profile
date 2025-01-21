@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class DocumentController extends Controller
 {
     public function index(Request $request) {
-        $query = Document::query();
+        $query = Document::excludeEmployeeAndStandarPelayananDocuments();
 
         if ($request->has('search') && $request->search != '') {
             $query->where('nama', 'like', '%' . $request->search . '%');
@@ -119,5 +119,13 @@ class DocumentController extends Controller
                 'message' => 'Failed to delete document: ' . $e->getMessage()
             ], 500);
         }
+    }
+
+    public function standarPelayanan()
+    {
+        $documentType = DocumentType::where('jenis_dokumen', 'standar-pelayanan')->firstOrFail();
+        $documents = Document::where('id_jenis', $documentType->id)->latest()->paginate(10);
+
+        return view('standar-pelayanan', compact('documents'));
     }
 }

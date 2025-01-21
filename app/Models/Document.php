@@ -26,4 +26,17 @@ class Document extends Model
     {
         return $this->belongsTo(DocumentType::class, 'id_jenis');
     }
+
+    public function employee()
+    {
+        return $this->hasOne(Employee::class, 'id_dokumen');
+    }
+
+    public function scopeExcludeEmployeeAndStandarPelayananDocuments($query)
+    {
+        return $query->whereDoesntHave('employee')
+                     ->whereHas('jenis', function ($query) {
+                         $query->where('jenis_dokumen', '!=', 'standar-pelayanan');
+                     });
+    }
 }

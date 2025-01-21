@@ -93,6 +93,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/dokumen', [DocumentController::class, 'store'])->name('document.store');
     Route::put('/admin/dokumen/{id}', [DocumentController::class,'update'])->name('document.update');
     Route::delete('/admin/dokumen/{id}', [DocumentController::class, 'destroy'])->name('document.destroy');
+    Route::post('/admin/pegawai/{id}/dokumen', [EmployeeController::class,'storeEmployeeDocument'])->name('employee.document.store');
 
     // Facilities
     Route::get('/admin/fasilitas', [FacilityController::class, 'index'])->name('facility.index');
@@ -126,6 +127,8 @@ Route::middleware('guest')->group(function () {
     Route::get('/home-survey', [SurveyController::class, 'home'])->name('home-survey');
     Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
     Route::post('/survey', [SurveyController::class, 'store'])->name('survey.store');
+
+    Route::get('/standar-pelayanan', [DocumentController::class,'standarPelayanan'])->name('standar-pelayanan');
 
 });
 

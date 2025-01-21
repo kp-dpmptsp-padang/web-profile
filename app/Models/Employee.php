@@ -10,6 +10,12 @@ class Employee extends Model
         "nama",
         "nip",
         "jabatan",
-    ] ;
+        "id_dokumen",
+    ];
+
+    public function document()
+    {
+    return $this->hasOne(Document::class, 'id', 'id_dokumen');
+    }
     
 }
