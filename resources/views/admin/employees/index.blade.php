@@ -32,6 +32,7 @@
                             <th scope="col" class="px-6 py-4">Nama</th>
                             <th scope="col" class="px-6 py-4">NIP</th>
                             <th scope="col" class="px-6 py-4">Jabatan</th>
+                            <th scope="col" class="px-6 py-4">Dokumen</th>
                             <th scope="col" class="px-6 py-4 text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -42,6 +43,13 @@
                             <td class="px-6 py-4">{{ $employee->nama }}</td>
                             <td class="px-6 py-4">{{ $employee->nip }}</td>
                             <td class="px-6 py-4">{{ $employee->jabatan }}</td>
+                            <td class="px-6 py-4">
+                                @if($employee->document)
+                                    <a href="{{ asset('storage/' . $employee->document->nama_file) }}" target="_blank" class="text-blue-600 hover:underline">Lihat Dokumen</a>
+                                @else
+                                    <span class="text-gray-500">Tidak ada dokumen</span>
+                                @endif
+                            </td>
                             <td class="px-6 py-4 text-center">
                                 <div class="flex items-center justify-center gap-4">
                                     <button type="button" 
@@ -61,7 +69,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="5" class="px-6 py-8 text-center text-gray-500 dark:text-gray-400">
+                            <td colspan="6" class="px-6 py-8 text-center text-gray-500 dark:text-gray-400">
                                 <div class="flex flex-col items-center justify-center">
                                     <svg class="w-12 h-12 mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 7a2 2 0 012-2h12a2 2 0 012 2M3 7v10a2 2 0 002 2h12a2 2 0 002-2V7M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2" />

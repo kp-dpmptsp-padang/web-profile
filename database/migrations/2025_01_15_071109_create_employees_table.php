@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string(column: 'nama');
             $table->string(column:'nip')->unique()->nullable();
             $table->string(column: 'jabatan');
+            $table->foreignId('id_dokumen')->nullable()->constrained('documents')->onDelete('set null');
             $table->timestamps();
         });
     }

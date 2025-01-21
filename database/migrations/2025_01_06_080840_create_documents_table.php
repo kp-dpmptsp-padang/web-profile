@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('nama_file');
-            $table->foreignId('id_admin')->constrained('users');
-            $table->foreignId('id_jenis')->constrained('document_types');
-            $table->year('tahun');
+            $table->foreignId('id_admin')->constrained('users')->onDelete('cascade');
+            $table->foreignId('id_jenis')->nullable()->constrained('document_types')->onDelete('set null');
+            $table->year('tahun')->nullable();
             $table->timestamps();
         });
     }

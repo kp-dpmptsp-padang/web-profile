@@ -93,7 +93,7 @@
                         <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $documents->firstItem() + $index }}</td>
                             <td class="px-6 py-4">{{ $document->nama }}</td>
-                            <td class="px-6 py-4">{{ $document->jenis->jenis_dokumen }}</td>
+                            <td class="px-6 py-4">{{ $document->jenis->jenis_dokumen ?? 'Tidak ada jenis' }}</td>
                             <td class="px-6 py-4">{{ $document->tahun }}</td>
                             <td class="px-6 py-4 text-center">
                                 <div class="flex items-center justify-center gap-4">
