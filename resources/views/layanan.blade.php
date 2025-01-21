@@ -49,7 +49,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
                 <div class="relative animate-on-scroll group fade-in-scale" data-animation="fade-in-right">
                     <img
-                        src="/images/sinopen2.png"
+                        src="/images/oss2.png"
                         alt="SINOPEN"
                         class="rounded-2xl shadow-2xl w-full h-[400px] object-cover transition-all duration-500 group-hover:scale-105 group-hover:shadow-red-200"
                     />
@@ -62,13 +62,13 @@
                 </div>
                 <div class="animate-on-scroll fade-in-scale" data-animation="fade-in-up">
                     <h2 class="text-4xl font-bold text-gray-800 mb-4 hover:text-red-600 transition-colors duration-300">
-                        SINOPEN
+                        OSS
                     </h2>
                     <div class="w-20 h-1 bg-red-600 mb-6 transition-all duration-300 hover:w-32"></div>
                     <p class="text-gray-600 text-lg leading-relaxed mb-6 text-justify">
-                        Sistem Informasi Non Perizinan dan Perizinan Non OSS, dengan aplikasi SINOPEN yang dapat diakses oleh seluruh pemohon dan petugas di Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu dengan mudah tidak terbatas ruang dan waktu bisa di akses kapan pun dan dimana saja.
+                        OSS (Online Single Submission) merupakan sistem informasi layanan perizinan berusaha yang diterbitkan oleh Lembaga OSS untuk kepada Pelaku Usaha melalui sistem elektronik yang terintegrasi.
                     </p>
-                    <a href="https://nonperizinan.web.dpmptsp.padang.go.id/sinopen" target="_blank" 
+                    <a href="https://oss.go.id/" target="_blank" 
                        class="inline-block bg-red-600 text-white px-8 py-4 rounded-lg shadow-lg font-semibold 
                               transition-all duration-300 hover:bg-red-700 hover:shadow-xl hover:-translate-y-1
                               relative overflow-hidden group">
@@ -91,13 +91,13 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
                 <div class="animate-on-scroll order-2 md:order-1 fade-in-scale" data-animation="fade-in-up">
                     <h2 class="text-4xl font-bold text-gray-800 mb-4 hover:text-red-600 transition-colors duration-300">
-                        OSS
+                        SINOPEN
                     </h2>
                     <div class="w-20 h-1 bg-red-600 mb-6 transition-all duration-300 hover:w-32"></div>
                     <p class="text-gray-600 text-lg leading-relaxed mb-6 text-justify">
-                        OSS (Online Single Submission) merupakan sistem informasi layanan perizinan berusaha yang diterbitkan oleh Lembaga OSS untuk kepada Pelaku Usaha melalui sistem elektronik yang terintegrasi.
+                        Sistem Informasi Non Perizinan dan Perizinan Non OSS, dengan aplikasi SINOPEN yang dapat diakses oleh seluruh pemohon dan petugas di Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu dengan mudah tidak terbatas ruang dan waktu bisa di akses kapan pun dan dimana saja.
                     </p>
-                    <a href="https://oss.go.id/" target="_blank" 
+                    <a href="https://nonperizinan.web.dpmptsp.padang.go.id/sinopen" target="_blank" 
                        class="inline-block bg-red-600 text-white px-8 py-4 rounded-lg shadow-lg font-semibold 
                               transition-all duration-300 hover:bg-red-700 hover:shadow-xl hover:-translate-y-1
                               relative overflow-hidden group">
@@ -107,8 +107,8 @@
                 </div>
                 <div class="relative animate-on-scroll order-1 md:order-2 group fade-in-scale" data-animation="fade-in-left">
                     <img
-                        src="/images/oss2.png"
-                        alt="OSS"
+                        src="/images/sinopen2.png"
+                        alt="SINOPEN"
                         class="rounded-2xl shadow-2xl w-full h-[400px] object-cover transition-all duration-500 group-hover:scale-105 group-hover:shadow-red-200"
                     />
                     <div class="absolute -bottom-4 -left-4 w-36 h-36 bg-red-600 rounded-2xl -z-10 transition-all duration-300 group-hover:-bottom-6 group-hover:-left-6 group-hover:rotate-6"></div>
