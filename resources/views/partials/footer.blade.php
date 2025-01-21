@@ -1,7 +1,7 @@
 <footer class="bg-gradient-to-b from-white to-gray-50 border-t border-red-100">
     <div class="mx-auto w-full max-w-screen-xl p-6 lg:p-8">
-        <div class="grid grid-cols-1 md:grid-cols-6 gap-8 md:gap-12">
-            <div class="md:col-span-2">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            <div class="md:col-span-3">
                 <a href="/" class="inline-block group">
                     <div class="flex items-center gap-3 hover:opacity-90 transition-opacity">
                         <img src="{{ asset('images/dpmptsp.png') }}" class="h-16 object-contain transform group-hover:scale-105 transition-transform duration-300" alt="Logo DPMPTSP" />
@@ -18,13 +18,6 @@
                         </span>
                         <span>Jalan Jenderal Sudirman No. 1, Padang</span>
                     </a>
-                    <a href="tel:0751890719" 
-                       class="flex items-center gap-3 text-gray-600 hover:text-emerald-500 transition-colors group">
-                        <span class="bg-emerald-50 p-2 rounded-lg group-hover:bg-emerald-100 transition-colors">
-                            <i class="fas fa-phone text-emerald-500"></i>
-                        </span>
-                        <span>(0751) 890719</span>
-                    </a>
                     <a href="mailto:dpmptsp@padang.go.id" 
                        class="flex items-center gap-3 text-gray-600 hover:text-blue-500 transition-colors group">
                         <span class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
@@ -34,8 +27,34 @@
                     </a>
                 </div>
             </div>
+            <div class="md:col-span-3">
+                <a href="{{ route('home') }}" class="inline-block group">
+                    <div class="flex items-center gap-3 hover:opacity-90 transition-opacity">
+                        <img src="{{ asset('images/mpp-logo.png') }}" class="h-16 object-contain transform group-hover:scale-105 transition-transform duration-300" alt="Logo MPP" />
+                    </div>
+                </a>
+                <p class="mt-4 text-gray-600 leading-relaxed">
+                    Mal Pelayanan Publik Kota Padang
+                </p>
+                <div class="mt-6 space-y-3">
+                    <a href="https://maps.app.goo.gl/xoUoPy5vM1ym3NdW7" target="_blank" 
+                       class="flex items-center gap-3 text-gray-600 hover:text-red-500 transition-colors group">
+                        <span class="bg-red-50 p-2 rounded-lg group-hover:bg-red-100 transition-colors">
+                            <i class="fas fa-location-dot text-red-500"></i>
+                        </span>
+                        <span>Plaza Andalas Lantai 4, Kota Padang, Sumatera Barat</span>
+                    </a>
+                    <a href="mailto:mpp@padang.go.id" 
+                       class="flex items-center gap-3 text-gray-600 hover:text-blue-500 transition-colors group">
+                        <span class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
+                            <i class="fas fa-envelope text-blue-500"></i>
+                        </span>
+                        <span>mpp@padang.go.id</span>
+                    </a>
+                </div>
+            </div>
 
-            <div class="md:col-span-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="md:col-span-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-sm font-semibold tracking-wider text-gray-900 uppercase mb-4">Menu Utama</h3>
                     <ul class="space-y-3">
@@ -177,6 +196,14 @@
                     <a href="https://instagram.com/dpmptsppadang" target="_blank" 
                        class="bg-gradient-to-br from-pink-500 to-rose-500 p-2 rounded-lg text-white hover:opacity-90 transform hover:scale-105 transition-all">
                         <i class="fab fa-instagram text-lg"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@dpmptspkotapadang8461" target="_blank" 
+                       class="bg-gradient-to-br from-red-500 to-red-600 p-2 rounded-lg text-white hover:opacity-90 transform hover:scale-105 transition-all">
+                        <i class="fab fa-youtube text-lg"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@dpmptsppadang" target="_blank" 
+                       class="bg-gradient-to-br from-gray-800 to-black p-2 rounded-lg text-white hover:opacity-90 transform hover:scale-105 transition-all">
+                        <i class="fab fa-tiktok text-lg"></i>
                     </a>
                     <a href="https://wa.me/6281374078088" target="_blank" 
                        class="bg-gradient-to-br from-green-500 to-emerald-500 p-2 rounded-lg text-white hover:opacity-90 transform hover:scale-105 transition-all">

@@ -88,6 +88,17 @@
         }
     }
 
+    @keyframes fadeInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
     .fade-in-scale {
         animation: fadeInScale 0.8s ease-out forwards;
     }
@@ -102,6 +113,10 @@
 
     .fade-in-right {
         animation: fadeInRight 0.8s ease-out forwards;
+    }
+
+    .fade-in-left {
+        animation: fadeInLeft 0.8s ease-out forwards;
     }
 </style>
 <div class="overflow-hidden pt-16">
@@ -139,39 +154,37 @@
                     </p>
                 </div>
             </div>
+            <div class="my-20"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
+                <div class="animate-on-scroll" data-animation="fade-in-up">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">
+                        Mal Pelayanan Publik Kota Padang
+                    </h2>
+                    <div class="w-16 h-1 bg-red-600 mb-4"></div>
+                    <p class="text-gray-600 text-base leading-relaxed mb-4 text-justify">
+                        Mal Pelayanan Publik (MPP) Kota Padang hadir sebagai inovasi dalam pelayanan publik yang mengintegrasikan berbagai jenis layanan pemerintah pusat dan daerah dalam satu lokasi. Dengan konsep modern dan terintegrasi, MPP memberikan kemudahan akses bagi masyarakat untuk mendapatkan berbagai layanan publik.
+                    </p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6">
+                        Berlokasi strategis di Plaza Andalas, MPP Kota Padang menghadirkan pengalaman pelayanan publik yang efisien, nyaman, dan profesional dengan standar pelayanan yang terukur dan transparan.
+                    </p>
+                </div>
+                <div class="relative animate-on-scroll" data-animation="fade-in-left">
+                    <img
+                        src="/images/mpp4.jpg"
+                        alt="Mal Pelayanan Publik"
+                        class="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
+                    />
+                    <div
+                        class="absolute -bottom-4 -left-4 w-36 h-36 bg-red-600 rounded-2xl -z-10"
+                    ></div>
+                </div>
+            </div>
         </div>
     </section>
     <section class="py-10 p-6">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll" data-animation="fade-in-up">Profil DPMPTSP</h2>
             <div class="max-w-5xl mx-auto space-y-4 animate-on-scroll" data-animation="fade-in-up">
-                <div class="border border-gray-200 rounded-lg transition-all duration-300">
-                    <button onclick="toggleAccordion('visi-misi')" class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors">
-                        <h3 class="text-lg font-semibold" id="text-visi-misi">Visi & Misi</h3>
-                        <svg id="icon-visi-misi" class="transform transition-transform duration-300 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </button>
-                    <div id="content-visi-misi" class="overflow-hidden transition-all duration-300 max-h-0 opacity-0">
-                        <div class="p-4 bg-white border-t">
-                            <div class="space-y-4">
-                                <div>
-                                    <h4 class="font-semibold mb-2">Visi Pelayanan</h4>
-                                    <p class="text-gray-600">Mewujudkan Pelayanan Perizinan dan Non Perizinan Secara Terpadu dan Terintegrasi yang Lebih Berkualitas dan Efektif</p>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold mb-2">Misi Pelayanan</h4>
-                                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
-                                        <li>Meningkatkan profesionalisme dan kompetensi penyelenggaraan pelayanan perizinan dan non perizinan</li>
-                                        <li>Meningkatkan kemudahan dan ketepatan pelaksanaan pelayanan perizinan dan non perizinan secara terpadu</li>
-                                        <li>Meningkatkan akuntabilitas kinerja pelayanan perizinan dan non perizinan</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
                 <div class="border border-gray-200 rounded-lg transition-all duration-300">
                     <button onclick="toggleAccordion('struktur')" class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors">
                         <h3 class="text-lg font-semibold" id="text-struktur">Struktur Organisasi</h3>
@@ -217,6 +230,7 @@
                                                 <th class="py-3 px-6 text-left font-semibold border-b">Nama</th>
                                                 <th class="py-3 px-6 text-left font-semibold border-b">NIP</th>
                                                 <th class="py-3 px-6 text-left font-semibold border-b">Jabatan</th>
+                                                <th class="py-3 px-6 text-left font-semibold border-b">Detail</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-gray-600 lowercase capitalize animate-fade-in">
@@ -307,7 +321,7 @@
                             <div class="w-1 h-full bg-red-600 rounded-full"></div>
                         </div>
                         <div class="text-center">
-                            <div class="text-4xl font-bold text-red-600 mb-2">15:00</div>
+                            <div class="text-4xl font-bold text-red-600 mb-2">16:00</div>
                             <p class="text-gray-600">Jam Tutup</p>
                         </div>
                     </div>
