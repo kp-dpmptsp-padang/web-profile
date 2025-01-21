@@ -94,7 +94,7 @@
                         <div class="flex-1">
                             <div class="relative">
                                 <select name="tahun" 
-                                        class="w-full h-12 pl-4 pr-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200 bg-gray-50 text-gray-900 hover:border-red-300 appearance-none">
+                                    class="w-full h-12 pl-4 pr-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200 bg-gray-50 text-gray-900 hover:border-red-300 appearance-none">
                                     <option value="">Semua Tahun</option>
                                     @foreach($years as $year)
                                         <option value="{{ $year }}" {{ request('tahun') == $year ? 'selected' : '' }}>
