@@ -49,7 +49,7 @@
                         <span class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
                             <i class="fas fa-envelope text-blue-500"></i>
                         </span>
-                        <span>mpp@padang.go.id</span>
+                        <span>dpmptsp@padang.go.id</span>
                     </a>
                 </div>
             </div>

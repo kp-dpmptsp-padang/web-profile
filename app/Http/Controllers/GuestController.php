@@ -169,7 +169,7 @@ class GuestController extends Controller
         }
 
         $documents = $query->latest()->paginate(10);
-        $documentTypes = DocumentType::all();
+        $documentTypes = DocumentType::where('jenis_dokumen', '!=', 'standar-pelayanan')->get();
         $years = Document::select('tahun')
                         ->distinct()
                         ->orderBy('tahun', 'desc')

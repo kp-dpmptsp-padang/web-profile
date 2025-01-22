@@ -32,11 +32,21 @@ class Document extends Model
         return $this->hasOne(Employee::class, 'id_dokumen');
     }
 
+    public function scopeExcludeEmployeeDocuments($query)
+    {
+        return $query->whereDoesntHave('employee');
+    }
+
+    public function scopeExcludeStandarPelayanan($query)
+    {
+        return $query->whereHas('jenis', function ($query) {
+            $query->where('jenis_dokumen', '!=', 'standar-pelayanan');
+        });
+    }
+
     public function scopeExcludeEmployeeAndStandarPelayananDocuments($query)
     {
-        return $query->whereDoesntHave('employee')
-                     ->whereHas('jenis', function ($query) {
-                         $query->where('jenis_dokumen', '!=', 'standar-pelayanan');
-                     });
+        return $query->excludeEmployeeDocuments()
+                    ->excludeStandarPelayanan();
     }
 }
