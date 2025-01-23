@@ -37,7 +37,7 @@
                     Mal Pelayanan Publik Kota Padang
                 </p>
                 <div class="mt-6 space-y-3">
-                    <a href="https://maps.app.goo.gl/xoUoPy5vM1ym3NdW7" target="_blank" 
+                    <a href="https://maps.app.goo.gl/wHWjyNKvmhTQe9hM7" target="_blank" 
                        class="flex items-center gap-3 text-gray-600 hover:text-red-500 transition-colors group">
                         <span class="bg-red-50 p-2 rounded-lg group-hover:bg-red-100 transition-colors">
                             <i class="fas fa-location-dot text-red-500"></i>

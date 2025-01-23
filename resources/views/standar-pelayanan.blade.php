@@ -41,6 +41,16 @@
     .hover-float:hover {
         transform: translateY(-5px);
     }
+
+    @media (max-width: 768px) {
+        .table-container {
+            margin: 0 -1rem;  /* Negative margin untuk full width di mobile */
+        }
+        
+        .search-container {
+            padding: 1rem;
+        }
+    }
 </style>
 
 <div class="overflow-hidden pt-16 relative">
@@ -48,26 +58,25 @@
         <div class="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-1000" 
              style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/bg.jpg')">
         </div>
-        <h1 class="text-6xl text-white uppercase font-bold relative z-10 tracking-wider fade-in-scale">
+        <h1 class="text-4xl md:text-6xl text-white uppercase font-bold relative z-10 tracking-wider fade-in-scale">
             Standar Pelayanan
             <div class="h-1 w-24 bg-red-500 mx-auto mt-4 rounded-full"></div>
         </h1>
     </div>
 
-    <section class="bg-white/80 px-24 relative backdrop-blur-sm">
-        <div class="container mx-auto py-12">
-            <div class="max-w-4xl mx-auto mb-12 slide-in-bottom">
+    <section class="bg-white/80 px-4 md:px-24 relative backdrop-blur-sm">
+        <div class="container mx-auto py-6 md:py-12">
+            <div class="max-w-4xl mx-auto mb-6 md:mb-12 slide-in-bottom">
                 <form method="GET" action="{{ route('standar-pelayanan') }}" 
-                      class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                      class="p-4 md:p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div class="flex flex-col sm:flex-row gap-4">
                         <div class="flex-1">
                             <div class="relative group">
                                 <input type="text" name="search" value="{{ request('search') }}"
                                     placeholder="Cari dokumen..."
-                                    class="w-full h-12 pl-12 pr-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200 group-hover:border-red-300">
+                                    class="w-full h-12 pl-12 pr-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200">
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-red-500 transition-colors duration-200" 
-                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
@@ -75,7 +84,7 @@
                             </div>
                         </div>
                         <button type="submit"
-                            class="h-12 px-8 text-white bg-red-500 hover:bg-red-600 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                            class="h-12 px-8 text-white bg-red-500 hover:bg-red-600 rounded-xl transition-all duration-300">
                             <span class="flex items-center">
                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
@@ -87,40 +96,41 @@
                     </div>
                 </form>
             </div>
+            
             <div class="bg-white rounded-2xl shadow-lg overflow-hidden slide-in-bottom transition-all duration-300 hover:shadow-xl" 
                  style="animation-delay: 0.2s;">
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
+                <div class="overflow-x-auto -mx-4 sm:mx-0">
+                    <table class="w-full divide-y divide-gray-200">
                         <thead>
                             <tr class="bg-gradient-to-r from-red-50 to-red-100">
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                <th scope="col" class="px-4 md:px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                     No
                                 </th>
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                <th scope="col" class="px-4 md:px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                     Nama Dokumen
                                 </th>
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                <th scope="col" class="px-4 md:px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                     Aksi
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-100">
                             @forelse($documents as $index => $document)
-                                <tr class="hover:bg-red-50/30 transition-all duration-200 group">
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full font-medium text-sm group-hover:bg-red-100 group-hover:text-red-700 transition-colors duration-200">
+                                <tr class="hover:bg-red-50/30 transition-all duration-200">
+                                    <td class="px-4 md:px-6 py-4 whitespace-nowrap">
+                                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm">
                                             {{ $documents->firstItem() + $index }}
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4">
-                                        <div class="text-sm text-gray-900 font-medium group-hover:text-red-600 transition-colors duration-200">
+                                    <td class="px-4 md:px-6 py-4">
+                                        <div class="text-sm text-gray-900">
                                             {{ $document->nama }}
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    <td class="px-4 md:px-6 py-4 whitespace-nowrap">
                                         <a href="{{ asset('storage/' . $document->nama_file) }}" 
                                            target="_blank"
-                                           class="inline-flex items-center px-4 py-2 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-300 hover:-translate-y-1">
+                                           class="inline-flex items-center px-3 md:px-4 py-2 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-600">
                                             <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
                                                       d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -133,7 +143,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="3" class="px-6 py-8 text-center text-gray-500">
+                                    <td colspan="3" class="px-4 md:px-6 py-8 text-center text-gray-500">
                                         <div class="flex flex-col items-center justify-center space-y-3">
                                             <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
@@ -148,11 +158,11 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
+                <div class="px-4 md:px-6 py-4 border-t border-gray-200 bg-gray-50">
                     {{ $documents->withQueryString()->links() }}
                 </div>
             </div>
         </div>
     </section>
 </div>    
-@endsection
+@endsection  

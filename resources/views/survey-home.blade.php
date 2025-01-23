@@ -7,7 +7,7 @@
          x-data="{ scroll: 0 }"
          x-init="window.addEventListener('scroll', () => scroll = window.pageYOffset)"
          :style="`transform: translateY(${scroll * 0.5}px)`">
-        <img src="{{ asset('/images/swiper/3.jpg') }}" alt="DPMPTSP Background"
+        <img src="{{ asset('/images/bg-survei.jpg') }}" alt="DPMPTSP Background"
              class="w-full h-full object-cover filter brightness-75">
         <div class="absolute inset-0 bg-gradient-to-b from-gray-900/70 via-red-900/60 to-red-800/80"></div>
     </div>

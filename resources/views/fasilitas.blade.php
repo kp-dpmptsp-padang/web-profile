@@ -47,6 +47,16 @@
         background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
         background-size: 20px 20px;
     }
+
+    #modalContent {
+        max-height: 90vh;
+        overflow: hidden;
+    }
+
+    #modalImage {
+        max-height: calc(90vh - 2rem); /* accounting for padding */
+        object-fit: contain;
+    }
 </style>
 
 <div class="overflow-hidden pt-16 relative">
@@ -62,7 +72,7 @@
 
     <section class="bg-white/80 px-10 relative backdrop-blur-sm">
         <div class="container mx-auto py-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 px-4 md:px-8 lg:px-20">
                 @forelse($facilities as $facility)
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group fade-in-scale">
                         <div class="relative">
@@ -103,21 +113,22 @@
 </div>
 <div id="imageModal" class="fixed inset-0 z-50 hidden">
     <div class="absolute inset-0 bg-black/75 backdrop-blur-sm" id="modalBackground"></div>
-    <div class="relative min-h-screen flex items-center justify-center p-10">
-        <div class="bg-white rounded-2xl w-full max-w-4xl shadow-2xl transform transition-all scale-95 opacity-0" id="modalContent">
-            <div class="relative">
-                <img id="modalImage" src="" alt="" class="w-full rounded-t-2xl">
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-8">
-                    <p id="modalCaption" class="text-white text-xl font-medium text-center"></p>
-                </div>
-            </div>
-            <div class="p-4 flex justify-end">
+    <div class="relative min-h-screen flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-4xl shadow-2xl transform transition-all scale-95 opacity-0 max-h-[90vh] flex flex-col" id="modalContent">
+            <div class="p-4 flex justify-end absolute top-0 right-0 z-10">
                 <button onclick="closeModal()" 
-                        class="text-gray-500 hover:text-red-600 transform hover:rotate-90 transition-all duration-300">
+                        class="text-white hover:text-red-600 transform hover:rotate-90 transition-all duration-300 bg-black/50 rounded-full p-2">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
+            </div>
+            
+            <div class="relative flex-1 overflow-auto">
+                <img id="modalImage" src="" alt="" class="w-full h-auto">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-8">
+                    <p id="modalCaption" class="text-white text-xl font-medium text-center"></p>
+                </div>
             </div>
         </div>
     </div>
@@ -154,12 +165,13 @@
             document.body.style.overflow = 'auto';
         }, 300);
     }
+
     document.getElementById('modalBackground').addEventListener('click', closeModal);
 
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !document.getElementById('imageModal').classList.contains('hidden')) {
             closeModal();
         }
-    });    
+    });
 </script>
 @endsection
