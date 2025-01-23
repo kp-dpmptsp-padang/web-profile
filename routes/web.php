@@ -123,6 +123,8 @@ Route::middleware('guest')->group(function () {
     Route::get('/galeri', [GuestController::class, 'galeri'])->name('galeri');
     Route::get('/pertanyaan', [GuestController::class, 'faq'])->name('faq');
     Route::post('/question', [GuestController::class, 'storeQuestion'])->name('questions.store');
+    Route::get('/inovasi/mpp-mobile', [GuestController::class, 'mppMobile'])->name('mpp-mobile');
+    Route::get('/inovasi/raga-mpp', [GuestController::class, 'raga'])->name('raga-mpp');
 
     Route::get('/home-survey', [SurveyController::class, 'home'])->name('home-survey');
     Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
