@@ -366,7 +366,7 @@
             <h2 class="text-3xl font-bold text-center mb-12">Inovasi Pelayanan</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 @forelse($innovations as $innovation)
-                    <a href="{{ $innovation->url }}" target="_blank" 
+                    <a href="{{ $innovation->url }}" 
                        class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition duration-300 flex items-center gap-4">
                         <figure class="avatar" style="border-radius: 0px; width: 64px;">
                             @if($innovation->pictures->isNotEmpty())

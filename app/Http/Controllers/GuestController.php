@@ -244,4 +244,14 @@ class GuestController extends Controller
         $pictures = Picture::where('imageable_type', 'gallery')->latest()->paginate(9);
         return view('galeri', compact('pictures'));
     }
+
+    public function mppMobile()
+    {
+        return view('mpp-mobile');
+    }
+
+    public function raga()
+    {
+        return view('raga');
+    }
 }

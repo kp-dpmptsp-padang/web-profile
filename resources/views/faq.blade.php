@@ -188,7 +188,7 @@ $faqs = [
 <div class="overflow-hidden pt-16 relative">
     <div class="heading bg-cover bg-center py-24 flex items-center justify-center relative">
         <div class="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-1000" 
-             style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/swiper/4.jpg')">
+             style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/bg-9.jpg')">
         </div>
         <h1 class="text-6xl text-white uppercase font-bold relative z-10 tracking-wider fade-in-scale">
             FAQ
@@ -208,7 +208,6 @@ $faqs = [
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- FAQ List -->
                 <div class="space-y-6 slide-in-bottom" style="animation-delay: 0.2s;">
                     @foreach($faqs as $index => $faq)
                     <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
@@ -236,7 +235,6 @@ $faqs = [
                     @endforeach
                 </div>
 
-                <!-- Contact Form -->
                 <div class="lg:sticky lg:top-8 slide-in-bottom" style="animation-delay: 0.4s;">
                     <div class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
                         <div class="mb-8">

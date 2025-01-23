@@ -45,7 +45,7 @@
 <div class="overflow-hidden pt-16 relative">
     <div class="heading bg-cover bg-center py-24 flex items-center justify-center relative">
         <div class="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-1000" 
-             style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/mpp4-2.jpg')">
+             style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/bg-2.jpg')">
         </div>
         <h1 class="text-6xl text-white uppercase font-bold relative z-10 tracking-wider fade-in-scale">
             Dokumen
