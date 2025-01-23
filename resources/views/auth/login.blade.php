@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Admin Login - DPMPTSP Kota Padang</title>
+    <link rel="icon" href="/images/Logo_Padang.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
