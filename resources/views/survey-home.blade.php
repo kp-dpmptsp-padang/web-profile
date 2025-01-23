@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<div class="container mx-auto px-4 lg:px-32 relative -mt-32 z-10">
+<div class="container mx-auto px-4 lg:px-32 relative -mt-16 md:-mt-32 z-10">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="group bg-white rounded-2xl shadow-xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
             <div class="flex items-center mb-6">
