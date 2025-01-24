@@ -42,7 +42,7 @@
 
                     <div>
                         <label for="link" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link Sumber</label>
-                        <input type="text" name="link" id="link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500" placeholder="Masukkan link sumber jika ada..." required>
+                        <input type="text" name="link" id="link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500" placeholder="Masukkan link sumber jika ada...">
                     </div>
 
                     <!-- Tags -->
@@ -68,7 +68,7 @@
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                 </svg>
-                                Add
+                                Tambah
                             </button>
                         </div>
                         <div id="selected-tags" class="mt-3 flex flex-wrap gap-2">
@@ -105,7 +105,7 @@
                             Batal
                         </button>
                         <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                            Tambah Postingan
+                            Simpan
                         </button>
                     </div>
                 </div>

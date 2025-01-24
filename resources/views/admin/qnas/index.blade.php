@@ -7,7 +7,7 @@
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
             <div class="mb-4 md:mb-0">
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Manajemen Pertanyaan</h2>
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Kelola daftar pertanyaan dari tamu</p>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Kelola Daftar Pertanyaan Dari Tamu</p>
             </div>
         </div>
 
@@ -202,7 +202,7 @@
         title: 'Berhasil',
         text: '{{ session('success') }}',
         icon: 'success',
-        confirmButtonText: 'OK'
+        confirmButtonColor: "#229CDB",
     });
     @endif
 </script>

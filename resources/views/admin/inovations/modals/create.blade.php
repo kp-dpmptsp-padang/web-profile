@@ -5,6 +5,9 @@
             <!-- Modal header - Fixed position -->
             <div class="sticky top-0 z-10 bg-white dark:bg-gray-800 px-6 py-4 border-b dark:border-gray-600">
                 <div class="flex justify-between items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg> 
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white flex items-center">
                         Tambah Inovasi Baru
                     </h3>
@@ -62,7 +65,7 @@
                             Batal
                         </button>
                         <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                            Tambah Inovasi
+                            Simpan
                         </button>
                     </div>
                 </div>
@@ -83,7 +86,8 @@ document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
                 title: 'Kesalahan',
                 text: 'Deskripsi tidak boleh lebih dari 150 karakter.',
-                icon: 'error'
+                icon: 'error',
+                confirmButtonColor: "#229CDB",
             });
             return;
         }
@@ -105,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         title: 'Berhasil',
                         text: 'Inovasi berhasil ditambahkan.',
                         icon: 'success',
-                        showConfirmButton: false,
+                        confirmButtonColor: "#229CDB",
                         timer: 1500
                     }).then(() => {
                         window.location.reload();
@@ -118,7 +122,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 Swal.fire({
                     title: 'Kesalahan',
                     text: 'Gagal menambahkan inovasi.',
-                    icon: 'error'
+                    icon: 'error',
+                    confirmButtonColor: "#229CDB",
                 });
             }
         })
@@ -127,7 +132,8 @@ document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
                 title: 'Kesalahan',
                 text: 'Gagal menambahkan inovasi.',
-                icon: 'error'
+                icon: 'error',
+                confirmButtonColor: "#229CDB",
             });
         });
     });

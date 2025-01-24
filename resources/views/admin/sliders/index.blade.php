@@ -6,17 +6,19 @@
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
             <div class="mb-4 md:mb-0">
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Manajemen Slider</h2>
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Kelola slider halaman utama</p>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Kelola Slider Halaman Utama</p>
             </div>
-            <button type="button" 
-                    data-modal-target="createSliderModal" 
-                    data-modal-toggle="createSliderModal" 
-                    class="inline-flex items-center px-5 py-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700">
-                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-                </svg>
-                Tambah Slider
-            </button>
+            <div class="w-full md:w-auto">
+                <button type="button" 
+                        data-modal-target="createSliderModal" 
+                        data-modal-toggle="createSliderModal" 
+                        class="w-full md:w-auto inline-flex items-center justify-center px-5 py-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
+                    </svg>
+                    Tambah Slider Baru
+                </button>
+            </div>
         </div>
 
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
@@ -258,7 +260,8 @@
                         Swal.fire({
                             title: 'Berhasil',
                             text: `Slider berhasil ${status ? 'diaktifkan' : 'dinonaktifkan'}`,
-                            icon: 'success'
+                            icon: 'success',
+                            confirmButtonColor: "#229CDB",
                         }).then(() => {
                             window.location.reload();
                         });
@@ -271,7 +274,8 @@
                     Swal.fire({
                         title: 'Kesalahan',
                         text: `Gagal ${status ? 'mengaktifkan' : 'menonaktifkan'} slider`,
-                        icon: 'error'
+                        icon: 'error',
+                        confirmButtonColor: "#229CDB",
                     });
                 });
             }
@@ -294,7 +298,7 @@
                     title: 'Berhasil',
                     text: 'Urutan slider berhasil diperbarui',
                     icon: 'success',
-                    showConfirmButton: false,
+                    confirmButtonColor: "#229CDB",
                     timer: 1500
                 }).then(() => {
                     window.location.reload();
@@ -308,7 +312,8 @@
             Swal.fire({
                 title: 'Kesalahan',
                 text: 'Gagal memperbarui urutan slider',
-                icon: 'error'
+                icon: 'error',
+                confirmButtonColor: "#229CDB",
             });
         });
     }

@@ -66,10 +66,10 @@ public function store(Request $request)
           }
 
           return redirect()->route('posts.index', ['type' => $type])
-                ->with('success', 'Post created successfully.');
+                ->with('success', 'Postingan berhasil dibuat.');
      } catch (\Exception $e) {
           return redirect()->route('posts.index', ['type' => $type])
-                ->with('error', 'Gagal membuat post: ' . $e->getMessage());
+                ->with('error', 'Gagal membuat postingan: ' . $e->getMessage());
      }
 }
 
@@ -130,11 +130,11 @@ public function store(Request $request)
            }
 
            return redirect()->route('posts.index', ['type' => $post->jenis])
-               ->with('success', 'Post berhasil diperbarui.');
+               ->with('success', 'Postingan berhasil diperbarui.');
 
        } catch (\Exception $e) {
            return redirect()->route('posts.index', ['type' => $post->jenis])
-               ->with('error', 'Gagal memperbarui post: ' . $e->getMessage());
+               ->with('error', 'Gagal memperbarui postingan: ' . $e->getMessage());
        }
    }
 
@@ -160,11 +160,11 @@ public function store(Request $request)
            $post->delete();
 
            return redirect()->route('posts.index', ['type' => $type])
-               ->with('success', 'Post berhasil dihapus.');
+               ->with('success', 'Postingan berhasil dihapus.');
                
        } catch (\Exception $e) {
            return redirect()->route('posts.index', ['type' => $post->jenis])
-               ->with('error', 'Gagal menghapus post: ' . $e->getMessage());
+               ->with('error', 'Gagal menghapus postingan: ' . $e->getMessage());
        }
    }
 }

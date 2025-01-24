@@ -1,10 +1,10 @@
 <section>
     <header>
         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-            {{ __('Profile Information') }}
+            {{ __('Informasi Profil') }}
         </h3>
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("Perbarui informasi profil dan alamat email akun Anda.") }}
         </p>
     </header>
 
@@ -17,7 +17,7 @@
         @method('patch')
 
         <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('Name') }}</label>
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('Nama') }}</label>
             <input type="text" name="name" id="name"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
                    value="{{ old('name', $user->name) }}"
@@ -55,7 +55,7 @@
         <div class="flex items-center gap-4">
             <button type="submit" 
                     class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                {{ __('Save') }}
+                {{ __('Simpan') }}
             </button>
 
             @if (session('status') === 'profile-updated')

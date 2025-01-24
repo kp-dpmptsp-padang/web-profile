@@ -63,8 +63,7 @@
                    title: 'Berhasil!',
                    text: 'Dokumen telah berhasil dihapus.',
                    icon: 'success',
-                   confirmButtonText: 'OK',
-                   confirmButtonColor: '#3085d6'
+                   confirmButtonColor: "#229CDB",
                }).then((result) => {
                    if (result.isConfirmed) {
                        window.location.reload();
@@ -84,8 +83,7 @@
                title: 'Gagal!',
                text: error.message || 'Terjadi kesalahan saat menghapus dokumen.',
                icon: 'error',
-               confirmButtonText: 'OK',
-               confirmButtonColor: '#3085d6'
+               confirmButtonColor: "#229CDB",
            });
        });
    }

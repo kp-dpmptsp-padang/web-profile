@@ -6,7 +6,7 @@
         <!-- Welcome Header -->
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-2">Selamat Datang, {{ Auth::user()->name }}!</h1>
-            <p class="text-gray-600 dark:text-gray-300">Dashboard Overview - {{ now()->format('l, d F Y') }}</p>
+            <p class="text-gray-600 dark:text-gray-300">Dashboard - {{ now()->format('l, d F Y') }}</p>
         </div>
 
         <!-- Main Statistics -->

@@ -31,7 +31,7 @@ class QnAController extends Controller
     public function destroy($id) {
         $question = QuestionAndAnswer::findOrFail($id);
         $question->delete();
-
-        return redirect()->route('qna.index')->with('success', 'Pertanyaan berhasil diabaikan.');
+    
+        return response()->json(['success' => true, 'message' => 'Pertanyaan berhasil diabaikan.']);
     }
 }

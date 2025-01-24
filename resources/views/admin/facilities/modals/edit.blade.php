@@ -6,6 +6,9 @@
             <!-- Modal header - Fixed position -->
             <div class="sticky top-0 z-10 bg-white dark:bg-gray-800 px-6 py-4 border-b dark:border-gray-600">
                 <div class="flex justify-between items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white flex items-center">
                         Ubah Fasilitas
                     </h3>
@@ -66,7 +69,7 @@
                             Batal
                         </button>
                         <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                            Simpan Perubahan
+                            Simpan
                         </button>
                     </div>
                 </div>
@@ -107,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     title: 'Berhasil',
                     text: 'Fasilitas berhasil diperbarui.',
                     icon: 'success',
-                    showConfirmButton: false,
+                    confirmButtonColor: "#229CDB",
                     timer: 1500
                 }).then(() => {
                     window.location.reload();
@@ -117,13 +120,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     title: 'Berhasil',
                     text: 'Fasilitas berhasil diperbarui.',
                     icon: 'success',
-                    showConfirmButton: false,
+                    confirmButtonColor: "#229CDB",
                     timer: 1500
                 }).then(() => {
                     window.location.reload();
                 });
-            } else {
-                throw new Error(data.message || 'Terjadi kesalahan');
             }
         })
         .catch(error => {
@@ -131,7 +132,8 @@ document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
                 title: 'Kesalahan',
                 text: 'Gagal memperbarui fasilitas.',
-                icon: 'error'
+                icon: 'error',
+                confirmButtonColor: "#229CDB",
             });
         });
     });

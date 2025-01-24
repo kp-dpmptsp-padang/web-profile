@@ -4,6 +4,9 @@
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
             <!-- Modal header -->
             <div class="flex justify-between items-center p-5 rounded-t border-b dark:border-gray-600">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
                 <h3 class="text-xl font-medium text-gray-900 dark:text-white">
                     Tambah Pegawai
                 </h3>
@@ -23,7 +26,7 @@
                     </div>
                     <div class="sm:col-span-2">
                         <label for="nip" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIP</label>
-                        <input type="text" name="nip" id="nip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500" required>
+                        <input type="text" name="nip" id="nip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500">
                     </div>
                     <div class="sm:col-span-2">
                         <label for="jabatan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jabatan</label>
@@ -71,9 +74,15 @@
                     </div>
                 </div>
                 <!-- Modal footer -->
-                <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-                    <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Simpan</button>
-                    <button type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600" data-modal-toggle="createEmployeeModal">Batal</button>
+                <div class="sticky bottom-0 bg-white dark:bg-gray-800 px-6 py-4 border-t border-gray-200 dark:border-gray-600">
+                    <div class="flex items-center justify-end space-x-2">
+                        <button type="button" data-modal-toggle="createEmployeeModal" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                            Batal
+                        </button>
+                        <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                            Simpan
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -107,8 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     title: 'Berhasil',
                     text: 'Pegawai berhasil ditambahkan.',
                     icon: 'success',
-                    confirmButtonText: 'OK',
-                    confirmButtonColor: '#10b981'
+                    confirmButtonColor: "#229CDB",
                 }).then(() => {
                     location.reload();
                 });
@@ -117,8 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     title: 'Gagal',
                     text: data.message || 'Gagal menambahkan pegawai.',
                     icon: 'error',
-                    confirmButtonText: 'OK',
-                    confirmButtonColor: '#dc2626'
+                    confirmButtonColor: "#229CDB",
                 });
             }
         })
@@ -127,8 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Gagal',
                 text: error.message || 'Gagal menambahkan pegawai.',
                 icon: 'error',
-                confirmButtonText: 'OK',
-                confirmButtonColor: '#dc2626'
+                confirmButtonColor: "#229CDB",
             });
         });
     });
@@ -152,8 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Error',
                 text: 'Ukuran file tidak boleh lebih dari 10MB',
                 icon: 'error',
-                confirmButtonText: 'OK',
-                confirmButtonColor: '#dc2626'
+                confirmButtonColor: "#229CDB",
             });
             fileInput.value = '';
             return;

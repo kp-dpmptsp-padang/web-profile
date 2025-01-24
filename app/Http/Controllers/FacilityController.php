@@ -73,6 +73,6 @@ class FacilityController extends Controller
         }
         $facility->delete();
 
-        return redirect()->route('facility.index');
+        return response()->json(['success' => true, 'message' => 'Fasilitas berhasil dihapus.']);
     }
 }

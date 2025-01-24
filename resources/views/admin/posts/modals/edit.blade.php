@@ -51,7 +51,7 @@
 
                         <div>
                             <label for="link-{{ $post->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link Sumber</label>
-                            <input type="text" name="link" id="link-{{ $post->id }}" value="{{ $post->link }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500" required>
+                            <input type="text" name="link" id="link-{{ $post->id }}" value="{{ $post->link }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500">
                         </div>
 
                         <!-- Tags Section -->
@@ -77,7 +77,7 @@
                                     <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                     </svg>
-                                    Add
+                                    Tambah
                                 </button>
                             </div>
                             <div id="selected-tags-{{ $post->id }}" class="mt-3 flex flex-wrap gap-2">
@@ -97,7 +97,7 @@
 
                         <!-- Images Section -->
                         <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Images</label>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gambar</label>
                             <!-- Drag & Drop Zone -->
                             <div class="flex items-center justify-center w-full">
                                 <label for="images-{{ $post->id }}" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500">
@@ -114,7 +114,7 @@
 
                             <!-- Image Preview Grid -->
                             <div class="mt-4">
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Existing Images</label>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gambar Saat Ini</label>
                                 <div id="image-preview-{{ $post->id }}" class="grid grid-cols-2 md:grid-cols-4 gap-4">
                                     @if($post->pictures)
                                         @foreach($post->pictures as $picture)
@@ -145,7 +145,7 @@
                             Batal
                         </button>
                         <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                            Simpan Perubahan
+                            Simpan
                         </button>
                     </div>
                 </div>
