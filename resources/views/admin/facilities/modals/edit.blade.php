@@ -90,42 +90,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         fetch(form.action, {
             method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-            },
             body: formData
         })
-        .then(response => {
-            const contentType = response.headers.get('content-type');
-            if (contentType && contentType.includes('application/json')) {
-                return response.json();
-            } else {
-                return response.text();
-            }
-        })
+        .then(response => response.json())  // Hanya expect JSON response
         .then(data => {
-            if (typeof data === 'string') {
-                console.log('Response text:', data); // Log the response text for debugging
-                Swal.fire({
-                    title: 'Berhasil',
-                    text: 'Fasilitas berhasil diperbarui.',
-                    icon: 'success',
-                    confirmButtonColor: "#229CDB",
-                    timer: 1500
-                }).then(() => {
-                    window.location.reload();
-                });
-            } else if (data.success) {
-                Swal.fire({
-                    title: 'Berhasil',
-                    text: 'Fasilitas berhasil diperbarui.',
-                    icon: 'success',
-                    confirmButtonColor: "#229CDB",
-                    timer: 1500
-                }).then(() => {
-                    window.location.reload();
-                });
-            }
+            Swal.fire({
+                title: 'Berhasil',
+                text: 'Fasilitas berhasil diperbarui.',
+                icon: 'success',
+                confirmButtonColor: "#229CDB",
+                timer: 1500
+            }).then(() => {
+                window.location.reload();
+            });
         })
         .catch(error => {
             console.error('Error:', error);

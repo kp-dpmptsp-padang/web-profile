@@ -131,6 +131,23 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
+
+    @layer utilities {
+        @variants responsive {
+            .line-clamp-2 {
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+            }
+            .line-clamp-3 {
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+            }
+        }
+    }
 </style>
 
 <div class="px-4 md:px-24 pt-8 md:pt-16 overflow-hidden relative">
@@ -480,22 +497,23 @@
     
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
                 @foreach($latestNews as $news)
-                    <a href="{{ route('detail-berita', $news->slug) }}" class="news-card bg-white rounded-xl shadow-lg overflow-hidden group">
-                        <div class="image-wrapper relative h-48">
-                            <img 
+                    <a href="{{ route('detail-berita', $news->slug) }}" class="news-card bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
+                        <div class="image-wrapper relative aspect-[4/3]"> <!-- Mengubah fixed height ke aspect ratio -->
+                            <img
                                 src="{{ asset('storage/' . $news->pictures->first()->nama_file) }}"
                                 alt="{{ $news->judul }}"
-                                class="w-full h-full object-cover"
+                                class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" 
                             />
-                            <div class="news-date absolute top-4 right-4 px-3 py-1 rounded-full text-white text-sm">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="news-date absolute top-4 right-4 px-3 py-1 bg-black/60 backdrop-blur-sm rounded-full text-white text-sm">
                                 {{ $news->created_at->format('d M Y') }}
                             </div>
                         </div>
                         <div class="p-4 md:p-6">
-                            <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-3 group-hover:text-red-600 transition-colors duration-300">
+                            <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-3 line-clamp-2 group-hover:text-red-600 transition-colors duration-300">
                                 {{ $news->judul }}
                             </h3>
-                            <p class="text-gray-600 text-sm truncate-3-lines mb-4">
+                            <p class="text-gray-600 text-sm line-clamp-3 mb-4"> <!-- Menggunakan line-clamp sebagai gantu truncate -->
                                 {{ $news->konten }}
                             </p>
                             <div class="flex items-center text-red-600 text-sm font-medium">

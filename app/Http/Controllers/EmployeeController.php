@@ -23,7 +23,7 @@ class EmployeeController extends Controller
         try {
             $request->validate([
                 'nama' => 'required|string|max:255',
-                'nip' => 'required|string|max:255|unique:employees,nip',
+                'nip' => 'nullable|string|max:255|unique:employees,nip,NULL,id,nip,!NULL',
                 'jabatan' => 'required|string|max:255',
                 'file' => 'required|file',
             ]);
@@ -62,7 +62,7 @@ class EmployeeController extends Controller
         try {
             $request->validate([
                 'nama' => 'required|string|max:255',
-                'nip' => 'required|string|max:255|unique:employees,nip,' . $id,
+                'nip' => 'nullable|string|max:255|unique:employees,nip,' . $id . ',id,nip,!NULL',
                 'jabatan' => 'required|string|max:255',
                 'file' => 'nullable|file',
             ]);
