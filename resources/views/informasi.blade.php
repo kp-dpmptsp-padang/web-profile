@@ -74,7 +74,7 @@
         </h1>
     </div>
 
-    <section class="bg-white/80 relative backdrop-blur-sm">
+    <section class="bg-white/80 relative backdrop-blur-sm px-4 md:px-8 lg:px-24">
         <div class="container mx-auto py-6 md:py-12 mobile-container">
             <div class="max-w-4xl mx-auto mb-6 md:mb-12 px-4 slide-in-bottom">
                 <form method="GET" action="{{ url()->current() }}" 
@@ -121,7 +121,7 @@
                 </form>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-8 lg:px-24">
                 @forelse ($posts as $post)
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group fade-in-scale">
                         <div class="relative">

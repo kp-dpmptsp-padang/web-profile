@@ -171,9 +171,10 @@ class GuestController extends Controller
         $documents = $query->latest()->paginate(10);
         $documentTypes = DocumentType::where('jenis_dokumen', '!=', 'standar-pelayanan')->get();
         $years = Document::select('tahun')
-                        ->distinct()
-                        ->orderBy('tahun', 'desc')
-                        ->pluck('tahun');
+                ->excludeEmployeeAndStandarPelayananDocuments()  // Tambahkan kondisi exclude
+                ->distinct()
+                ->orderBy('tahun', 'desc')
+                ->pluck('tahun');
 
         return view('dokumen', compact('documents', 'documentTypes', 'years'));
     }

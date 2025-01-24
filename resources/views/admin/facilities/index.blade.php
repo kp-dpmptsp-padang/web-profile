@@ -89,8 +89,6 @@
 
 @include('admin.facilities.modals.create')
 @include('admin.facilities.modals.delete')
-@foreach($facilities as $facility)
-    @include('admin.facilities.modals.edit', ['facility' => $facility])
-@endforeach
+@include('admin.facilities.modals.edit')
 
 @endsection

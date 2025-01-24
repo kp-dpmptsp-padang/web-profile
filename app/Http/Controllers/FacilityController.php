@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Facility;
-use App\Models\Picture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -46,13 +45,11 @@ class FacilityController extends Controller
         $facility->update($request->only('nama', 'deskripsi'));
 
         if ($request->hasFile('image')) {
-            // Delete the old images
             foreach ($facility->pictures as $picture) {
                 Storage::disk('public')->delete($picture->nama_file);
                 $picture->delete();
             }
 
-            // Store the new image
             $path = $request->file('image')->store('facilities', 'public');
             $facility->pictures()->create([
                 'nama_file' => $path,
@@ -60,7 +57,10 @@ class FacilityController extends Controller
             ]);
         }
 
-        return redirect()->route('facility.index');
+        return response()->json([
+            'success' => true,
+            'message' => 'Fasilitas berhasil diperbarui.'
+        ]);
     }
 
     public function destroy($id) {

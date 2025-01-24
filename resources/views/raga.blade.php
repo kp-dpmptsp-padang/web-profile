@@ -32,11 +32,11 @@
         </div>
     </div>
 
-    <div id="detail" class="py-24 bg-white relative px-12">
+    <div id="detail" class="py-16 md:py-24 bg-white relative px-4 md:px-12">
         <div class="absolute top-0 left-0 w-96 h-96 bg-red-50 rounded-full filter blur-3xl opacity-50 -translate-x-1/2 -translate-y-1/2"></div>
         <div class="absolute bottom-0 right-0 w-96 h-96 bg-red-50 rounded-full filter blur-3xl opacity-50 translate-x-1/2 translate-y-1/2"></div>
         
-        <div class="container mx-auto px-6 relative">
+        <div class="container mx-auto px-2 md:px-6 relative">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-bold text-gray-900 mb-6">Keunggulan Raga MPP</h2>
                 <p class="text-gray-600 text-lg max-w-2xl mx-auto">Memastikan kualitas pelayanan dan kenyamanan pengunjung di Mal Pelayanan Publik</p>
