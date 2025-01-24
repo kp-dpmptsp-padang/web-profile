@@ -1,10 +1,10 @@
 <section>
     <header>
         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-            {{ __('Update Password') }}
+            {{ __('Ubah Password') }}
         </h3>
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            {{ __('Ensure your account is using a long, random password to stay secure.') }}
+            {{ __('Pastikan akun Anda menggunakan kata sandi yang panjang dan acak agar tetap aman.') }}
         </p>
     </header>
 
@@ -14,7 +14,7 @@
 
         <div>
             <label for="current_password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                {{ __('Current Password') }}
+                {{ __('Password Saat Ini') }}
             </label>
             <input type="password" name="current_password" id="current_password"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
@@ -24,7 +24,7 @@
 
         <div>
             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                {{ __('New Password') }}
+                {{ __('Password Baru') }}
             </label>
             <input type="password" name="password" id="password"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
@@ -34,7 +34,7 @@
 
         <div>
             <label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                {{ __('Confirm Password') }}
+                {{ __('Konfirmasi Password') }}
             </label>
             <input type="password" name="password_confirmation" id="password_confirmation"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
@@ -45,7 +45,7 @@
         <div class="flex items-center gap-4">
             <button type="submit" 
                     class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                {{ __('Save') }}
+                {{ __('Simpan') }}
             </button>
 
             @if (session('status') === 'password-updated')

@@ -6,6 +6,9 @@
             <!-- Modal header - Fixed position -->
             <div class="sticky top-0 z-10 bg-white dark:bg-gray-800 px-6 py-4 border-b dark:border-gray-600">
                 <div class="flex justify-between items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white flex items-center">
                         Edit Dokumen
                     </h3>
@@ -168,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     title: 'Berhasil',
                     text: 'Dokumen berhasil diperbarui.',
                     icon: 'success',
-                    confirmButtonText: 'OK'
+                    confirmButtonColor: "#229CDB",
                 }).then(() => {
                     location.reload();
                 });
@@ -177,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     title: 'Gagal',
                     text: 'Gagal memperbarui dokumen.',
                     icon: 'error',
-                    confirmButtonText: 'OK'
+                    confirmButtonColor: "#229CDB",
                 });
             }
         })
@@ -187,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Gagal',
                 text: 'Gagal memperbarui dokumen.',
                 icon: 'error',
-                confirmButtonText: 'OK'
+                confirmButtonColor: "#229CDB",
             });
         });
     });

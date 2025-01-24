@@ -14,7 +14,6 @@ class SliderController extends Controller
         $inactiveSliders = Slider::with('pictures')->where('is_active', false)->orderBy('order')->get();
         return view('admin.sliders.index', compact('activeSliders', 'inactiveSliders'));
     }
-
     public function store(Request $request)
     {
         $request->validate([

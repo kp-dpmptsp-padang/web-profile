@@ -4,21 +4,19 @@
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
-            <div>
+            <div class="mb-4 md:mb-0">
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Manajemen Pegawai</h2>
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Kelola daftar pegawai</p>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Kelola Daftar Pegawai</p>
             </div>
-            <div>
-                <button 
-                    type="button" 
-                    data-modal-target="createEmployeeModal" 
-                    data-modal-toggle="createEmployeeModal" 
-                    class="inline-flex items-center px-5 py-3 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700"
-                >
+            <div class="w-full md:w-auto">
+                <button type="button" 
+                        data-modal-target="createEmployeeModal" 
+                        data-modal-toggle="createEmployeeModal" 
+                        class="w-full md:w-auto inline-flex items-center justify-center px-5 py-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700">
                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
                     </svg>
-                    Tambah Pegawai
+                    Tambah Pegawai Baru
                 </button>
             </div>
         </div>
@@ -100,7 +98,7 @@
         title: 'Berhasil',
         text: '{{ session('success') }}',
         icon: 'success',
-        confirmButtonText: 'OK'
+        confirmButtonColor: "#229CDB",
     });
 </script>
 @endif

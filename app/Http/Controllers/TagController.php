@@ -17,13 +17,18 @@ class TagController extends Controller
     {
         $request->validate([
             'tag' => 'required|string|max:255|unique:tags,tag',
+        ], [
+            'tag.required' => 'Nama tag wajib diisi.',
+            'tag.string' => 'Nama tag harus berupa teks.',
+            'tag.max' => 'Nama tag tidak boleh lebih dari 255 karakter.',
+            'tag.unique' => 'Nama tag sudah digunakan.',
         ]);
 
         Tag::create([
             'tag' => $request->tag,
         ]);
 
-        return redirect()->route('tags.index')->with('success', 'Tag created successfully.');
+        return redirect()->route('tags.index')->with('success', 'Berhasil Menambahkan Tag.');
     }
 
     public function update(Request $request, $id)
@@ -32,13 +37,18 @@ class TagController extends Controller
 
         $request->validate([
             'tag' => 'required|string|max:255|unique:tags,tag,' . $tag->id,
+        ], [
+            'tag.required' => 'Nama tag wajib diisi.',
+            'tag.string' => 'Nama tag harus berupa teks.',
+            'tag.max' => 'Nama tag tidak boleh lebih dari 255 karakter.',
+            'tag.unique' => 'Nama tag sudah digunakan.',
         ]);
 
         $tag->update([
             'tag' => $request->tag,
         ]);
 
-        return redirect()->route('tags.index')->with('success', 'Tag updated successfully.');
+        return redirect()->route('tags.index')->with('success', 'Berhasil Mengupdate Tag.');
     }
 
     public function destroy($id)
@@ -46,6 +56,6 @@ class TagController extends Controller
         $tag = Tag::findOrFail($id);
         $tag->delete();
 
-        return redirect()->route('tags.index')->with('success', 'Tag deleted successfully.');
+        return redirect()->route('tags.index')->with('success', 'Berhasil Menghapus Tag.');
     }
-}   
+}

@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     title: 'Berhasil',
                     text: data.message,
                     icon: 'success',
-                    confirmButtonText: 'OK'
+                    confirmButtonColor: "#229CDB",
                 }).then(() => {
                     location.reload();
                 });
@@ -63,8 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     title: 'Gagal',
                     text: data.message || 'Gagal menghapus pegawai.',
                     icon: 'error',
-                    confirmButtonText: 'OK',
-                    confirmButtonColor: '#dc2626'
+                    confirmButtonColor: "#229CDB",
                 });
             }
         })
@@ -73,8 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Gagal',
                 text: error.message || 'Gagal menghapus pegawai.',
                 icon: 'error',
-                confirmButtonText: 'OK',
-                confirmButtonColor: '#dc2626'
+                confirmButtonColor: "#229CDB",
             });
         });
     });
