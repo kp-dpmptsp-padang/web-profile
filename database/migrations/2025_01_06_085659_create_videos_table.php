@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('judul');
             $table->string('deskripsi');
             $table->string('url');
+            $table->date('tanggal_publikasi');
             $table->timestamps();
         });
     }

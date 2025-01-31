@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('jenis', ['berita', 'informasi']);
             $table->string('slug');
             $table->string('link')->nullable();
+            $table->date('tanggal_publikasi');
             $table->timestamps();
         });
     }

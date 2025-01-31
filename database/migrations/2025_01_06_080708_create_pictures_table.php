@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('alt_text')->nullable()->default(null);
             $table->decimal('urutan')->nullable()->default(null);
             $table->morphs('imageable'); 
+            $table->date('tanggal_publikasi')->nullable()->default(null);
             $table->timestamps();
         });
     }

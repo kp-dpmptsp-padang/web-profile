@@ -136,7 +136,7 @@
                             <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-red-600 rounded-xl -z-10 transition-all duration-300 group-hover:-bottom-6 group-hover:-right-6 group-hover:rotate-6"></div>
                         </div>
                         <div class="p-6">
-                            <div class="text-sm text-gray-500 mb-2">{{ $video->created_at->format('d F Y') }}</div>
+                            <div class="text-sm text-gray-500 mb-2">{{ \Carbon\Carbon::parse($video->tanggal_publikasi)->locale('id')->isoFormat('D MMMM Y') }}</div>
                             <h3 class="text-xl font-semibold mb-2 line-clamp-2 hover:text-red-600 transition-colors duration-300">
                                 {{ $video->judul }}
                             </h3>

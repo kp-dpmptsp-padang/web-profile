@@ -34,6 +34,10 @@
                         <textarea name="deskripsi" id="deskripsi-{{ $video->id }}" maxlength="150" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500">{{ $video->deskripsi }}</textarea>
                     </div>
                     <div class="sm:col-span-2">
+                        <label for="tanggal_publikasi-{{ $video->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Rilis</label>
+                        <input type="date" name="tanggal_publikasi" id="tanggal_publikasi-{{ $video->id }}" value="{{ $video->tanggal_publikasi }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500" required>
+                    </div>
+                    <div class="sm:col-span-2">
                         <label for="url-{{ $video->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">URL Video</label>
                         <input type="text" name="url" id="url-{{ $video->id }}" value="{{ $video->url }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500" required>
                     </div>

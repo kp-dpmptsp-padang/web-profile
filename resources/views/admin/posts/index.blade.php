@@ -46,9 +46,11 @@
                             @forelse($posts as $index => $post)
                                 <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                     <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ $index + 1 }}</td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ $post->judul }}</td>
+                                    <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                        {{ \Illuminate\Support\Str::words($post->judul, 7, '...') }}
+                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $post->penulis->name }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ $post->created_at->format('d M Y') }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ \Carbon\Carbon::parse($post->tanggal_publikasi)->locale('id')->isoFormat('D MMMM Y') }}</td>
                                     <td class="px-6 py-4">
                                         <div class="flex items-center justify-center gap-4">
                                             <button type="button"

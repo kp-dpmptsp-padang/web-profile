@@ -17,6 +17,7 @@ class Picture extends Model
         'urutan',
         'imageable_id',
         'imageable_type',
+        'tanggal_publikasi'
     ];
 
     public function imageable()

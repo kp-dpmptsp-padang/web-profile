@@ -32,6 +32,10 @@
                         <textarea name="deskripsi" id="deskripsi" maxlength="200" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"></textarea>
                     </div>
                     <div class="sm:col-span-2">
+                        <label for="tanggal_publikasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Rilis</label>
+                        <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" maxlength="200" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500" required>
+                    </div>
+                    <div class="sm:col-span-2">
                         <label for="url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">URL</label>
                         <input type="url" name="url" id="url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500" required>
                     </div>

@@ -14,6 +14,7 @@ class Video extends Model
         'judul',
         'deskripsi',
         'url',
+        'tanggal_publikasi'
     ];
 
     public function admin()
