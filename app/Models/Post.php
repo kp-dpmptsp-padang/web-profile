@@ -16,6 +16,7 @@ class Post extends Model
         'jenis',
         'slug',
         'link',
+        'tanggal_publikasi'
     ];
 
     public function penulis()

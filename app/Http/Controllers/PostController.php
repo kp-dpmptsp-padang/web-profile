@@ -29,6 +29,7 @@ public function store(Request $request)
           'tags' => 'array',
           'tags.*' => 'exists:tags,id',
           'link' => 'nullable|url',
+          'tanggal_publikasi' => 'required|date',
           'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
      ]);
 
@@ -42,6 +43,7 @@ public function store(Request $request)
                 'jenis' => $type,
                 'slug' => Str::slug($request->judul),
                 'link' => $request->link,
+                'tanggal_publikasi' => $request->tanggal_publikasi,
           ]);
 
           if ($request->has('tags')) {
@@ -83,7 +85,8 @@ public function store(Request $request)
                'konten' => 'required|string',
                'tags' => 'array',
                'tags.*' => 'exists:tags,id',
-                'link' => 'nullable|url',
+               'link' => 'nullable|url',
+               'tanggal_publikasi' => 'required|date',
                'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
            ]);
 
@@ -93,6 +96,7 @@ public function store(Request $request)
                'slug' => Str::slug($request->judul),
                'jenis' => $post->jenis,
                'link' => $request->link,
+               'tanggal_publikasi' => $request->tanggal_publikasi,
            ]);
 
            if ($request->has('tags')) {

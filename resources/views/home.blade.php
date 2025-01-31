@@ -362,7 +362,7 @@
                 </a>
                 <a href="{{ route('home-survey') }}" target="_blank" class="bg-white p-4 rounded-lg text-center shadow hover:shadow-xl transition duration-300 flex flex-col h-full">
                     <div class="icon-wrap h-32 md:h-40 flex items-center justify-center mb-3">
-                        <img class="max-w-[120px] md:max-w-[160px] h-auto object-contain" src="/images/ikm.png" alt="IKM">
+                        <img class="max-w-[120px] md:max-w-[160px] h-auto object-contain" src="/images/skm4-3.png" alt="IKM">
                     </div>
                     <h3 class="text-base md:text-lg font-semibold mb-2">SKM</h3>
                     <p class="text-gray-600 text-sm text-justify flex-grow">Survei Kepuasan Masyarakat (SKM) adalah layanan yang dirancang untuk mengukur tingkat kepuasan masyarakat terhadap pelayanan yang diberikan oleh instansi pemerintah, guna meningkatkan kualitas layanan secara berkelanjutan.</p>
@@ -506,7 +506,7 @@
                             />
                             <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="news-date absolute top-4 right-4 px-3 py-1 bg-black/60 backdrop-blur-sm rounded-full text-white text-sm">
-                                {{ $news->created_at->format('d M Y') }}
+                                {{ \Carbon\Carbon::parse($news->tanggal_publikasi)->locale('id')->isoFormat('D MMMM Y') }}
                             </div>
                         </div>
                         <div class="p-4 md:p-6">
@@ -531,6 +531,59 @@
                 <a href="{{ route('berita') }}" 
                    class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-red-600 border border-transparent rounded-lg shadow-sm hover:bg-red-700 transition-colors duration-300">
                     Baca Berita Lainnya
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 md:py-16">
+        <div class="container mx-auto px-4 md:px-24">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Informasi Terkini
+                </h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+            </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
+                @foreach($latestInfo as $info)
+                    <a href="{{ route('detail-berita', $info->slug) }}" class="news-card bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
+                        <div class="image-wrapper relative aspect-[4/3]"> <!-- Mengubah fixed height ke aspect ratio -->
+                            <img
+                                src="{{ asset('storage/' . $info->pictures->first()->nama_file) }}"
+                                alt="{{ $info->judul }}"
+                                class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" 
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="news-date absolute top-4 right-4 px-3 py-1 bg-black/60 backdrop-blur-sm rounded-full text-white text-sm">
+                                {{ \Carbon\Carbon::parse($info->tanggal_publikasi)->locale('id')->isoFormat('D MMMM Y') }}
+                            </div>
+                        </div>
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-3 line-clamp-2 group-hover:text-red-600 transition-colors duration-300">
+                                {{ $info->judul }}
+                            </h3>
+                            <p class="text-gray-600 text-sm line-clamp-3 mb-4"> <!-- Menggunakan line-clamp sebagai gantu truncate -->
+                                {{ $info->konten }}
+                            </p>
+                            <div class="flex items-center text-red-600 text-sm font-medium">
+                                Baca selengkapnya
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+    
+            <div class="text-center">
+                <a href="{{ route('informasi') }}" 
+                   class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-red-600 border border-transparent rounded-lg shadow-sm hover:bg-red-700 transition-colors duration-300">
+                    Baca Informasi Lainnya
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>

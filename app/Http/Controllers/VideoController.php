@@ -18,6 +18,7 @@ class VideoController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
             'url' => 'required|url',
+            'tanggal_publikasi' => 'required|date',
         ]);
 
         Video::create([
@@ -25,6 +26,7 @@ class VideoController extends Controller
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
             'url' => $request->url,
+            'tanggal_publikasi' => $request->tanggal_publikasi,
         ]);
 
         return response()->json(['success' => true]);
@@ -35,6 +37,7 @@ class VideoController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
             'url' => 'required|url',
+            'tanggal_publikasi' => 'required|date',
         ]);
 
         $video = Video::findOrFail($id);
@@ -42,7 +45,8 @@ class VideoController extends Controller
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
             'url' => $request->url,
-        ]);
+            'tanggal_publikasi' => $request->tanggal_publikasi,
+    ]);
 
         return response()->json(['success' => true]);
     }

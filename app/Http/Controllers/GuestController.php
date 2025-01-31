@@ -21,15 +21,26 @@ class GuestController extends Controller
 {
     public function home()
     {
-        $gallery = Picture::where('imageable_type', 'gallery')->latest()->take(6)->get();
+        $gallery = Picture::where('imageable_type', 'gallery')
+            ->orderBy('tanggal_publikasi', 'desc')
+            ->take(6)
+            ->get();
 
         $sliders = Slider::with(['pictures' => function($query) {
             $query->orderBy('urutan', 'asc');
         }])->where('is_active', 1)->get();
 
         $innovations = Inovation::where('is_published', 1)->get();
-        $latestNews = Post::where('jenis', 'berita')->latest()->take(3)->get();
+        $latestNews = Post::where('jenis', 'berita')
+            ->orderBy('tanggal_publikasi', 'desc')
+            ->take(3)
+            ->get();
 
+        $latestInfo = Post::where('jenis', 'informasi')
+            ->orderBy('tanggal_publikasi', 'desc')
+            ->take(3)
+            ->get();
+            
         $surveyResults = SurveyQuestion::with(['options', 'answers'])
         ->where('is_active', 1)
         ->get()
@@ -69,7 +80,7 @@ class GuestController extends Controller
             $keteranganScore = 'Sangat Kurang';
         }
 
-        return view('home', compact('sliders', 'gallery', 'latestNews', 'surveyResults', 'overallPercentage', 'overallScore', 'keteranganScore', 'innovations'));
+        return view('home', compact('sliders', 'gallery', 'latestNews', 'surveyResults', 'overallPercentage', 'overallScore', 'keteranganScore', 'innovations', 'latestInfo'));
     }
 
     public function about()
@@ -107,7 +118,7 @@ class GuestController extends Controller
             });
         }
 
-        $posts = $query->latest()->paginate(9);
+        $posts = $query->orderBy('tanggal_publikasi', 'desc')->paginate(9);
 
         $tags = Tag::has('posts')->get();
         return view('informasi', compact('posts', 'tags'));
@@ -119,8 +130,8 @@ class GuestController extends Controller
             ->with(['penulis', 'tags', 'pictures'])
             ->firstOrFail();
 
-        $recentPosts = Post::where('id', '!=', $post->id) 
-            ->latest()
+        $recentPosts = Post::where('id', '!=', $post->id)
+            ->orderBy('tanggal_publikasi', 'desc')
             ->take(5)
             ->get();
 
@@ -145,7 +156,7 @@ class GuestController extends Controller
             });
         }
 
-        $posts = $query->latest()->paginate(9);
+        $posts = $query->orderBy('tanggal_publikasi', 'desc')->paginate(9);
 
         $tags = Tag::has('posts')->get();
         return view('berita', compact('posts', 'tags'));
@@ -235,14 +246,16 @@ class GuestController extends Controller
             });
         }
         
-        $videos = $query->latest()->paginate(9);
+        $videos = $query->orderBy('tanggal_publikasi', 'desc')->paginate(9);
         
         return view('video', compact('videos'));
     }
 
     public function galeri()
     {
-        $pictures = Picture::where('imageable_type', 'gallery')->latest()->paginate(9);
+        $pictures = Picture::where('imageable_type', 'gallery')
+            ->orderBy('tanggal_publikasi', 'desc')
+            ->paginate(9);
         return view('galeri', compact('pictures'));
     }
 

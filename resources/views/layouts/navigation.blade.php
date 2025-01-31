@@ -36,7 +36,7 @@
             </svg>
             <span class="sr-only">Toggle sidebar</span>
           </button>
-          <a href="/dashboard" class="flex items-center justify-between mr-4">
+          <a href="{{ route('admin.dashboard') }}" class="flex items-center justify-between mr-4">
             <img
               src="/images/dpmptsp.png"
               class="mr-3 h-8"

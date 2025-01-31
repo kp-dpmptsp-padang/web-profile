@@ -21,6 +21,7 @@ class GalleryController extends Controller
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             'caption' => 'nullable|string|max:255',
+            'tanggal_publikasi' => 'required|date',
         ]);
 
         try {
@@ -36,6 +37,7 @@ class GalleryController extends Controller
                 'imageable_type' => 'gallery',
                 'imageable_id' => 0, 
                 'mine_type' => $mimeType,
+                'tanggal_publikasi' => $request->tanggal_publikasi,
             ]);
 
             Log::info('Image successfully stored in database');
@@ -52,7 +54,8 @@ class GalleryController extends Controller
 
         $request->validate([
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-            'caption' => 'nullable|string|max:255',
+            'caption' => 'nullable|string|max:255', 
+            'tanggal_publikasi' => 'required|date',
         ]);
 
         if ($request->hasFile('image')) {
@@ -66,7 +69,10 @@ class GalleryController extends Controller
             $picture->update(['nama_file' => $path]);
         }
 
-        $picture->update(['caption' => $request->caption]);
+        $picture->update([
+            'caption' => $request->caption,
+            'tanggal_publikasi' => $request->tanggal_publikasi,            
+        ]);
 
         return response()->json(['success' => true]);
     }

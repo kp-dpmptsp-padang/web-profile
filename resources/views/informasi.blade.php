@@ -126,18 +126,22 @@
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group fade-in-scale">
                         <div class="relative">
                             @if($post->pictures->first())
-                                <img src="{{ asset('storage/' . $post->pictures->first()->nama_file) }}"
-                                    alt="{{ $post->judul }}"
-                                    class="w-full h-48 object-cover transition-all duration-500 group-hover:scale-105"/>
+                                <div class="relative w-full aspect-[4/3] overflow-hidden">
+                                    <img src="{{ asset('storage/' . $post->pictures->first()->nama_file) }}"
+                                        alt="{{ $post->judul }}"
+                                        class="w-full h-full object-cover absolute inset-0 transition-all duration-500 group-hover:scale-105"/>
+                                </div>
                             @else
-                                <img src="/images/swiper/2.jpg"
-                                    alt="Default Image"
-                                    class="w-full h-48 object-cover transition-all duration-500 group-hover:scale-105"/>
+                                <div class="relative w-full aspect-[4/3] overflow-hidden">
+                                    <img src="/images/swiper/2.jpg"
+                                        alt="Default Image"
+                                        class="w-full h-full object-cover absolute inset-0 transition-all duration-500 group-hover:scale-105"/>
+                                </div>
                             @endif
                             <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-red-600 rounded-xl -z-10 transition-all duration-300 group-hover:-bottom-6 group-hover:-right-6 group-hover:rotate-6"></div>
                         </div>
                         <div class="p-4 md:p-6">
-                            <div class="text-sm text-gray-500 mb-2">{{ $post->created_at->format('d F Y') }}</div>
+                            <div class="text-sm text-gray-500 mb-2">{{ \Carbon\Carbon::parse($post->tanggal_publikasi)->locale('id')->isoFormat('D MMMM Y') }}</div>
                             <h3 class="text-lg md:text-xl font-semibold mb-2 line-clamp-2 hover:text-red-600 transition-colors duration-300">
                                 {{ $post->judul }}
                             </h3>

@@ -135,7 +135,7 @@
                                     class="w-full h-full object-cover object-center transition-all duration-500 group-hover:scale-105"/>
                             @endif
                             <div class="absolute top-4 right-4 px-3 py-1 bg-black/60 backdrop-blur-sm text-white rounded-full text-sm">
-                                {{ $post->created_at->format('d F Y') }}
+                                {{ \Carbon\Carbon::parse($post->tanggal_publikasi)->locale('id')->isoFormat('D MMMM Y') }}
                             </div>
                         </div>
                         <div class="p-4 md:p-6">

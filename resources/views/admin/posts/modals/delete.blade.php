@@ -39,8 +39,12 @@
                             <p class="text-base font-semibold text-gray-900 dark:text-white">{{ $post->judul }}</p>
                         </div>
                         <div class="mb-4">
-                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Tanggal Publikasi</label>
-                            <p class="text-sm text-gray-900 dark:text-white">{{ $post->created_at->format('d M Y, H:i') }}</p>
+                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Tanggal Postingan Dibuat</label>
+                            <p class="text-sm text-gray-900 dark:text-white">{{ $post->created_at->locale('id')->isoFormat('D MMMM Y, HH:mm') }}</p>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Tanggal Rilis Konten</label>
+                            <p class="text-sm text-gray-900 dark:text-white">{{ \Carbon\Carbon::parse($post->tanggal_publikasi)->locale('id')->isoFormat('D MMMM Y') }}</p>
                         </div>
                         <div class="mb-4">
                             <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Tags</label>

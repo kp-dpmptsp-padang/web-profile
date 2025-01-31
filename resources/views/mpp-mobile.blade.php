@@ -44,7 +44,9 @@
                 @foreach ([
                     ['icon' => 'M13 10V3L4 14h7v7l9-11h-7z', 'title' => 'Cepat & Efisien', 'desc' => 'Proses pelayanan perizinan yang lebih cepat dan efisien dengan sistem yang terintegrasi'],
                     ['icon' => 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z', 'title' => 'Lebih Dekat', 'desc' => 'Layanan yang hadir lebih dekat dengan masyarakat melalui unit mobil keliling'],
-                    ['icon' => 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z', 'title' => 'Aman & Terpercaya', 'desc' => 'Dilengkapi sistem keamanan dan petugas profesional yang siap melayani']
+                    ['icon' => 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z', 
+                    'title' => 'Profesional', 
+                    'desc' => 'Dilayani oleh petugas yang berpengalaman dalam bidangnya']
                 ] as $index => $feature)
                 <div class="group relative bg-white p-8 rounded-2xl border border-gray-100 hover:border-red-100 transition-all duration-500"
                     data-aos="fade-up"
