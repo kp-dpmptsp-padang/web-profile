@@ -41,7 +41,7 @@
                                 <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                     <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ $documentTypes->firstItem() + $index }}</td>
                                     <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ $documentType->jenis_dokumen }}</td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ $documentType->created_at->format('d M Y') }}</td>
+                                    <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ $documentType->created_at->locale('id')->isoFormat('D MMMM Y') }}</td>
                                     <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ $documentType->documents->count() }}</td>
                                     <td class="px-6 py-4">
                                         <div class="flex items-center justify-center gap-4">
