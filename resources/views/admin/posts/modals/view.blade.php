@@ -58,7 +58,7 @@
                                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                                         </svg>
-                                            {{ $post->created_at->format('d M Y') }}
+                                            {{ \Carbon\Carbon::parse($post->tanggal_publikasi)->locale('id')->isoFormat('D MMMM Y') }}
                                     </div>
                                 </div>
                             </div>
@@ -98,11 +98,11 @@
                         <div class="grid grid-cols-2 gap-4 pt-4 border-t dark:border-gray-600">
                             <div>
                                 <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Dibuat pada</label>
-                                <p class="text-sm text-gray-900 dark:text-white">{{ $post->created_at->format('d M Y') }}</p>
+                                <p class="text-sm text-gray-900 dark:text-white">{{ $post->created_at->locale('id')->isoFormat('D MMMM Y') }}</p>
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Diupdate pada</label>
-                                <p class="text-sm text-gray-900 dark:text-white">{{ $post->updated_at->format('d M Y') }}</p>
+                                <p class="text-sm text-gray-900 dark:text-white">{{ $post->updated_at->locale('id')->isoFormat('D MMMM Y') }}</p>
                             </div>
                         </div>
                     </div>

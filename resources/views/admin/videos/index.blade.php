@@ -27,9 +27,9 @@
                 <a href="{{ $video->url }}" target="_blank" class="block relative">
                     <div class="w-full relative pt-[56.25%]">
                         <img src="https://img.youtube.com/vi/{{ getYouTubeVideoId($video->url) }}/maxresdefault.jpg" 
-                             onerror="this.src='https://img.youtube.com/vi/{{ getYouTubeVideoId($video->url) }}/hqdefault.jpg'"
-                             alt="{{ $video->judul }}" 
-                             class="absolute inset-0 w-full h-full object-cover">
+                            onerror="this.src='https://img.youtube.com/vi/{{ getYouTubeVideoId($video->url) }}/hqdefault.jpg'"
+                            alt="{{ $video->judul }}" 
+                            class="absolute inset-0 w-full h-full object-cover">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="w-12 h-12 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center text-white opacity-90 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-300">
@@ -41,7 +41,21 @@
                     </div>
                 </a>
                 <div class="p-4">
-                    <h3 class="text-base font-semibold text-gray-900 dark:text-white line-clamp-1">{{ $video->judul }}</h3>
+                    <h3 class="text-base font-semibold text-gray-900 dark:text-white line-clamp-1 mb-2">{{ $video->judul }}</h3>
+                    <div class="space-y-2 mb-3 text-xs text-gray-500 dark:text-gray-400">
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="whitespace-nowrap">Dibuat: {{ $video->created_at->locale('id')->isoFormat('D MMMM Y') }}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="whitespace-nowrap">Publikasi: {{ \Carbon\Carbon::parse($video->tanggal_publikasi)->locale('id')->isoFormat('D MMMM Y') }}</span>
+                        </div>
+                    </div>
                     <p class="text-sm text-gray-700 dark:text-gray-300 line-clamp-2 mb-4">
                         {{ $video->deskripsi }}
                     </p>

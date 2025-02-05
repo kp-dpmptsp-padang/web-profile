@@ -21,15 +21,29 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             @forelse($pictures as $picture)
             <div class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 ease-in-out overflow-hidden">
-                <div class="aspect-w-16 aspect-h-12 overflow-hidden">
+                <div class="relative pb-[75%]">
                     <img src="{{ asset('storage/' . $picture->nama_file) }}" 
-                         alt="Gambar Galeri" 
-                         class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
+                        alt="Gambar Galeri" 
+                        class="absolute inset-0 w-full h-full object-contain bg-gray-100 dark:bg-gray-900">
                 </div>
                 <div class="p-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3 text-xs text-gray-500 dark:text-gray-400">
+                        <div class="flex items-center shrink-0">
+                            <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="whitespace-nowrap">Dibuat: {{ $picture->created_at->locale('id')->isoFormat('D MMMM Y') }}</span>
+                        </div>
+                        <div class="flex items-center shrink-0">
+                            <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="whitespace-nowrap">Publikasi: {{ \Carbon\Carbon::parse($picture->tanggal_publikasi)->locale('id')->isoFormat('D MMMM Y') }}</span>
+                        </div>
+                    </div>
                     <p class="text-sm text-gray-700 dark:text-gray-300 line-clamp-2 mb-4">
                         {{ $picture->caption }}
                     </p>
@@ -55,10 +69,11 @@
                         <p class="text-lg font-medium">Tidak ada gambar untuk galeri</p>
                         <p class="mt-1 text-sm">Klik tombol "Tambah Gambar Baru" untuk menambah gambar baru ke galeri</p>
                     </div>
-            </div>
+                </div>
             </div>
             @endforelse
         </div>
+
         <div class="px-6 py-4 border-t border-gray-200">
             {{ $pictures->withQueryString()->links() }}
         </div>
