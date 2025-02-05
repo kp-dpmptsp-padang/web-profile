@@ -593,7 +593,7 @@
     </section>
 
     <section class="py-8 md:py-12 bg-white">
-        <div class="bg-gray-50 py-6 md:py-8">
+        <div class="py-6 md:py-8">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-6 md:mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
