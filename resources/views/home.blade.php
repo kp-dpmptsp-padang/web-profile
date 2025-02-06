@@ -678,7 +678,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div class="relative w-full h-96 rounded-lg shadow-lg overflow-hidden">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d457.2719564531419!2d100.35588419912912!3d-0.9508485009035964!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b90043bdd301%3A0x803bacc0cfedee63!2sMal%20Pelayanan%20Publik%20Kota%20Padang!5e0!3m2!1sen!2sid!4v1737609906479!5m2!1sen!2sid"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7978.531808596209!2d100.35813257941581!3d-0.9534528545373893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b90043bdd301%3A0x803bacc0cfedee63!2sMal%20Pelayanan%20Publik%20Kota%20Padang!5e0!3m2!1sen!2sid!4v1738807819848!5m2!1sen!2sid"
                         class="absolute inset-0 w-full h-full"
                         style="border:0"
                         allowfullscreen=""
