@@ -261,6 +261,11 @@
                     </div>
                     <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
                         <div class="bg-white rounded-lg shadow p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                            <img src="/images/zi/WBS.jpeg" alt="WBS" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/3 p-4 transition-opacity">
+                        <div class="bg-white rounded-lg shadow p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                             <img src="/images/zi/zi_5.png" alt="ZI 2" class="w-full h-40 object-contain transition-transform duration-300 hover:brightness-110">
                         </div>
                     </div>
