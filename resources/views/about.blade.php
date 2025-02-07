@@ -186,6 +186,54 @@
             <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll" data-animation="fade-in-up">Profil DPMPTSP</h2>
             <div class="max-w-5xl mx-auto space-y-4 animate-on-scroll" data-animation="fade-in-up">
                 <div class="border border-gray-200 rounded-lg transition-all duration-300">
+                    <button onclick="toggleAccordion('visimisi')" class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors">
+                        <h3 class="text-lg font-semibold" id="text-visimisi">Visi Misi Pemerintah Kota Padang</h3>
+                        <svg id="icon-visimisi" class="transform transition-transform duration-300 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div id="content-visimisi" class="overflow-hidden transition-all duration-300 max-h-0 opacity-0">
+                        <div class="p-4 bg-white border-t">
+                            <div class="max-w-5xl mx-auto">
+                                <div class="space-y-8">
+                                    <div class="flex justify-between items-center gap-6">
+                                        <div class="text-center flex-shrink-0">
+                                            <img src="/images/walkot.png" alt="Walikota Padang" class="w-48 h-48 object-cover rounded-lg shadow-lg mb-3">
+                                            <h5 class="font-semibold text-gray-800">Wali Kota Padang Terpilih</h5>
+                                        </div>
+                                        
+                                        <div class="flex-grow p-6 bg-gradient-to-br from-red-50 to-white rounded-lg shadow-lg border border-red-100">
+                                            <h4 class="text-3xl font-bold text-red-600 mb-4 text-center">Visi</h4>
+                                            <p class="text-gray-700 leading-relaxed text-center text-lg font-medium">
+                                                Menggerakkan segala potensi untuk mewujudkan Kota Padang sebagai Kota Pintar (Smart City) dan Kota Sehat, berlandaskan Agama dan Budaya, menuju kota yang Maju dan Sejahtera.
+                                            </p>
+                                        </div>
+                    
+                                        <div class="text-center flex-shrink-0">
+                                            <img src="/images/wawakot.png" alt="Wakil Walikota Padang" class="w-48 h-48 object-cover rounded-lg shadow-lg mb-3">
+                                            <h5 class="font-semibold text-gray-800">Wakil Wali Kota Padang Terpilih</h5>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="p-6 bg-white rounded-lg shadow-lg">
+                                        <h4 class="text-3xl font-bold text-red-600 mb-6 text-center">Misi</h4>
+                                        <ol class="list-decimal list-inside space-y-4 text-gray-700 text-lg">
+                                            <li class="leading-relaxed pl-2">Menguatkan tata kelola pemerintahan yang berintegritas, responsif, inovatif dan partisipatif.</li>
+                                            <li class="leading-relaxed pl-2">Menguatkan pencapaian indikator kota pintar dan kota sehat.</li>
+                                            <li class="leading-relaxed pl-2">Menguatkan masyarakat yang beragama dan berbudaya melalui pendidikan karakter dan pemberdayaan.</li>
+                                            <li class="leading-relaxed pl-2">Mendorong kemudahan berinvestasi demi terbukanya lapangan pekerjaan.</li>
+                                            <li class="leading-relaxed pl-2">Mewujudkan pembangunan dan merevitalisasi sarana dan prasarana umum yang hijau dan berkualitas.</li>
+                                            <li class="leading-relaxed pl-2">Menguatkan jaringan ketahanan bencana.</li>
+                                            <li class="leading-relaxed pl-2">Mengembangkan perekonomian masyarakat yang adaptif dan kondusif melalui penguatan sektor perdagangan dan jasa.</li>
+                                            <li class="leading-relaxed pl-2">Menggerakkan potensi kota untuk terwujudnya industri kreatif dan pariwisata berkelanjutan.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-gray-200 rounded-lg transition-all duration-300">
                     <button onclick="toggleAccordion('struktur')" class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors">
                         <h3 class="text-lg font-semibold" id="text-struktur">Struktur Organisasi</h3>
                         <svg id="icon-struktur" class="transform transition-transform duration-300 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
