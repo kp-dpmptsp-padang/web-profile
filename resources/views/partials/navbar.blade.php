@@ -27,7 +27,7 @@
                     <button class="flex items-center py-2 px-3 @if(request()->routeIs('layanan') || request()->routeIs('standar-pelayanan')) text-red-600 @else text-black @endif">
                         Pelayanan
                     </button>
-                    <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg py-2 rounded-lg">
+                    <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg py-2 rounded-lg z-10">
                         <a href="{{ route('layanan') }}" 
                            class="block px-4 py-2 @if(request()->routeIs('layanan')) text-red-600 @else text-black @endif hover:bg-gray-100">
                             Layanan Kami
@@ -42,7 +42,7 @@
                     <button class="flex items-center py-2 px-3 @if(request()->routeIs('informasi') || request()->routeIs('berita') || request()->routeIs('detail-info') || request()->routeIs('detail-berita') || request()->routeIs('faq') || request()->routeIs('video') || request()->routeIs('galeri')) text-red-600 @else text-black @endif">
                         Postingan
                     </button>
-                    <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg py-2 rounded-lg">
+                    <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg py-2 rounded-lg z-10">
                         <a href="{{ route('informasi') }}" 
                            class="block px-4 py-2 @if(request()->routeIs('informasi') || request()->routeIs('detail-info')) text-red-600 @else text-black @endif hover:bg-gray-100">
                             Informasi
