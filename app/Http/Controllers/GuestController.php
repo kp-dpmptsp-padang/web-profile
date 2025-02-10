@@ -14,6 +14,7 @@ use App\Models\Document;
 use App\Models\DocumentType;
 use App\Models\Employee;
 use App\Models\Inovation;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -80,7 +81,25 @@ class GuestController extends Controller
             $keteranganScore = 'Sangat Kurang';
         }
 
-        return view('home', compact('sliders', 'gallery', 'latestNews', 'surveyResults', 'overallPercentage', 'overallScore', 'keteranganScore', 'innovations', 'latestInfo'));
+        $visitor = new Visitor;
+        $visitor = Visitor::where('ip_address', request()->ip())
+            ->whereDate('visit_date', now()->toDateString())
+            ->first();
+
+        if (!$visitor) {
+            Visitor::create([
+                'ip_address' => request()->ip(),
+                'visit_date' => now()->toDateString()
+            ]);
+        }
+
+        $totalVisitors = Visitor::count();
+        $todayVisitors = Visitor::whereDate('visit_date', now()->toDateString())->count();
+        $monthlyVisitors = Visitor::whereMonth('visit_date', now()->month)
+            ->whereYear('visit_date', now()->year)
+            ->count();
+
+        return view('home', compact('sliders', 'gallery', 'latestNews', 'surveyResults', 'overallPercentage', 'overallScore', 'keteranganScore', 'innovations', 'latestInfo', 'totalVisitors', 'todayVisitors', 'monthlyVisitors'));
     }
 
     public function about()
