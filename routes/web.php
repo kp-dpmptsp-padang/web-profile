@@ -107,6 +107,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin/pegawai/{id}', [EmployeeController::class,'update'])->name('employee.update');
     Route::delete('/admin/pegawai/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
 
+    // Surveys
+    Route::get('/admin/survey', [SurveyController::class, 'adminShow'])->name('survey.index');
+    Route::post('/admin/survey/export', [SurveyController::class, 'export'])->name('admin.survey.export');
+
 });
 
 Route::middleware('guest')->group(function () {

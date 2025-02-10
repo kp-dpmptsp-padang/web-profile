@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Carbon\Carbon;
+
+
 
 class SurveyController extends Controller
 {
@@ -197,5 +201,167 @@ class SurveyController extends Controller
             ->where('question_id', $questionId)
             ->where('option_value', $value)
             ->value('id');
+    }
+
+    public function adminShow () 
+    {
+        $surveyResponses = SurveyResponse::with('answers.option', 'answers.question')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        return view('admin.survey.index', compact('surveyResponses'));
+    }
+
+    private $questionMapping = [
+        'u1' => 1, 
+        'u2' => 2, 
+        'u3' => 3,
+        'u4' => 4,
+        'u5' => 5,
+        'u6' => 6,
+        'u7' => 7,
+        'u8' => 8,
+        'u9' => 9
+    ];
+
+    private function getMutuPelayanan($nilai)
+    {
+        if ($nilai >= 88.31 && $nilai <= 100.00) {
+            return 'A (Sangat Baik)';
+        } elseif ($nilai >= 76.61 && $nilai <= 88.30) {
+            return 'B (Baik)';
+        } elseif ($nilai >= 65.00 && $nilai <= 76.60) {
+            return 'C (Kurang Baik)';
+        } else {
+            return 'D (Tidak Baik)';
+        }
+    }
+
+    public function export(Request $request)
+    {
+        $request->validate([
+            'export_type' => 'required|in:monthly,yearly,custom',
+            'month' => 'required_if:export_type,monthly',
+            'year' => 'required_if:export_type,yearly',
+            'start_date' => 'required_if:export_type,custom',
+            'end_date' => 'required_if:export_type,custom',
+        ]);
+    
+        $query = SurveyResponse::with(['answers.question', 'answers.option']);
+    
+        switch ($request->export_type) {
+            case 'monthly':
+                $month = $request->month;
+                $year = $request->monthly_year;
+                $query->whereYear('created_at', $year)
+                      ->whereMonth('created_at', $month);
+                
+                $monthNames = [
+                    '01' => 'Januari', '02' => 'Februari', '03' => 'Maret',
+                    '04' => 'April', '05' => 'Mei', '06' => 'Juni',
+                    '07' => 'Juli', '08' => 'Agustus', '09' => 'September',
+                    '10' => 'Oktober', '11' => 'November', '12' => 'Desember'
+                ];
+                
+                $period = $monthNames[$month] . ' ' . $year;
+                break;
+
+            case 'yearly':
+                $query->whereYear('created_at', $request->year);
+                $period = $request->year;
+                break;
+
+            case 'custom':
+                $query->whereBetween('created_at', [
+                    Carbon::parse($request->start_date)->startOfDay(),
+                    Carbon::parse($request->end_date)->endOfDay()
+                ]);
+                $period = Carbon::parse($request->start_date)->format('d/m/Y') . ' - ' . 
+                        Carbon::parse($request->end_date)->format('d/m/Y');
+                break;
+        }
+
+        $surveys = $query->orderBy('created_at', 'asc')->get();
+
+        $unsurTotals = [
+            'u1' => 0, 'u2' => 0, 'u3' => 0, 'u4' => 0, 'u5' => 0,
+            'u6' => 0, 'u7' => 0, 'u8' => 0, 'u9' => 0
+        ];
+        
+        foreach ($surveys as $survey) {
+            foreach ($survey->answers as $answer) {
+                $questionId = $answer->question_id;
+                $unsurKey = array_search($questionId, $this->questionMapping);
+                if ($unsurKey) {
+                    $unsurTotals[$unsurKey] += $answer->option->option_value;
+                }
+            }
+        }
+
+        $surveys = $surveys->map(function ($survey) {
+            foreach ($this->questionMapping as $unsur => $questionId) {
+                $answer = $survey->answers->where('question_id', $questionId)->first();
+                $survey->{$unsur} = $answer ? $answer->option->option_value : 0;
+            }
+            
+            $survey->nilai_akhir = round(collect([
+                $survey->u1, $survey->u2, $survey->u3, $survey->u4, $survey->u5,
+                $survey->u6, $survey->u7, $survey->u8, $survey->u9
+            ])->average(), 2);
+            
+            return $survey;
+        });
+
+        $totalResponden = $surveys->count();
+        $nrrPerUnsur = [];
+        $nrrTertimbang = [];
+        
+        foreach ($unsurTotals as $unsur => $total) {
+            $nrrPerUnsur[$unsur] = $totalResponden > 0 ? $total / $totalResponden : 0;
+            $nrrTertimbang[$unsur] = $nrrPerUnsur[$unsur] * 0.111; 
+        }
+
+        $totalNRRTertimbang = array_sum($nrrTertimbang);
+        $ukmUnit = $totalNRRTertimbang * 25;
+
+        $mutuPelayanan = $this->getMutuPelayanan($ukmUnit);
+
+        $pdf = PDF::loadView('admin.survey.exports.pdf', [
+            'surveys' => $surveys,
+            'period' => $period,
+            'totalU1' => $unsurTotals['u1'],
+            'totalU2' => $unsurTotals['u2'],
+            'totalU3' => $unsurTotals['u3'],
+            'totalU4' => $unsurTotals['u4'],
+            'totalU5' => $unsurTotals['u5'],
+            'totalU6' => $unsurTotals['u6'],
+            'totalU7' => $unsurTotals['u7'],
+            'totalU8' => $unsurTotals['u8'],
+            'totalU9' => $unsurTotals['u9'],
+            'nrrU1' => $nrrPerUnsur['u1'],
+            'nrrU2' => $nrrPerUnsur['u2'],
+            'nrrU3' => $nrrPerUnsur['u3'],
+            'nrrU4' => $nrrPerUnsur['u4'],
+            'nrrU5' => $nrrPerUnsur['u5'],
+            'nrrU6' => $nrrPerUnsur['u6'],
+            'nrrU7' => $nrrPerUnsur['u7'],
+            'nrrU8' => $nrrPerUnsur['u8'],
+            'nrrU9' => $nrrPerUnsur['u9'],
+            'nrrTertimbangU1' => $nrrTertimbang['u1'],
+            'nrrTertimbangU2' => $nrrTertimbang['u2'],
+            'nrrTertimbangU3' => $nrrTertimbang['u3'],
+            'nrrTertimbangU4' => $nrrTertimbang['u4'],
+            'nrrTertimbangU5' => $nrrTertimbang['u5'],
+            'nrrTertimbangU6' => $nrrTertimbang['u6'],
+            'nrrTertimbangU7' => $nrrTertimbang['u7'],
+            'nrrTertimbangU8' => $nrrTertimbang['u8'],
+            'nrrTertimbangU9' => $nrrTertimbang['u9'],
+            'totalNRRTertimbang' => $totalNRRTertimbang,
+            'ukmUnit' => $ukmUnit,
+            'mutuPelayanan' => $mutuPelayanan
+        ]);
+
+        $pdf->setPaper('a4', 'landscape');
+        return $pdf->download('Laporan-IKM-Periode' . str_replace(['/', ' '], '-', $period) . '.pdf');
     }
 }

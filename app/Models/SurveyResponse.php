@@ -23,4 +23,29 @@ class SurveyResponse extends Model
     {
         return $this->hasMany(SurveyAnswer::class, 'response_id');
     }
+
+    public function getQ1Attribute()
+    {
+        return $this->pertanyaan1 ?? '-';
+    }
+
+    public function getQ2Attribute()
+    {
+        return $this->pertanyaan2 ?? '-';
+    }
+
+    public function getQ3Attribute()
+    {
+        return $this->pertanyaan3 ?? '-';
+    }
+
+    public function getQ4Attribute()
+    {
+        return $this->pertanyaan4 ?? '-';
+    }
+
+    public function getQ5Attribute()
+    {
+        return $this->pertanyaan5 ?? '-';
+    }
 }
