@@ -49,6 +49,6 @@
 
         Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
-        Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+        Route::post('logout/27b8a7cd73a73e17e3f6ac4949c0bea6d0c6a0f5843612ab6b7b505cefb77a721c191b5a9fc337899ad24bec7f44020e4492e500f84815672f3f6854b5bed1ff', [AuthenticatedSessionController::class, 'destroy'])
             ->name('logout');
     });
