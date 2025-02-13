@@ -44,7 +44,7 @@
                         </span>
                         <span>Plaza Andalas Lantai 4, Kota Padang, Sumatera Barat</span>
                     </a>
-                    <a href="mailto:mpp@padang.go.id" 
+                    <a href="mailto:dpmptsp@padang.go.id" 
                        class="flex items-center gap-3 text-gray-600 hover:text-blue-500 transition-colors group">
                         <span class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
                             <i class="fas fa-envelope text-blue-500"></i>

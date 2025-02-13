@@ -766,7 +766,41 @@
             </div>
         </div>
     </section>
-
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Ingin Berkunjung ke DPMPTSP Kota Padang?
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Jadwalkan kunjungan Anda sekarang dan dapatkan pelayanan terbaik dari kami
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://penerimaantamu.dpmptsp.padang.go.id/" 
+                       class="group relative px-8 py-4 bg-red-500 text-white rounded-xl font-medium shadow-lg shadow-red-200 hover:shadow-xl hover:shadow-red-200 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto">
+                        <span class="relative flex items-center justify-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            Reservasi Sekarang
+                        </span>
+                    </a>
+    
+                    <a href="https://wa.me/6281374078088?text=Halo, saya ingin bertanya terkait tata cara reservasi kunjungan ke DPMPTSP Kota Padang" 
+                       target="_blank"
+                       class="group relative px-8 py-4 bg-white text-gray-700 rounded-xl font-medium border-2 border-red-100 hover:border-red-500 shadow-lg shadow-red-50 hover:shadow-xl hover:shadow-red-100 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto">
+                        <span class="relative flex items-center justify-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Butuh Bantuan?
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 @endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
