@@ -14,9 +14,11 @@ use App\Models\Document;
 use App\Models\DocumentType;
 use App\Models\Employee;
 use App\Models\Inovation;
-use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use App\Models\ServiceType;
+use App\Models\Testimony;
+use Carbon\Carbon;
 
 class GuestController extends Controller
 {
@@ -81,25 +83,7 @@ class GuestController extends Controller
             $keteranganScore = 'Sangat Kurang';
         }
 
-        $visitor = new Visitor;
-        $visitor = Visitor::where('ip_address', request()->ip())
-            ->whereDate('visit_date', now()->toDateString())
-            ->first();
-
-        if (!$visitor) {
-            Visitor::create([
-                'ip_address' => request()->ip(),
-                'visit_date' => now()->toDateString()
-            ]);
-        }
-
-        $totalVisitors = Visitor::count();
-        $todayVisitors = Visitor::whereDate('visit_date', now()->toDateString())->count();
-        $monthlyVisitors = Visitor::whereMonth('visit_date', now()->month)
-            ->whereYear('visit_date', now()->year)
-            ->count();
-
-        return view('home', compact('sliders', 'gallery', 'latestNews', 'surveyResults', 'overallPercentage', 'overallScore', 'keteranganScore', 'innovations', 'latestInfo', 'totalVisitors', 'todayVisitors', 'monthlyVisitors'));
+        return view('home', compact('sliders', 'gallery', 'latestNews', 'surveyResults', 'overallPercentage', 'overallScore', 'keteranganScore', 'innovations', 'latestInfo'));
     }
 
     public function about()
@@ -286,5 +270,21 @@ class GuestController extends Controller
     public function raga()
     {
         return view('raga');
+    }
+
+    public function testimoni(Request $request) 
+    {
+        $query = Testimony::with('serviceType')
+            ->latest('date');
+
+        if ($request->has('service_type') && $request->service_type) {
+            $query->where('service_type_id', $request->service_type);
+        }
+
+        $testimonies = $query->paginate(12);
+        
+        $serviceTypes = ServiceType::all();
+
+        return view('review', compact('testimonies', 'serviceTypes'));
     }
 }
