@@ -2,7 +2,7 @@
     <div class="mx-auto w-full max-w-screen-xl p-6 lg:p-8">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
             <div class="md:col-span-3">
-                <a href="/" class="inline-block group">
+                <a href="{{ route('home') }}" class="inline-block group">
                     <div class="flex items-center gap-3 hover:opacity-90 transition-opacity">
                         <img src="{{ asset('images/dpmptsp.png') }}" class="h-16 object-contain transform group-hover:scale-105 transition-transform duration-300" alt="Logo DPMPTSP" />
                     </div>
@@ -17,13 +17,6 @@
                             <i class="fas fa-location-dot text-red-500"></i>
                         </span>
                         <span>Jalan Jenderal Sudirman No. 1, Padang</span>
-                    </a>
-                    <a href="mailto:dpmptsp@padang.go.id" 
-                       class="flex items-center gap-3 text-gray-600 hover:text-blue-500 transition-colors group">
-                        <span class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
-                            <i class="fas fa-envelope text-blue-500"></i>
-                        </span>
-                        <span>dpmptsp@padang.go.id</span>
                     </a>
                 </div>
             </div>
@@ -43,13 +36,6 @@
                             <i class="fas fa-location-dot text-red-500"></i>
                         </span>
                         <span>Plaza Andalas Lantai 4, Kota Padang, Sumatera Barat</span>
-                    </a>
-                    <a href="mailto:dpmptsp@padang.go.id" 
-                       class="flex items-center gap-3 text-gray-600 hover:text-blue-500 transition-colors group">
-                        <span class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
-                            <i class="fas fa-envelope text-blue-500"></i>
-                        </span>
-                        <span>dpmptsp@padang.go.id</span>
                     </a>
                 </div>
             </div>
@@ -187,8 +173,48 @@
             </div>
         </div>
 
-        <div class="mt-12 pt-8 border-t border-gray-200">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="mt-12 pt-8">
+            <div class="mb-8">
+                <h3 class="text-sm font-semibold tracking-wider text-gray-900 text-center mb-4">Statistik Pengunjung Website</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="p-4 rounded-xl transition-shadow duration-500 hover:shadow-lg hover:shadow-red-200">
+                        <div class="flex items-center gap-3">
+                            <span class="p-2 bg-red-100 rounded-lg">
+                                <i class="fas fa-users text-red-500"></i>
+                            </span>
+                            <div>
+                                <p class="text-xs text-gray-500">Total Pengunjung</p>
+                                <p class="text-lg font-semibold text-gray-800">{{ number_format($totalVisitors) }}</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="p-4 rounded-xl transition-shadow duration-500 hover:shadow-lg hover:shadow-red-200">
+                        <div class="flex items-center gap-3">
+                            <span class="p-2 bg-red-100 rounded-lg">
+                                <i class="fas fa-clock text-red-500"></i>
+                            </span>
+                            <div>
+                                <p class="text-xs text-gray-500">Pengunjung Hari Ini</p>
+                                <p class="text-lg font-semibold text-gray-800">{{ number_format($todayVisitors) }}</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="p-4 rounded-xl transition-shadow duration-500 hover:shadow-lg hover:shadow-red-200">
+                        <div class="flex items-center gap-3">
+                            <span class="p-2 bg-red-100 rounded-lg">
+                                <i class="fas fa-calendar text-red-500"></i>
+                            </span>
+                            <div>
+                                <p class="text-xs text-gray-500">Pengunjung Bulan Ini</p>
+                                <p class="text-lg font-semibold text-gray-800">{{ number_format($monthlyVisitors) }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 border-t border-gray-200 pt-4">
                 <p class="text-sm text-gray-600 text-center md:text-left">
                     © {{ date('Y') }} <span class="font-medium">DPMPTSP Kota Padang</span>. All Rights Reserved.
                 </p>

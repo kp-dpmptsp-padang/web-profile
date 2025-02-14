@@ -149,7 +149,24 @@ Route::middleware('guest')->group(function () {
     Route::post('/survey', [SurveyController::class, 'store'])->name('survey.store');
 
     Route::get('/standar-pelayanan', [DocumentController::class,'standarPelayanan'])->name('standar-pelayanan');
+    Route::get('/testimoni', [GuestController::class, 'testimoni'])->name('testimoni');
 
 });
+
+
+    // di routes/web.php
+    Route::get('/test-visitor', function() {
+        try {
+            $visitor = \App\Models\Visitor::create([
+                'ip_address' => request()->ip(),
+                'visit_date' => now()->toDateString(),
+                'user_agent' => request()->userAgent()
+            ]);
+            
+            return "Visitor created with ID: " . $visitor->id;
+        } catch (\Exception $e) {
+            return "Error: " . $e->getMessage();
+        }
+    });
 
 require __DIR__.'/auth.php';

@@ -35,21 +35,28 @@
     }
     .main-swiper {
         overflow: visible !important; 
-        padding: 20px 0;
-        margin: 0 20px; 
+        padding: 10px 0;
+        margin: 0 10px; 
     }
     @media (min-width: 768px) {
         .main-swiper {
             padding: 50px 0;
             margin: 0 70px;
+            margin-top: 1rem;
+            padding-top: 1rem;
         }
     }
     .main-swiper .swiper-slide {
         width: 100%;
         height: auto;
-        transform: scale(0.85);
+        transform: scale(0.95); 
         opacity: 0.5;
         transition: all 0.3s ease;
+    }
+    @media (min-width: 768px) {
+        .main-swiper .swiper-slide {
+            transform: scale(0.85);
+        }
     }
     .main-swiper .swiper-slide-active {
         transform: scale(1);
@@ -58,11 +65,18 @@
     }
     .main-swiper .swiper-button-next,
     .main-swiper .swiper-button-prev {
-        width: 50px;
-        height: 50px;
+        width: 40px; 
+        height: 40px;
         background-color: red;
         border-radius: 50%;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    @media (min-width: 768px) {
+        .main-swiper .swiper-button-next,
+        .main-swiper .swiper-button-prev {
+            width: 50px;
+            height: 50px;
+        }
     }
     .main-swiper .swiper-button-next:after,
     .main-swiper .swiper-button-prev:after {
@@ -150,13 +164,13 @@
     }
 </style>
 
-<div class="px-4 md:px-24 pt-8 md:pt-16 overflow-hidden relative">
+<div class="px-4 md:px-24 pt-16 md:pt-16 overflow-hidden relative">
     <div class="fixed inset-0 pointer-events-none">
         <div class="absolute top-20 left-20 w-32 h-32 bg-red-100 rounded-full floating-shape opacity-20" style="animation-delay: 0s;"></div>
         <div class="absolute top-40 right-40 w-24 h-24 bg-gray-200 rounded-full floating-shape opacity-30" style="animation-delay: 1s;"></div>
         <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-red-50 rounded-full floating-shape opacity-25" style="animation-delay: 2s;"></div>
     </div> 
-    <div class="relative mx-auto max-w-7xl px-4 md:px-16 py-4 md:py-8">
+    <div class="relative mx-auto max-w-7xl py-8 md:py-8 mt-8 md:mt-0">
         <div class="swiper main-swiper relative">
             <div class="swiper-wrapper">
                 @php
@@ -173,7 +187,7 @@
                 @endphp
 
                 @foreach ($slides as $index => $picture)
-                <div class="swiper-slide relative rounded-2xl" style="width: 70%">
+                <div class="swiper-slide relative rounded-2xl" style="width: 100%"> 
                     <div class="aspect-[16/9] w-full">
                         @if ($picture->imageable && $picture->imageable->link)
                             <a href="{{ $picture->imageable->link }}" target="_blank">
@@ -719,53 +733,6 @@
         </div>
     </section>
 
-    <section class="py-8 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-gradient-to-br from-red-50 to-white p-6 rounded-xl shadow-sm">
-                    <div class="flex items-center gap-4">
-                        <div class="p-3 bg-red-100 rounded-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="text-gray-500 text-sm">Total Pengunjung</p>
-                            <h3 class="text-2xl font-bold text-gray-800">{{ number_format($totalVisitors) }}</h3>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bg-gradient-to-br from-red-50 to-white p-6 rounded-xl shadow-sm">
-                    <div class="flex items-center gap-4">
-                        <div class="p-3 bg-red-100 rounded-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="text-gray-500 text-sm">Pengunjung Hari Ini</p>
-                            <h3 class="text-2xl font-bold text-gray-800">{{ number_format($todayVisitors) }}</h3>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bg-gradient-to-br from-red-50 to-white p-6 rounded-xl shadow-sm">
-                    <div class="flex items-center gap-4">
-                        <div class="p-3 bg-red-100 rounded-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="text-gray-500 text-sm">Pengunjung Bulan Ini</p>
-                            <h3 class="text-2xl font-bold text-gray-800">{{ number_format($monthlyVisitors) }}</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4 text-center">
             <div class="max-w-3xl mx-auto">
@@ -777,7 +744,7 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="https://penerimaantamu.dpmptsp.padang.go.id/" 
+                    <a href="https://penerimaankunjungantamu.dpmptsp.padang.go.id/" 
                        class="group relative px-8 py-4 bg-red-500 text-white rounded-xl font-medium shadow-lg shadow-red-200 hover:shadow-xl hover:shadow-red-200 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto">
                         <span class="relative flex items-center justify-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -867,9 +834,9 @@
         const mainSwiper = new Swiper('.main-swiper', {
             loop: true,
             autoHeight: true,
-            slidesPerView: 1.5, 
+            slidesPerView: 1, 
             centeredSlides: true,
-            spaceBetween: 30,
+            spaceBetween: 20, 
             autoplay: {
                 delay: 3000,
                 disableOnInteraction: false,
@@ -880,7 +847,8 @@
             },
             breakpoints: {
                 640: {
-                    slidesPerView: 1.5
+                    slidesPerView: 1.5,
+                    spaceBetween: 30
                 }
             }
         });

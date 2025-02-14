@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li class="relative group">
-                    <button class="flex items-center py-2 px-3 @if(request()->routeIs('layanan') || request()->routeIs('standar-pelayanan')) text-red-600 @else text-black @endif">
+                    <button class="flex items-center py-2 px-3 @if(request()->routeIs('layanan') || request()->routeIs('standar-pelayanan') || request()->routeIs('testimoni')) text-red-600 @else text-black @endif">
                         Pelayanan
                     </button>
                     <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg py-2 rounded-lg z-10">
@@ -35,6 +35,10 @@
                         <a href="{{ route('standar-pelayanan') }}" 
                            class="block px-4 py-2 @if(request()->routeIs('standar-pelayanan')) text-red-600 @else text-black @endif hover:bg-gray-100">
                             Standar Pelayanan
+                        </a>
+                        <a href="{{ route('testimoni') }}" 
+                           class="block px-4 py-2 @if(request()->routeIs('testimoni')) text-red-600 @else text-black @endif hover:bg-gray-100">
+                            Testimoni
                         </a>
                     </div>
                 </li>
