@@ -733,19 +733,42 @@
         </div>
     </section>
 
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4 text-center">
+    <section class="reservation relative py-32 w-full min-w-full">
+        <div class="absolute inset-0 w-full min-w-full bg-gradient-to-br from-red-50 to-white">
+            <div class="absolute inset-0 w-full min-w-full" style="background-image: url('data:image/svg+xml,%3Csvg width=\'6\' height=\'6\' viewBox=\'0 0 6 6\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23ef4444\' fill-opacity=\'0.07\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M5 0h1L0 6V5zM6 5v1H5z\'/%3E%3C/g%3E%3C/svg%3E')"></div>
+        </div>
+    
+        <div class="absolute top-0 left-0 right-0 w-full min-w-full h-full">
+            
+            <div class="absolute top-1/4 left-1/4 w-6 h-6 bg-red-500 rounded-full opacity-20 animate-float"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-4 h-4 bg-rose-500 rounded-full opacity-20 animate-float animation-delay-1000"></div>
+            <div class="absolute top-3/4 left-1/3 w-3 h-3 bg-red-400 rounded-full opacity-20 animate-float animation-delay-2000"></div>
+            <div class="absolute bottom-1/3 right-1/4 w-4 h-4 bg-rose-400 rounded-full opacity-20 animate-float animation-delay-3000"></div>
+        </div>
+    
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                <div class="flex justify-center mb-8">
+                    <div class="w-16 h-1 bg-red-500 rounded-full"></div>
+                </div>
+    
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-4 relative">
                     Ingin Berkunjung ke DPMPTSP Kota Padang?
+                    <div class="absolute -right-8 -top-8 w-16 h-16 text-red-500 opacity-20 rotate-12">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z"/>
+                        </svg>
+                    </div>
                 </h2>
-                <p class="text-lg text-gray-600 mb-8">
+    
+                <p class="text-lg text-gray-600 mb-12 text-center">
                     Jadwalkan kunjungan Anda sekarang dan dapatkan pelayanan terbaik dari kami
                 </p>
-                
+               
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="https://penerimaankunjungantamu.dpmptsp.padang.go.id/" 
-                       class="group relative px-8 py-4 bg-red-500 text-white rounded-xl font-medium shadow-lg shadow-red-200 hover:shadow-xl hover:shadow-red-200 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto">
+                    <a href="https://penerimaankunjungantamu.dpmptsp.padang.go.id/"
+                       class="group relative px-8 py-4 bg-gradient-to-r from-red-500 to-rose-500 text-white rounded-xl font-medium shadow-lg shadow-red-200 hover:shadow-xl hover:shadow-red-200 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto overflow-hidden">
+                        <div class="absolute inset-0 w-full h-full transition-all duration-300 transform translate-x-full group-hover:translate-x-0 bg-gradient-to-r from-rose-500 to-red-500"></div>
                         <span class="relative flex items-center justify-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -754,7 +777,7 @@
                         </span>
                     </a>
     
-                    <a href="https://wa.me/6281374078088?text=Halo, saya ingin bertanya terkait tata cara reservasi kunjungan ke DPMPTSP Kota Padang" 
+                    <a href="https://wa.me/6281374078088?text=Halo, saya ingin bertanya terkait tata cara reservasi kunjungan ke DPMPTSP Kota Padang"
                        target="_blank"
                        class="group relative px-8 py-4 bg-white text-gray-700 rounded-xl font-medium border-2 border-red-100 hover:border-red-500 shadow-lg shadow-red-50 hover:shadow-xl hover:shadow-red-100 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto">
                         <span class="relative flex items-center justify-center gap-2">
@@ -767,6 +790,53 @@
                 </div>
             </div>
         </div>
+    
+        <style>
+            section.reservation {
+                margin: 0 !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                max-width: none !important;
+                width: 100vw !important;
+                position: relative !important;
+                left: 50% !important;
+                right: 50% !important;
+                margin-left: -50vw !important;
+                margin-right: -50vw !important;
+            }
+    
+            @keyframes blob {
+                0%, 100% { transform: translate(0, 0) scale(1); }
+                25% { transform: translate(20px, -30px) scale(1.1); }
+                50% { transform: translate(-20px, 20px) scale(0.9); }
+                75% { transform: translate(20px, 30px) scale(0.95); }
+            }
+    
+            @keyframes float {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-20px); }
+            }
+    
+            .animate-blob {
+                animation: blob 7s infinite;
+            }
+    
+            .animate-float {
+                animation: float 3s ease-in-out infinite;
+            }
+    
+            .animation-delay-2000 {
+                animation-delay: 2s;
+            }
+    
+            .animation-delay-3000 {
+                animation-delay: 3s;
+            }
+    
+            .animation-delay-4000 {
+                animation-delay: 4s;
+            }
+        </style>
     </section>
 </div>
 @endsection

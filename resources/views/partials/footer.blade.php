@@ -88,7 +88,7 @@
                 </div>
 
                 <div>
-                    <h3 class="text-sm font-semibold tracking-wider text-gray-900 uppercase mb-4">Layanan Online</h3>
+                    <h3 class="text-sm font-semibold tracking-wider text-gray-900 uppercase mb-4">Pelayanan</h3>
                     <ul class="space-y-3">
                         <li>
                             <a href="https://oss.go.id/" target="_blank" class="text-gray-600 hover:text-emerald-500 transition-colors flex items-center gap-2 group">
@@ -120,6 +120,14 @@
                                     <i class="fas fa-chart-simple text-cyan-500 text-sm"></i>
                                 </span>
                                 <span>SKM</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('testimoni') }}" class="text-gray-600 hover:text-violet-500 transition-colors flex items-center gap-2 group">
+                                <span class="bg-violet-50 p-1.5 rounded group-hover:bg-violet-100 transition-colors">
+                                    <i class="fas fa-comments text-violet-500 text-sm"></i>
+                                </span>
+                                <span>Review</span>
                             </a>
                         </li>
                     </ul>
