@@ -88,46 +88,6 @@
                 </ul>
             </li>
             <li>
-                <a href="{{ route('inovation.index') }}" 
-                   class="flex items-center p-2 text-base font-medium rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 group
-                   {{ request()->routeIs('inovation.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
-                    <svg class="flex-shrink-0 w-6 h-6 transition duration-75 {{ request()->routeIs('inovation.*') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                    </svg>
-                    <span class="ml-3">Inovasi</span>
-                </a>
-            </li>
-            @php
-                $belumTerjawabCount = \App\Models\QuestionAndAnswer::where('status', 'belum-terjawab')->count();
-            @endphp
-
-            <li>
-                <a href="{{ route('qna.index') }}" 
-                class="flex items-center p-2 text-base font-medium rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 group
-                {{ request()->routeIs('qna.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
-                    <svg class="flex-shrink-0 w-6 h-6 transition duration-75 {{ request()->routeIs('qna.*') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
-                    </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Pertanyaan</span>
-                    @if($belumTerjawabCount > 0)
-                    <span class="inline-flex justify-center items-center w-5 h-5 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800">{{ $belumTerjawabCount }}</span>
-                    @endif
-                </a>
-            </li>
-
-            <li>
-                <a href="{{ route('survey.index') }}"
-                   class="flex items-center p-2 text-base font-medium rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 group
-                   {{ request()->routeIs('survey.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
-                    <svg class="flex-shrink-0 w-6 h-6 transition duration-75 {{ request()->routeIs('survey.*') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
-                    </svg>
-                    <span class="ml-3">Survei (IKM)</span>
-                </a>
-            </li>
-        </ul>
-        <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
-        <li>
                 <button type="button" 
                         class="flex items-center p-2 w-full text-base font-medium rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700
                         {{ request()->routeIs('document.*') || request()->routeIs('documentType.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}"
@@ -159,6 +119,47 @@
                 </ul>
             </li>
             <li>
+                <button type="button" 
+                        class="flex items-center p-2 w-full text-base font-medium rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700
+                        {{ request()->routeIs('testimony.*') || request()->routeIs('serviceType.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}"
+                        aria-controls="dropdown-testimony" 
+                        data-collapse-toggle="dropdown-testimony">
+                    <svg class="flex-shrink-0 w-6 h-6 transition duration-75 {{ request()->routeIs('testimony.*') || request()->routeIs('serviceType.*') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap">Testimoni</span>
+                    <svg class="w-6 h-6 transition-transform duration-200 {{ request()->routeIs('testimony.*') || request()->routeIs('serviceType.*') ? 'rotate-180' : '' }}" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+                <ul id="dropdown-testimony" class="{{ request()->routeIs('testimony.*') || request()->routeIs('serviceType.*') ? 'block' : 'hidden' }} py-2 space-y-2">
+                    <li>
+                        <a href="{{ route('testimony.index') }}" 
+                           class="flex items-center p-2 pl-11 w-full text-base font-medium rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700 
+                           {{ request()->routeIs('testimony.index') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
+                            Daftar Testimoni
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('serviceType.index') }}" 
+                           class="flex items-center p-2 pl-11 w-full text-base font-medium rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700 
+                           {{ request()->routeIs('serviceType.index') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
+                            Jenis Pelayanan
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="{{ route('inovation.index') }}" 
+                   class="flex items-center p-2 text-base font-medium rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 group
+                   {{ request()->routeIs('inovation.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
+                    <svg class="flex-shrink-0 w-6 h-6 transition duration-75 {{ request()->routeIs('inovation.*') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                    </svg>
+                    <span class="ml-3">Inovasi</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('facility.index') }}" 
                    class="flex items-center p-2 text-base font-medium rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 group
                    {{ request()->routeIs('facility.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
@@ -176,6 +177,36 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 7a2 2 0 012-2h12a2 2 0 012 2M4 7v10a2 2 0 002 2h12a2 2 0 002-2V7M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2" />
                     </svg>  
                     <span class="ml-3">Pegawai</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
+            @php
+                $belumTerjawabCount = \App\Models\QuestionAndAnswer::where('status', 'belum-terjawab')->count();
+            @endphp
+
+            <li>
+                <a href="{{ route('qna.index') }}" 
+                class="flex items-center p-2 text-base font-medium rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 group
+                {{ request()->routeIs('qna.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
+                    <svg class="flex-shrink-0 w-6 h-6 transition duration-75 {{ request()->routeIs('qna.*') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Pertanyaan</span>
+                    @if($belumTerjawabCount > 0)
+                    <span class="inline-flex justify-center items-center w-5 h-5 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800">{{ $belumTerjawabCount }}</span>
+                    @endif
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('survey.index') }}"
+                   class="flex items-center p-2 text-base font-medium rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 group
+                   {{ request()->routeIs('survey.*') ? 'bg-gray-100 text-red-600 dark:bg-gray-700' : 'text-gray-900 dark:text-white' }}">
+                    <svg class="flex-shrink-0 w-6 h-6 transition duration-75 {{ request()->routeIs('survey.*') ? 'text-red-600' : 'text-gray-500 group-hover:text-gray-900' }} dark:text-gray-400 dark:group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                    </svg>
+                    <span class="ml-3">Survei (IKM)</span>
                 </a>
             </li>
             @can('view-users')

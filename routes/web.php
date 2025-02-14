@@ -16,6 +16,8 @@ use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ServiceTypeController;
+use App\Http\Controllers\TestimonyController;
 use Illuminate\Support\Facades\Route;
 
 // Super Admin
@@ -110,6 +112,18 @@ Route::middleware('auth')->group(function () {
     // Surveys
     Route::get('/admin/survey', [SurveyController::class, 'adminShow'])->name('survey.index');
     Route::post('/admin/survey/export', [SurveyController::class, 'export'])->name('admin.survey.export');
+
+    // Service Types
+    Route::get('/admin/jenis-layanan', [ServiceTypeController::class, 'index'])->name('serviceType.index');
+    Route::post('/admin/jenis-layanan', [ServiceTypeController::class, 'store'])->name('serviceType.store');
+    Route::put('/admin/jenis-layanan/{id}', [ServiceTypeController::class, 'update'])->name('serviceType.update');
+    Route::delete('/admin/jenis-layanan/{id}', [ServiceTypeController::class, 'destroy'])->name('serviceType.destroy');
+
+    // Testimonies
+    Route::get('/admin/testimoni', [TestimonyController::class, 'index'])->name('testimony.index');
+    Route::post('/admin/testimoni', [TestimonyController::class, 'store'])->name('testimony.store');
+    Route::put('/admin/testimoni/{id}', [TestimonyController::class, 'update'])->name('testimony.update');
+    Route::delete('/admin/testimoni/{id}', [TestimonyController::class, 'destroy'])->name('testimony.destroy');
 
 });
 
