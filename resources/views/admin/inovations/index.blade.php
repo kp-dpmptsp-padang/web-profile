@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', content: 'Manajemen Inovasi | Admin DPMPTSP Kota Padang')
 @section('app')
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">

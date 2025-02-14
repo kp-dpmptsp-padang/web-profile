@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', content: 'Beranda | Admin DPMPTSP Kota Padang')
 @section('app')
 <section class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-2xl px-4 lg:px-12">
@@ -14,7 +14,7 @@
             <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg transition-transform hover:scale-[1.02] duration-300">
                 <div class="p-6">
                     <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Total Berita</h3>
+                        <h3 class="text-lg font-semibold text-grayp-900 dark:text-white">Total Berita</h3>
                         <span class="p-2 bg-red-100 rounded-lg">
                             <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-2"></path>
