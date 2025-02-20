@@ -199,7 +199,7 @@
                                     <div class="flex justify-between items-center gap-6">
                                         <div class="text-center flex-shrink-0">
                                             <img src="/images/walkot.png" alt="Walikota Padang" class="w-48 h-48 object-cover rounded-lg shadow-lg mb-3">
-                                            <h5 class="font-semibold text-gray-800">Wali Kota Padang Terpilih</h5>
+                                            <h5 class="font-semibold text-gray-800">Wali Kota Padang</h5>
                                         </div>
                                         
                                         <div class="flex-grow p-6 bg-gradient-to-br from-red-50 to-white rounded-lg shadow-lg border border-red-100">
@@ -211,7 +211,7 @@
                     
                                         <div class="text-center flex-shrink-0">
                                             <img src="/images/wawakot.png" alt="Wakil Walikota Padang" class="w-48 h-48 object-cover rounded-lg shadow-lg mb-3">
-                                            <h5 class="font-semibold text-gray-800">Wakil Wali Kota Padang Terpilih</h5>
+                                            <h5 class="font-semibold text-gray-800">Wakil Wali Kota Padang</h5>
                                         </div>
                                     </div>
                     
